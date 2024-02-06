@@ -7,6 +7,7 @@ package Models;
 /**
  *
  * @author alber
+ * @author kim03
  */
 public class PagoIncapacidad {
 
@@ -38,5 +39,4 @@ public class PagoIncapacidad {
     public void setIdPago(int idPago) {
         this.idPago = idPago;
     }
-
 }
