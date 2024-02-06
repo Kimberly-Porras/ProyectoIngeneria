@@ -36,7 +36,7 @@
                               <Insets left="10.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="link_registroFamiliar" maxWidth="1.7976931348623157E308" prefHeight="45.0" prefWidth="222.0" text="Registro Familiar">
+                        <Label fx:id="link_registroFamiliar" maxWidth="1.7976931348623157E308" onMouseClicked="#OnAbrirRegistroFamiliar" prefHeight="45.0" prefWidth="222.0" text="Registro Familiar">
                            <font>
                               <Font name="Segoe UI" size="16.0" />
                            </font>
@@ -51,7 +51,7 @@
                            </font>
                         </Label>
                         <Separator prefHeight="13.0" prefWidth="222.0" />
-                        <Label fx:id="link_deducciones" maxWidth="1.7976931348623157E308" prefHeight="45.0" prefWidth="222.0" text="Deducciones">
+                        <Label fx:id="link_deducciones" maxWidth="1.7976931348623157E308" onMouseClicked="#OnAbrirDeducciones" prefHeight="45.0" prefWidth="222.0" text="Deducciones">
                            <font>
                               <Font name="Segoe UI" size="16.0" />
                            </font>
@@ -59,7 +59,7 @@
                               <Insets left="10.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="link_contratos" maxWidth="1.7976931348623157E308" prefHeight="45.0" prefWidth="222.0" text="Contratos">
+                        <Label fx:id="link_contratos" maxWidth="1.7976931348623157E308" onMouseClicked="#OnAbrirContratos" prefHeight="45.0" prefWidth="222.0" text="Contratos">
                            <font>
                               <Font name="Segoe UI" size="16.0" />
                            </font>
@@ -67,7 +67,7 @@
                               <Insets left="10.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="link_pagos" maxWidth="1.7976931348623157E308" prefHeight="45.0" prefWidth="222.0" text="Pagos">
+                        <Label fx:id="link_pagos" maxWidth="1.7976931348623157E308" onMouseClicked="#OnAbrirPagos" prefHeight="45.0" prefWidth="222.0" text="Pagos">
                            <font>
                               <Font name="Segoe UI" size="16.0" />
                            </font>
@@ -82,7 +82,7 @@
                            </font>
                         </Label>
                         <Separator prefHeight="13.0" prefWidth="222.0" />
-                        <Label fx:id="link_vacaciones" maxWidth="1.7976931348623157E308" prefHeight="45.0" prefWidth="222.0" text="Vacaciones">
+                        <Label fx:id="link_vacaciones" maxWidth="1.7976931348623157E308" onMouseClicked="#OnAbrirVacaciones" prefHeight="45.0" prefWidth="222.0" text="Vacaciones">
                            <font>
                               <Font name="Segoe UI" size="16.0" />
                            </font>
@@ -90,7 +90,7 @@
                               <Insets left="10.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="link_aguinaldo" maxWidth="1.7976931348623157E308" prefHeight="45.0" prefWidth="222.0" text="Aguinaldos">
+                        <Label fx:id="link_aguinaldo" maxWidth="1.7976931348623157E308" onMouseClicked="#OnAbrirAguinaldos" prefHeight="45.0" prefWidth="222.0" text="Aguinaldos">
                            <font>
                               <Font name="Segoe UI" size="16.0" />
                            </font>
@@ -98,7 +98,7 @@
                               <Insets left="10.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="link_incapacidades" maxWidth="1.7976931348623157E308" prefHeight="45.0" prefWidth="222.0" text="Incapacidades">
+                        <Label fx:id="link_incapacidades" maxWidth="1.7976931348623157E308" onMouseClicked="#OnAbrirIncapacidades" prefHeight="45.0" prefWidth="222.0" text="Incapacidades">
                            <font>
                               <Font name="Segoe UI" size="16.0" />
                            </font>
@@ -113,7 +113,7 @@
                            </font>
                         </Label>
                         <Separator prefHeight="13.0" prefWidth="222.0" />
-                        <Label fx:id="link_empleados" maxWidth="1.7976931348623157E308" prefHeight="45.0" prefWidth="222.0" text="Empleados">
+                        <Label fx:id="link_empleados" maxWidth="1.7976931348623157E308" onMouseClicked="#OnAbrirEmpleados" prefHeight="45.0" prefWidth="222.0" text="Empleados">
                            <font>
                               <Font name="Segoe UI" size="16.0" />
                            </font>
@@ -121,7 +121,7 @@
                               <Insets left="10.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="link_socios" maxWidth="1.7976931348623157E308" prefHeight="45.0" prefWidth="222.0" text="Socios">
+                        <Label fx:id="link_socios" maxWidth="1.7976931348623157E308" onMouseClicked="#OnAbrirSocios" prefHeight="45.0" prefWidth="222.0" text="Socios">
                            <font>
                               <Font name="Segoe UI" size="16.0" />
                            </font>
@@ -129,7 +129,23 @@
                               <Insets left="10.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="link_planilla" maxWidth="1.7976931348623157E308" prefHeight="45.0" prefWidth="222.0" text="Planilla">
+                        <Label fx:id="link_planilla" maxWidth="1.7976931348623157E308" onMouseClicked="#OnAbrirPlanilla" prefHeight="45.0" prefWidth="222.0" text="Planilla">
+                           <font>
+                              <Font name="Segoe UI" size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="link_salariosFijos" maxWidth="1.7976931348623157E308" onMouseClicked="#OnAbrirSalariosFijos" prefHeight="45.0" prefWidth="222.0" text="Salarios fijos">
+                           <font>
+                              <Font name="Segoe UI" size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="link_asistencia" maxWidth="1.7976931348623157E308" onMouseClicked="#OnAbrirAsistencia" prefHeight="45.0" prefWidth="222.0" text="Asistencia">
                            <font>
                               <Font name="Segoe UI" size="16.0" />
                            </font>

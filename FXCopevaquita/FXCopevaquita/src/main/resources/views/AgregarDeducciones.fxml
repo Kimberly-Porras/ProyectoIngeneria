@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgregarDeduccionesController">
+   <children>
+      <VBox prefHeight="626.0" prefWidth="987.0" spacing="20.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
+         <children>
+            <HBox alignment="TOP_CENTER">
+               <children>
+                  <Label alignment="TOP_LEFT" text="INSERCIÓN DE DEDUCCIONES POR EMPLEADO" textFill="#0b986a">
+                     <font>
+                        <Font name="Lucida Bright" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="70.0" prefWidth="807.0">
+               <children>
+                  <Label alignment="TOP_LEFT" text="Seleccione un empleado: ">
+                     <font>
+                        <Font name="Lucida Bright" size="20.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="cbxFiltrarEmpleadoAgre" editable="true" onAction="#OnFiltrarEmpleado" prefHeight="32.0" prefWidth="357.0" style="-fx-border-color: #2A8C4A;" visibleRowCount="20" />
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="52.0" prefWidth="1255.0">
+               <children>
+                  <Label alignment="TOP_LEFT" text="Tipo de deducción: ">
+                     <font>
+                        <Font name="Lucida Bright" size="20.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="cbxTipoDeduccionAgre" prefHeight="27.0" prefWidth="155.0" style="-fx-background-color: white; -fx-border-color: #2A8C4A;" visibleRowCount="17" />
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" spacing="15.0">
+               <children>
+                  <Label alignment="TOP_LEFT" text="Motivo: ">
+                     <font>
+                        <Font name="Lucida Bright" size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtMotivoAgre" onKeyTyped="#validarNombre" prefHeight="38.0" prefWidth="250.0" style="-fx-border-color: #2A8C4A;">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="46.0" prefWidth="1255.0" spacing="15.0">
+               <children>
+                  <Label alignment="TOP_LEFT" text="Frecuencia: ">
+                     <font>
+                        <Font name="Lucida Bright" size="20.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="cbxFrecuenciaAgre" prefHeight="27.0" prefWidth="217.0" style="-fx-background-color: white; -fx-border-color: #2A8C4A;" visibleRowCount="17" />
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="51.0" prefWidth="1255.0" spacing="15.0">
+               <children>
+                  <Label alignment="TOP_LEFT" text="Cuota: ">
+                     <font>
+                        <Font name="Lucida Bright" size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtCuotaAgre" onKeyTyped="#validarNombre" prefHeight="33.0" prefWidth="264.0" style="-fx-border-color: #2A8C4A;">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="65.0" prefWidth="1255.0" spacing="15.0">
+               <children>
+                  <Label alignment="TOP_LEFT" text="Porcentual:">
+                     <font>
+                        <Font name="Lucida Bright" size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtPorcentualAgre" onKeyTyped="#validarNombre" prefHeight="38.0" prefWidth="231.0" style="-fx-border-color: #2A8C4A;">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" spacing="15.0">
+               <children>
+                  <Label alignment="TOP_LEFT" text="Total: ">
+                     <font>
+                        <Font name="Lucida Bright" size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtTotalAgre" onKeyTyped="#validarNombre" prefHeight="33.0" prefWidth="284.0" style="-fx-border-color: #2A8C4A;">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets top="-15.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <CheckBox fx:id="cbEstadoAgre" mnemonicParsing="false" text="Estado">
+                     <font>
+                        <Font name="Lucida Bright" size="26.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </CheckBox>
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#btnGuardar" prefHeight="33.0" prefWidth="163.0" style="-fx-background-color: lightblue;" text="Guardar">
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../Proyecto-CoopevaquitaR.L/SistemaPlanilla_CoopevaquitaR.L/src/main/resources/imagenes/guardar-como.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Lucida Bright" size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+         <StackPane.margin>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+         </StackPane.margin>
+      </VBox>
+   </children>
+</StackPane>

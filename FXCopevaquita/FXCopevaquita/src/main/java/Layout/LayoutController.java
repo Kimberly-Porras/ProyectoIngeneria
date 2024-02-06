@@ -45,7 +45,19 @@ public class LayoutController implements Initializable {
     private Label link_planilla;
     @FXML
     private Label link_config;
+    @FXML
+    private Label link_salariosFijos;
+    @FXML
+    private Label link_asistencia;
 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        System.out.println("consultando...");
+        ActividadDAO ado = new ActividadDAO();
+        var all = ado.obtenerTodos();
+        System.out.println("todos: " + all.size());
+    }
+    
     private void LoadNode(String fxml) throws IOException {
         var node = App.loadFXML(fxml);
         container_root.getChildren().clear();
@@ -55,10 +67,95 @@ public class LayoutController implements Initializable {
     @FXML
     private void OnAbrirInfoPersonal(MouseEvent event) {
         try {
-            LoadNode("/views/secondary");
+            LoadNode("/views/Empleados");
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    @FXML
+    private void OnAbrirRegistroFamiliar(MouseEvent event) {
+        try {
+            LoadNode("/views/RegistroFamiliar");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void OnAbrirDeducciones(MouseEvent event) {
+        try {
+            LoadNode("/views/Deducciones");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void OnAbrirContratos(MouseEvent event) {
+        try {
+            LoadNode("/views/Contratos");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void OnAbrirPagos(MouseEvent event) {
+        try {
+            LoadNode("/views/Pagos");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void OnAbrirVacaciones(MouseEvent event) {
+        try {
+            LoadNode("/views/Vacaciones");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void OnAbrirAguinaldos(MouseEvent event) {
+    }
+
+    @FXML
+    private void OnAbrirIncapacidades(MouseEvent event) {
+        try {
+            LoadNode("/views/Incapacidades");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void OnAbrirEmpleados(MouseEvent event) {
+        try {
+            LoadNode("/views/BitacoraEmpleado");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void OnAbrirSocios(MouseEvent event) {
+       try {
+            LoadNode("/views/BitacoraSocio");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } 
+    }
+
+    @FXML
+    private void OnAbrirPlanilla(MouseEvent event) {
+        try {
+            LoadNode("/views/Planilla");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } 
     }
 
     @FXML
@@ -70,12 +167,11 @@ public class LayoutController implements Initializable {
         }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("consultando...");
-        ActividadDAO ado = new ActividadDAO();
-        var all = ado.obtenerTodos();
-        System.out.println("todos: " + all.size());
+    @FXML
+    private void OnAbrirSalariosFijos(MouseEvent event) {
     }
 
+    @FXML
+    private void OnAbrirAsistencia(MouseEvent event) {
+    }
 }

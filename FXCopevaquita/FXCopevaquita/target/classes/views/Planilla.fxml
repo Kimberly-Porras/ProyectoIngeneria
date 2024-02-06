@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PlanillaController">
+   <children>
+      <VBox alignment="CENTER" prefHeight="669.0" prefWidth="1179.0" spacing="20.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
+         <children>
+            <HBox alignment="CENTER">
+               <children>
+                  <Label alignment="TOP_LEFT" text="REPORTE DE PLANILLA DE EMPLEADOS" textFill="#0b986a">
+                     <font>
+                        <Font name="Lucida Bright" size="29.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="25.0" prefWidth="1093.0">
+               <children>
+                  <Label alignment="TOP_LEFT" prefHeight="25.0" prefWidth="318.0" text="Fecha de inicio: ">
+                     <font>
+                        <Font name="Lucida Bright" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="TOP_LEFT" prefHeight="25.0" prefWidth="274.0" text="Fecha final: ">
+                     <font>
+                        <Font name="Lucida Bright" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="TOP_LEFT" prefHeight="25.0" prefWidth="274.0" text="Empleado: ">
+                     <font>
+                        <Font name="Lucida Bright" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="150.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="63.0" prefWidth="1179.0" spacing="50.0">
+               <children>
+                  <DatePicker fx:id="dpFechaInicio" prefHeight="36.0" prefWidth="257.0" style="-fx-border-color: #2A8C4A;" />
+                  <DatePicker fx:id="dpFechaFinal" prefHeight="34.0" prefWidth="247.0" style="-fx-border-color: #2A8C4A;" />
+                  <ComboBox fx:id="cbxEmpleado" onAction="#OnChangeEmpleado" prefHeight="36.0" prefWidth="228.0" style="-fx-background-color: white; -fx-border-color: #2A8C4A;" />
+                  <Button fx:id="btnBuscar" mnemonicParsing="false" onAction="#OnBuscar" prefHeight="34.0" prefWidth="120.0" style="-fx-background-color: #0D33B3;" text="BUSCAR" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../Proyecto-CoopevaquitaR.L/SistemaPlanilla_CoopevaquitaR.L/src/main/resources/imagenes/BUSCAR.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets top="-10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets top="-20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="65.0" prefWidth="1179.0" spacing="15.0">
+               <children>
+                  <Button fx:id="btnExportarExcel" mnemonicParsing="false" onAction="#OnExportarExcel" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #99cc99;" text="EXPORTAR EXCEL" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="65.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../Proyecto-CoopevaquitaR.L/SistemaPlanilla_CoopevaquitaR.L/src/main/resources/imagenes/exel.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Lucida Bright" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnExportarPDF" mnemonicParsing="false" onAction="#OnExportarPDF" prefHeight="52.0" prefWidth="177.0" style="-fx-background-color: #ffa3b5;" text="EXPORTAR PDF" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="42.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../Proyecto-CoopevaquitaR.L/SistemaPlanilla_CoopevaquitaR.L/src/main/resources/imagenes/pdf.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Lucida Bright" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="350.0" prefWidth="1179.0">
+               <children>
+                  <TableView fx:id="tblReporte" prefHeight="366.0" prefWidth="1139.0">
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin>
+                  </TableView>
+               </children>
+            </HBox>
+         </children>
+         <StackPane.margin>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+         </StackPane.margin>
+      </VBox>
+   </children>
+</StackPane>

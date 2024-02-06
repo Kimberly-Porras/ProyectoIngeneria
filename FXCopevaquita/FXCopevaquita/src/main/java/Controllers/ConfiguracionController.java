@@ -28,15 +28,17 @@ public class ConfiguracionController implements Initializable {
 
     @FXML
     private void onGestionarActividades(ActionEvent event) {
-        OpenWindowsHandler.openSecondWindows("/views/Actividades");
+        OpenWindowsHandler.AbrirVentanaActividades("/views/Actividades");
     }
 
     @FXML
     private void onGestionarAreas(ActionEvent event) {
+        OpenWindowsHandler.AbrirVentanaAreas("/views/Areas");
     }
 
     @FXML
     private void onGestionarDeducciones(ActionEvent event) {
+      OpenWindowsHandler.AbrirVentanaTipoDeducciones("/views/TipoDeducciones");
     }
     
 }
