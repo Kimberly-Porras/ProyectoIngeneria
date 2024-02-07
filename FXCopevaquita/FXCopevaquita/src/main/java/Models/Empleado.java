@@ -24,8 +24,8 @@ public class Empleado {
     private String tipo;
     private String numeroCuenta;
     private String nivelAcademico;
-    private byte status;
-
+    private boolean status;
+    
     public Empleado() {
         this.cedula = "";
         this.nombre = "";
@@ -38,9 +38,9 @@ public class Empleado {
         this.tipo = "";
         this.numeroCuenta = "";
         this.nivelAcademico = "";
-        this.status = 0;
+        this.status = false;
     }
-    public Empleado(String cedula, String nombre, String apellidos, String sexo, String estadoCivil, String tipoSangre, Date fechaNacimiento, Date fechaIngreso, String tipo, String numeroCuenta, String nivelAcademico, byte status) {
+    public Empleado(String cedula, String nombre, String apellidos, String sexo, String estadoCivil, String tipoSangre, Date fechaNacimiento, Date fechaIngreso, String tipo, String numeroCuenta, String nivelAcademico, boolean status) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -143,11 +143,11 @@ public class Empleado {
         this.nivelAcademico = nivelAcademico;
     }
 
-    public byte getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
-    public void setStatus(byte status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 }
