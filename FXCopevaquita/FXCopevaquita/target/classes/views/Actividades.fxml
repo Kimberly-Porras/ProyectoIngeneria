@@ -7,16 +7,17 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ActividadesController">
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox alignment="CENTER" layoutX="8.0" layoutY="35.0" nodeOrientation="LEFT_TO_RIGHT" spacing="5.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
+      <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" spacing="5.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
          <children>
-            <HBox alignment="TOP_CENTER">
+            <HBox alignment="CENTER">
                <children>
                   <Label alignment="TOP_LEFT" prefHeight="30.0" prefWidth="469.0" text="INFORMACIÓN DE LAS ACTIVIDADES" textFill="#0b986a">
                      <font>
@@ -28,7 +29,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="23.0" prefWidth="1190.0" spacing="15.0">
+            <HBox alignment="CENTER" prefHeight="23.0" prefWidth="1190.0" spacing="15.0">
                <children>
                   <Label text="Nombre de la actividad: ">
                      <font>
@@ -56,7 +57,7 @@
                   <Insets left="20.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="64.0" prefWidth="1210.0" spacing="15.0">
+            <HBox alignment="CENTER" prefHeight="64.0" prefWidth="1210.0" spacing="15.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#btnGuardarActividad" prefHeight="43.0" prefWidth="157.0" style="-fx-background-color: lightblue;" text="Guardar">
                      <font>
@@ -70,7 +71,7 @@
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="48.0" prefWidth="1210.0" spacing="10.0">
+            <HBox alignment="CENTER" prefHeight="48.0" prefWidth="1210.0" spacing="10.0">
                <children>
                   <Label text="Seleccione una actividad: ">
                      <font>
@@ -87,7 +88,7 @@
                   <Insets left="20.0" />
                </VBox.margin>
             </HBox>
-            <HBox prefHeight="343.0" prefWidth="1210.0">
+            <HBox alignment="CENTER" prefHeight="343.0" prefWidth="1210.0">
                <children>
                   <TableView fx:id="tblActividades" prefHeight="312.0" prefWidth="1207.0">
                      <columns>
@@ -104,7 +105,7 @@
                   </TableView>
                </children>
             </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#btnEditarActividad" prefHeight="45.0" prefWidth="183.0" style="-fx-background-color: #ffba6a;" text="Cargar datos">
                      <font>
@@ -114,6 +115,9 @@
                </children>
             </HBox>
          </children>
+         <StackPane.margin>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+         </StackPane.margin>
       </VBox>
    </children>
-</AnchorPane>
+</StackPane>

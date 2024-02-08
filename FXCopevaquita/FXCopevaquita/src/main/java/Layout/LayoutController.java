@@ -52,10 +52,6 @@ public class LayoutController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("consultando...");
-        ActividadDAO ado = new ActividadDAO();
-        var all = ado.obtenerTodos();
-        System.out.println("todos: " + all.size());
     }
     
     private void LoadNode(String fxml) throws IOException {

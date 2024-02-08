@@ -15,16 +15,16 @@ public class Credencial {
     private String empleado ;
     private String usuario;
     private String contrasenia;
-    private byte status;
+    private boolean status;
 
     public Credencial() {
         this.id = 0;
         this.empleado = "";
         this.usuario = "";
         this.contrasenia = "";
-        this.status = 0;
+        this.status = false;
     }
-    public Credencial(int id, String empleado, String usuario, String contrasenia, byte status) {
+    public Credencial(int id, String empleado, String usuario, String contrasenia, boolean status) {
         this.id = id;
         this.empleado = empleado;
         this.usuario = usuario;
@@ -64,11 +64,12 @@ public class Credencial {
         this.contrasenia = contrasenia;
     }
 
-    public byte getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
-    public void setStatus(byte status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
+
 }
