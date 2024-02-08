@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EmpleadosController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EmpleadosController">
    <children>
-      <VBox alignment="CENTER" prefHeight="660.0" prefWidth="1247.0" spacing="25.0" style="-fx-background-color: #D2F4E7; -fx-background-radius: 18;">
+      <VBox alignment="CENTER" prefHeight="660.0" prefWidth="1247.0" spacing="25.0" style="-fx-background-color: #D2F4E7;">
          <children>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="1245.0" spacing="5.0">
                <children>
@@ -80,7 +80,7 @@
             </HBox>
          </children>
          <StackPane.margin>
-            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+            <Insets />
          </StackPane.margin>
       </VBox>
    </children>
