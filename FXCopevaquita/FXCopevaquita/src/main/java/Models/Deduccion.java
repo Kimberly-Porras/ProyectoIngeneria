@@ -17,7 +17,7 @@ public class Deduccion {
     private double cuota;
     private double pendiente;
     private String empleado;
-    private byte status;
+    private boolean status;
 
     public Deduccion() {
         this.id = 0;
@@ -26,9 +26,9 @@ public class Deduccion {
         this.cuota = 0.0;
         this.pendiente = 0.0;
         this.empleado = "";
-        this.status = 0;
+        this.status = false;
     }
-    public Deduccion(int id, int tipo, double monto, double cuota, double pendiente, String empleado, byte status) {
+    public Deduccion(int id, int tipo, double monto, double cuota, double pendiente, String empleado, boolean status) {
         this.id = id;
         this.tipo = tipo;
         this.monto = monto;
@@ -86,11 +86,11 @@ public class Deduccion {
         this.empleado = empleado;
     }
 
-    public byte getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
-    public void setStatus(byte status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 }

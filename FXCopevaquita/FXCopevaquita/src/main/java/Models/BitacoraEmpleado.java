@@ -19,9 +19,9 @@ public class BitacoraEmpleado {
     private int actividad;
     private int area;
     private Date fecha;
-    private double costo;
+    private double precio;
     private double cantidad;
-    private byte status;
+    private boolean status;
 
     public BitacoraEmpleado() {
         this.id = 0;
@@ -29,18 +29,18 @@ public class BitacoraEmpleado {
         this.actividad = 0;
         this.area = 0;
         this.fecha = new java.sql.Date(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth());
-        this.costo = 0.0;
+        this.precio = 0.0;
         this.cantidad = 0.0;
-        this.status = 0;
+        this.status = false;
     }
 
-    public BitacoraEmpleado(int id, String empleado, int actividad, int area, Date fecha, double costo, double cantidad, byte status) {
+    public BitacoraEmpleado(int id, String empleado, int actividad, int area, Date fecha, double costo, double cantidad, boolean status) {
         this.id = id;
         this.empleado = empleado;
         this.actividad = actividad;
         this.area = area;
         this.fecha = fecha;
-        this.costo = costo;
+        this.precio = costo;
         this.cantidad = cantidad;
         this.status = status;
     }
@@ -86,11 +86,11 @@ public class BitacoraEmpleado {
     }
 
     public double getCosto() {
-        return costo;
+        return precio;
     }
 
     public void setCosto(double costo) {
-        this.costo = costo;
+        this.precio = costo;
     }
 
     public double getCantidad() {
@@ -101,11 +101,11 @@ public class BitacoraEmpleado {
         this.cantidad = cantidad;
     }
 
-    public byte getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
-    public void setStatus(byte status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 }

@@ -58,7 +58,7 @@ public class ActividadesController implements Initializable {
     public void configurar() {
         colIdActividad.setCellValueFactory(new PropertyValueFactory<>("id"));
         colNombreActividad.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        colEstadoActividad.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStatus() == 1 ? "Activo" : "Inactivo"));
+        colEstadoActividad.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStatus() ? "Activo" : "Inactivo"));
 
         List<Actividad> listaActividad = dao.obtenerTodos();
         ObservableList<Actividad> ActividadObservable = FXCollections.observableArrayList(listaActividad);

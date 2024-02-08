@@ -64,7 +64,7 @@ public class Credencial {
         this.contrasenia = contrasenia;
     }
 
-    public boolean isStatus() {
+    public boolean getStatus() {
         return status;
     }
 

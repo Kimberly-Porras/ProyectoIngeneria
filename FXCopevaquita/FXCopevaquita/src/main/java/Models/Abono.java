@@ -13,7 +13,7 @@ import java.util.Date;
  * @author kim03
  */
 public class Abono {
-     private int id;
+    private int id;
     private int deduccion;
     private double monto;
     private Date fecha;

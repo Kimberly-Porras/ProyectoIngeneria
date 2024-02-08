@@ -11,16 +11,16 @@ package Models;
  */
 public class TipoDeduccion {
     
-    private int id;
+   private int id;
     private String nombre;
-    private byte status; 
+    private boolean status; 
 
     public TipoDeduccion() {
         this.id = 0;
         this.nombre = "";
-        this.status = 0;
+        this.status = false;
     }
-    public TipoDeduccion(int id, String nombre, byte status) {
+    public TipoDeduccion(int id, String nombre, boolean status) {
         this.id = id;
         this.nombre = nombre;
         this.status = status;
@@ -42,11 +42,11 @@ public class TipoDeduccion {
         this.nombre = nombre;
     }
 
-    public byte getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
-    public void setStatus(byte status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 }

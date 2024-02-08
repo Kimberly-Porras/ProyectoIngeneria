@@ -14,14 +14,14 @@ import java.util.Date;
  */
 public class Contrato {
     
-     private int id;
+    private int id;
     private String cedulaEmpleado;
     private Date fechaInicio;
     private Date fechaFinal;
     private Date fechaRegistro;
     private double monto;
-    private byte status;
-    private int actividad;
+    private boolean status;
+    private int motivo;
 
     public Contrato() {
         this.id = 0;
@@ -30,10 +30,10 @@ public class Contrato {
         this.fechaFinal = new java.sql.Date(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth());
         this.fechaRegistro = new java.sql.Date(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth());
         this.monto = 0.0;
-        this.status = 0;
-        this.actividad = 0;
+        this.status = false;
+        this.motivo = 0;
     }
-    public Contrato(int id, String cedula_empleado, Date fecha_inicio, Date fecha_final, Date fecha_registro, double monto, byte status, int actividad) {
+    public Contrato(int id, String cedula_empleado, Date fecha_inicio, Date fecha_final, Date fecha_registro, double monto, boolean status, int actividad) {
         this.id = id;
         this.cedulaEmpleado = cedula_empleado;
         this.fechaInicio = fecha_inicio;
@@ -41,7 +41,7 @@ public class Contrato {
         this.fechaRegistro = fecha_registro;
         this.monto = monto;
         this.status = status;
-        this.actividad = actividad;
+        this.motivo = actividad;
     }
 
     public int getId() {
@@ -92,19 +92,19 @@ public class Contrato {
         this.monto = monto;
     }
 
-    public byte getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
-    public void setStatus(byte status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 
     public int getActividad() {
-        return actividad;
+        return motivo;
     }
 
     public void setActividad(int actividad) {
-        this.actividad = actividad;
+        this.motivo = actividad;
     }
 }

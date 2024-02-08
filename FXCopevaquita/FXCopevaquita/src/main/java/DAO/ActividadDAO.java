@@ -33,7 +33,7 @@ public class ActividadDAO {
                 actividades.add(new Actividad(
                         rs.getInt(1),
                         rs.getString(2),
-                        rs.getByte(3)
+                        rs.getBoolean(3)
                 ));
             }
         } catch (SQLException ex) {

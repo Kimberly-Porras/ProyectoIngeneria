@@ -12,9 +12,9 @@ package Models;
 public class Actividad {
     private int id;
     private String nombre;
-    private byte status;
+    private boolean status;
 
-    public Actividad(int activityId, String activityName, byte activityStatus) {
+    public Actividad(int activityId, String activityName, boolean activityStatus) {
         this.id = activityId;
         this.nombre = activityName;
         this.status = activityStatus;
@@ -39,11 +39,11 @@ public class Actividad {
         this.nombre = nombre;
     }
 
-    public byte getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
-    public void setStatus(byte status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 }

@@ -14,23 +14,23 @@ import java.util.Date;
  */
 public class BitacoraAsistencia {
     
-    private int id;
-    private Date fecha;
-    private byte estaPresente;
-    private byte justifica;
+     private int id;
+    private Date fecha;            
+    private boolean estaPresente;
+    private boolean justifica;
     private String empleado;
-    private byte status;
+    private boolean status;
     
     public BitacoraAsistencia() {
         this.id = 0;
         this.fecha = new java.sql.Date(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth());
-        this.estaPresente = 0;
-        this.justifica = 0;
+        this.estaPresente = false;
+        this.justifica = false;
         this.empleado = "";
-        this.status = 0;
+        this.status = false;
     }
 
-    public BitacoraAsistencia(int id, Date fecha, byte esta_presente, byte justifica, String empleado, byte status) {
+    public BitacoraAsistencia(int id, Date fecha, boolean esta_presente, boolean justifica, String empleado, boolean status) {
         this.id = id;
         this.fecha = fecha;
         this.estaPresente = esta_presente;
@@ -55,19 +55,19 @@ public class BitacoraAsistencia {
         this.fecha = fecha;
     }
 
-    public byte getEsta_presente() {
+    public boolean getEsta_presente() {
         return estaPresente;
     }
 
-    public void setEsta_presente(byte esta_presente) {
+    public void setEsta_presente(boolean esta_presente) {
         this.estaPresente = esta_presente;
     }
 
-    public byte getJustifica() {
+    public boolean getJustifica() {
         return justifica;
     }
 
-    public void setJustifica(byte justifica) {
+    public void setJustifica(boolean justifica) {
         this.justifica = justifica;
     }
 
@@ -79,11 +79,11 @@ public class BitacoraAsistencia {
         this.empleado = empleado;
     }
 
-    public byte getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
-    public void setStatus(byte status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 }

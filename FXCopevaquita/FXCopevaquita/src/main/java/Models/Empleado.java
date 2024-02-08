@@ -13,6 +13,7 @@ import java.util.Date;
  * @author kim03
  */
 public class Empleado {
+    
     private String cedula;
     private String nombre;
     private String apellidos;

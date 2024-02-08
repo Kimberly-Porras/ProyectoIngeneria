@@ -11,20 +11,20 @@ package Models;
  */
 public class BitacoraSocio {
     
-     private int id;
+    private int id;
     private String cedulaEmpleado;
     private double horas;
-    private byte status;
+    private boolean status;
     private String descripcion;
 
     public BitacoraSocio() {
         this.id = 0;
         this.cedulaEmpleado = "";
         this.horas = 0.0;
-        this.status = 0;
+        this.status = false;
         this.descripcion = "";
     }
-    public BitacoraSocio(int id, String cedula_empleado, double horas, byte status, String descripcion) {
+    public BitacoraSocio(int id, String cedula_empleado, double horas, boolean status, String descripcion) {
         this.id = id;
         this.cedulaEmpleado = cedula_empleado;
         this.horas = horas;
@@ -56,11 +56,11 @@ public class BitacoraSocio {
         this.horas = horas;
     }
 
-    public byte getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
-    public void setStatus(byte status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 

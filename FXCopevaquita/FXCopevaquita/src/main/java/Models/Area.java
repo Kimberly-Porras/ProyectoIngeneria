@@ -13,15 +13,15 @@ public class Area {
     
     private int id;
     private String nombre;
-    private byte status;
+    private boolean status;
 
     public Area() {
         this.id = 0;
         this.nombre = "";
-        this.status = 0;
+        this.status = false;
     }
     
-    public Area(int id, String nombre, byte status) {
+    public Area(int id, String nombre, boolean status) {
         this.id = id;
         this.nombre = nombre;
         this.status = status;
@@ -43,11 +43,11 @@ public class Area {
         this.nombre = nombre;
     }
 
-    public byte getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
-    public void setStatus(byte status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 }

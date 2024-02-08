@@ -19,9 +19,10 @@ public class Parentezco {
     private String apellidos;
     private Date fechaNacimiento;
     private String sexo;
-    private byte status;
+    private boolean status;
     private String parentezco;
-
+    private String contactoEmergencia;
+    
     public Parentezco() {
         this.cedula = "";
         this.empleado = "";
@@ -29,11 +30,12 @@ public class Parentezco {
         this.apellidos = "";
         this.fechaNacimiento = new java.sql.Date(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth());
         this.sexo = "";
-        this.status = 0;
+        this.status = false;
         this.parentezco = "";
+        this.contactoEmergencia = "";
     }
  
-    public Parentezco(String cedula, String empleado, String nombre, String apellidos, Date fechaNacimiento, String sexo, byte status, String parentezco) {
+    public Parentezco(String cedula, String empleado, String nombre, String apellidos, Date fechaNacimiento, String sexo, boolean status, String parentezco, String contactoEmergencia) {
         this.cedula = cedula;
         this.empleado = empleado;
         this.nombre = nombre;
@@ -42,6 +44,7 @@ public class Parentezco {
         this.sexo = sexo;
         this.status = status;
         this.parentezco = parentezco;
+        this.contactoEmergencia = contactoEmergencia;
     }
 
     public String getCedula() {
@@ -92,11 +95,11 @@ public class Parentezco {
         this.sexo = sexo;
     }
 
-    public byte getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
-    public void setStatus(byte status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 
@@ -106,5 +109,13 @@ public class Parentezco {
 
     public void setParentezco(String parentezco) {
         this.parentezco = parentezco;
+    }
+
+    public String getContactoEmergencia() {
+        return contactoEmergencia;
+    }
+
+    public void setContactoEmergencia(String contactoEmergencia) {
+        this.contactoEmergencia = contactoEmergencia;
     }
 }
