@@ -4,6 +4,7 @@
  */
 package Controllers;
 
+import Alertas.MensajePersonalizado;
 import Models.Empleado;
 import java.net.URL;
 import java.util.Optional;
@@ -17,13 +18,13 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.util.StringConverter;
-
-import DAO.EmpleadoDAO;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+import DAO.EmpleadoDAO;
+import java.time.format.DateTimeFormatter;
 
 /**
  * FXML Controller class
@@ -61,6 +62,7 @@ public class ActualizarEmpleadoController implements Initializable {
 
     ObservableList<String> observableSexo = FXCollections.observableArrayList("MASCULINO", "FEMENINO", "OTRO");
     ObservableList<String> observableTipoEmpleados = FXCollections.observableArrayList("ADMINISTRADOR", "SECRETARIO", "SOCIO", "PEON");
+    EmpleadoDAO EmpleadoDao = new EmpleadoDAO();
 
     /**
      * Initializes the controller class.
@@ -79,7 +81,7 @@ public class ActualizarEmpleadoController implements Initializable {
             @Override
             public String toString(Empleado t) {
                 if (t == null) {
-                    return ""; // o cualquier otro valor predeterminado que desees
+                    return "";
                 }
                 return t.getNombre() + " " + t.getApellidos();
             }
@@ -87,11 +89,11 @@ public class ActualizarEmpleadoController implements Initializable {
             @Override
             public Empleado fromString(String t) {
                 if (t == null || t.isEmpty()) {
-                    return null; // Manejar el caso de entrada vacía o nula
+                    return null;
                 }
                 Predicate<String> find = (x) -> x != null && x.equals(t);
                 Optional<Empleado> firstMatch = observableEmpleado.filtered(x -> find.test(x.getNombre() + " " + x.getApellidos())).stream().findFirst();
-                return firstMatch.orElse(null); // Devuelve el primer empleado encontrado o null si no se encontró ninguna coincidencia.
+                return firstMatch.orElse(null);
             }
         });
 
@@ -131,15 +133,82 @@ public class ActualizarEmpleadoController implements Initializable {
         });
     }
 
+    public void actualizar() {
+        if (VerificarEspaciosActualizar()) {
+            boolean exito = EmpleadoDao.actualizarEmpleado(
+                    new Empleado(
+                            txtCedula1.getText(),
+                            txtNombre1.getText(),
+                            txtApellidos1.getText(),
+                            cbxSexo1.getValue(),
+                            txtEstadoCilvil1.getText(),
+                            txtTipoSangre1.getText(),
+                            java.sql.Date.valueOf(dpFechaNacimiento1.getValue()),
+                            java.sql.Date.valueOf(dpFechaIngreso1.getValue()),
+                            cbxTipoEmpleado1.getValue(),
+                            txtCuentaAct.getText(),
+                            txtNivelAcamicoAct.getText(),
+                            cbEstado1.isSelected())
+            );
+
+            if (exito) {
+                MensajePersonalizado.Ver("EXITO AL ACTUALIZAR", "Usuario actualizado correctamente", Alert.AlertType.CONFIRMATION);
+                cbxFiltrarEmpleado.setValue(null);
+                limpiarCamposActualizar();
+            } else {
+                MensajePersonalizado.Ver("ERROR", "Error al actualizar el usuario", Alert.AlertType.ERROR);
+            }
+        } else {
+            MensajePersonalizado.Ver("INFORMACIÓN INCOMPLETA", "Los campos son requeridos, verifique que la información este completa", Alert.AlertType.INFORMATION);
+        }
+    }
+
+    public boolean VerificarEspaciosActualizar() {
+        if (!txtCedula1.getText().trim().equals("")
+                && !txtNombre1.getText().trim().equals("")
+                && !txtApellidos1.getText().trim().equals("")
+                && !txtEstadoCilvil1.getText().trim().equals("")
+                && !txtTipoSangre1.getText().trim().equals("")
+                && !cbxSexo1.getValue().equals("")
+                && !txtCuentaAct.getText().equals("")
+                && !txtNivelAcamicoAct.getText().equals("")
+                && dpFechaNacimiento1.getValue() != null
+                && dpFechaIngreso1.getValue() != null
+                && !dpFechaNacimiento1.getValue().format(DateTimeFormatter.ISO_DATE).trim().equals("")
+                && !dpFechaIngreso1.getValue().format(DateTimeFormatter.ISO_DATE).trim().equals("")
+                && !cbxTipoEmpleado1.getValue().equals("")
+                && !cbEstado1.getText().trim().equals("")) {
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void limpiarCamposActualizar() {
+        txtCedula1.setText("");
+        txtNombre1.setText("");
+        txtApellidos1.setText("");
+        txtEstadoCilvil1.setText("");
+        txtTipoSangre1.setText("");
+        cbxSexo1.setValue("");
+        txtCuentaAct.setText("");
+        txtNivelAcamicoAct.setText("");
+        dpFechaNacimiento1.setValue(LocalDate.now());
+        dpFechaIngreso1.setValue(LocalDate.now());
+        cbxTipoEmpleado1.setValue("");
+        cbEstado1.setText("");
+    }
+
     @FXML
     private void FiltrarEmpleado(ActionEvent event) {
+
     }
 
     @FXML
     private void btnActualizar(ActionEvent event) {
         // Que los campos de no esten vacios...
-        
-        
+
         // recordar hacer la conversión a Date
         //     public static void main(String[] args) {
         // Crear un objeto LocalDate
@@ -148,5 +217,6 @@ public class ActualizarEmpleadoController implements Initializable {
         // Date fechaSQL = Date.valueOf(fechaLocalDate);
         // Imprimir la fecha SQL
         // System.out.println("Fecha SQL: " + fechaSQL);
+        actualizar();
     }
 }

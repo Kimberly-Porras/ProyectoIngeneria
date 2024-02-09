@@ -4,53 +4,52 @@
  */
 package DAO;
 
+import Models.TipoDeduccion;
 import java.sql.Connection;
-import Models.Actividad;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 /**
  *
- * @author alber
- * @author kim03
+ * @author User
  */
-public class ActividadDAO {
-    
+public class TipoDeduccionDAO {
     private Connection acceso = Database.DatabaseConnection.getConnection();
     PreparedStatement ps;
     ResultSet rs;
     
-    public ArrayList<Actividad> obtenerTodos() {
-        var actividades = new ArrayList<Actividad>();
+    public ArrayList<TipoDeduccion> obtenerTodos() {
+        var tipoDeduccion = new ArrayList<TipoDeduccion>();
         try {
-            ps = acceso.prepareStatement("SELECT id, nombre, status FROM tbl_actividad");
+            ps = acceso.prepareStatement("SELECT id, nombre, status FROM tbl_tipo_deduccion");
             rs = ps.executeQuery();
             
             while (rs.next()) {
-                actividades.add(new Actividad(
+                tipoDeduccion.add(new TipoDeduccion(
                         rs.getInt(1),
                         rs.getString(2),
                         rs.getBoolean(3)
                 ));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ActividadDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TipoDeduccionDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return actividades;
+        return tipoDeduccion;
     }
     
-    public boolean insertarActividad(Actividad actividad) {
+    public boolean insertarTipoDeduccion(TipoDeduccion tipoDeduccion) {
         try {
-            String sql = "INSERT INTO tbl_actividad (nombre, status) VALUES (?, ?);";
+            String sql = "INSERT INTO tbl_tipo_deduccion (nombre, status) VALUES (?, ?);";
 
            
             ps = acceso.prepareStatement(sql);
-            ps.setObject(1, actividad.getNombre());
-            ps.setObject(2, actividad.isStatus());
+            ps.setObject(1, tipoDeduccion.getNombre());
+            ps.setObject(2, tipoDeduccion.isStatus());
 
             ps.executeUpdate();
             return true;
@@ -61,18 +60,18 @@ public class ActividadDAO {
 
     }
 
-    public boolean actualizarActividad(Actividad actividad) {
+    public boolean actualizarTipoDeduccion(TipoDeduccion tipoDeduccion) {
         try {
 
-            String sql = "UPDATE tbl_actividad "
+            String sql = "UPDATE tbl_tipo_deduccion "
                     + "SET nombre = ?, "
                     + "status = ? "
                     + "WHERE id = ?;";
             
             ps = acceso.prepareStatement(sql);
-            ps.setObject(1, actividad.getNombre());
-            ps.setObject(2, actividad.isStatus());
-            ps.setObject(3, actividad.getId());
+            ps.setObject(1, tipoDeduccion.getNombre());
+            ps.setObject(2, tipoDeduccion.isStatus());
+            ps.setObject(3, tipoDeduccion.getId());
 
             ps.executeUpdate();
             return true;

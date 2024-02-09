@@ -107,14 +107,32 @@ public class OpenWindowsHandler {
         }
     }
     
-    public static void AbrirVentanaFormularioRegistroFamiliar(String fxml) {
+    public static void AbrirVentanaAgregarRegistroFamiliar(String fxml) {
         try {
             var second = App.loadFXML(fxml);
 
             Scene secondScene = new Scene(second);
             Stage secondStage = new Stage();
 
-            secondStage.setTitle("Formulario de registro familiar");
+            secondStage.setTitle("Agregar registro familiar");
+            secondStage.initModality(Modality.WINDOW_MODAL);
+            secondStage.initOwner(App.scene.getWindow());
+            secondStage.setScene(secondScene);
+
+            secondStage.showAndWait();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public static void AbrirVentanaActualizarRegistroFamiliar(String fxml) {
+        try {
+            var second = App.loadFXML(fxml);
+
+            Scene secondScene = new Scene(second);
+            Stage secondStage = new Stage();
+
+            secondStage.setTitle("Actualizar registro familiar");
             secondStage.initModality(Modality.WINDOW_MODAL);
             secondStage.initOwner(App.scene.getWindow());
             secondStage.setScene(secondScene);

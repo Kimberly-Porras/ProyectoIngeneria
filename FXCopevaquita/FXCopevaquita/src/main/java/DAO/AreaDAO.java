@@ -4,53 +4,52 @@
  */
 package DAO;
 
+import Models.Area;
 import java.sql.Connection;
-import Models.Actividad;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 /**
  *
- * @author alber
- * @author kim03
+ * @author User
  */
-public class ActividadDAO {
-    
-    private Connection acceso = Database.DatabaseConnection.getConnection();
+public class AreaDAO {
+   private Connection acceso = Database.DatabaseConnection.getConnection();
     PreparedStatement ps;
     ResultSet rs;
     
-    public ArrayList<Actividad> obtenerTodos() {
-        var actividades = new ArrayList<Actividad>();
+    public ArrayList<Area> obtenerTodos() {
+        var actividades = new ArrayList<Area>();
         try {
-            ps = acceso.prepareStatement("SELECT id, nombre, status FROM tbl_actividad");
+            ps = acceso.prepareStatement("SELECT id, nombre, status FROM tbl_area");
             rs = ps.executeQuery();
             
             while (rs.next()) {
-                actividades.add(new Actividad(
+                actividades.add(new Area(
                         rs.getInt(1),
                         rs.getString(2),
                         rs.getBoolean(3)
                 ));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ActividadDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AreaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return actividades;
     }
     
-    public boolean insertarActividad(Actividad actividad) {
+    public boolean insertarArea(Area area) {
         try {
-            String sql = "INSERT INTO tbl_actividad (nombre, status) VALUES (?, ?);";
+            String sql = "INSERT INTO tbl_area (nombre, status) VALUES (?, ?);";
 
            
             ps = acceso.prepareStatement(sql);
-            ps.setObject(1, actividad.getNombre());
-            ps.setObject(2, actividad.isStatus());
+            ps.setObject(1, area.getNombre());
+            ps.setObject(2, area.isStatus());
 
             ps.executeUpdate();
             return true;
@@ -61,18 +60,18 @@ public class ActividadDAO {
 
     }
 
-    public boolean actualizarActividad(Actividad actividad) {
+    public boolean actualizarArea(Area area) {
         try {
 
-            String sql = "UPDATE tbl_actividad "
+            String sql = "UPDATE tbl_area "
                     + "SET nombre = ?, "
                     + "status = ? "
                     + "WHERE id = ?;";
             
             ps = acceso.prepareStatement(sql);
-            ps.setObject(1, actividad.getNombre());
-            ps.setObject(2, actividad.isStatus());
-            ps.setObject(3, actividad.getId());
+            ps.setObject(1, area.getNombre());
+            ps.setObject(2, area.isStatus());
+            ps.setObject(3, area.getId());
 
             ps.executeUpdate();
             return true;
@@ -80,5 +79,5 @@ public class ActividadDAO {
             System.out.println("" + e.toString());
             return false;
         }
-    }
+    } 
 }

@@ -12,16 +12,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-
 /**
  * FXML Controller class
  *
  * @author User
  */
-public class FormularioRegistroFamiliarController implements Initializable {
+public class AgregarRegistroFamiliarController implements Initializable {
+
 
     @FXML
     private ComboBox<?> cbxBuscarEmpleado;
@@ -32,28 +30,15 @@ public class FormularioRegistroFamiliarController implements Initializable {
     @FXML
     private TextField txtApellidos;
     @FXML
-    private TextField txtParentezco;
-    @FXML
-    private ComboBox<?> cbxSexo;
+    private ComboBox<String> cbxSexo;
     @FXML
     private DatePicker dpFechaNacimiento;
     @FXML
+    private TextField txtParentezco;
+    @FXML
+    private TextField txtContactoEmergencia;
+    @FXML
     private CheckBox cbEstadoEmpleado;
-    @FXML
-    private ComboBox<?> cbxTipoContacto;
-    @FXML
-    private TextField txtDescripcionContacto;
-    @FXML
-    private CheckBox cbEstadoContacto;
-    @FXML
-    private TableView<?> tblContacto;
-    @FXML
-    private TableColumn<?, ?> colTipoContacto;
-    @FXML
-    private TableColumn<?, ?> colDescripcionContacto;
-    @FXML
-    private TableColumn<?, ?> colEstadoContacto;
-
     /**
      * Initializes the controller class.
      */
@@ -61,21 +46,9 @@ public class FormularioRegistroFamiliarController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
-    @FXML
-    private void OnAgregarContacto(ActionEvent event) {
-    }
-
-    @FXML
-    private void OnEditarContacto(ActionEvent event) {
-    }
-
-    @FXML
-    private void OnEditar(ActionEvent event) {
-    }
-
+    
     @FXML
     private void btnGuardar(ActionEvent event) {
     }
-    
+
 }

@@ -11,4 +11,5 @@ module MainApp {
     
     exports Models;
     exports MainApp;
+    exports DAO;
 }

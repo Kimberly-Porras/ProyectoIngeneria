@@ -118,4 +118,8 @@ public class Parentezco {
     public void setContactoEmergencia(String contactoEmergencia) {
         this.contactoEmergencia = contactoEmergencia;
     }
+    
+    public String getNombreCompleto(){
+        return this.nombre +" "+ this.apellidos;
+    }
 }

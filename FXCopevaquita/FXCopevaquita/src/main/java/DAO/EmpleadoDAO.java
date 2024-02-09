@@ -21,7 +21,7 @@ public class EmpleadoDAO {
     ResultSet rs;
     Connection acceso = Database.DatabaseConnection.getConnection();
 
-    public boolean insertarEmpleado(Empleado empleado) {
+    public  boolean insertarEmpleado(Empleado empleado) {
         try {
             String sql = "INSERT INTO tbl_empleado (cedula, nombre, apellidos, sexo, estadoCivil,"
                     + " tipoSangre, fechaNacimiento, fechaIngreso, tipo, numeroCuenta, nivelAcademico, status) "

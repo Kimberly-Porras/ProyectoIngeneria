@@ -71,7 +71,7 @@
                         <Font name="Lucida Bright" size="22.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtFiltrarTipoDeducciones" onKeyPressed="#OnPresionarTipoDeduccion" prefHeight="40.0" prefWidth="518.0" style="-fx-border-color: #2A8C4A;">
+                  <TextField fx:id="txtFiltrarTipoDeducciones" onKeyPressed="#OnFiltrarTipoDeducciones" prefHeight="40.0" prefWidth="518.0" style="-fx-border-color: #2A8C4A;">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -100,7 +100,7 @@
             </HBox>
             <HBox alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#btnEditarTipoDeducciones" prefHeight="28.0" prefWidth="173.0" style="-fx-background-color: #ffba6a;" text="Cargar datos">
+                  <Button mnemonicParsing="false" onAction="#btnCargarDatos" prefHeight="28.0" prefWidth="173.0" style="-fx-background-color: #ffba6a;" text="Cargar datos">
                      <font>
                         <Font size="20.0" />
                      </font>

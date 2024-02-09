@@ -39,11 +39,13 @@ public class Actividad {
         this.nombre = nombre;
     }
 
-    public boolean getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
     public void setStatus(boolean status) {
         this.status = status;
     }
+
+    
 }

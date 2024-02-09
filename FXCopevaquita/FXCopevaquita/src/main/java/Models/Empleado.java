@@ -151,4 +151,8 @@ public class Empleado {
     public void setStatus(boolean status) {
         this.status = status;
     }
+    
+    public String getNombreCompleto(){
+        return this.nombre +" "+ this.apellidos;
+    }
 }

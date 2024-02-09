@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AreasController">
    <children>
       <VBox alignment="CENTER" spacing="15.0" style="-fx-background-color: #D2F4E7; -fx-background-radius: 18;">
@@ -72,7 +71,7 @@
                         <Font name="Lucida Bright" size="22.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtFiltrarArea" onKeyPressed="#OnPresionarArea" prefHeight="25.0" prefWidth="481.0" style="-fx-border-color: #2A8C4A;">
+                  <TextField fx:id="txtFiltrarArea" onKeyPressed="#OnFiltrarArea" prefHeight="25.0" prefWidth="481.0" style="-fx-border-color: #2A8C4A;">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -101,7 +100,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#btnEditarArea" prefHeight="37.0" prefWidth="180.0" style="-fx-background-color: #ffba6a;" text="Cargar datos">
+                  <Button mnemonicParsing="false" onAction="#btnCargarDatos" prefHeight="37.0" prefWidth="180.0" style="-fx-background-color: #ffba6a;" text="Cargar datos">
                      <font>
                         <Font size="20.0" />
                      </font>

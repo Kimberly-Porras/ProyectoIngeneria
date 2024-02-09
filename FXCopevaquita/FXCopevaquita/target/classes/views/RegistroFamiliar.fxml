@@ -68,14 +68,15 @@
                <children>
                   <TableView fx:id="tblParentezco">
                      <columns>
+                        <TableColumn fx:id="colEmpleado" prefWidth="120.0" text="Empleado" />
                         <TableColumn fx:id="colCedula" prefWidth="98.0" text="Cédula" />
                         <TableColumn fx:id="colNombre" prefWidth="117.0" text="Nombre" />
                         <TableColumn fx:id="colApellidos" prefWidth="158.0" text="Apellidos" />
-                        <TableColumn fx:id="colParentezco" prefWidth="117.6666259765625" text="Parentezco" />
                         <TableColumn fx:id="colSexo" prefWidth="108.3333740234375" text="Sexo" />
                         <TableColumn fx:id="colFechaNacimiento" prefWidth="124.6666259765625" text="Fecha nacimiento" />
-                        <TableColumn fx:id="colEstado" prefWidth="120.0" text="Estado" />
+                        <TableColumn fx:id="colParentezco" prefWidth="117.6666259765625" text="Parentezco" />
                         <TableColumn fx:id="colContactos" prefWidth="120.0" text="Contactos" />
+                        <TableColumn fx:id="colEstado" prefWidth="120.0" text="Estado" />
                      </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

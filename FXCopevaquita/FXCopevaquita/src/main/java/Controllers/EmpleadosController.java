@@ -19,6 +19,9 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.scene.control.cell.PropertyValueFactory;
 import DAO.EmpleadoDAO;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import javafx.collections.ObservableList;
 
 
 /**
@@ -60,6 +63,9 @@ public class EmpleadosController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
+    ObservableList<Empleado> observableEmpleado = FXCollections.observableArrayList();
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         configurarElementos();
@@ -87,6 +93,26 @@ public class EmpleadosController implements Initializable {
         colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isStatus() ? "Activo" : "Inactivo"));
     }
 
+    private void filtrarEmpleado() {
+
+        if (txtFiltrarEmpleado.getText() != null && !txtFiltrarEmpleado.getText().trim().equals("")) {
+            Predicate<Empleado> predicate = x
+                    -> x.getNombre().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
+                    || x.getCedula().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
+                    || x.getApellidos().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
+                    || x.getNombreCompleto().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase());
+
+            var lista
+                    = FXCollections.observableArrayList(
+                            observableEmpleado.filtered(x -> predicate.test(x))
+                                    .stream().collect(Collectors.toList())
+                    );
+            tblEmpleados.setItems(lista);
+        } else {
+            cargarEmpleados();
+        }
+    }
+    
     @FXML
     private void OnAgregar(ActionEvent event) {
         OpenWindowsHandler.AbrirVentanaAgregarEmpleado("/views/AgregarEmpleado");
@@ -99,6 +125,6 @@ public class EmpleadosController implements Initializable {
 
     @FXML
     private void OnFiltrarEmpleado(KeyEvent event) {
-
+        filtrarEmpleado();
     }
 }
