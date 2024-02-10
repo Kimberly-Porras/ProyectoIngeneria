@@ -21,7 +21,6 @@ Controllers\TipoDeduccionesController.class
 floatingWindows\OpenSecondViewController.class
 Controllers\AreasController.class
 DAO\EmpleadoDAO.class
-Controllers\BitacoraSocioController.class
 Controllers\PlanillaController.class
 Models\BitacoraEmpleado.class
 Controllers\EmpleadosController.class
