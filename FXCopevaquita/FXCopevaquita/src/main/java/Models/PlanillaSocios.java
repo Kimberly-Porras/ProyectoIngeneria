@@ -14,16 +14,19 @@ public class PlanillaSocios {
      private int id;
     private String empleado;
     private double monto;
+    private boolean status;
 
     public PlanillaSocios() {
         this.id = 0;
         this.empleado = "";
         this.monto = 0.0;
+        this.status = false;
     }
-    public PlanillaSocios(int id, String empleado, double monto) {
+    public PlanillaSocios(int id, String empleado, double monto, boolean status) {
         this.id = id;
         this.empleado = empleado;
         this.monto = monto;
+        this.status = status;
     }
 
     public int getId() {
@@ -49,4 +52,14 @@ public class PlanillaSocios {
     public void setMonto(double monto) {
         this.monto = monto;
     }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+    
+    
 }

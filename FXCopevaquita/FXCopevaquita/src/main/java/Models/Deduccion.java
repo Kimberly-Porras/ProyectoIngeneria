@@ -10,7 +10,7 @@ package Models;
  * @author kim03
  */
 public class Deduccion {
-    
+
     private int id;
     private int tipo;
     private double monto;
@@ -18,6 +18,8 @@ public class Deduccion {
     private double pendiente;
     private String empleado;
     private boolean status;
+
+    private TipoDeduccion tipoDeduccion;
 
     public Deduccion() {
         this.id = 0;
@@ -27,7 +29,9 @@ public class Deduccion {
         this.pendiente = 0.0;
         this.empleado = "";
         this.status = false;
+        this.tipoDeduccion = new TipoDeduccion();
     }
+
     public Deduccion(int id, int tipo, double monto, double cuota, double pendiente, String empleado, boolean status) {
         this.id = id;
         this.tipo = tipo;
@@ -86,11 +90,19 @@ public class Deduccion {
         this.empleado = empleado;
     }
 
-    public boolean getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public void setTipoDeduccion(TipoDeduccion tipoDeduccion) {
+        this.tipoDeduccion = tipoDeduccion;
+    }
+
+    public String getNombreTipoDeduccion() {
+        return tipoDeduccion.getNombre();
     }
 }

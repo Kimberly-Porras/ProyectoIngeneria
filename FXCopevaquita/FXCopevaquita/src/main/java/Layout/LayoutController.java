@@ -165,6 +165,11 @@ public class LayoutController implements Initializable {
 
     @FXML
     private void OnAbrirSalariosFijos(MouseEvent event) {
+        try {
+            LoadNode("/views/SalarioFijo");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @FXML

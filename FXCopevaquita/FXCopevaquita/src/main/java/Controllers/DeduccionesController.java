@@ -4,56 +4,111 @@
  */
 package Controllers;
 
+import DAO.DeduccionesDAO;
 import Helpers.OpenWindowsHandler;
+import Models.Deduccion;
+import Models.Empleado;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
  *
  * @author User
  */
+
 public class DeduccionesController implements Initializable {
 
     @FXML
     private TextField txtfiltrarEmpleado;
     @FXML
-    private TableView<?> tblDeduccionesEmpleados;
+    private TableView<Deduccion> tblDeduccionesEmpleados;
     @FXML
-    private TableColumn<?, ?> colCedula;
+    private TableColumn<Deduccion, String> colCedula;
     @FXML
-    private TableColumn<?, ?> colNombre;
+    private TableColumn<Deduccion, String> colNombre;
     @FXML
-    private TableColumn<?, ?> colTipoDeduccion;
+    private TableColumn<Deduccion, String> colTipoDeduccion;
     @FXML
-    private TableColumn<?, ?> colMotivo;
+    private TableColumn<Deduccion, String> colCuota;
     @FXML
-    private TableColumn<?, ?> colFrecuencia;
+    private TableColumn<Deduccion, String> colEstado;
     @FXML
-    private TableColumn<?, ?> colCuota;
+    private TableColumn<Deduccion, String> colMonto;
     @FXML
-    private TableColumn<?, ?> colPorcentual;
-    @FXML
-    private TableColumn<?, ?> colTotal;
-    @FXML
-    private TableColumn<?, ?> colEstado;
+    private TableColumn<Deduccion, String> colPendiente;
 
     /**
      * Initializes the controller class.
      */
+    
+    ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
+    ObservableList<Deduccion> ObservableDeduccion = FXCollections.observableArrayList();
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        configurar();
+        cargarDeducciones();
+    }
 
+    public void configurar() {
+        colCedula.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmpleado()));
+        colNombre.setCellValueFactory(cellData -> new SimpleStringProperty(GetNombreCompleto(cellData.getValue().getEmpleado())));
+        colTipoDeduccion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombreTipoDeduccion()));
+        colMonto.setCellValueFactory(new PropertyValueFactory<>("monto"));
+        colPendiente.setCellValueFactory(new PropertyValueFactory<>("pendiente"));
+        colCuota.setCellValueFactory(new PropertyValueFactory<>("cuota"));
+        colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isStatus()? "Activo" : "Inactivo"));
+    }
+
+    private String GetNombreCompleto(String cedula) {
+        Optional<Empleado> empleadoOptional = ObservableEmpleado.stream()
+                .filter(x -> x.getCedula().equals(cedula))
+                .findFirst();
+
+        return empleadoOptional.map(Empleado::getNombreCompleto).orElse("");
+    }
+    
+    public void cargarDeducciones() {
+        var ObservableIncapacidad
+                = FXCollections.observableArrayList(new DeduccionesDAO().obtenerListaDeduccion());
+        tblDeduccionesEmpleados.setItems(ObservableIncapacidad);
+    }
+    
+    private void filtrarDeduccion() {
+        if (txtfiltrarEmpleado.getText() != null && !txtfiltrarEmpleado.getText().trim().equals("")) {
+            Predicate<Deduccion> pReporte = x
+                    -> x.getEmpleado().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase())
+                    || x.getNombreTipoDeduccion().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase());
+            Predicate<Empleado> pEmpleado = x
+                    -> x.getCedula().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase())
+                    || x.getNombre().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase())
+                    || x.getApellidos().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase())
+                    || x.getNombreCompleto().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase());
+            var listaTemporal = ObservableDeduccion.filtered((x) -> pEmpleado.test(Get(x.getEmpleado())) || pReporte.test(x));
+            tblDeduccionesEmpleados.setItems(listaTemporal);
+        } else {
+            tblDeduccionesEmpleados.setItems(ObservableDeduccion);
+        }
+    }
+    
+    private Empleado Get(String cedula) {
+        return ObservableEmpleado.filtered(x -> x.getCedula().equals(cedula)).get(0);
+    }
+    
     @FXML
     private void OnAgregar(ActionEvent event) {
         OpenWindowsHandler.AbrirVentanaAgregarDeduccion("/views/AgregarDeducciones");
@@ -68,13 +123,10 @@ public class DeduccionesController implements Initializable {
     private void OnAbonos(ActionEvent event) {
         OpenWindowsHandler.AbrirVentanaAbonoDeduccion("/views/AbonoDeducciones");
     }
-    
-    @FXML
-    private void PresioanrEnter(KeyEvent event) {
-    }
 
     @FXML
-    private void OnPresionarCualquierLado(MouseEvent event) {
+    private void PresioanrEnter(KeyEvent event) {
+        filtrarDeduccion();
     }
-    
+
 }

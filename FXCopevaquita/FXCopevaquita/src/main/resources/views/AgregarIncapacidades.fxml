@@ -18,11 +18,6 @@
    <children>
       <VBox prefHeight="626.0" prefWidth="1128.0" spacing="30.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
          <children>
-            <HBox alignment="TOP_CENTER">
-               <VBox.margin>
-                  <Insets top="-40.0" />
-               </VBox.margin>
-            </HBox>
             <HBox alignment="CENTER">
                <children>
                   <Label alignment="TOP_LEFT" text="INSERCIÓN DE INCAPACIDADES POR EMPLEADO" textFill="#0b986a">

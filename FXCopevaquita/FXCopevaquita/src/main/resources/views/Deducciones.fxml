@@ -82,11 +82,9 @@
                         <TableColumn fx:id="colCedula" prefWidth="75.0" text="Cédula" />
                         <TableColumn fx:id="colNombre" prefWidth="75.0" text="Nombre" />
                         <TableColumn fx:id="colTipoDeduccion" prefWidth="75.0" text="Tipo de deducción" />
-                        <TableColumn fx:id="colMotivo" prefWidth="75.0" text="Motivo" />
-                        <TableColumn fx:id="colFrecuencia" prefWidth="75.0" text="Frecuencia" />
+                        <TableColumn fx:id="colMonto" prefWidth="75.0" text="Monto" />
                         <TableColumn fx:id="colCuota" prefWidth="75.0" text="Cuota" />
-                        <TableColumn fx:id="colPorcentual" prefWidth="75.0" text="Porcentaje" />
-                        <TableColumn fx:id="colTotal" prefWidth="75.0" text="Total" />
+                        <TableColumn fx:id="colPendiente" prefWidth="75.0" text="Pendiente" />
                         <TableColumn fx:id="colEstado" prefWidth="75.0" text="Estado" />
                      </columns>
                      <columnResizePolicy>
