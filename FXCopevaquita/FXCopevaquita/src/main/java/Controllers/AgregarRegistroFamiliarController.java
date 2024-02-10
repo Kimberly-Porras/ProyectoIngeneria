@@ -4,6 +4,7 @@
  */
 package Controllers;
 
+import Models.Empleado;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -22,7 +23,7 @@ public class AgregarRegistroFamiliarController implements Initializable {
 
 
     @FXML
-    private ComboBox<?> cbxBuscarEmpleado;
+    private ComboBox<Empleado> cbxBuscarEmpleado;
     @FXML
     private TextField txtCedula;
     @FXML

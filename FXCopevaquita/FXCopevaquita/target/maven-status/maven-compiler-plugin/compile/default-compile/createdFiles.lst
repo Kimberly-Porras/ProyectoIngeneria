@@ -27,6 +27,7 @@ Models\BitacoraEmpleado.class
 Controllers\EmpleadosController.class
 Models\Pagos.class
 Models\BitacoraAsistencia.class
+Controllers\ActualizarRegistroFamilairController.class
 Controllers\IncapacidadesController.class
 Models\TipoDeduccion.class
 Models\PagoVacacion.class
@@ -55,7 +56,6 @@ Controllers\ActualizarDeduccionesController.class
 Controllers\AgregarIncapacidadesController.class
 Models\Incapacidad.class
 Models\Abono.class
-Controllers\FormularioRegistroFamiliarController.class
 Controllers\AgregarBitacoraSocioController.class
 Controllers\ActualizarEmpleadoController.class
 Models\PagoDeduccion.class

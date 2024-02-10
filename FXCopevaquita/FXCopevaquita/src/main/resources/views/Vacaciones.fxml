@@ -70,9 +70,8 @@
                      <columns>
                         <TableColumn fx:id="colCedula" prefWidth="75.0" text="Cédula" />
                         <TableColumn fx:id="colNombre" prefWidth="75.0" text="Nombre completo" />
-                        <TableColumn fx:id="colDiasDisponibles" prefWidth="75.0" text="Días disponibles" />
-                        <TableColumn fx:id="colAnno" prefWidth="75.0" text="Año" />
-                        <TableColumn fx:id="colTotal" prefWidth="75.0" text="Total " />
+                        <TableColumn fx:id="colFecha" prefWidth="75.0" text="Fecha" />
+                        <TableColumn fx:id="colMonto" prefWidth="75.0" text="Monto" />
                         <TableColumn fx:id="colEstado" prefWidth="75.0" text="Estado" />
                      </columns>
                      <columnResizePolicy>

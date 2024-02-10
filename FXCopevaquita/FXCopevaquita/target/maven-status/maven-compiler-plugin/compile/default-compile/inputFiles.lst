@@ -2,8 +2,9 @@ C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\Deduccion.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\floatingWindows\OpenSecondViewController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\TipoDeduccionesController.java
-C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\FormularioRegistroFamiliarController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\PorcentajeRebajos.java
+C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\DAO\IncapacidadDAO.java
+C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\DAO\VacacionesDAO.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\AgregarDeduccionesController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\DAO\ActividadDAO.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\module-info.java
@@ -37,7 +38,9 @@ C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\PagoDeduccion.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\VacacionesController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\AgregarBitacoraSocioController.java
+C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\AgregarRegistroFamiliarController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\BitacoraSocioController.java
+C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\ActualizarRegistroFamilairController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\DeduccionesController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Helpers\OpenWindowsHandler.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\GenerarPagosController.java

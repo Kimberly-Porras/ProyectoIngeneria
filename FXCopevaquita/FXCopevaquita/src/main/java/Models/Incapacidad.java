@@ -19,6 +19,7 @@ public class Incapacidad {
     private double monto;
     private String motivo;
     private String empleado;
+    private boolean status;
 
     public Incapacidad() {
         this.id = 0;
@@ -26,13 +27,15 @@ public class Incapacidad {
         this.monto = 0.0;
         this.motivo = "";
         this.empleado = "";
+        this.status = false;
     }
-   public Incapacidad(int id, Date fecha, double monto, String motivo, String empleado) {
+   public Incapacidad(int id, Date fecha, double monto, String motivo, String empleado,boolean status) {
         this.id = id;
         this.fecha = fecha;
         this.monto = monto;
         this.motivo = motivo;
         this.empleado = empleado;
+        this.status = status;
     }
 
     public int getId() {
@@ -73,5 +76,13 @@ public class Incapacidad {
 
     public void setEmpleado(String empleado) {
         this.empleado = empleado;
+    }
+    
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

@@ -18,19 +18,23 @@ public class Vacaciones {
     private String empleado;
     private double monto;
     private Date fecha;
+    private boolean status;
 
     public Vacaciones() {
         this.id = 0;
         this.empleado = "";
         this.monto = 0.0;
         this.fecha = new java.sql.Date(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth());
+        this.status = false;
     }
-    public Vacaciones(int id, String empleado, double monto, Date fecha) {
+    public Vacaciones(int id, String empleado, double monto, Date fecha, boolean status) {
         this.id = id;
         this.empleado = empleado;
         this.monto = monto;
         this.fecha = fecha;
+        this.status = status;
     }
+
 
     public int getId() {
         return id;
@@ -62,5 +66,13 @@ public class Vacaciones {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+    
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

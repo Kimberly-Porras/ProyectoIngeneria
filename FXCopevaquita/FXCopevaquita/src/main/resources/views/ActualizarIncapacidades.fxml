@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
@@ -13,7 +14,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ActualizarIncapacidadesController">
    <children>
@@ -38,7 +38,7 @@
                         <Font name="Lucida Bright" size="22.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="cbxFiltrarEmpleadoAct" editable="true" onAction="#FiltrarEmpleado" prefHeight="75.0" prefWidth="530.0" style="-fx-border-color: #2A8C4A;" visibleRowCount="20" />
+                  <ComboBox fx:id="cbxFiltrarEmpleado" editable="true" onAction="#FiltrarEmpleado" prefHeight="75.0" prefWidth="530.0" style="-fx-border-color: #2A8C4A;" visibleRowCount="20" />
                </children>
                <VBox.margin>
                   <Insets top="20.0" />
@@ -48,9 +48,10 @@
                <children>
                   <TableView fx:id="tblIncapacidadesActualizar" prefHeight="292.0" prefWidth="772.0">
                      <columns>
-                        <TableColumn fx:id="colDiasDisponiblesAct" prefWidth="119.00006103515625" text="Días disponibles" />
-                        <TableColumn fx:id="colAnnoAct" prefWidth="30.99993896484375" text="Año" />
-                        <TableColumn fx:id="colEstadoAct" prefWidth="75.0" text="Estado" />
+                        <TableColumn fx:id="colFecha" prefWidth="133.0" text="Fecha" />
+                        <TableColumn fx:id="colMotivo" prefWidth="382.0" text="Motivo" />
+                        <TableColumn fx:id="colMonto" prefWidth="136.0" text="Monto" />
+                        <TableColumn fx:id="colEstado" prefWidth="75.0" text="Estado" />
                      </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -84,26 +85,22 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="21.0" prefWidth="1147.0" spacing="10.0">
                <children>
-                  <Label alignment="TOP_LEFT" prefHeight="28.0" prefWidth="191.0" text="Días disponibles:">
+                  <Label alignment="TOP_LEFT" prefHeight="28.0" prefWidth="131.0" text="Fecha:">
                      <font>
                         <Font name="Lucida Bright" size="22.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtDiasDisponiblesAct" prefHeight="33.0" prefWidth="190.0" style="-fx-border-color: #2A8C4A;">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </TextField>
+                  <DatePicker fx:id="dpFecha" prefHeight="40.0" prefWidth="216.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" spacing="20.0">
                <children>
-                  <Label alignment="TOP_LEFT" text="Año: ">
+                  <Label alignment="TOP_LEFT" text="Motivo:">
                      <font>
                         <Font name="Lucida Bright" size="22.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtAnnoAct" prefHeight="38.0" prefWidth="311.0" style="-fx-border-color: #2A8C4A;">
+                  <TextField fx:id="txtMotivo" prefHeight="38.0" prefWidth="311.0" style="-fx-border-color: #2A8C4A;">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -115,12 +112,12 @@
             </HBox>
             <HBox alignment="CENTER" spacing="15.0">
                <children>
-                  <Label alignment="TOP_LEFT" text="Total: ">
+                  <Label alignment="TOP_LEFT" text="Monto:">
                      <font>
                         <Font name="Lucida Bright" size="22.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtTotalAct" prefHeight="38.0" prefWidth="310.0" style="-fx-border-color: #2A8C4A;">
+                  <TextField fx:id="txtMonto" prefHeight="38.0" prefWidth="310.0" style="-fx-border-color: #2A8C4A;">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -132,7 +129,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <CheckBox fx:id="cbEstadoAct" mnemonicParsing="false" text="Estado">
+                  <CheckBox fx:id="cbEstado" mnemonicParsing="false" text="Estado">
                      <font>
                         <Font name="Lucida Bright" size="29.0" />
                      </font>
