@@ -23,13 +23,14 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import DAO.EmpleadoDAO;
+import DAO.TipoDeduccionDAO;
 
 /**
  * FXML Controller class
  *
  * @author User
  */
-
 public class DeduccionesController implements Initializable {
 
     @FXML
@@ -51,13 +52,15 @@ public class DeduccionesController implements Initializable {
     @FXML
     private TableColumn<Deduccion, String> colPendiente;
 
+    final private EmpleadoDAO empleadoService = new EmpleadoDAO();
+    final private TipoDeduccionDAO tipoDeduccionService = new TipoDeduccionDAO();
+
     /**
      * Initializes the controller class.
      */
-    
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
     ObservableList<Deduccion> ObservableDeduccion = FXCollections.observableArrayList();
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         configurar();
@@ -65,13 +68,32 @@ public class DeduccionesController implements Initializable {
     }
 
     public void configurar() {
-        colCedula.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmpleado()));
-        colNombre.setCellValueFactory(cellData -> new SimpleStringProperty(GetNombreCompleto(cellData.getValue().getEmpleado())));
-        colTipoDeduccion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombreTipoDeduccion()));
+//        colCedula.setCellValueFactory(cellData -> {
+//            var empleado = empleadoService.obtenerEmpleadoPorCedula(cellData.getValue().getEmpleado());
+//            return new SimpleStringProperty("hola!");
+//        });
+//        
+        colCedula.setCellValueFactory(new PropertyValueFactory<>("empleado"));
+
+        colNombre.setCellValueFactory(cellData -> {
+            var empleado = empleadoService.obtenerEmpleadoPorCedula(cellData.getValue().getEmpleado());
+            if (empleado == null) {
+                return new SimpleStringProperty("NO DISPONIBLE");
+            }
+            return new SimpleStringProperty(empleado.getNombre() + " " + empleado.getApellidos());
+        });
+
+        colTipoDeduccion.setCellValueFactory(cellData -> {
+            var tipo = tipoDeduccionService.obtenerPorId(cellData.getValue().getTipo());
+            if (tipo == null) {
+                return new SimpleStringProperty("NO DISPONIBLE");
+            }
+            return new SimpleStringProperty(tipo.getNombre());
+        });
         colMonto.setCellValueFactory(new PropertyValueFactory<>("monto"));
         colPendiente.setCellValueFactory(new PropertyValueFactory<>("pendiente"));
         colCuota.setCellValueFactory(new PropertyValueFactory<>("cuota"));
-        colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isStatus()? "Activo" : "Inactivo"));
+        colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isStatus() ? "Activo" : "Inactivo"));
     }
 
     private String GetNombreCompleto(String cedula) {
@@ -81,13 +103,13 @@ public class DeduccionesController implements Initializable {
 
         return empleadoOptional.map(Empleado::getNombreCompleto).orElse("");
     }
-    
+
     public void cargarDeducciones() {
         var ObservableIncapacidad
                 = FXCollections.observableArrayList(new DeduccionesDAO().obtenerListaDeduccion());
         tblDeduccionesEmpleados.setItems(ObservableIncapacidad);
     }
-    
+
     private void filtrarDeduccion() {
         if (txtfiltrarEmpleado.getText() != null && !txtfiltrarEmpleado.getText().trim().equals("")) {
             Predicate<Deduccion> pReporte = x
@@ -104,11 +126,11 @@ public class DeduccionesController implements Initializable {
             tblDeduccionesEmpleados.setItems(ObservableDeduccion);
         }
     }
-    
+
     private Empleado Get(String cedula) {
         return ObservableEmpleado.filtered(x -> x.getCedula().equals(cedula)).get(0);
     }
-    
+
     @FXML
     private void OnAgregar(ActionEvent event) {
         OpenWindowsHandler.AbrirVentanaAgregarDeduccion("/views/AgregarDeducciones");

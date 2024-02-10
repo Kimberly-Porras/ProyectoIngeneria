@@ -49,6 +49,8 @@ public class DeduccionesDAO {
 
         return lista;
     }
+    
+    
     public boolean insertarDeduccion(Deduccion deduccion) {
         try {
             String sql = "INSERT INTO tbl_deduccion (tipo, monto, cuota, "

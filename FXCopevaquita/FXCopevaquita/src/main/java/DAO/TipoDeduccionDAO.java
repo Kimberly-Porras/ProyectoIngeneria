@@ -42,6 +42,28 @@ public class TipoDeduccionDAO {
         return tipoDeduccion;
     }
     
+    public TipoDeduccion obtenerPorId(int id) {
+        TipoDeduccion tipoDeduccion = null;
+        
+        try {
+            ps = acceso.prepareStatement("SELECT id, nombre, status FROM tbl_tipo_deduccion where id = ?");
+            ps.setObject(1, id);
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                tipoDeduccion = new TipoDeduccion(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getBoolean(3)
+                );
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(TipoDeduccionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return tipoDeduccion;
+    }
+    
     public boolean insertarTipoDeduccion(TipoDeduccion tipoDeduccion) {
         try {
             String sql = "INSERT INTO tbl_tipo_deduccion (nombre, status) VALUES (?, ?);";
