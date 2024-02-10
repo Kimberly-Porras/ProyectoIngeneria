@@ -127,4 +127,9 @@ public class EmpleadosController implements Initializable {
     private void OnFiltrarEmpleado(KeyEvent event) {
         filtrarEmpleado();
     }
+
+    @FXML
+    private void OnRefrescar(ActionEvent event) {
+        cargarEmpleados();
+    }
 }
