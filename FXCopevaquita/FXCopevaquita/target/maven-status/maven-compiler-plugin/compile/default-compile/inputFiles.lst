@@ -28,6 +28,7 @@ C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\Parentezco.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\PagoIncapacidad.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\AreasController.java
+C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\DAO\BitacoraAsistenciaDAO.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\AgregarEmpleadoController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\EmpleadosController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\BitacoraEmpleado.java
@@ -54,6 +55,7 @@ C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\ActualizarBitacoraSocioController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\Credencial.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\DAO\TipoDeduccionDAO.java
+C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\AgregarAsistenciaController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\AgregarBitacoraEmpleadoController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\LoginController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\Incapacidad.java
@@ -62,6 +64,7 @@ C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\DAO\AreaDAO.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\AbonoDeduccionesController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\ContratosController.java
+C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\AsistenciaController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\AgregarVacacionesController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\ConfiguracionController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\Area.java

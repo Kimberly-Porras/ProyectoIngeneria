@@ -169,5 +169,10 @@ public class LayoutController implements Initializable {
 
     @FXML
     private void OnAbrirAsistencia(MouseEvent event) {
+        try {
+            LoadNode("/views/Asistencia");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 }

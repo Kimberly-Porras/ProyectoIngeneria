@@ -19,7 +19,7 @@ public class BitacoraAsistencia {
     private boolean estaPresente;
     private boolean justifica;
     private String empleado;
-    private boolean status;
+    
     
     public BitacoraAsistencia() {
         this.id = 0;
@@ -27,16 +27,24 @@ public class BitacoraAsistencia {
         this.estaPresente = false;
         this.justifica = false;
         this.empleado = "";
-        this.status = false;
+       
     }
 
-    public BitacoraAsistencia(int id, Date fecha, boolean esta_presente, boolean justifica, String empleado, boolean status) {
+    public BitacoraAsistencia(int id, Date fecha, boolean esta_presente, boolean justifica, String empleado) {
         this.id = id;
         this.fecha = fecha;
         this.estaPresente = esta_presente;
         this.justifica = justifica;
         this.empleado = empleado;
-        this.status = status;
+        
+    }
+
+    public boolean isJustifica() {
+        return justifica;
+    }
+
+    public void setJustifica(boolean justifica) {
+        this.justifica = justifica;
     }
 
     public int getId() {
@@ -55,20 +63,12 @@ public class BitacoraAsistencia {
         this.fecha = fecha;
     }
 
-    public boolean getEsta_presente() {
+    public boolean isEstaPresente() {
         return estaPresente;
     }
 
-    public void setEsta_presente(boolean esta_presente) {
-        this.estaPresente = esta_presente;
-    }
-
-    public boolean getJustifica() {
-        return justifica;
-    }
-
-    public void setJustifica(boolean justifica) {
-        this.justifica = justifica;
+    public void setEstaPresente(boolean estaPresente) {
+        this.estaPresente = estaPresente;
     }
 
     public String getEmpleado() {
@@ -79,11 +79,4 @@ public class BitacoraAsistencia {
         this.empleado = empleado;
     }
 
-    public boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
 }
