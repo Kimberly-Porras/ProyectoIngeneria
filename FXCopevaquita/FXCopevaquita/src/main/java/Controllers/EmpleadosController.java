@@ -22,7 +22,7 @@ import DAO.EmpleadoDAO;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import javafx.collections.ObservableList;
-
+import javafx.scene.control.ComboBox;
 
 /**
  * FXML Controller class
@@ -59,23 +59,33 @@ public class EmpleadosController implements Initializable {
     private TableColumn<Empleado, String> colTipo;
     @FXML
     private TableColumn<Empleado, String> colEstado;
+    @FXML
+    private ComboBox<String> cbx_status;
 
     /**
      * Initializes the controller class.
      */
-    
     ObservableList<Empleado> observableEmpleado = FXCollections.observableArrayList();
-    
+    ObservableList<String> observableStatus = FXCollections.observableArrayList("Activo", "Inactivo");
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         configurarElementos();
-        cargarEmpleados();
+        cargarEmpleados(true, false);
     }
 
-    public void cargarEmpleados() {
-        var observableEmpleado
-                = FXCollections.observableArrayList(new EmpleadoDAO().obtenerListaEmpleados());
-        tblEmpleados.setItems(observableEmpleado);
+    public void cargarEmpleados(boolean status, boolean filtered) {
+        if (filtered) {
+            var observableEmpleado
+                    = FXCollections.observableArrayList(new EmpleadoDAO().obtenerListaEmpleados())
+                            .filtered(empl -> empl.isStatus() == status);
+            tblEmpleados.setItems(observableEmpleado);
+        } else {
+            var observableEmpleado
+                    = FXCollections.observableArrayList(new EmpleadoDAO().obtenerListaEmpleados());
+            tblEmpleados.setItems(observableEmpleado);
+        }
+
     }
 
     private void configurarElementos() {
@@ -91,6 +101,16 @@ public class EmpleadosController implements Initializable {
         colFechaIngreso.setCellValueFactory(new PropertyValueFactory<>("fechaIngreso"));
         colTipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
         colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isStatus() ? "Activo" : "Inactivo"));
+
+        cbx_status.setItems(observableStatus);
+        cbx_status.setOnAction(event -> {
+            var value = cbx_status.getValue();
+            if (value.equals("Activo")) {
+                cargarEmpleados(true, true);
+            } else {
+                cargarEmpleados(false, true);
+            }
+        });
     }
 
     private void filtrarEmpleado() {
@@ -109,10 +129,10 @@ public class EmpleadosController implements Initializable {
                     );
             tblEmpleados.setItems(lista);
         } else {
-            cargarEmpleados();
+            cargarEmpleados(true, false);
         }
     }
-    
+
     @FXML
     private void OnAgregar(ActionEvent event) {
         OpenWindowsHandler.AbrirVentanaAgregarEmpleado("/views/AgregarEmpleado");
@@ -130,6 +150,6 @@ public class EmpleadosController implements Initializable {
 
     @FXML
     private void OnRefrescar(ActionEvent event) {
-        cargarEmpleados();
+        cargarEmpleados(true, false);
     }
 }

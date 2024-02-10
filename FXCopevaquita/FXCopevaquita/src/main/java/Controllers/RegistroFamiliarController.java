@@ -4,6 +4,7 @@
  */
 package Controllers;
 
+import DAO.EmpleadoDAO;
 import DAO.ParentezcoDAO;
 import Helpers.OpenWindowsHandler;
 import Models.Empleado;
@@ -69,7 +70,15 @@ public class RegistroFamiliarController implements Initializable {
     }
 
     private void configurar() {
-        colEmpleado.setCellValueFactory(cellData -> new SimpleStringProperty(GetNombreCompleto(cellData.getValue().getEmpleado())));
+        colEmpleado.setCellValueFactory(cellData -> {
+            var empleado = new EmpleadoDAO().obtenerEmpleadoPorCedula(cellData.getValue().getEmpleado());
+            if(empleado == null) {
+                return new SimpleStringProperty("No disponible");
+            }
+            return new SimpleStringProperty(empleado.getNombreCompleto());
+        });
+        
+        
         colCedula.setCellValueFactory(new PropertyValueFactory<Parentezco, String>("cedula"));
         colNombre.setCellValueFactory(new PropertyValueFactory<Parentezco, String>("nombre"));
         colApellidos.setCellValueFactory(new PropertyValueFactory<Parentezco, String>("apellidos"));

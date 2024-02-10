@@ -111,7 +111,7 @@ public class ActualizarIncapacidadesController implements Initializable {
                     new Incapacidad(
                             incapacidad.getId(),
                             java.sql.Date.valueOf(dpFecha.getValue()),
-                            Integer.parseInt(txtMonto.getText()),
+                            Double.parseDouble(txtMonto.getText()),
                             txtMotivo.getText(),
                             cbxFiltrarEmpleado.getValue().getCedula(),
                             cbEstado.isSelected()));
@@ -149,7 +149,7 @@ public class ActualizarIncapacidadesController implements Initializable {
     }
     
     private void cargarCamposActualizar() {
-//        dpFecha.setValue(incapacidad.getFecha().toLocalDate());
+        dpFecha.setValue(incapacidad.getFecha().toLocalDate());
         cbxFiltrarEmpleado.setValue(Get(incapacidad.getEmpleado()));
         txtMonto.setText(incapacidad.getMonto() + "");
         txtMotivo.setText(incapacidad.getMotivo()+ "");
@@ -174,14 +174,15 @@ public class ActualizarIncapacidadesController implements Initializable {
         }
     }
     
-//    private void cargarIncapacidadesPorEmpleado() {
-//        incapacidad = tblIncapacidadesActualizar.getSelectionModel().getSelectedItem();
-//        if (incapacidad != null && incapacidad.getId() != 0) {
-//            cargarCamposActualizar();
-//        } else {
-//            MensajePersonalizado.Ver("NO SELECCIONADO", "Por favor seleccione una incapacidad", Alert.AlertType.WARNING);
-//        }
-//    }
+    private void cargarIncapacidadesPorEmpleado() {
+        incapacidad = tblIncapacidadesActualizar.getSelectionModel().getSelectedItem();
+        if (incapacidad != null && incapacidad.getId() != 0) {
+            cargarCamposActualizar();
+        } else {
+            MensajePersonalizado.Ver("NO SELECCIONADO", "Por favor seleccione una incapacidad", Alert.AlertType.WARNING);
+        }
+    }
+    
     @FXML
     private void FiltrarEmpleado(ActionEvent event) {
         FiltrarIncapacidadPorCedulaEmpleado();
@@ -189,7 +190,7 @@ public class ActualizarIncapacidadesController implements Initializable {
 
     @FXML
     private void onCargar(ActionEvent event) {
-//        cargarIncapacidadesPorEmpleado();
+        cargarIncapacidadesPorEmpleado();
     }
 
     @FXML
