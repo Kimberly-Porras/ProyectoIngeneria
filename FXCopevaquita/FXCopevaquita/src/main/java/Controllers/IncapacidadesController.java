@@ -4,6 +4,7 @@
  */
 package Controllers;
 
+import DAO.EmpleadoDAO;
 import DAO.IncapacidadDAO;
 import Helpers.OpenWindowsHandler;
 import Models.Empleado;
@@ -63,8 +64,14 @@ public class IncapacidadesController implements Initializable {
     }
 
     public void configurar() {
-        colCedula.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmpleado()));
-        colNombre.setCellValueFactory(cellData -> new SimpleStringProperty(GetNombreCompleto(cellData.getValue().getEmpleado())));
+        colFecha.setCellValueFactory(new PropertyValueFactory<>("empleado"));
+        colNombre.setCellValueFactory(cellData -> {
+            var empleado = new EmpleadoDAO().obtenerEmpleadoPorCedula(cellData.getValue().getEmpleado());
+            if(empleado == null) {
+                return new SimpleStringProperty("No disponible");
+            }
+            return new SimpleStringProperty(empleado.getNombreCompleto());
+        });
         colFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
         colMonto.setCellValueFactory(new PropertyValueFactory<>("monto"));
         colMotivo.setCellValueFactory(new PropertyValueFactory<>("motivo"));

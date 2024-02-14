@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ContratosController">
    <children>
       <VBox prefHeight="609.0" prefWidth="1247.0" spacing="20.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
@@ -63,9 +62,10 @@
                      <columns>
                         <TableColumn fx:id="colCedula" prefWidth="200.0" text="Cédula" />
                         <TableColumn fx:id="colNombre" prefWidth="200.0" text="Nombre" />
-                        <TableColumn fx:id="colFechaInicio" prefWidth="217.0" text="Fecha inicio" />
-                        <TableColumn fx:id="colFechaFinal" prefWidth="285.6666564941406" text="Fecha final" />
-                        <TableColumn fx:id="colFechaRegistro" prefWidth="185.3333740234375" text="Fecha de registro" />
+                        <TableColumn fx:id="colActividad" prefWidth="174.0" text="Actividad" />
+                        <TableColumn fx:id="colFechaInicio" prefWidth="142.0" text="Fecha inicio" />
+                        <TableColumn fx:id="colFechaFinal" prefWidth="149.0" text="Fecha final" />
+                        <TableColumn fx:id="colFechaRegistro" prefWidth="135.0" text="Fecha de registro" />
                         <TableColumn fx:id="colMonto" prefWidth="159.3333740234375" text="Monto" />
                         <TableColumn fx:id="colEstado" prefWidth="137.6666259765625" text="Estado" />
                      </columns>

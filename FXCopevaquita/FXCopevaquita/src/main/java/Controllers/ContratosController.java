@@ -5,6 +5,7 @@
 package Controllers;
 
 import Helpers.OpenWindowsHandler;
+import Models.Contrato;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -25,21 +26,23 @@ public class ContratosController implements Initializable {
     @FXML
     private TextField txtFiltrarEmpleado;
     @FXML
-    private TableView<?> tblListaContrato;
+    private TableView<Contrato> tblListaContrato;
     @FXML
-    private TableColumn<?, ?> colCedula;
+    private TableColumn<Contrato, String> colCedula;
     @FXML
-    private TableColumn<?, ?> colNombre;
+    private TableColumn<Contrato, String> colNombre;
     @FXML
-    private TableColumn<?, ?> colFechaInicio;
+    private TableColumn<Contrato, String> colFechaInicio;
     @FXML
-    private TableColumn<?, ?> colFechaFinal;
+    private TableColumn<Contrato, String> colFechaFinal;
     @FXML
-    private TableColumn<?, ?> colFechaRegistro;
+    private TableColumn<Contrato, String> colFechaRegistro;
     @FXML
-    private TableColumn<?, ?> colMonto;
+    private TableColumn<Contrato, String> colMonto;
     @FXML
-    private TableColumn<?, ?> colEstado;
+    private TableColumn<Contrato, String> colEstado;
+    @FXML
+    private TableColumn<Contrato, String> colActividad;
     /**
      * Initializes the controller class.
      */
