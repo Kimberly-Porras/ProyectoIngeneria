@@ -101,11 +101,21 @@ public class BitacoraEmpleado {
         this.cantidad = cantidad;
     }
 
-    public boolean getStatus() {
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public boolean isStatus() {
         return status;
     }
 
     public void setStatus(boolean status) {
         this.status = status;
     }
+
+    
 }

@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  * @author User
  */
 public class AreaDAO {
-   private Connection acceso = Database.DatabaseConnection.getConnection();
+    private Connection acceso = Database.DatabaseConnection.getConnection();
     PreparedStatement ps;
     ResultSet rs;
     
@@ -80,4 +80,25 @@ public class AreaDAO {
             return false;
         }
     } 
+    public Area obtenerPorId(int id) {
+        Area tipoDeduccion = null;
+        
+        try {
+            ps = acceso.prepareStatement("SELECT id, nombre, status FROM tbl_area where id = ?");
+            ps.setObject(1, id);
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                tipoDeduccion = new Area(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getBoolean(3)
+                );
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(TipoDeduccionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return tipoDeduccion;
+    }
 }

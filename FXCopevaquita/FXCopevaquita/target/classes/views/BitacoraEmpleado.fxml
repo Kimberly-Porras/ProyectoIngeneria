@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.BitacoraEmpleadoController">
    <children>
       <VBox alignment="CENTER" prefHeight="652.0" prefWidth="1247.0" spacing="30.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
@@ -78,6 +77,7 @@
                   <TableView fx:id="tblListarReporteEmpleado" prefHeight="462.0" prefWidth="1204.0">
                      <columns>
                         <TableColumn fx:id="colCedula" prefWidth="200.0" text="Cédula" />
+                        <TableColumn fx:id="colNombre" prefWidth="200.0" text="Nombre" />
                         <TableColumn fx:id="colFechaRegistro" prefWidth="217.0" text="Fecha de registro" />
                         <TableColumn fx:id="colActividades" prefWidth="285.6666564941406" text="Actividad" />
                         <TableColumn fx:id="colAreas" prefWidth="185.3333740234375" text="Área" />
