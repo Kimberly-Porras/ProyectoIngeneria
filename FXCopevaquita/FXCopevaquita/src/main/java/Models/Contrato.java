@@ -33,7 +33,7 @@ public class Contrato {
         this.status = false;
         this.motivo = 0;
     }
-    public Contrato(int id, String cedula_empleado, Date fecha_inicio, Date fecha_final, Date fecha_registro, double monto, boolean status, int actividad) {
+    public Contrato(int id, String cedula_empleado, Date fecha_inicio, Date fecha_final, Date fecha_registro, double monto, boolean status, int motivo) {
         this.id = id;
         this.cedulaEmpleado = cedula_empleado;
         this.fechaInicio = fecha_inicio;
@@ -41,7 +41,7 @@ public class Contrato {
         this.fechaRegistro = fecha_registro;
         this.monto = monto;
         this.status = status;
-        this.motivo = actividad;
+        this.motivo = motivo;
     }
 
     public int getId() {
@@ -92,7 +92,7 @@ public class Contrato {
         this.monto = monto;
     }
 
-    public boolean getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
@@ -100,11 +100,12 @@ public class Contrato {
         this.status = status;
     }
 
-    public int getActividad() {
+    public int getMotivo() {
         return motivo;
     }
 
-    public void setActividad(int actividad) {
-        this.motivo = actividad;
+    public void setMotivo(int motivo) {
+        this.motivo = motivo;
     }
+
 }

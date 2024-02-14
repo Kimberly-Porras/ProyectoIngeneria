@@ -88,14 +88,6 @@ public class RegistroFamiliarController implements Initializable {
         colContactos.setCellValueFactory(new PropertyValueFactory<Parentezco, String>("contactoEmergencia"));
         colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isStatus() ? "Activo" : "Inactivo"));
     }
-
-    private String GetNombreCompleto(String cedula) {
-        Optional<Empleado> empleadoOptional = ObservableEmpleado.stream()
-                .filter(x -> x.getCedula().equals(cedula))
-                .findFirst();
-
-        return empleadoOptional.map(Empleado::getNombreCompleto).orElse("");
-    }
     
     public void cargarParentezcos() {
         var ObservableParentezco

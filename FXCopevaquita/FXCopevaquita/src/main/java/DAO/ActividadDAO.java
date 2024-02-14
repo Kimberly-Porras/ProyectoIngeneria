@@ -81,4 +81,25 @@ public class ActividadDAO {
             return false;
         }
     }
+    public Actividad obtenerPorId(int id) {
+        Actividad tipoDeduccion = null;
+        
+        try {
+            ps = acceso.prepareStatement("SELECT id, nombre, status FROM tbl_actividad where id = ?");
+            ps.setObject(1, id);
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                tipoDeduccion = new Actividad(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getBoolean(3)
+                );
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(TipoDeduccionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return tipoDeduccion;
+    }
 }
