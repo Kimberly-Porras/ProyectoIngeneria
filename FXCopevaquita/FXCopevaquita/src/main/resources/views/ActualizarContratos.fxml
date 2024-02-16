@@ -60,6 +60,7 @@
                <children>
                   <TableView fx:id="tblContratoAct" prefHeight="189.0" prefWidth="896.0">
                      <columns>
+                        <TableColumn fx:id="colActividad" prefWidth="121.333251953125" text="Actividad" />
                         <TableColumn fx:id="colFechaInicioAct" prefWidth="194.0" text="Fecha inicio" />
                         <TableColumn fx:id="colFechaFinalAct" prefWidth="117.0" text="Fecha final" />
                         <TableColumn fx:id="colFechaRegistroAct" prefWidth="101.66668701171875" text="Fecha registro" />
@@ -95,6 +96,16 @@
                   <Font name="Lucida Bright Demibold Italic" size="20.0" />
                </font>
             </Label>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="333.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label alignment="TOP_LEFT" prefHeight="25.0" prefWidth="167.0" text="Actividad">
+                     <font>
+                        <Font name="Lucida Bright" size="20.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="cbxActividades" prefHeight="29.0" prefWidth="325.0" style="-fx-background-color: WHITE; -fx-border-color: GREEN;" />
+               </children>
+            </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label alignment="TOP_LEFT" prefHeight="25.0" prefWidth="167.0" text="Fecha de inicio: ">

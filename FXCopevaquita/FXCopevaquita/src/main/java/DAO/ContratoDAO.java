@@ -100,4 +100,35 @@ public class ContratoDAO {
             return false;
         }
     }
+    
+    public List<Contrato> obtenerListaContratoPorCedulaEmpleado(String cedulaEmpleado) {
+        Contrato contrato;
+        List<Contrato> lista = new ArrayList<>();
+
+        try {
+            String sql = "SELECT id, cedula_empleado, fechaInicio, fechaFinal, fechaRegistro,"
+                    + " monto, status,motivo FROM tbl_contrato "
+                    + "WHERE cedula_empleado = ?;";
+            ps = acceso.prepareStatement(sql);
+            ps.setObject(1, cedulaEmpleado);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                contrato = new Contrato();
+                contrato.setId(rs.getInt(1));
+                contrato.setCedulaEmpleado(rs.getString(2));
+                contrato.setFechaInicio(rs.getDate(3));
+                contrato.setFechaFinal(rs.getDate(4));
+                contrato.setFechaRegistro(rs.getDate(5));
+                contrato.setMonto(rs.getDouble(6));
+                contrato.setStatus(rs.getBoolean(7));
+                contrato.setMotivo(rs.getInt(8));
+                lista.add(contrato);
+            }
+        } catch (Exception e) {
+            System.out.println("" + e.toString());
+        }
+
+        return lista;
+    }
 }

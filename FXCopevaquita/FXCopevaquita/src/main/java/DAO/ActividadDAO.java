@@ -108,8 +108,7 @@ public class ActividadDAO {
         List<Actividad> listaActividades = new ArrayList<>();
 
         try {
-            String sql = "SELECT id, nombre, status  "
-                    + "FROM tbl_actividad;";
+            String sql = "SELECT id, nombre, status FROM tbl_actividad;";
             
             ps = acceso.prepareStatement(sql);
             rs = ps.executeQuery();
