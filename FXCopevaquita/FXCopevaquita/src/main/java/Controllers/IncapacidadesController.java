@@ -64,7 +64,7 @@ public class IncapacidadesController implements Initializable {
     }
 
     public void configurar() {
-        colFecha.setCellValueFactory(new PropertyValueFactory<>("empleado"));
+        colCedula.setCellValueFactory(new PropertyValueFactory<>("empleado"));
         colNombre.setCellValueFactory(cellData -> {
             var empleado = new EmpleadoDAO().obtenerEmpleadoPorCedula(cellData.getValue().getEmpleado());
             if(empleado == null) {
