@@ -19,6 +19,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -49,25 +50,27 @@ public class IncapacidadesController implements Initializable {
     private TableColumn<Incapacidad, String> colMonto;
     @FXML
     private TableColumn<Incapacidad, String> colMotivo;
+    @FXML
+    private ComboBox<String> cbx_status;
 
     /**
      * Initializes the controller class.
      */
-    
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
     ObservableList<Incapacidad> ObservableIncapacidad = FXCollections.observableArrayList();
-    
+    ObservableList<String> observableStatus = FXCollections.observableArrayList("Pendiente", "Cancelado");
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         configurar();
-        cargarIncapacidades();
+        cargarIncapacidades(true, false);
     }
 
     public void configurar() {
         colCedula.setCellValueFactory(new PropertyValueFactory<>("empleado"));
         colNombre.setCellValueFactory(cellData -> {
             var empleado = new EmpleadoDAO().obtenerEmpleadoPorCedula(cellData.getValue().getEmpleado());
-            if(empleado == null) {
+            if (empleado == null) {
                 return new SimpleStringProperty("No disponible");
             }
             return new SimpleStringProperty(empleado.getNombreCompleto());
@@ -75,7 +78,17 @@ public class IncapacidadesController implements Initializable {
         colFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
         colMonto.setCellValueFactory(new PropertyValueFactory<>("monto"));
         colMotivo.setCellValueFactory(new PropertyValueFactory<>("motivo"));
-        colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isStatus()? "Pendiente" : "Cancelado"));
+        colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isStatus() ? "Pendiente" : "Cancelado"));
+        
+        cbx_status.setItems(observableStatus);
+        cbx_status.setOnAction(event -> {
+            var value = cbx_status.getValue();
+            if (value.equals("Pendiente")) {
+                cargarIncapacidades(true, true);
+            } else {
+                cargarIncapacidades(false, true);
+            }
+        });
     }
 
     private String GetNombreCompleto(String cedula) {
@@ -85,13 +98,20 @@ public class IncapacidadesController implements Initializable {
 
         return empleadoOptional.map(Empleado::getNombreCompleto).orElse("");
     }
-    
-    public void cargarIncapacidades() {
-        var ObservableIncapacidad
-                = FXCollections.observableArrayList(new IncapacidadDAO().obtenerListaIncapacidades());
-        tblIncapacidad.setItems(ObservableIncapacidad);
+
+    public void cargarIncapacidades(boolean status, boolean filtro) {
+        if (filtro) {
+            var ObservableIncapacidad
+                    = FXCollections.observableArrayList(new IncapacidadDAO().obtenerListaIncapacidades())
+                            .filtered(empl -> empl.isStatus() == status);
+            tblIncapacidad.setItems(ObservableIncapacidad);
+        } else {
+            var ObservableIncapacidad
+                    = FXCollections.observableArrayList(new IncapacidadDAO().obtenerListaIncapacidades());
+            tblIncapacidad.setItems(ObservableIncapacidad);
+        }
     }
-    
+
     private void filtrarIncapacidad() {
         if (filtrarEmpleado.getText() != null && !filtrarEmpleado.getText().trim().equals("")) {
             Predicate<Incapacidad> pVacacion = x
@@ -104,14 +124,14 @@ public class IncapacidadesController implements Initializable {
             var listaTemporal = ObservableIncapacidad.filtered((x) -> pEmpleado.test(Get(x.getEmpleado())) || pVacacion.test(x));
             tblIncapacidad.setItems(listaTemporal);
         } else {
-            tblIncapacidad.setItems(ObservableIncapacidad);
+            cargarIncapacidades(true, false);
         }
     }
-    
+
     private Empleado Get(String cedula) {
         return ObservableEmpleado.filtered(x -> x.getCedula().equals(cedula)).get(0);
     }
-    
+
     @FXML
     private void OnAgregar(ActionEvent event) {
         OpenWindowsHandler.AbrirVentanaAgregarIncapacidades("/views/AgregarIncapacidades");
@@ -127,8 +147,10 @@ public class IncapacidadesController implements Initializable {
         filtrarIncapacidad();
     }
 
+
     @FXML
-    private void OnPresionarCualquierLado(MouseEvent event) {
+    private void OnRefrescar(ActionEvent event) {
+         cargarIncapacidades(true, false);
     }
 
 }
