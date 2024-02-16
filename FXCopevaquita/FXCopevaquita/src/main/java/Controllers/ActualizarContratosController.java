@@ -12,6 +12,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 /**
  * FXML Controller class
@@ -22,17 +24,29 @@ public class ActualizarContratosController implements Initializable {
 
 
     @FXML
-    private ComboBox<?> cbxFiltrarEmpleadoAgre;
+    private ComboBox<?> cbxFiltrarEmpleadoActualizar;
     @FXML
-    private DatePicker dpFechaInicioAgre;
+    private TableView<?> tblContratoAct;
     @FXML
-    private DatePicker dpFechaFinalAgre;
+    private TableColumn<?, ?> colFechaInicioAct;
     @FXML
-    private DatePicker dpFechaRegistroAgre;
+    private TableColumn<?, ?> colFechaFinalAct;
     @FXML
-    private TextField txtMontoAgre;
+    private TableColumn<?, ?> colFechaRegistroAct;
     @FXML
-    private CheckBox cbEstadoAgre;
+    private TableColumn<?, ?> colMontoAct;
+    @FXML
+    private TableColumn<?, ?> colEstadoAct;
+    @FXML
+    private DatePicker dpFechaInicioAct;
+    @FXML
+    private DatePicker dpFechaFinalAct;
+    @FXML
+    private DatePicker dpFecharegistroAct;
+    @FXML
+    private TextField txtMontoAct;
+    @FXML
+    private CheckBox cbEstadoAct;
     /**
      * Initializes the controller class.
      */
@@ -42,7 +56,19 @@ public class ActualizarContratosController implements Initializable {
     }    
     
     @FXML
-    private void btnGuardar(ActionEvent event) {
+    private void FiltrarEmpleado(ActionEvent event) {
+    }
+
+    @FXML
+    private void onCargar(ActionEvent event) {
+    }
+
+    @FXML
+    private void onLimpiar(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnActualizar(ActionEvent event) {
     }
 
 }

@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
@@ -101,5 +102,29 @@ public class ActividadDAO {
         }
         
         return tipoDeduccion;
+    }
+    
+    public List<Actividad> obtenerListaActividades() {
+        List<Actividad> listaActividades = new ArrayList<>();
+
+        try {
+            String sql = "SELECT id, nombre, status  "
+                    + "FROM tbl_actividad;";
+            
+            ps = acceso.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Actividad actividad = new Actividad();
+                actividad.setId(rs.getInt(1));
+                actividad.setNombre(rs.getString(2));
+                actividad.setStatus(rs.getBoolean(3));
+                listaActividades.add(actividad);
+            }
+        } catch (Exception e) {
+            System.out.println("" + e.toString());
+        }
+
+        return listaActividades;
     }
 }

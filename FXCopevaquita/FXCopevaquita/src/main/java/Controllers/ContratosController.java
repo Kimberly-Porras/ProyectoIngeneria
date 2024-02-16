@@ -138,12 +138,12 @@ public class ContratosController implements Initializable {
 
     @FXML
     private void OnAgregar(ActionEvent event) {
-        OpenWindowsHandler.AbrirVentanaActualizarContratos("/views/ActualizarContratos");
+        OpenWindowsHandler.AbrirVentanaActualizarContratos("/views/AgregarContratos");
     }
 
     @FXML
     private void OnActualizar(ActionEvent event) {
-        OpenWindowsHandler.AbrirVentanaAreas("/views/AgregarContratos");
+        OpenWindowsHandler.AbrirVentanaAreas("/views/ActualizarContratos");
     }
 
     @FXML

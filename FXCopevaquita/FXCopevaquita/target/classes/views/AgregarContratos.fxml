@@ -6,9 +6,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -19,16 +16,21 @@
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgregarContratosController">
    <children>
-      <VBox alignment="CENTER" prefHeight="667.0" prefWidth="1269.0" spacing="15.0" style="-fx-background-color: #D3F4E7; -fx-background-radius: 18;">
+      <VBox alignment="CENTER" prefHeight="626.0" prefWidth="1029.0" spacing="20.0" style="-fx-background-color: #D2F4E6; -fx-background-radius: 18;">
          <children>
+            <HBox alignment="TOP_CENTER">
+               <VBox.margin>
+                  <Insets top="-40.0" />
+               </VBox.margin>
+            </HBox>
             <HBox alignment="CENTER">
                <children>
-                  <Label alignment="TOP_LEFT" text="ACTUALIZACIÓN DE CONTRATOS POR EMPLEADO" textFill="#0b986a">
+                  <Label alignment="TOP_LEFT" text="ASINGNACIÓN DE CONTRATOS POR EMPLEADO" textFill="#0b986a">
                      <font>
                         <Font name="Lucida Bright" size="29.0" />
                      </font>
                      <HBox.margin>
-                        <Insets />
+                        <Insets top="15.0" />
                      </HBox.margin>
                   </Label>
                </children>
@@ -36,114 +38,81 @@
                   <Insets />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER" maxHeight="300.0" prefHeight="113.0" prefWidth="1269.0" spacing="15.0">
+            <HBox alignment="CENTER" prefHeight="45.0" prefWidth="1276.0" spacing="15.0">
                <children>
-                  <Label alignment="TOP_LEFT" prefHeight="25.0" prefWidth="257.0" text="Seleccione un empleado: ">
+                  <Label text="Seleccione un empleado: ">
                      <font>
                         <Font name="Lucida Bright" size="20.0" />
                      </font>
-                     <graphic>
-                        <Label alignment="TOP_LEFT" prefHeight="25.0" prefWidth="274.0" text="Seleccione un empleado:">
-                           <font>
-                              <Font name="Lucida Bright" size="20.0" />
-                           </font>
-                        </Label>
-                     </graphic>
-                  </Label>
-                  <ComboBox fx:id="cbxFiltrarEmpleadoActualizar" editable="true" onAction="#FiltrarEmpleado" prefHeight="47.0" prefWidth="438.0" style="-fx-border-color: #2A8C4A;" visibleRowCount="20" />
-               </children>
-               <padding>
-                  <Insets top="10.0" />
-               </padding>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="198.0" prefWidth="1269.0">
-               <children>
-                  <TableView fx:id="tblContratoAct" prefHeight="189.0" prefWidth="896.0">
-                     <columns>
-                        <TableColumn fx:id="colFechaInicioAct" prefWidth="194.0" text="Fecha inicio" />
-                        <TableColumn fx:id="colFechaFinalAct" prefWidth="117.0" text="Fecha final" />
-                        <TableColumn fx:id="colFechaRegistroAct" prefWidth="101.66668701171875" text="Fecha registro" />
-                        <TableColumn fx:id="colMontoAct" prefWidth="90.3333740234375" text="Monto" />
-                        <TableColumn fx:id="colEstadoAct" prefWidth="121.333251953125" text="Estado" />
-                     </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
                      <HBox.margin>
-                        <Insets left="20.0" right="20.0" />
+                        <Insets top="5.0" />
                      </HBox.margin>
-                  </TableView>
-                  <VBox spacing="10.0">
-                     <children>
-                        <Button mnemonicParsing="false" onAction="#onCargar" prefHeight="33.0" prefWidth="137.0" style="-fx-background-color: #ffba6a;" text="Cargar" textFill="WHITE">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Button>
-                        <Button mnemonicParsing="false" onAction="#onLimpiar" prefHeight="29.0" prefWidth="136.0" style="-fx-background-color: #F08080;" text="Limpiar" textFill="WHITE">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </VBox>
+                  </Label>
+                  <ComboBox fx:id="cbxFiltrarEmpleadoAgre" prefHeight="34.0" prefWidth="422.0" style="-fx-background-color: WHITE; -fx-border-color: GREEN;" />
                </children>
             </HBox>
-            <Separator prefWidth="200.0" />
-            <Label alignment="TOP_LEFT" prefHeight="25.0" prefWidth="341.0" text="INFORMACIÓN A ACTUALIZAR">
-               <font>
-                  <Font name="Lucida Bright Demibold Italic" size="20.0" />
-               </font>
-            </Label>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="45.0" prefWidth="1276.0" spacing="15.0">
                <children>
-                  <Label alignment="TOP_LEFT" prefHeight="25.0" prefWidth="167.0" text="Fecha de inicio: ">
+                  <Label text="Actividad: ">
+                     <font>
+                        <Font name="Lucida Bright" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ComboBox fx:id="cbxActividades" prefHeight="34.0" prefWidth="422.0" style="-fx-background-color: WHITE; -fx-border-color: GREEN;" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="1276.0" spacing="15.0">
+               <children>
+                  <Label text="Fecha de inicio: ">
                      <font>
                         <Font name="Lucida Bright" size="20.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="dpFechaInicioAct" prefHeight="30.0" prefWidth="320.0" style="-fx-border-color: #2A8C4A;" />
+                  <DatePicker fx:id="dpFechaInicioAgre" prefHeight="37.0" prefWidth="276.0" style="-fx-border-color: #2A8C4A;" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="104.0" prefWidth="1269.0">
+            <HBox alignment="CENTER" prefHeight="54.0" prefWidth="1276.0" spacing="15.0">
                <children>
-                  <Label alignment="TOP_LEFT" prefHeight="25.0" prefWidth="138.0" text="Fecha final: ">
+                  <Label text="Fecha final: ">
                      <font>
                         <Font name="Lucida Bright" size="20.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="dpFechaFinalAct" prefHeight="44.0" prefWidth="347.0" style="-fx-border-color: #2A8C4A;" />
+                  <DatePicker fx:id="dpFechaFinalAgre" prefHeight="37.0" prefWidth="312.0" style="-fx-border-color: #2A8C4A;" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="108.0" prefWidth="1269.0" spacing="15.0">
+            <HBox alignment="CENTER" prefHeight="53.0" prefWidth="1276.0" spacing="15.0">
                <children>
-                  <Label alignment="TOP_LEFT" prefHeight="25.0" prefWidth="186.0" text="Fecha de registro:">
+                  <Label text="Fecha de registro: ">
                      <font>
                         <Font name="Lucida Bright" size="20.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="dpFecharegistroAct" prefHeight="126.0" prefWidth="292.0" style="-fx-border-color: #2A8C4A;" />
+                  <DatePicker fx:id="dpFechaRegistroAgre" prefHeight="37.0" prefWidth="250.0" style="-fx-border-color: #2A8C4A;" />
                </children>
             </HBox>
-            <HBox alignment="CENTER">
+            <HBox alignment="CENTER" spacing="15.0">
                <children>
-                  <Label alignment="TOP_LEFT" prefHeight="25.0" prefWidth="95.0" text="Monto:">
+                  <Label text="Monto: ">
                      <font>
                         <Font name="Lucida Bright" size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtMontoAct" prefHeight="19.0" prefWidth="398.0" style="-fx-border-color: #2A8C4A;">
+                  <TextField fx:id="txtMontoAgre" prefHeight="40.0" prefWidth="374.0" style="-fx-border-color: #2A8C4A;">
                      <font>
-                        <Font size="15.0" />
+                        <Font size="17.0" />
                      </font>
                   </TextField>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="1267.0" spacing="15.0">
+            <HBox alignment="CENTER" prefHeight="76.0" prefWidth="1276.0" spacing="15.0">
                <children>
-                  <CheckBox fx:id="cbEstadoAct" mnemonicParsing="false" prefHeight="37.0" prefWidth="152.0" text="Estado">
+                  <CheckBox fx:id="cbEstadoAgre" mnemonicParsing="false" prefHeight="26.0" prefWidth="126.0" text="Estado">
                      <font>
-                        <Font name="Lucida Bright" size="24.0" />
+                        <Font name="Lucida Bright" size="22.0" />
                      </font>
                      <HBox.margin>
                         <Insets top="15.0" />
@@ -151,13 +120,18 @@
                   </CheckBox>
                </children>
             </HBox>
+            <HBox alignment="TOP_CENTER" spacing="15.0">
+               <VBox.margin>
+                  <Insets top="-35.0" />
+               </VBox.margin>
+            </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#btnActualizar" prefHeight="54.0" prefWidth="195.0" style="-fx-background-color: #a9e9a4;" text="Actualizar">
+                  <Button mnemonicParsing="false" onAction="#btnGuardar" prefHeight="33.0" prefWidth="163.0" style="-fx-background-color: lightblue;" text="Guardar">
                      <graphic>
-                        <ImageView fitHeight="53.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../../Proyecto-CoopevaquitaR.L/SistemaPlanilla_CoopevaquitaR.L/src/main/resources/imagenes/garrapata.png" />
+                              <Image url="@../../../../../../../Proyecto-CoopevaquitaR.L/SistemaPlanilla_CoopevaquitaR.L/src/main/resources/imagenes/guardar-como.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -166,11 +140,11 @@
                      </font>
                   </Button>
                </children>
-               <padding>
-                  <Insets bottom="10.0" />
-               </padding>
             </HBox>
          </children>
+         <padding>
+            <Insets top="60.0" />
+         </padding>
          <StackPane.margin>
             <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
          </StackPane.margin>
