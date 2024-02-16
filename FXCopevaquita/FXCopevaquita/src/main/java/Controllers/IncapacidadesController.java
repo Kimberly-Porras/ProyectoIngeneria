@@ -91,14 +91,6 @@ public class IncapacidadesController implements Initializable {
         });
     }
 
-    private String GetNombreCompleto(String cedula) {
-        Optional<Empleado> empleadoOptional = ObservableEmpleado.stream()
-                .filter(x -> x.getCedula().equals(cedula))
-                .findFirst();
-
-        return empleadoOptional.map(Empleado::getNombreCompleto).orElse("");
-    }
-
     public void cargarIncapacidades(boolean status, boolean filtro) {
         if (filtro) {
             var ObservableIncapacidad
