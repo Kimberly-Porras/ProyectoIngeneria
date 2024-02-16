@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -100,5 +101,28 @@ public class AreaDAO {
         }
         
         return tipoDeduccion;
+    }
+    public List<Area> obtenerListaArea() {
+        List<Area> listaAreas = new ArrayList<>();
+
+        try {
+            String sql = "SELECT id, nombre, status  "
+                    + "FROM tbl_area;";
+          
+            ps = acceso.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Area area = new Area();
+                area.setId(rs.getInt(1));
+                area.setNombre(rs.getString(2));
+                area.setStatus(rs.getBoolean(3));
+                listaAreas.add(area);
+            }
+        } catch (Exception e) {
+            System.out.println("" + e.toString());
+        }
+
+        return listaAreas;
     }
 }
