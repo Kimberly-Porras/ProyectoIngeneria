@@ -19,6 +19,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -52,18 +53,21 @@ public class ContratosController implements Initializable {
     private TableColumn<Contrato, String> colEstado;
     @FXML
     private TableColumn<Contrato, String> colActividad;
+    @FXML
+    private ComboBox<String> cbx_status;
 
     /**
      * Initializes the controller class.
      */
-    
     ObservableList<Contrato> ObservableContrato = FXCollections.observableArrayList();
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
     final private ActividadDAO ActividadService = new ActividadDAO();
+    ObservableList<String> observableStatus = FXCollections.observableArrayList("Pendiente", "Cancelado");
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         configurar();
-        cargarContratos();
+        cargarContratos(true, false);
     }
 
     public void configurar() {
@@ -87,14 +91,31 @@ public class ContratosController implements Initializable {
         colFechaRegistro.setCellValueFactory(new PropertyValueFactory<>("fechaRegistro"));
         colMonto.setCellValueFactory(new PropertyValueFactory<>("monto"));
         colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isStatus() ? "Pendiente" : "Cancelado"));
+
+        cbx_status.setItems(observableStatus);
+        cbx_status.setOnAction(event -> {
+            var value = cbx_status.getValue();
+            if (value.equals("Pendiente")) {
+                cargarContratos(true, true);
+            } else {
+                cargarContratos(false, true);
+            }
+        });
     }
 
-    public void cargarContratos() {
-        var ObservableContrato
-                = FXCollections.observableArrayList(new ContratoDAO().obtenerListaContratos());
-        tblListaContrato.setItems(ObservableContrato);
+    public void cargarContratos(boolean status, boolean filtro) {
+        if (filtro) {
+            var ObservableContrato
+                    = FXCollections.observableArrayList(new ContratoDAO().obtenerListaContratos())
+                            .filtered(cont -> cont.isStatus() == status);
+            tblListaContrato.setItems(ObservableContrato);
+        } else {
+            var ObservableContrato
+                    = FXCollections.observableArrayList(new ContratoDAO().obtenerListaContratos());
+            tblListaContrato.setItems(ObservableContrato);
+        }
     }
-    
+
     private void filtrarContrato() {
         if (txtFiltrarEmpleado.getText() != null && !txtFiltrarEmpleado.getText().trim().equals("")) {
             Predicate<Contrato> pContrato = x
@@ -107,13 +128,14 @@ public class ContratosController implements Initializable {
             var listaTemporal = ObservableContrato.filtered((x) -> pEmpleado.test(Get(x.getCedulaEmpleado())) || pContrato.test(x));
             tblListaContrato.setItems(listaTemporal);
         } else {
-            tblListaContrato.setItems(ObservableContrato);
+            cargarContratos(true, false);
         }
     }
-    
+
     private Empleado Get(String cedula) {
         return ObservableEmpleado.filtered(x -> x.getCedula().equals(cedula)).get(0);
     }
+
     @FXML
     private void OnAgregar(ActionEvent event) {
         OpenWindowsHandler.AbrirVentanaActualizarContratos("/views/ActualizarContratos");
@@ -127,6 +149,11 @@ public class ContratosController implements Initializable {
     @FXML
     private void PresionarEnter(KeyEvent event) {
         filtrarContrato();
+    }
+
+    @FXML
+    private void OnRefrescar(ActionEvent event) {
+        cargarContratos(true, false);
     }
 
 }
