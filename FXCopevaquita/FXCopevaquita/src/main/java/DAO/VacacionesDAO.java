@@ -92,4 +92,32 @@ public class VacacionesDAO {
             return false;
         }
     }
+    
+    public List<Vacaciones> obtenerListaVacacionesPorCedulaEmpleado(String cedulaEmpleado) {
+        Vacaciones vacaciones;
+        List<Vacaciones> lista = new ArrayList<>();
+
+        try {
+            String sql = "SELECT id, empleado, "
+                    + "monto, fecha, status FROM tbl_vacaciones "
+                    + "WHERE empleado = ?;";
+
+            ps = acceso.prepareStatement(sql);
+            ps.setObject(1, cedulaEmpleado);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                vacaciones = new Vacaciones();
+                vacaciones.setId(rs.getInt(1));
+                vacaciones.setFecha(rs.getDate(2));
+                vacaciones.setMonto(rs.getDouble(3));
+                vacaciones.setStatus(rs.getBoolean(4));
+                lista.add(vacaciones);
+            }
+        } catch (Exception e) {
+            System.out.println("" + e.toString());
+        }
+
+        return lista;
+    }
 }

@@ -4,18 +4,16 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ActualizarVacacionesController">
    <children>
@@ -47,9 +45,8 @@
                <children>
                   <TableView fx:id="tblVacacionesActualizar" prefHeight="197.0" prefWidth="652.0">
                      <columns>
-                        <TableColumn fx:id="colDiasDisponiblesAct" prefWidth="119.00006103515625" text="Días disponibles" />
-                        <TableColumn fx:id="colAnnoAct" prefWidth="30.99993896484375" text="Año" />
-                        <TableColumn fx:id="colTotalAct" prefWidth="30.99993896484375" text="Total" />
+                        <TableColumn fx:id="colFecha" prefWidth="266.0" text="Fecha" />
+                        <TableColumn fx:id="colMonto" prefWidth="302.0" text="Monto" />
                         <TableColumn fx:id="colEstadoAct" prefWidth="75.0" text="Estado" />
                      </columns>
                      <columnResizePolicy>
@@ -85,42 +82,24 @@
                   </Label>
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="451.0" prefHeight="97.0" prefWidth="1178.0" spacing="20.0">
-               <children>
-                  <Label alignment="TOP_LEFT" text="Días disponibles: ">
-                     <font>
-                        <Font name="Lucida Bright" size="22.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtDiasDisponiblesAct" prefHeight="40.0" prefWidth="178.0" style="-fx-border-color: #2A8C4A;">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="453.0" prefHeight="97.0" prefWidth="1178.0" spacing="20.0">
                <children>
-                  <Label alignment="TOP_LEFT" text="Año: ">
+                  <Label alignment="TOP_LEFT" text="Fecha:">
                      <font>
                         <Font name="Lucida Bright" size="22.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtAnnoAct" prefHeight="38.0" prefWidth="311.0" style="-fx-border-color: #2A8C4A;">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </TextField>
+                  <DatePicker fx:id="dpFecha" prefHeight="28.0" prefWidth="326.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="97.0" prefWidth="1178.0" spacing="20.0">
                <children>
-                  <Label alignment="TOP_LEFT" text="Total:">
+                  <Label alignment="TOP_LEFT" text="Monto:">
                      <font>
                         <Font name="Lucida Bright" size="22.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtTotalAct" prefHeight="38.0" prefWidth="311.0" style="-fx-border-color: #2A8C4A;">
+                  <TextField fx:id="txtMonto" prefHeight="38.0" prefWidth="311.0" style="-fx-border-color: #2A8C4A;">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -142,13 +121,6 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#btnActualizar" prefHeight="54.0" prefWidth="195.0" style="-fx-background-color: #a9e9a4;" text="Actualizar">
-                     <graphic>
-                        <ImageView fitHeight="53.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../../../Proyecto-CoopevaquitaR.L/SistemaPlanilla_CoopevaquitaR.L/src/main/resources/imagenes/garrapata.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
                      <font>
                         <Font name="Lucida Bright" size="24.0" />
                      </font>

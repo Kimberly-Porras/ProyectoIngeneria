@@ -170,7 +170,7 @@ public class ActualizarIncapacidadesController implements Initializable {
                 tblIncapacidadesActualizar.setItems(lista);
             }
         } catch (Exception ex) {
-            MensajePersonalizado.Ver("Error", "Error al buscar las vacaciones del empleado, más información: " + ex.getMessage(), Alert.AlertType.ERROR);
+            MensajePersonalizado.Ver("Error", "Error al buscar las incapacidades del empleado, más información: " + ex.getMessage(), Alert.AlertType.ERROR);
         }
     }
     
