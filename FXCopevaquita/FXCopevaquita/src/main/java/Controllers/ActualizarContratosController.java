@@ -102,7 +102,7 @@ public class ActualizarContratosController implements Initializable {
             @Override
             public String toString(Empleado t) {
                 if (t == null) {
-                    return ""; // o cualquier otro valor predeterminado que desees
+                    return "No hay datos"; // o cualquier otro valor predeterminado que desees
                 }
                 return t.getNombreCompleto();
             }
@@ -114,6 +114,28 @@ public class ActualizarContratosController implements Initializable {
                 }
                 Predicate<String> find = (x) -> x != null && x.equals(t);
                 Optional<Empleado> firstMatch = ObservableEmpleado.filtered(x -> find.test(x.getNombreCompleto())).stream().findFirst();
+                return firstMatch.orElse(null); // Devuelve el primer empleado encontrado o null si no se encontró ninguna coincidencia.
+            }
+        });
+
+        ObservableActividad = FXCollections.observableArrayList(actividadService.obtenerListaActividades());
+        cbxActividades.setItems(ObservableActividad);
+        cbxActividades.setConverter(new StringConverter<Actividad>() {
+            @Override
+            public String toString(Actividad t) {
+                if (t == null) {
+                    return "No hay datos"; // o cualquier otro valor predeterminado que desees
+                }
+                return t.getNombre();
+            }
+
+            @Override
+            public Actividad fromString(String t) {
+                if (t == null || t.isEmpty()) {
+                    return null; // Manejar el caso de entrada vacía o nula
+                }
+                Predicate<String> find = (x) -> x != null && x.equals(t);
+                Optional<Actividad> firstMatch = ObservableActividad.filtered(x -> find.test(x.getNombre())).stream().findFirst();
                 return firstMatch.orElse(null); // Devuelve el primer empleado encontrado o null si no se encontró ninguna coincidencia.
             }
         });
@@ -144,6 +166,16 @@ public class ActualizarContratosController implements Initializable {
         }
     }
 
+    private void limpiarCampos() {
+        txtMontoAct.setText("");
+        cbxActividades.setItems(ObservableActividad);
+        // Establecer el valor del DatePicker como null
+        dpFechaFinalAct.setValue(null);
+        dpFechaInicioAct.setValue(null);
+        dpFecharegistroAct.setValue(null);
+
+    }
+
     public boolean VerificarEspaciosAtualizar() {
         if (txtMontoAct.getText() != null && !txtMontoAct.getText().trim().equals("")
                 && cbxFiltrarEmpleadoActualizar.getValue() != null
@@ -160,15 +192,6 @@ public class ActualizarContratosController implements Initializable {
         }
     }
 
-    private void limpiarCampos() {
-        txtMontoAct.setText("");
-        cbxFiltrarEmpleadoActualizar.setValue(ObservableEmpleado.get(0));
-        dpFechaInicioAct.setValue(LocalDate.now());
-        dpFechaFinalAct.setValue(LocalDate.now());
-        dpFecharegistroAct.setValue(LocalDate.now());
-        cbEstadoAct.setSelected(contrato.isStatus());
-    }
-
     private void cargarCamposActualizar() {
         txtMontoAct.setText(contrato.getMonto() + "");
         cbxFiltrarEmpleadoActualizar.setValue(Get(contrato.getCedulaEmpleado()));
@@ -177,12 +200,14 @@ public class ActualizarContratosController implements Initializable {
         dpFecharegistroAct.setValue(contrato.getFechaRegistro().toLocalDate());
         cbEstadoAct.setSelected(contrato.isStatus());
         //FALTA LA ACTIVIDAD 
+        Actividad actividad = actividadService.obtenerPorId(contrato.getMotivo());
+        cbxActividades.setValue(actividad);
     }
-    
+
     private Empleado Get(String cedula) {
         return ObservableEmpleado.filtered(x -> x.getCedula().equals(cedula)).get(0);
     }
-    
+
     private void cargarContratosPorEmpleado() {
         contrato = tblContratoAct.getSelectionModel().getSelectedItem();
         if (contrato != null && contrato.getId() != 0) {
@@ -191,7 +216,7 @@ public class ActualizarContratosController implements Initializable {
             MensajePersonalizado.Ver("NO SELECCIONADO", "Por favor seleccione un contrato", Alert.AlertType.WARNING);
         }
     }
-    
+
     private void FiltrarContratoPorCedulaEmpleado() {
         try {
             var empleado = cbxFiltrarEmpleadoActualizar.getValue();
@@ -203,6 +228,7 @@ public class ActualizarContratosController implements Initializable {
             MensajePersonalizado.Ver("Error", "Error al buscar las vacaciones del empleado, más información: " + ex.getMessage(), Alert.AlertType.ERROR);
         }
     }
+
     @FXML
     private void FiltrarEmpleado(ActionEvent event) {
         FiltrarContratoPorCedulaEmpleado();

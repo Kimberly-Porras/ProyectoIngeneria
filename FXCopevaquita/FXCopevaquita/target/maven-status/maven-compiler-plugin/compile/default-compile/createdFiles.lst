@@ -38,6 +38,7 @@ Models\BitacoraEmpleado.class
 Controllers\EmpleadosController.class
 Models\Pagos.class
 Controllers\RecuperarContraseniaController.class
+Controllers\ActualizarContratosController$2.class
 Models\BitacoraAsistencia.class
 Controllers\IncapacidadesController.class
 Models\TipoDeduccion.class
@@ -57,6 +58,7 @@ Controllers\ActualizarIncapacidadesController.class
 Controllers\VacacionesController.class
 Controllers\AgregarVacacionesController$1.class
 Controllers\AgregarAsistenciaController$1.class
+MainApp\App$ControllerConsumer.class
 Models\Empleado.class
 Controllers\ActualizarVacacionesController.class
 Controllers\RegistroFamiliarController.class

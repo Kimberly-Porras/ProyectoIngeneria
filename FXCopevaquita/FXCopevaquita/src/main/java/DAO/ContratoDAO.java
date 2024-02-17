@@ -80,7 +80,7 @@ public class ContratoDAO {
         try {
 
             String sql = "UPDATE tbl_contrato SET cedula_empleado = ?, fechaInicio = ?, fechaFinal = ?, "
-                    + "fechaRegistro = ?, monto = ?, estado = ? , motivo = ? "
+                    + "fechaRegistro = ?, monto = ?, status = ? , motivo = ? "
                     + "WHERE id = ?;";
             
             ps = acceso.prepareStatement(sql);
