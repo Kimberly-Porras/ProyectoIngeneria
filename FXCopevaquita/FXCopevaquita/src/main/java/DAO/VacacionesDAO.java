@@ -55,7 +55,6 @@ public class VacacionesDAO {
                     + "(empleado, monto, fecha, status) "
                     + "VALUES (?,?,?,?);";
 
-            
             ps = acceso.prepareStatement(sql);
             ps.setObject(1, vacacion.getEmpleado());
             ps.setObject(2, vacacion.getMonto());
@@ -74,10 +73,10 @@ public class VacacionesDAO {
     public boolean actualizarVacacion(Vacaciones vacacion) {
         try {
 
-            String sql = "UPDATE tbl_vacaciones"
+            String sql = "UPDATE tbl_vacaciones "
                     + "SET empleado = ?, monto = ?, fecha = ?, status = ?"
                     + " WHERE id = ?;";
-          
+
             ps = acceso.prepareStatement(sql);
             ps.setObject(1, vacacion.getEmpleado());
             ps.setObject(2, vacacion.getMonto());
@@ -92,7 +91,7 @@ public class VacacionesDAO {
             return false;
         }
     }
-    
+
     public List<Vacaciones> obtenerListaVacacionesPorCedulaEmpleado(String cedulaEmpleado) {
         Vacaciones vacaciones;
         List<Vacaciones> lista = new ArrayList<>();
@@ -109,9 +108,10 @@ public class VacacionesDAO {
             while (rs.next()) {
                 vacaciones = new Vacaciones();
                 vacaciones.setId(rs.getInt(1));
-                vacaciones.setFecha(rs.getDate(2));
+                vacaciones.setEmpleado(rs.getString(2));
                 vacaciones.setMonto(rs.getDouble(3));
-                vacaciones.setStatus(rs.getBoolean(4));
+                vacaciones.setFecha(rs.getDate(4));
+                vacaciones.setStatus(rs.getBoolean(5));
                 lista.add(vacaciones);
             }
         } catch (Exception e) {

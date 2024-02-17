@@ -183,15 +183,11 @@ public class ActualizarRegistroFamiliarController implements Initializable {
         txtContactoEmergencia.setText("");
         cbxSexo.setValue("");
         cbEstadoEmpleado.setSelected(parentezco.isStatus());
+        dpFechaNacimiento.setValue(null);
     }
-    
-    private Empleado Get(String cedula) {
-        return ObservableEmpleado.filtered(x -> x.getCedula().equals(cedula)).get(0);
-    }
-    
+
     private void cargarCamposActualizar() {
         dpFechaNacimiento.setValue(parentezco.getFechaNacimiento().toLocalDate());
-        cbxFiltrarEmpleadoActualizar.setValue(Get(parentezco.getEmpleado()));
         txtCedula.setText(parentezco.getCedula());
         txtNombre.setText(parentezco.getNombre());
         txtApellidos.setText(parentezco.getApellidos()+ "");

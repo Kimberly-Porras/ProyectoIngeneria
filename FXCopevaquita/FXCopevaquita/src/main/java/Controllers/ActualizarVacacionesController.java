@@ -103,7 +103,7 @@ public class ActualizarVacacionesController implements Initializable {
                     new Vacaciones(
                             vacacion.getId(),
                             cbxFiltrarEmpleadoActualizar.getValue().getCedula(),
-                            Integer.parseInt(txtMonto.getText()),
+                            Double.parseDouble(txtMonto.getText()),
                             java.sql.Date.valueOf(dpFecha.getValue()),
                             cbEstadoAct.isSelected()));
 
@@ -136,14 +136,17 @@ public class ActualizarVacacionesController implements Initializable {
         dpFecha.setValue(LocalDate.now());
         txtMonto.setText("");
         cbEstadoAct.setSelected(vacacion.isStatus());
+        dpFecha.setValue(null);
     }
 
     
     private void FiltrarVacacionesPorCedulaEmpleado() {
         try {
             var empleado = cbxFiltrarEmpleadoActualizar.getValue();
+            
             if (empleado != null && !empleado.getCedula().isEmpty()) {
                 var lista = FXCollections.observableArrayList(daoVacaciones.obtenerListaVacacionesPorCedulaEmpleado(empleado.getCedula()));
+                System.out.println("lista: " + lista.size());
                 tblVacacionesActualizar.setItems(lista);
             }
         } catch (Exception ex) {
@@ -164,6 +167,7 @@ public class ActualizarVacacionesController implements Initializable {
     
     private void cargarVacaionesPorEmpleado() {
         vacacion = tblVacacionesActualizar.getSelectionModel().getSelectedItem();
+        
         if (vacacion != null && vacacion.getId() != 0) {
             cargarCamposActualizar();
         } else {

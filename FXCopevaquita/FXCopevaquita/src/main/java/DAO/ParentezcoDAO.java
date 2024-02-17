@@ -115,7 +115,7 @@ public class ParentezcoDAO {
         try {
             String sql = "SELECT cedula, nombre, apellidos, sexo, "
                     + "FechaNacimiento, status, parentezco, contactoEmergencia FROM tbl_parentezco "
-                    + "WHERE empleado = ?;";
+                    + "WHERE empleado = ?";
 
             ps = acceso.prepareStatement(sql);
             ps.setObject(1, cedulaEmpleado);
