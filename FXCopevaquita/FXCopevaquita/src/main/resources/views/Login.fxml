@@ -88,7 +88,7 @@
                               <Font size="18.0" />
                            </font>
                         </PasswordField>
-                        <Label fx:id="olvidoContrasena" onMousePressed="#MPressedOlvidoContrasena" prefHeight="26.0" prefWidth="225.0" text="¿Olvidó su contraseña?" textFill="#030303">
+                        <Label fx:id="olvidoContrasena" onMouseClicked="#onOlvidoContrasenia" onMousePressed="#MPressedOlvidoContrasena" prefHeight="26.0" prefWidth="225.0" text="¿Olvidó su contraseña?" textFill="#030303">
                            <font>
                               <Font name="Lucida Bright" size="20.0" />
                            </font>

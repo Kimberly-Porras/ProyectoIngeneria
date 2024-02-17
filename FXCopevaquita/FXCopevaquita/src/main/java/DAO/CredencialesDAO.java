@@ -70,20 +70,22 @@ public class CredencialesDAO {
 //
 //    }
 //    
-//    public boolean actualizarContrasenia(String correo, String nuevaContraseña) {
-//    try {
-//        String sql = "UPDATE tbl_credencial SET contrasenna = ? WHERE correo = ?;";
-//        ps = acceso.prepareStatement(sql);
-//        ps.setString(1, nuevaContraseña);
-//        ps.setString(2, correo);
-//
-//        int filasAfectadas = ps.executeUpdate();
-//        return filasAfectadas > 0;
-//    } catch (Exception e) {
-//        e.printStackTrace();
-//        return false;
-//    }
-//}
+    
+    public boolean actualizarContrasenia(String correo, String nuevaContraseña) {
+    try {
+        String sql = "UPDATE tbl_credencial SET contrasenia = ? WHERE correo = ?";
+        ps = acceso.prepareStatement(sql);
+        ps.setString(1, nuevaContraseña);
+        ps.setString(2, correo);
+
+        int filasAfectadas = ps.executeUpdate();
+        return filasAfectadas > 0;
+    } catch (Exception e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+    
 //
 //
 //    public boolean actualizarCredencial(Credencial credencial) {

@@ -15,6 +15,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import DAO.CredencialesDAO;
+import Helpers.OpenWindowsHandler;
 import MainApp.App;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -68,6 +69,12 @@ public class LoginController implements Initializable {
                 return;
             }
         }
+    }
+
+    @FXML
+    private void onOlvidoContrasenia(MouseEvent event) {
+        // abrir nueva vista...
+        OpenWindowsHandler.AbrirVentanaRecuperarContrasenia("/views/RecuperarContrasenia");
     }
 
 }

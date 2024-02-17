@@ -17,6 +17,24 @@ import javafx.stage.Stage;
  */
 public class OpenWindowsHandler {
 
+    public static void AbrirVentanaRecuperarContrasenia(String fxml) {
+        try {
+            var second = App.loadFXML(fxml);
+
+            Scene secondScene = new Scene(second);
+            Stage secondStage = new Stage();
+
+            secondStage.setTitle("Recuperación de contraseña");
+            secondStage.initModality(Modality.WINDOW_MODAL);
+            secondStage.initOwner(App.scene.getWindow());
+            secondStage.setScene(secondScene);
+
+            secondStage.showAndWait();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     public static void AbrirVentanaActividades(String fxml) {
         try {
             var second = App.loadFXML(fxml);
@@ -106,7 +124,7 @@ public class OpenWindowsHandler {
             ex.printStackTrace();
         }
     }
-    
+
     public static void AbrirVentanaAgregarRegistroFamiliar(String fxml) {
         try {
             var second = App.loadFXML(fxml);
@@ -124,7 +142,7 @@ public class OpenWindowsHandler {
             ex.printStackTrace();
         }
     }
-    
+
     public static void AbrirVentanaActualizarRegistroFamiliar(String fxml) {
         try {
             var second = App.loadFXML(fxml);
@@ -250,7 +268,7 @@ public class OpenWindowsHandler {
             ex.printStackTrace();
         }
     }
-    
+
     public static void AbrirVentanaAgregarVacaciones(String fxml) {
         try {
             var second = App.loadFXML(fxml);
@@ -268,7 +286,7 @@ public class OpenWindowsHandler {
             ex.printStackTrace();
         }
     }
-    
+
     public static void AbrirVentanaActualizarVacaciones(String fxml) {
         try {
             var second = App.loadFXML(fxml);
@@ -286,7 +304,7 @@ public class OpenWindowsHandler {
             ex.printStackTrace();
         }
     }
-    
+
     public static void AbrirVentanaAgregarIncapacidades(String fxml) {
         try {
             var second = App.loadFXML(fxml);
@@ -304,7 +322,7 @@ public class OpenWindowsHandler {
             ex.printStackTrace();
         }
     }
-    
+
     public static void AbrirVentanaActualizarIncapacidades(String fxml) {
         try {
             var second = App.loadFXML(fxml);
@@ -322,7 +340,7 @@ public class OpenWindowsHandler {
             ex.printStackTrace();
         }
     }
-    
+
     public static void AbrirVentanaAgregarBitacoraEmpleado(String fxml) {
         try {
             var second = App.loadFXML(fxml);
@@ -340,7 +358,7 @@ public class OpenWindowsHandler {
             ex.printStackTrace();
         }
     }
-    
+
     public static void AbrirVentanaActualizarBitacoraEmpleado(String fxml) {
         try {
             var second = App.loadFXML(fxml);
@@ -358,7 +376,7 @@ public class OpenWindowsHandler {
             ex.printStackTrace();
         }
     }
-    
+
     public static void AbrirVentanaAgregarBitacoraSocio(String fxml) {
         try {
             var second = App.loadFXML(fxml);
@@ -376,7 +394,7 @@ public class OpenWindowsHandler {
             ex.printStackTrace();
         }
     }
-    
+
     public static void AbrirVentanaActualizarBitacoraSocio(String fxml) {
         try {
             var second = App.loadFXML(fxml);
@@ -394,7 +412,7 @@ public class OpenWindowsHandler {
             ex.printStackTrace();
         }
     }
-    
+
     public static void AbrirVentanaAgregarBitaAsistencia(String fxml) {
         try {
             var second = App.loadFXML(fxml);

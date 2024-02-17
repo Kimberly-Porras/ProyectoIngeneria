@@ -14,6 +14,7 @@ public class Credencial {
     private int id;
     private String empleado ;
     private String usuario;
+    private String correo;
     private String contrasenia;
     private boolean status;
 
@@ -72,4 +73,13 @@ public class Credencial {
         this.status = status;
     }
 
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    
 }
