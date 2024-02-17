@@ -10,7 +10,6 @@ import Helpers.OpenWindowsHandler;
 import Models.Empleado;
 import Models.Incapacidad;
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import javafx.beans.property.SimpleStringProperty;
@@ -25,7 +24,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
