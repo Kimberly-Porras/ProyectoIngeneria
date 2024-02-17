@@ -38,6 +38,11 @@
                         <Font name="Lucida Bright" size="17.0" />
                      </font>
                   </Button>
+                  <Button mnemonicParsing="false" onAction="#OnRefrescar" prefHeight="37.0" prefWidth="158.0" style="-fx-background-color: transparent; -fx-border-color: #a9e9a4; -fx-border-radius: 5px;" text="Refrescar">
+                     <font>
+                        <Font name="Lucida Bright" size="17.0" />
+                     </font>
+                  </Button>
                </children>
                <padding>
                   <Insets top="5.0" />

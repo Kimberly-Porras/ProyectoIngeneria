@@ -58,6 +58,7 @@ Controllers\ActualizarIncapacidadesController.class
 Controllers\VacacionesController.class
 Controllers\AgregarVacacionesController$1.class
 Controllers\AgregarAsistenciaController$1.class
+Controllers\ActualizarBitacoraEmpleadoController$1.class
 MainApp\App$ControllerConsumer.class
 Models\Empleado.class
 Controllers\ActualizarVacacionesController.class
@@ -78,6 +79,7 @@ DAO\BitacoraSocioDAO.class
 Controllers\AgregarBitacoraEmpleadoController$1.class
 Controllers\AgregarContratosController.class
 Controllers\BitacoraEmpleadoController.class
+Controllers\ActualizarBitacoraEmpleadoController$2.class
 Models\PlanillaSocios.class
 Controllers\AgregarDeduccionesController.class
 Controllers\ActualizarDeduccionesController.class
@@ -92,6 +94,7 @@ Clases\userSession\AppUser.class
 Controllers\ActualizarIncapacidadesController$1.class
 Controllers\AgregarContratosController$1.class
 DAO\BitacoraAsistenciaDAO.class
+Controllers\ActualizarBitacoraEmpleadoController$3.class
 Controllers\AgregarBitacoraSocioController.class
 DAO\BitacoraEmpleadoDAO.class
 Controllers\AgregarAsistenciaController.class

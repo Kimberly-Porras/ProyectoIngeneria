@@ -12,7 +12,6 @@ import Models.Actividad;
 import Models.Contrato;
 import Models.Empleado;
 import java.net.URL;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;

@@ -50,6 +50,38 @@ public class BitacoraEmpleadoDAO {
         return lista;
     }
     
+    
+    public List<BitacoraEmpleado> obtenerListaBitacoraPorCedulaEmpleado(String cedula) {
+        BitacoraEmpleado bitacoraEmpleado;
+        List<BitacoraEmpleado> lista = new ArrayList<>();
+
+        try {
+            String sql = "SELECT id, empleado, actividad, area, fecha, precio, cantidad,   "
+                    + "status FROM tbl_bitacora_empleado where empleado = ?;";
+            
+            ps = acceso.prepareStatement(sql);
+            ps.setString(1, cedula);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                bitacoraEmpleado = new BitacoraEmpleado();
+                bitacoraEmpleado.setId(rs.getInt(1));
+                bitacoraEmpleado.setEmpleado(rs.getString(2));
+                bitacoraEmpleado.setActividad(rs.getInt(3));
+                bitacoraEmpleado.setArea(rs.getInt(4));
+                bitacoraEmpleado.setFecha(rs.getDate(5));
+                bitacoraEmpleado.setPrecio(rs.getDouble(6));
+                bitacoraEmpleado.setCantidad(rs.getInt(7));
+                bitacoraEmpleado.setStatus(rs.getBoolean(8));
+                lista.add(bitacoraEmpleado);
+            }
+        } catch (Exception e) {
+            System.out.println("" + e.toString());
+        }
+
+        return lista;
+    }
+    
     public boolean insertarBitacoraEmpleado(BitacoraEmpleado bitacoraEmpleado) {
         try {
             String sql = "INSERT INTO tbl_bitacora_empleado "
@@ -88,7 +120,7 @@ public class BitacoraEmpleadoDAO {
             ps.setObject(4, bitacoraEmpleado.getFecha());
             ps.setObject(5, bitacoraEmpleado.getPrecio());
             ps.setObject(6, bitacoraEmpleado.getCantidad());
-            ps.setObject(7, bitacoraEmpleado.isStatus());
+            ps.setObject(7, bitacoraEmpleado.isStatus() ? 1: 0);
             ps.setObject(8, bitacoraEmpleado.getId());
 
             ps.executeUpdate();

@@ -13,7 +13,6 @@ import Models.BitacoraEmpleado;
 import Models.Empleado;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.function.Predicate;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -32,7 +31,6 @@ import javafx.scene.input.KeyEvent;
  * @author User
  */
 public class BitacoraEmpleadoController implements Initializable {
-
     @FXML
     private TextField txtFiltrarEmpleado;
     @FXML
@@ -77,6 +75,7 @@ public class BitacoraEmpleadoController implements Initializable {
             }
             return new SimpleStringProperty(empleado.getNombre() + " " + empleado.getApellidos());
         });
+        
         colFechaRegistro.setCellValueFactory(new PropertyValueFactory<>("fecha"));
         colActividades.setCellValueFactory(cellData -> {
             var tipo = actividadService.obtenerPorId(cellData.getValue().getActividad());
@@ -85,6 +84,7 @@ public class BitacoraEmpleadoController implements Initializable {
             }
             return new SimpleStringProperty(tipo.getNombre());
         });
+        
        colAreas.setCellValueFactory(cellData -> {
             var tipo = areaService.obtenerPorId(cellData.getValue().getArea());
             if (tipo == null) {
@@ -92,6 +92,7 @@ public class BitacoraEmpleadoController implements Initializable {
             }
             return new SimpleStringProperty(tipo.getNombre());
         });
+       
         colCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
         colPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
         colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isStatus()? "Activo" : "Inactivo"));
@@ -102,24 +103,6 @@ public class BitacoraEmpleadoController implements Initializable {
                 = FXCollections.observableArrayList(new BitacoraEmpleadoDAO().obtenerListaBitacoraEmpleado());
         tblListarReporteEmpleado.setItems(ObservableContrato);
     }
-    
-//    private void filtrarReporteDiario() {
-//        if (txtFiltrarEmpleado.getText() != null && !txtFiltrarEmpleado.getText().trim().equals("")) {
-//            Predicate<BitacoraEmpleado> pReporte = x
-//                    -> x.getEmpleado().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
-//                    || x.g().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
-//                    || x.getNombreArea().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase());
-//            Predicate<Empleado> pEmpleado = x
-//                    -> x.getCedula().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
-//                    || x.getNombre().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
-//                    || x.getApellidos().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
-//                    || x.getNombreCompleto().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase());
-//            var listaTemporal = ObservableReporteDiario.filtered((x) -> pEmpleado.test(Get(x.getCedula_empleado())) || pReporte.test(x));
-//            tblListarReporteEmpleado.setItems(listaTemporal);
-//        } else {
-//            tblListarReporteEmpleado.setItems(ObservableReporteDiario);
-//        }
-//    }
     
     @FXML
     private void OnAgregar(ActionEvent event) {
@@ -133,10 +116,17 @@ public class BitacoraEmpleadoController implements Initializable {
 
     @FXML
     private void OnReportDaily(ActionEvent event) {
+        
     }
 
     @FXML
     private void PresionarEnter(KeyEvent event) {
+        
+    }
+
+    @FXML
+    private void OnRefrescar(ActionEvent event) {
+        cargarBitacoras();
     }
     
 }
