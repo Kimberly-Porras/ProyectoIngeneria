@@ -107,4 +107,36 @@ public class ParentezcoDAO {
             return false;
         }
     }
+    
+     public List<Parentezco> obtenerListaParentezcosPorCedulaEmpleado(String cedulaEmpleado) {
+        Parentezco parentezco;
+        List<Parentezco> lista = new ArrayList<>();
+
+        try {
+            String sql = "SELECT cedula, nombre, apellidos, sexo, "
+                    + "FechaNacimiento, status, parentezco, contactoEmergencia FROM tbl_parentezco "
+                    + "WHERE empleado = ?;";
+
+            ps = acceso.prepareStatement(sql);
+            ps.setObject(1, cedulaEmpleado);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                parentezco = new Parentezco();
+                parentezco.setCedula(rs.getString(1));
+                parentezco.setNombre(rs.getString(2));
+                parentezco.setApellidos(rs.getString(3));
+                parentezco.setSexo(rs.getString(4));
+                parentezco.setFechaNacimiento(rs.getDate(5));
+                parentezco.setStatus(rs.getBoolean(6));
+                parentezco.setParentezco(rs.getString(7));
+                parentezco.setContactoEmergencia(rs.getString(8));
+                lista.add(parentezco);
+            }
+        } catch (Exception e) {
+            System.out.println("" + e.toString());
+        }
+
+        return lista;
+    }
 }
