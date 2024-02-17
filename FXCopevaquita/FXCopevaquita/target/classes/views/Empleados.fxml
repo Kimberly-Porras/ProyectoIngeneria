@@ -52,7 +52,7 @@
                         <Font name="Lucida Bright" size="22.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtFiltrarEmpleado" onKeyPressed="#OnFiltrarEmpleado" prefHeight="28.0" prefWidth="515.0">
+                  <TextField fx:id="txtFiltrarEmpleado" onKeyReleased="#OnFiltrarEmpleado" prefHeight="28.0" prefWidth="515.0">
                      <font>
                         <Font size="17.0" />
                      </font>

@@ -76,16 +76,15 @@ public class EmpleadosController implements Initializable {
 
     public void cargarEmpleados(boolean status, boolean filtered) {
         if (filtered) {
-            var observableEmpleado
+            observableEmpleado
                     = FXCollections.observableArrayList(new EmpleadoDAO().obtenerListaEmpleados())
                             .filtered(empl -> empl.isStatus() == status);
             tblEmpleados.setItems(observableEmpleado);
         } else {
-            var observableEmpleado
+            observableEmpleado
                     = FXCollections.observableArrayList(new EmpleadoDAO().obtenerListaEmpleados());
             tblEmpleados.setItems(observableEmpleado);
         }
-
     }
 
     private void configurarElementos() {
@@ -114,20 +113,20 @@ public class EmpleadosController implements Initializable {
     }
 
     private void filtrarEmpleado() {
+        System.out.println("filtrando..." + txtFiltrarEmpleado.getText());
 
         if (txtFiltrarEmpleado.getText() != null && !txtFiltrarEmpleado.getText().trim().equals("")) {
-            Predicate<Empleado> predicate = x
-                    -> x.getNombre().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
-                    || x.getCedula().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
-                    || x.getApellidos().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
-                    || x.getNombreCompleto().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase());
-
-            var lista
-                    = FXCollections.observableArrayList(
-                            observableEmpleado.filtered(x -> predicate.test(x))
-                                    .stream().collect(Collectors.toList())
-                    );
+            System.out.println("los empleados..." + observableEmpleado.size());
+            
+            var lista = observableEmpleado.filtered(x -> {
+                System.out.println("filtrando...");
+                return x.getNombre().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
+                        || x.getCedula().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
+                        || x.getApellidos().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
+                        || x.getNombreCompleto().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase());
+            });
             tblEmpleados.setItems(lista);
+
         } else {
             cargarEmpleados(true, false);
         }
