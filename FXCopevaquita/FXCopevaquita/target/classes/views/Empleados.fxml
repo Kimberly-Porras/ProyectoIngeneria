@@ -34,6 +34,11 @@
                         <Font name="Lucida Bright" size="17.0" />
                      </font>
                   </Button>
+                  <Button mnemonicParsing="false" onAction="#OnExportar" prefHeight="37.0" prefWidth="122.0" style="-fx-background-color: trasnparent; -fx-border-color: lightblue; -fx-border-radius: 5px;" text="exportar">
+                     <font>
+                        <Font name="Lucida Bright" size="17.0" />
+                     </font>
+                  </Button>
                   <Button mnemonicParsing="false" onAction="#OnRefrescar" prefHeight="37.0" prefWidth="139.0" style="-fx-background-color: transparent; -fx-border-color: #a9e9a4; -fx-border-radius: 5px;" text="Refrescar">
                      <font>
                         <Font name="Lucida Bright" size="17.0" />

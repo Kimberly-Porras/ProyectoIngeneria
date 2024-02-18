@@ -17,6 +17,7 @@ DAO\CredencialesDAO.class
 Controllers\ActualizarVacacionesController$1.class
 Controllers\LoginController.class
 Controllers\DeduccionesController.class
+Gmail\MailSender$1.class
 Controllers\ActualizarRegistroFamiliarController.class
 Models\Vacaciones.class
 module-info.class
@@ -38,6 +39,7 @@ Models\BitacoraEmpleado.class
 Controllers\EmpleadosController.class
 Models\Pagos.class
 Controllers\RecuperarContraseniaController.class
+Gmail\MailSender.class
 Controllers\ActualizarContratosController$2.class
 Models\BitacoraAsistencia.class
 Controllers\IncapacidadesController.class
@@ -53,6 +55,7 @@ Controllers\ActualizarRegistroFamiliarController$1.class
 Models\BitacoraSocio.class
 Controllers\GenerarPagosController.class
 DAO\AreaDAO.class
+Gmail\RandomCodeGenerator.class
 Models\Area.class
 Controllers\ActualizarIncapacidadesController.class
 Controllers\VacacionesController.class
@@ -73,7 +76,6 @@ DAO\ContratoDAO.class
 DAO\DeduccionesDAO.class
 Layout\LayoutController.class
 Controllers\SalarioFijoController.class
-Clases\Mail\MailSender.class
 Controllers\AsistenciaController.class
 DAO\BitacoraSocioDAO.class
 Controllers\AgregarBitacoraEmpleadoController$1.class
@@ -85,14 +87,14 @@ Controllers\AgregarDeduccionesController.class
 Controllers\ActualizarDeduccionesController.class
 Controllers\AgregarIncapacidadesController.class
 Controllers\AgregarBitacoraEmpleadoController$2.class
-Clases\Mail\RandomCodeGenerator.class
-Clases\Mail\MailSender$1.class
+JasperReports\JAppReport.class
 Models\Incapacidad.class
 DAO\TipoDeduccionDAO.class
 Models\Abono.class
 Clases\userSession\AppUser.class
 Controllers\ActualizarIncapacidadesController$1.class
 Controllers\AgregarContratosController$1.class
+JasperReports\JReportEmpleados.class
 DAO\BitacoraAsistenciaDAO.class
 Controllers\ActualizarBitacoraEmpleadoController$3.class
 Controllers\AgregarBitacoraSocioController.class

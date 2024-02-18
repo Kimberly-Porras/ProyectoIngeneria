@@ -5,7 +5,7 @@
 package Controllers;
 
 import Alertas.MensajePersonalizado;
-import Clases.Mail.MailSender;
+import Gmail.MailSender;
 import DAO.CredencialesDAO;
 import java.io.IOException;
 import java.net.URL;

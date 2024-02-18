@@ -1,6 +1,6 @@
 package MainApp;
 
-import Clases.Mail.RandomCodeGenerator;
+import Gmail.RandomCodeGenerator;
 import Clases.userSession.AppUser;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

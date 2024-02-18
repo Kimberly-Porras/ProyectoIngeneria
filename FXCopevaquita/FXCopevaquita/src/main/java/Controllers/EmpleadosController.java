@@ -19,6 +19,9 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.scene.control.cell.PropertyValueFactory;
 import DAO.EmpleadoDAO;
+import Database.DatabaseConnection;
+import JasperReports.JAppReport;
+import JasperReports.JReportEmpleados;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import javafx.collections.ObservableList;
@@ -150,5 +153,14 @@ public class EmpleadosController implements Initializable {
     @FXML
     private void OnRefrescar(ActionEvent event) {
         cargarEmpleados(true, false);
+    }
+
+    @FXML
+    private void OnExportar(ActionEvent event) {
+        var report = new JReportEmpleados();
+        var jreport = report.getTodosLosEmpleados();
+        
+        JAppReport.getReport(DatabaseConnection.getConnection(), null, jreport);
+        JAppReport.showReport();
     }
 }

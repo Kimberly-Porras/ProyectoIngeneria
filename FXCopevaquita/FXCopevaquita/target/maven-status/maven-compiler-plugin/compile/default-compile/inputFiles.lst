@@ -26,6 +26,7 @@ C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaq
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\ActualizarIncapacidadesController.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\Credencial.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\DAO\DeduccionesDAO.java
+C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\JasperReports\JReportEmpleados.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\ContratosController.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\PorcentajeRebajos.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\DAO\BitacoraEmpleadoDAO.java
@@ -34,9 +35,11 @@ C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaq
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\BitacoraEmpleado.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\BitacoraSocio.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\ActualizarDeduccionesController.java
+C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\JasperReports\JAppReport.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\AbonoDeduccionesController.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\AgregarContratosController.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\PagoIncapacidad.java
+C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Gmail\RandomCodeGenerator.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\RecuperarContraseniaController.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\BitacoraSocioController.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\DeduccionesController.java
@@ -52,13 +55,12 @@ C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaq
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\AreasController.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\AgregarRegistroFamiliarController.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\DAO\ContratoDAO.java
+C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Gmail\MailSender.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\AgregarBitacoraEmpleadoController.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\module-info.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\TipoDeduccionesController.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\RegistroFamiliarController.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\BitacoraAsistencia.java
-C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Clases\Mail\MailSender.java
-C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Clases\Mail\RandomCodeGenerator.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\floatingWindows\OpenSecondViewController.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\AgregarEmpleadoController.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\AgregarVacacionesController.java
