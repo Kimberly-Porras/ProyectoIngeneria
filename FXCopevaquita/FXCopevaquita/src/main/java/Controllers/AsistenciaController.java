@@ -5,6 +5,7 @@
 package Controllers;
 
 import DAO.BitacoraAsistenciaDAO;
+import DAO.EmpleadoDAO;
 import Helpers.OpenWindowsHandler;
 import Models.BitacoraAsistencia;
 import Models.Empleado;
@@ -60,8 +61,16 @@ public class AsistenciaController implements Initializable {
     }
 
     public void configurar() {
-        colCedula.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmpleado()));
-        colNombre.setCellValueFactory(cellData -> new SimpleStringProperty(GetNombreCompleto(cellData.getValue().getEmpleado())));
+        colCedula.setCellValueFactory(new PropertyValueFactory<>("empleado"));
+        colNombre.setCellValueFactory(cellData -> {
+            var empleado = new EmpleadoDAO().obtenerEmpleadoPorCedula(cellData.getValue().getEmpleado());
+            if (empleado == null) {
+                return new SimpleStringProperty("No disponible");
+            }
+            return new SimpleStringProperty(empleado.getNombreCompleto());
+        });
+//        colCedula.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmpleado()));
+//        colNombre.setCellValueFactory(cellData -> new SimpleStringProperty(GetNombreCompleto(cellData.getValue().getEmpleado())));
         colFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
         colPresente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isEstaPresente() ? "Presente" : "Ausente"));
         colJustifica.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isJustifica()? "Justificada" : "Sin justificar"));
