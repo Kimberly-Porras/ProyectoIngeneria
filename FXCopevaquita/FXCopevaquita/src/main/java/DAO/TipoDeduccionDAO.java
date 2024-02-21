@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -101,5 +102,29 @@ public class TipoDeduccionDAO {
             System.out.println("" + e.toString());
             return false;
         }
+    }
+    
+    public List<TipoDeduccion> obtenerListaTipoDeduccion() {
+        List<TipoDeduccion> listaTipoDeduccion = new ArrayList<>();
+
+        try {
+            String sql = "SELECT id, nombre, status  "
+                    + "FROM tbl_tipo_deduccion;";
+          
+            ps = acceso.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                TipoDeduccion area = new TipoDeduccion();
+                area.setId(rs.getInt(1));
+                area.setNombre(rs.getString(2));
+                area.setStatus(rs.getBoolean(3));
+                listaTipoDeduccion.add(area);
+            }
+        } catch (Exception e) {
+            System.out.println("" + e.toString());
+        }
+
+        return listaTipoDeduccion;
     }
 }

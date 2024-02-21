@@ -116,13 +116,10 @@ public class EmpleadosController implements Initializable {
     }
 
     private void filtrarEmpleado() {
-        System.out.println("filtrando..." + txtFiltrarEmpleado.getText());
-
         if (txtFiltrarEmpleado.getText() != null && !txtFiltrarEmpleado.getText().trim().equals("")) {
-            System.out.println("los empleados..." + observableEmpleado.size());
             
             var lista = observableEmpleado.filtered(x -> {
-                System.out.println("filtrando...");
+                
                 return x.getNombre().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
                         || x.getCedula().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
                         || x.getApellidos().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
