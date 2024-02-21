@@ -9,7 +9,6 @@ import Helpers.OpenWindowsHandler;
 import Models.Deduccion;
 import Models.Empleado;
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import javafx.beans.property.SimpleStringProperty;
@@ -25,6 +24,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import DAO.EmpleadoDAO;
 import DAO.TipoDeduccionDAO;
+import javafx.scene.control.ComboBox;
 
 /**
  * FXML Controller class
@@ -51,6 +51,8 @@ public class DeduccionesController implements Initializable {
     private TableColumn<Deduccion, String> colMonto;
     @FXML
     private TableColumn<Deduccion, String> colPendiente;
+    @FXML
+    private ComboBox<String> cbx_status;
 
     final private EmpleadoDAO empleadoService = new EmpleadoDAO();
     final private TipoDeduccionDAO tipoDeduccionService = new TipoDeduccionDAO();
@@ -60,19 +62,15 @@ public class DeduccionesController implements Initializable {
      */
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
     ObservableList<Deduccion> ObservableDeduccion = FXCollections.observableArrayList();
+    ObservableList<String> observableStatus = FXCollections.observableArrayList("Pendiente", "Cancelado");
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         configurar();
-        cargarDeducciones();
+        cargarDeducciones(true, false);
     }
 
     public void configurar() {
-//        colCedula.setCellValueFactory(cellData -> {
-//            var empleado = empleadoService.obtenerEmpleadoPorCedula(cellData.getValue().getEmpleado());
-//            return new SimpleStringProperty("hola!");
-//        });
-//        
         colCedula.setCellValueFactory(new PropertyValueFactory<>("empleado"));
 
         colNombre.setCellValueFactory(cellData -> {
@@ -94,20 +92,28 @@ public class DeduccionesController implements Initializable {
         colPendiente.setCellValueFactory(new PropertyValueFactory<>("pendiente"));
         colCuota.setCellValueFactory(new PropertyValueFactory<>("cuota"));
         colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isStatus() ? "Activo" : "Inactivo"));
+
+        cbx_status.setItems(observableStatus);
+        cbx_status.setOnAction(event -> {
+            var value = cbx_status.getValue();
+            if (value.equals("Pendiente")) {
+                cargarDeducciones(true, true);
+            } else {
+                cargarDeducciones(false, true);
+            }
+        });
     }
 
-    private String GetNombreCompleto(String cedula) {
-        Optional<Empleado> empleadoOptional = ObservableEmpleado.stream()
-                .filter(x -> x.getCedula().equals(cedula))
-                .findFirst();
-
-        return empleadoOptional.map(Empleado::getNombreCompleto).orElse("");
-    }
-
-    public void cargarDeducciones() {
+    public void cargarDeducciones(boolean status, boolean filtro) {
+        if (filtro){
         var ObservableIncapacidad
+                    = FXCollections.observableArrayList(new DeduccionesDAO().obtenerListaDeduccion())
+                            .filtered(empl -> empl.isStatus() == status);
+            tblDeduccionesEmpleados.setItems(ObservableIncapacidad);
+        }
+        else{var ObservableIncapacidad
                 = FXCollections.observableArrayList(new DeduccionesDAO().obtenerListaDeduccion());
-        tblDeduccionesEmpleados.setItems(ObservableIncapacidad);
+        tblDeduccionesEmpleados.setItems(ObservableIncapacidad);}
     }
 
     private void filtrarDeduccion() {
@@ -123,7 +129,7 @@ public class DeduccionesController implements Initializable {
             var listaTemporal = ObservableDeduccion.filtered((x) -> pEmpleado.test(Get(x.getEmpleado())) || pReporte.test(x));
             tblDeduccionesEmpleados.setItems(listaTemporal);
         } else {
-            tblDeduccionesEmpleados.setItems(ObservableDeduccion);
+            cargarDeducciones(true, false);
         }
     }
 
@@ -151,4 +157,8 @@ public class DeduccionesController implements Initializable {
         filtrarDeduccion();
     }
 
+    @FXML
+    private void OnRefrescar(ActionEvent event) {
+        cargarDeducciones(true, false);
+    }
 }
