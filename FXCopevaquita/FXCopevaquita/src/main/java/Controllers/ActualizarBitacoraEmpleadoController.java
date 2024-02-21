@@ -112,7 +112,7 @@ public class ActualizarBitacoraEmpleadoController implements Initializable {
 
         colCantidadActualizar.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
         colPrecioActualizar.setCellValueFactory(new PropertyValueFactory<>("precio"));
-        colEstadoActualizar.setCellValueFactory(new PropertyValueFactory<>("status"));
+        colEstadoActualizar.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isStatus() ? "Pendiente" : "Cancelado"));
         colFechaRegistroActualizar.setCellValueFactory(new PropertyValueFactory<>("fecha"));
 
         // LLENANDO EL CBX
@@ -185,41 +185,8 @@ public class ActualizarBitacoraEmpleadoController implements Initializable {
                 return firstMatch.orElse(null); // Devuelve el primer empleado encontrado o null si no se encontró ninguna coincidencia.
             }
         });
-
-//        ObservableActividad = FXCollections.observableArrayList(actividadService.obtenerListaActividades());
-//        cbxActividades.setItems(ObservableActividad);
-//        cbxActividades.setConverter(new StringConverter<Actividad>() {
-//            @Override
-//            public String toString(Actividad t) {
-//                if (t == null) {
-//                    return "No hay datos"; // o cualquier otro valor predeterminado que desees
-//                }
-//                return t.getNombre();
-//            }
-//
-//            @Override
-//            public Actividad fromString(String t) {
-//                if (t == null || t.isEmpty()) {
-//                    return null; // Manejar el caso de entrada vacía o nula
-//                }
-//                Predicate<String> find = (x) -> x != null && x.equals(t);
-//                Optional<Actividad> firstMatch = ObservableActividad.filtered(x -> find.test(x.getNombre())).stream().findFirst();
-//                return firstMatch.orElse(null); // Devuelve el primer empleado encontrado o null si no se encontró ninguna coincidencia.
-//            }
-//        });
     }
 
-//   private void FiltrarContratoPorCedulaEmpleado() {
-//        try {
-//            var empleado = cbxFiltrarEmpleadoActualizar.getValue();
-//            if (empleado != null && !empleado.getCedula().isEmpty()) {
-//                var lista = FXCollections.observableArrayList(daoContrato.obtenerListaContratoPorCedulaEmpleado(empleado.getCedula()));
-//                tblContratoAct.setItems(lista);
-//            }
-//        } catch (Exception ex) {
-//            MensajePersonalizado.Ver("Error", "Error al buscar las vacaciones del empleado, más información: " + ex.getMessage(), Alert.AlertType.ERROR);
-//        }
-//    }
     @FXML
     private void FiltrarEmpleado(ActionEvent event) {
         try {
@@ -238,7 +205,7 @@ public class ActualizarBitacoraEmpleadoController implements Initializable {
         txtCantidadAct.setText(bitacora.getCantidad() + "");
         txtPrecioAct.setText(bitacora.getPrecio() + "");
         dpFecharegistroAct.setValue(bitacora.getFecha().toLocalDate());
-        
+
         cbEstadoAct.setSelected(bitacora.isStatus());
 
         var actividad = actividadService.obtenerPorId(bitacora.getActividad());
