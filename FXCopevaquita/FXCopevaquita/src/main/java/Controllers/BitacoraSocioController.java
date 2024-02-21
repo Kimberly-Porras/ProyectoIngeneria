@@ -5,6 +5,7 @@
 package Controllers;
 
 import DAO.BitacoraSocioDAO;
+import DAO.EmpleadoDAO;
 import Helpers.OpenWindowsHandler;
 import Models.BitacoraSocio;
 import Models.Empleado;
@@ -18,6 +19,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -45,9 +47,13 @@ public class BitacoraSocioController implements Initializable {
     private TableColumn<BitacoraSocio, String> colDescripcion;
     @FXML
     private TableColumn<BitacoraSocio, String> colEstado;
-    
+    @FXML
+    private ComboBox<String> cbx_status;
+
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
     ObservableList<BitacoraSocio> ObservableBitacoraSocio = FXCollections.observableArrayList();
+    final private EmpleadoDAO empleadoService = new EmpleadoDAO();
+    ObservableList<String> observableStatus = FXCollections.observableArrayList("Activo", "Inactivo");
 
     /**
      * Initializes the controller class.
@@ -55,25 +61,34 @@ public class BitacoraSocioController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Configurar();
-        cargarBitacoraSocio();
-        
-    }    
-    
+        cargarBitacoraSocio(true, false);
+
+    }
+
     private void Configurar() {
         colCedula.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCedula_empleado()));
-        colNombre.setCellValueFactory(cellData -> new SimpleStringProperty(GetNombreCompleto(cellData.getValue().getCedula_empleado())));
+        colNombre.setCellValueFactory(cellData -> {
+            var empleado = empleadoService.obtenerEmpleadoPorCedula(cellData.getValue().getCedulaEmpleado());
+            if (empleado == null) {
+                return new SimpleStringProperty("NO DISPONIBLE");
+            }
+            return new SimpleStringProperty(empleado.getNombre() + " " + empleado.getApellidos());
+        });
         colHoras.setCellValueFactory(new PropertyValueFactory<>("horas"));
         colDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
-        colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isStatus() ? "Activo" : "Inactivo"));
-    }
-    private String GetNombreCompleto(String cedula) {
-        Optional<Empleado> empleadoOptional = ObservableEmpleado.stream()
-                .filter(x -> x.getCedula().equals(cedula))
-                .findFirst();
 
-        return empleadoOptional.map(Empleado::getNombreCompleto).orElse("");
+        colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isStatus() ? "Activo" : "Inactivo"));
+        cbx_status.setItems(observableStatus);
+        cbx_status.setOnAction(event -> {
+            var value = cbx_status.getValue();
+            if (value.equals("Activo")) {
+                cargarBitacoraSocio(true, true);
+            } else {
+                cargarBitacoraSocio(false, true);
+            }
+        });
     }
-    
+
     private void filtrarBitacoraSocio() {
         if (txtFiltrarEmpleado.getText() != null && !txtFiltrarEmpleado.getText().trim().equals("")) {
             Predicate<BitacoraSocio> pReporte = x
@@ -86,19 +101,28 @@ public class BitacoraSocioController implements Initializable {
             var listaTemporal = ObservableBitacoraSocio.filtered((x) -> pEmpleado.test(Get(x.getCedula_empleado())) || pReporte.test(x));
             tblListarReporteSocio.setItems(listaTemporal);
         } else {
-            tblListarReporteSocio.setItems(ObservableBitacoraSocio);
+            cargarBitacoraSocio(true, false);
         }
     }
-    public void cargarBitacoraSocio() {
-        var ObservableIncapacidad
-                = FXCollections.observableArrayList(new BitacoraSocioDAO().obtenerListaBitacoraSocio());
-        tblListarReporteSocio.setItems(ObservableIncapacidad);
+
+    public void cargarBitacoraSocio(boolean status, boolean filtro) {
+        if (filtro) {
+            var ObservableIncapacidad
+                    = FXCollections.observableArrayList(new BitacoraSocioDAO().obtenerListaBitacoraSocio())
+                            .filtered(empl -> empl.isStatus() == status);
+            tblListarReporteSocio.setItems(ObservableIncapacidad);
+        } else {
+            var ObservableIncapacidad
+                    = FXCollections.observableArrayList(new BitacoraSocioDAO().obtenerListaBitacoraSocio());
+            tblListarReporteSocio.setItems(ObservableIncapacidad);
+        }
     }
 
     private Empleado Get(String cedula) {
         return ObservableEmpleado.filtered(x -> x.getCedula().equals(cedula)).get(0);
     }
-        @FXML
+
+    @FXML
     private void OnAgregar(ActionEvent event) {
         OpenWindowsHandler.AbrirVentanaAgregarBitacoraSocio("/views/AgregarBitacoraSocio");
     }
@@ -116,5 +140,10 @@ public class BitacoraSocioController implements Initializable {
     private void PresionarEnter(KeyEvent event) {
         filtrarBitacoraSocio();
     }
-    
+
+    @FXML
+    private void OnRefrescar(ActionEvent event) {
+        cargarBitacoraSocio(true, false);
+    }
+
 }

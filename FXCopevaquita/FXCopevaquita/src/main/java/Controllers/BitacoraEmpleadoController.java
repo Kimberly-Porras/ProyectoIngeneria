@@ -31,6 +31,7 @@ import javafx.scene.input.KeyEvent;
  * @author User
  */
 public class BitacoraEmpleadoController implements Initializable {
+
     @FXML
     private TextField txtFiltrarEmpleado;
     @FXML
@@ -59,14 +60,14 @@ public class BitacoraEmpleadoController implements Initializable {
     final private ActividadDAO actividadService = new ActividadDAO();
     final private AreaDAO areaService = new AreaDAO();
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       configurar();
-       cargarBitacoras();
-    }    
+        configurar();
+        cargarBitacoras();
+    }
 
-    public void configurar(){
+    public void configurar() {
         colCedula.setCellValueFactory(new PropertyValueFactory<>("empleado"));
         colNombre.setCellValueFactory(cellData -> {
             var empleado = empleadoService.obtenerEmpleadoPorCedula(cellData.getValue().getEmpleado());
@@ -75,7 +76,7 @@ public class BitacoraEmpleadoController implements Initializable {
             }
             return new SimpleStringProperty(empleado.getNombre() + " " + empleado.getApellidos());
         });
-        
+
         colFechaRegistro.setCellValueFactory(new PropertyValueFactory<>("fecha"));
         colActividades.setCellValueFactory(cellData -> {
             var tipo = actividadService.obtenerPorId(cellData.getValue().getActividad());
@@ -84,26 +85,26 @@ public class BitacoraEmpleadoController implements Initializable {
             }
             return new SimpleStringProperty(tipo.getNombre());
         });
-        
-       colAreas.setCellValueFactory(cellData -> {
+
+        colAreas.setCellValueFactory(cellData -> {
             var tipo = areaService.obtenerPorId(cellData.getValue().getArea());
             if (tipo == null) {
                 return new SimpleStringProperty("NO DISPONIBLE");
             }
             return new SimpleStringProperty(tipo.getNombre());
         });
-       
+
         colCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
         colPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
-       colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isStatus() ? "Pendiente" : "Cancelado"));
+        colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isStatus() ? "Pendiente" : "Cancelado"));
     }
-    
+
     public void cargarBitacoras() {
         var ObservableContrato
                 = FXCollections.observableArrayList(new BitacoraEmpleadoDAO().obtenerListaBitacoraEmpleado());
         tblListarReporteEmpleado.setItems(ObservableContrato);
     }
-    
+
     @FXML
     private void OnAgregar(ActionEvent event) {
         OpenWindowsHandler.AbrirVentanaAgregarBitacoraEmpleado("/views/AgregarBitacoraEmpleado");
@@ -116,17 +117,17 @@ public class BitacoraEmpleadoController implements Initializable {
 
     @FXML
     private void OnReportDaily(ActionEvent event) {
-        
+
     }
 
     @FXML
     private void PresionarEnter(KeyEvent event) {
-        
+
     }
 
     @FXML
     private void OnRefrescar(ActionEvent event) {
         cargarBitacoras();
     }
-    
+
 }

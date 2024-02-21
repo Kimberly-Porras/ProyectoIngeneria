@@ -16,7 +16,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ActualizarBitacoraSocioController">
    <children>
       <VBox prefHeight="643.0" prefWidth="1181.0" spacing="20.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
@@ -47,8 +46,8 @@
                <children>
                   <TableView fx:id="tblReporteSociooActualizar" prefHeight="160.0" prefWidth="676.0">
                      <columns>
-                        <TableColumn fx:id="colCantidadHorasActualizar" prefWidth="194.0" text="Cantidad de horas" />
                         <TableColumn fx:id="colDescripcionActualizar" prefWidth="117.0" text="Descripción" />
+                        <TableColumn fx:id="colCantidadHorasActualizar" prefWidth="194.0" text="Cantidad de horas" />
                         <TableColumn fx:id="colEstadoActualizar" prefWidth="121.333251953125" text="Estado" />
                      </columns>
                      <columnResizePolicy>

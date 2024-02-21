@@ -47,10 +47,7 @@ public class BitacoraSocioDAO {
     public boolean actualizarBitacoraSocio(BitacoraSocio bitacoraSocio) {
         try {
 
-            String sql = "UPDATE tbl_bitacora_socio "
-                    + "SET cedula_empleado = ?, horas = ?,"
-                    + " status = ?, descripcion = ? "
-                    + "WHERE id = ?;";
+            String sql = "UPDATE tbl_bitacora_socio SET cedula_empleado = ?, horas = ?, status = ?, descripcion = ? WHERE id = ?;";
             
             ps = acceso.prepareStatement(sql);
             ps.setObject(1, bitacoraSocio.getCedula_empleado());
@@ -94,4 +91,32 @@ public class BitacoraSocioDAO {
         return lista;
     }
     
+     public List<BitacoraSocio> obtenerListaBitacoraSocioPorCedula( String cedulaEmpleado) {
+        BitacoraSocio bitacoraSocio;
+        List<BitacoraSocio> lista = new ArrayList<>();
+
+        try {
+            String sql = "SELECT id, cedula_empleado, horas, status, descripcion "
+                    + "FROM tbl_bitacora_socio "
+                    + "WHERE cedula_empleado = ?;";
+            
+            ps = acceso.prepareStatement(sql);
+            ps.setObject(1, cedulaEmpleado);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                bitacoraSocio = new BitacoraSocio();
+                bitacoraSocio.setId(rs.getInt(1));
+                bitacoraSocio.setCedula_empleado(rs.getString(2));
+                bitacoraSocio.setHoras(rs.getDouble(3));
+                bitacoraSocio.setStatus(rs.getBoolean(4));
+                bitacoraSocio.setDescripcion(rs.getString(5));
+                lista.add(bitacoraSocio);
+            }
+        } catch (Exception e) {
+            System.out.println("" + e.toString());
+        }
+
+        return lista;
+    }
 }

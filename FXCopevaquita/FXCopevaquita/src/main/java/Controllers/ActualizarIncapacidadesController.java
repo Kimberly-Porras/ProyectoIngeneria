@@ -155,6 +155,7 @@ public class ActualizarIncapacidadesController implements Initializable {
         txtMotivo.setText(incapacidad.getMotivo()+ "");
         cbEstado.setSelected(incapacidad.isStatus());
     }
+    
     private void limpiarCamposActualizar() {
          dpFecha.setValue(LocalDate.now());
         txtMonto.setText("");
@@ -195,6 +196,7 @@ public class ActualizarIncapacidadesController implements Initializable {
 
     @FXML
     private void onLimpiar(ActionEvent event) {
+        limpiarCamposActualizar();
     }
 
     @FXML
