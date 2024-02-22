@@ -98,4 +98,33 @@ public class DeduccionesDAO {
             return false;
         }
     }
+    
+    public List<Deduccion> obtenerListaDeduccionesPorCedulaEmpleado(String cedulaEmpleado) {
+        Deduccion deduccion;
+        List<Deduccion> lista = new ArrayList<>();
+
+        try {
+            String sql = "SELECT id, tipo, monto, cuota, pendiente, empleado, status FROM tbl_deduccion WHERE empleado = ?;"; 
+            
+            ps = acceso.prepareStatement(sql);
+            ps.setObject(1, cedulaEmpleado);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                deduccion = new Deduccion();
+                deduccion.setId(rs.getInt(1));
+                deduccion.setTipo(rs.getInt(2));
+                deduccion.setMonto(rs.getDouble(3));
+                deduccion.setCuota(rs.getDouble(4));
+                deduccion.setPendiente(rs.getDouble(5));
+                deduccion.setEmpleado(rs.getString(6));
+                deduccion.setStatus(rs.getBoolean(7));
+                lista.add(deduccion);
+            }
+        } catch (Exception e) {
+            System.out.println("" + e.toString());
+        }
+
+        return lista;
+    }
 }
