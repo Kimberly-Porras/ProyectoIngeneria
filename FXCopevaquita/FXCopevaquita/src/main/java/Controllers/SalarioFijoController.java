@@ -4,6 +4,7 @@
  */
 package Controllers;
 
+import DAO.EmpleadoDAO;
 import DAO.PlanillaSociosDAO;
 import Models.Empleado;
 import Models.PlanillaSocios;
@@ -59,8 +60,15 @@ public class SalarioFijoController implements Initializable {
     }    
 
     public void configurar() {
-        colCedula.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmpleado()));
-        colNombre.setCellValueFactory(cellData -> new SimpleStringProperty(GetNombreCompleto(cellData.getValue().getEmpleado())));
+        colCedula.setCellValueFactory(new PropertyValueFactory<>("empleado"));
+        colNombre.setCellValueFactory(cellData -> {
+            var empleado = new EmpleadoDAO().obtenerEmpleadoPorCedula(cellData.getValue().getEmpleado());
+            if (empleado == null) {
+                return new SimpleStringProperty("No disponible");
+            }
+            return new SimpleStringProperty(empleado.getNombreCompleto());
+        });
+//        
         colMonto.setCellValueFactory(new PropertyValueFactory<>("monto"));
         colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isStatus()? "Pendiente" : "Cancelado"));
     }
