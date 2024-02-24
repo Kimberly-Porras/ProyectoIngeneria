@@ -448,4 +448,40 @@ public class OpenWindowsHandler {
             ex.printStackTrace();
         }
     }
+     
+     public static void AbrirVentanaAgregarSalarioFijo(String fxml) {
+        try {
+            var second = App.loadFXML(fxml);
+
+            Scene secondScene = new Scene(second);
+            Stage secondStage = new Stage();
+
+            secondStage.setTitle("Agregar salarios fijos");
+            secondStage.initModality(Modality.WINDOW_MODAL);
+            secondStage.initOwner(App.scene.getWindow());
+            secondStage.setScene(secondScene);
+
+            secondStage.showAndWait();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+     public static void AbrirVentanaActualizarSalarioFijo(String fxml) {
+        try {
+            var second = App.loadFXML(fxml);
+
+            Scene secondScene = new Scene(second);
+            Stage secondStage = new Stage();
+
+            secondStage.setTitle("Actualizar salarios fijos");
+            secondStage.initModality(Modality.WINDOW_MODAL);
+            secondStage.initOwner(App.scene.getWindow());
+            secondStage.setScene(secondScene);
+
+            secondStage.showAndWait();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
 }
