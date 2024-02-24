@@ -88,4 +88,34 @@ public class BitacoraAsistenciaDAO {
             return false;
         }
     }
+    
+    public List<BitacoraAsistencia> obtenerListaAsietenciaPorCedulaEmpleado(String cedulaEmpleado) {
+        BitacoraAsistencia bitacoraAsistencia;
+        List<BitacoraAsistencia> lista = new ArrayList<>();
+
+        try {
+            String sql = "SELECT id, fecha, "
+                    + "estaPresente, justifica, empleado FROM tbl_bitacora_asistencia "
+                    + "WHERE empleado = ?;";
+
+            ps = acceso.prepareStatement(sql);
+            ps.setObject(1, cedulaEmpleado);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                bitacoraAsistencia = new BitacoraAsistencia();
+                bitacoraAsistencia.setId(rs.getInt(1));
+                bitacoraAsistencia.setFecha(rs.getDate(2));
+                bitacoraAsistencia.setEstaPresente(rs.getBoolean(3));
+                bitacoraAsistencia.setJustifica(rs.getBoolean(4));
+                bitacoraAsistencia.setEmpleado(rs.getString(5));
+                
+                lista.add(bitacoraAsistencia);
+            }
+        } catch (Exception e) {
+            System.out.println("" + e.toString());
+        }
+
+        return lista;
+    }
 }

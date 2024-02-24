@@ -114,9 +114,7 @@ public class AgregarAsistenciaController implements Initializable {
         if (cbxFiltrarEmpleadoAgre.getValue() != null
                 && !cbxFiltrarEmpleadoAgre.getValue().getNombre().trim().equals("")
                 && dpFecha.getValue() != null
-                && !dpFecha.getValue().format(DateTimeFormatter.ISO_DATE).trim().equals("")
-                && cbPresente.isSelected()
-                && cbJudtifica.isSelected()) {
+                && !dpFecha.getValue().format(DateTimeFormatter.ISO_DATE).trim().equals("")) {
             return true;
         } else {
             return false;

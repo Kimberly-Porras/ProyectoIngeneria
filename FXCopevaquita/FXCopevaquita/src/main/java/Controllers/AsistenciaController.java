@@ -12,13 +12,13 @@ import Models.Empleado;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.function.Predicate;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -52,6 +52,8 @@ public class AsistenciaController implements Initializable {
      */
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
     ObservableList<BitacoraAsistencia> ObservableAsistencia = FXCollections.observableArrayList();
+    
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -69,20 +71,12 @@ public class AsistenciaController implements Initializable {
             }
             return new SimpleStringProperty(empleado.getNombreCompleto());
         });
-//        colCedula.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmpleado()));
-//        colNombre.setCellValueFactory(cellData -> new SimpleStringProperty(GetNombreCompleto(cellData.getValue().getEmpleado())));
         colFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
         colPresente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isEstaPresente() ? "Presente" : "Ausente"));
         colJustifica.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isJustifica()? "Justificada" : "Sin justificar"));
     }
 
-    private String GetNombreCompleto(String cedula) {
-        Optional<Empleado> empleadoOptional = ObservableEmpleado.stream()
-                .filter(x -> x.getCedula().equals(cedula))
-                .findFirst();
 
-        return empleadoOptional.map(Empleado::getNombreCompleto).orElse("");
-    }
     
     public void cargarBitacorasAsistencias() {
         var ObservableAsistencia
@@ -117,11 +111,17 @@ public class AsistenciaController implements Initializable {
 
     @FXML
     private void OnActualizar(ActionEvent event) {
+         OpenWindowsHandler.AbrirVentanaActualizarBitaAsistencia("/views/ActualizarAsistencia");
     }
 
     @FXML
     private void PresionarEnter(KeyEvent event) {
 //        filtrarAsistencias();
+    }
+
+    @FXML
+    private void OnRefrescar(ActionEvent event) {
+     cargarBitacorasAsistencias();
     }
 
 }

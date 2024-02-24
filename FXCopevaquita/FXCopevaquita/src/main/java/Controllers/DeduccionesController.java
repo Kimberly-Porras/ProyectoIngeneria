@@ -91,7 +91,7 @@ public class DeduccionesController implements Initializable {
         colMonto.setCellValueFactory(new PropertyValueFactory<>("monto"));
         colPendiente.setCellValueFactory(new PropertyValueFactory<>("pendiente"));
         colCuota.setCellValueFactory(new PropertyValueFactory<>("cuota"));
-        colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isStatus() ? "Activo" : "Inactivo"));
+        colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isStatus() ? "Pendiente" : "Cancelado"));
 
         cbx_status.setItems(observableStatus);
         cbx_status.setOnAction(event -> {
