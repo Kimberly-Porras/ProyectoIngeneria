@@ -86,4 +86,32 @@ public class PlanillaSociosDAO {
             return false;
         }
     }
+    
+    public List<PlanillaSocios> obtenerListaPlanillaPorCedulaEmpleado(String cedulaEmpleado) {
+        PlanillaSocios planillaSocios;
+        List<PlanillaSocios> lista = new ArrayList<>();
+
+        try {
+            String sql = "SELECT id, empleado, "
+                    + "monto, status FROM tbl_planilla_socios "
+                    + "WHERE empleado = ?;";
+
+            ps = acceso.prepareStatement(sql);
+            ps.setObject(1, cedulaEmpleado);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                planillaSocios = new PlanillaSocios();
+                planillaSocios.setId(rs.getInt(1));
+                 planillaSocios.setEmpleado(rs.getString(2));
+                planillaSocios.setMonto(rs.getDouble(3));
+                planillaSocios.setStatus(rs.getBoolean(4));
+                lista.add(planillaSocios);
+            }
+        } catch (Exception e) {
+            System.out.println("" + e.toString());
+        }
+
+        return lista;
+    }
 }

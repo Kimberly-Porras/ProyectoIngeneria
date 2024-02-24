@@ -37,21 +37,13 @@ import javafx.util.StringConverter;
  */
 public class ActualizarAsistenciaController implements Initializable {
 
-    @FXML
     private ComboBox<Empleado> cbxFiltrarEmpleadoActualizar;
-    @FXML
     private TableView<BitacoraAsistencia> tblAsistencia;
-    @FXML
     private TableColumn<BitacoraAsistencia, String> colFecha;
-    @FXML
     private TableColumn<BitacoraAsistencia, String> colPresente;
-    @FXML
     private TableColumn<BitacoraAsistencia, String> colJudtifica;
-    @FXML
     private DatePicker dpFecha;
-    @FXML
     private CheckBox cbPresente;
-    @FXML
     private CheckBox cbJudtifica;
 
     /**
@@ -61,6 +53,7 @@ public class ActualizarAsistenciaController implements Initializable {
     EmpleadoDAO daoEmpleado = new EmpleadoDAO();
     BitacoraAsistencia asistencia = new BitacoraAsistencia();
     BitacoraAsistenciaDAO daoAsistencia = new BitacoraAsistenciaDAO();
+
 
   @Override
     public void initialize(URL url, ResourceBundle rb) {

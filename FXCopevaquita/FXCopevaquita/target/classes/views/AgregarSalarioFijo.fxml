@@ -57,7 +57,7 @@
                         <Font name="Lucida Bright" size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtMontoAgre" prefHeight="40.0" prefWidth="374.0" style="-fx-border-color: #2A8C4A;">
+                  <TextField fx:id="txtMonto" prefHeight="40.0" prefWidth="374.0" style="-fx-border-color: #2A8C4A;">
                      <font>
                         <Font size="17.0" />
                      </font>
