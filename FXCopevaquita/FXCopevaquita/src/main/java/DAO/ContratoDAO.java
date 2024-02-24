@@ -6,6 +6,7 @@ package DAO;
 
 import Models.Contrato;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -16,10 +17,11 @@ import java.util.List;
  * @author User
  */
 public class ContratoDAO {
+
     PreparedStatement ps;
     ResultSet rs;
     Connection acceso = Database.DatabaseConnection.getConnection();
-    
+
     public List<Contrato> obtenerListaContratos() {
         Contrato contrato;
         List<Contrato> lista = new ArrayList<>();
@@ -28,7 +30,7 @@ public class ContratoDAO {
             String sql = "SELECT id, cedula_empleado, fechaInicio, fechaFinal, fechaRegistro, "
                     + "monto, status, motivo "
                     + "FROM tbl_contrato;";
-            
+
             ps = acceso.prepareStatement(sql);
             rs = ps.executeQuery();
 
@@ -50,14 +52,50 @@ public class ContratoDAO {
 
         return lista;
     }
-    
+
+    public List<Contrato> obtenerListaContratosEntreFechas(String cedula, Date fechaInicio, Date fechaFin) {
+        Contrato contrato;
+        List<Contrato> lista = new ArrayList<>();
+
+        try {
+            String sql = "SELECT id, cedula_empleado, fechaInicio, fechaFinal, fechaRegistro, "
+                    + "monto, status, motivo "
+                    + "FROM tbl_contrato "
+                    + "WHERE fechaInicio >= ? AND fechaFinal <= ? AND cedula_empleado = ?";
+
+            ps = acceso.prepareStatement(sql);
+            ps.setDate(1, new java.sql.Date(fechaInicio.getTime()));
+            ps.setDate(2, new java.sql.Date(fechaFin.getTime()));
+            ps.setString(3, cedula);
+
+            System.out.println(ps.toString());
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                contrato = new Contrato();
+                contrato.setId(rs.getInt(1));
+                contrato.setCedulaEmpleado(rs.getString(2));
+                contrato.setFechaInicio(rs.getDate(3));
+                contrato.setFechaFinal(rs.getDate(4));
+                contrato.setFechaRegistro(rs.getDate(5));
+                contrato.setMonto(rs.getDouble(6));
+                contrato.setStatus(rs.getBoolean(7));
+                contrato.setMotivo(rs.getInt(8));
+                lista.add(contrato);
+            }
+        } catch (Exception e) {
+            System.out.println("" + e.toString());
+        }
+
+        return lista;
+    }
+
     public boolean insertarContrato(Contrato contrato) {
         try {
             String sql = "INSERT INTO tbl_contrato (cedula_empleado, fechaInicio, fechaFinal, "
                     + "fechaRegistro, monto, status, motivo) "
                     + "VALUES (?,?,?,?,?,?,?);";
 
-            
             ps = acceso.prepareStatement(sql);
             ps.setObject(1, contrato.getCedulaEmpleado());
             ps.setObject(2, contrato.getFechaInicio());
@@ -82,7 +120,7 @@ public class ContratoDAO {
             String sql = "UPDATE tbl_contrato SET cedula_empleado = ?, fechaInicio = ?, fechaFinal = ?, "
                     + "fechaRegistro = ?, monto = ?, status = ? , motivo = ? "
                     + "WHERE id = ?;";
-            
+
             ps = acceso.prepareStatement(sql);
             ps.setObject(1, contrato.getCedulaEmpleado());
             ps.setObject(2, contrato.getFechaInicio());
@@ -100,7 +138,7 @@ public class ContratoDAO {
             return false;
         }
     }
-    
+
     public List<Contrato> obtenerListaContratoPorCedulaEmpleado(String cedulaEmpleado) {
         Contrato contrato;
         List<Contrato> lista = new ArrayList<>();

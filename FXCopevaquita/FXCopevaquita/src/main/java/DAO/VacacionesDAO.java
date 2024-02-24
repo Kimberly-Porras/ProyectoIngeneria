@@ -6,6 +6,7 @@ package DAO;
 
 import Models.Vacaciones;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -48,6 +49,38 @@ public class VacacionesDAO {
 
         return lista;
     }
+    
+    public List<Vacaciones> obtenerListaVacacionesEntreFechas(String cedula, Date fechaInicio, Date fechaFin) {
+    Vacaciones vacaciones;
+    List<Vacaciones> lista = new ArrayList<>();
+
+    try {
+        String sql = "SELECT id, empleado, monto, fecha, status " +
+                     "FROM tbl_vacaciones " +
+                     "WHERE empleado = ? AND fecha BETWEEN ? AND ?;";
+
+        ps = acceso.prepareStatement(sql);
+        ps.setString(1, cedula);
+        ps.setDate(2, new java.sql.Date(fechaInicio.getTime()));
+        ps.setDate(3, new java.sql.Date(fechaFin.getTime()));
+        rs = ps.executeQuery();
+
+        while (rs.next()) {
+            vacaciones = new Vacaciones();
+            vacaciones.setId(rs.getInt(1));
+            vacaciones.setEmpleado(rs.getString(2));
+            vacaciones.setMonto(rs.getDouble(3));
+            vacaciones.setFecha(rs.getDate(4));
+            vacaciones.setStatus(rs.getBoolean(5));
+            lista.add(vacaciones);
+        }
+    } catch (Exception e) {
+        System.out.println("" + e.toString());
+    }
+
+    return lista;
+}
+
 
     public boolean insertarVacacion(Vacaciones vacacion) {
         try {

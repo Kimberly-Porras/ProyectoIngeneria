@@ -1,10 +1,14 @@
 Controllers\ContratosController.class
 Controllers\AgregarVacacionesController.class
+DAO\AbonoDAO.class
 Controllers\AgregarEmpleadoController.class
 Controllers\ActividadesController.class
+Controllers\AgregarSalarioFijoController$1.class
+Controllers\AgregarDeduccionesController$1.class
 MainApp\App.class
 DAO\PlanillaSociosDAO.class
 DAO\CredencialesDAO.class
+Controllers\ActualizarBitacoraSocioController$1.class
 Controllers\LoginController.class
 Gmail\MailSender$1.class
 Models\Vacaciones.class
@@ -20,6 +24,7 @@ Controllers\AgregarRegistroFamiliarController$1.class
 Controllers\PlanillaController.class
 Controllers\EmpleadosController.class
 Models\Pagos.class
+Controllers\ActualizarDeduccionesController$1.class
 Controllers\RecuperarContraseniaController.class
 Gmail\MailSender.class
 Models\BitacoraAsistencia.class
@@ -33,6 +38,7 @@ Controllers\AgregarBitacoraEmpleadoController$3.class
 DAO\VacacionesDAO.class
 Controllers\GenerarPagosController.class
 DAO\AreaDAO.class
+Controllers\ActualizarDeduccionesController$2.class
 Controllers\ActualizarIncapacidadesController.class
 Controllers\VacacionesController.class
 MainApp\App$ControllerConsumer.class
@@ -41,8 +47,12 @@ Models\Actividad.class
 Models\Credencial.class
 Controllers\ActualizarBitacoraEmpleadoController.class
 Layout\LayoutController.class
+Controllers\AgregarSalarioFijoController.class
+Controllers\AbonoDeduccionesController$1.class
 Controllers\AgregarBitacoraEmpleadoController$1.class
+Controllers\ActualizarAsistenciaController.class
 Controllers\AgregarContratosController.class
+Controllers\ActualizarSalarioFijoController$1.class
 Controllers\AgregarDeduccionesController.class
 Controllers\AgregarIncapacidadesController.class
 Controllers\AgregarBitacoraEmpleadoController$2.class
@@ -50,12 +60,15 @@ JasperReports\JAppReport.class
 DAO\TipoDeduccionDAO.class
 Controllers\AgregarBitacoraSocioController.class
 Controllers\ActualizarEmpleadoController.class
+Controllers\AgregarDeduccionesController$2.class
 Controllers\ActualizarBitacoraSocioController.class
 Controllers\ActualizarContratosController.class
 Models\Contrato.class
+Controllers\AgregarBitacoraSocioController$1.class
 Controllers\PagosController.class
 Models\PagoIncapacidad.class
 Models\Deduccion.class
+Controllers\ActualizarAsistenciaController$1.class
 Controllers\ActualizarEmpleadoController$1.class
 Models\Parentezco.class
 Models\PorcentajeRebajos.class
@@ -98,6 +111,7 @@ Controllers\ActualizarIncapacidadesController$1.class
 Controllers\AgregarContratosController$1.class
 JasperReports\JReportEmpleados.class
 DAO\BitacoraAsistenciaDAO.class
+Controllers\ActualizarSalarioFijoController.class
 Controllers\ActualizarBitacoraEmpleadoController$3.class
 DAO\BitacoraEmpleadoDAO.class
 Controllers\AgregarAsistenciaController.class

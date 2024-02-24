@@ -6,6 +6,7 @@ package DAO;
 
 import Models.Incapacidad;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -31,6 +32,40 @@ public class IncapacidadDAO {
                     + "FROM tbl_incapacidad;";
 
             ps = acceso.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                incapacidad = new Incapacidad();
+                incapacidad.setId(rs.getInt(1));
+                incapacidad.setFecha(rs.getDate(2));
+                incapacidad.setMonto(rs.getDouble(3));
+                incapacidad.setMotivo(rs.getString(4));
+                incapacidad.setEmpleado(rs.getString(5));
+                incapacidad.setStatus(rs.getBoolean(6));
+                lista.add(incapacidad);
+            }
+        } catch (Exception e) {
+            System.out.println("" + e.toString());
+        }
+
+        return lista;
+    }
+
+    public List<Incapacidad> obtenerListaIncapacidadesEntreFechas(String cedula, Date fechaInicio, Date fechaFin) {
+        Incapacidad incapacidad;
+        List<Incapacidad> lista = new ArrayList<>();
+
+        try {
+            String sql = "SELECT id, fecha, monto, motivo, empleado, status "
+                    + "FROM tbl_incapacidad "
+                    + "WHERE fecha BETWEEN ? AND ? AND empleado = ?";
+
+            ps = acceso.prepareStatement(sql);
+            ps.setDate(1, new java.sql.Date(fechaInicio.getTime()));
+            ps.setDate(2, new java.sql.Date(fechaFin.getTime()));
+            ps.setString(3, cedula);
+            System.out.println(ps.toString());
+
             rs = ps.executeQuery();
 
             while (rs.next()) {

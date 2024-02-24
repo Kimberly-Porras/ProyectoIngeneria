@@ -4,6 +4,8 @@
  */
 package Models;
 
+import java.sql.Date;
+
 /**
  *
  * @author alber
@@ -18,6 +20,7 @@ public class Deduccion {
     private double pendiente;
     private String empleado;
     private boolean status;
+    private Date fecha_registro;
 
     private TipoDeduccion tipoDeduccion;
 
@@ -104,5 +107,13 @@ public class Deduccion {
 
     public String getNombreTipoDeduccion() {
         return tipoDeduccion.getNombre();
+    }
+
+    public Date getFecha_registro() {
+        return fecha_registro;
+    }
+
+    public void setFecha_registro(Date fecha_registro) {
+        this.fecha_registro = fecha_registro;
     }
 }

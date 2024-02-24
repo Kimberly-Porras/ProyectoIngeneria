@@ -44,6 +44,7 @@ public class ActividadDAO {
         return actividades;
     }
     
+    
     public boolean insertarActividad(Actividad actividad) {
         try {
             String sql = "INSERT INTO tbl_actividad (nombre, status) VALUES (?, ?);";
