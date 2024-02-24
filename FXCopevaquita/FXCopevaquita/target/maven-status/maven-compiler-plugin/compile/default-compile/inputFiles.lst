@@ -27,6 +27,7 @@ C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\ActualizarDeduccionesController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\ActualizarVacacionesController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\JasperReports\JAppReport.java
+C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\ActualizarSalarioFijoController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\SalarioFijoController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\Abono.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\ActualizarBitacoraEmpleadoController.java
@@ -62,6 +63,7 @@ C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\Empleado.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\DAO\CredencialesDAO.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\MainApp\App.java
+C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\AgregarSalarioFijoController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\DAO\EmpleadoDAO.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\ActualizarBitacoraSocioController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\Credencial.java
