@@ -49,38 +49,57 @@ public class VacacionesDAO {
 
         return lista;
     }
-    
+
     public List<Vacaciones> obtenerListaVacacionesEntreFechas(String cedula, Date fechaInicio, Date fechaFin) {
-    Vacaciones vacaciones;
-    List<Vacaciones> lista = new ArrayList<>();
+        Vacaciones vacaciones;
+        List<Vacaciones> lista = new ArrayList<>();
 
-    try {
-        String sql = "SELECT id, empleado, monto, fecha, status " +
-                     "FROM tbl_vacaciones " +
-                     "WHERE empleado = ? AND fecha BETWEEN ? AND ?;";
+        try {
+            String sql = "SELECT id, empleado, monto, fecha, status "
+                    + "FROM tbl_vacaciones "
+                    + "WHERE status = 1 AND empleado = ? AND fecha BETWEEN ? AND ?;";
 
-        ps = acceso.prepareStatement(sql);
-        ps.setString(1, cedula);
-        ps.setDate(2, new java.sql.Date(fechaInicio.getTime()));
-        ps.setDate(3, new java.sql.Date(fechaFin.getTime()));
-        rs = ps.executeQuery();
+            ps = acceso.prepareStatement(sql);
+            ps.setString(1, cedula);
+            ps.setDate(2, new java.sql.Date(fechaInicio.getTime()));
+            ps.setDate(3, new java.sql.Date(fechaFin.getTime()));
+            rs = ps.executeQuery();
 
-        while (rs.next()) {
-            vacaciones = new Vacaciones();
-            vacaciones.setId(rs.getInt(1));
-            vacaciones.setEmpleado(rs.getString(2));
-            vacaciones.setMonto(rs.getDouble(3));
-            vacaciones.setFecha(rs.getDate(4));
-            vacaciones.setStatus(rs.getBoolean(5));
-            lista.add(vacaciones);
+            while (rs.next()) {
+                vacaciones = new Vacaciones();
+                vacaciones.setId(rs.getInt(1));
+                vacaciones.setEmpleado(rs.getString(2));
+                vacaciones.setMonto(rs.getDouble(3));
+                vacaciones.setFecha(rs.getDate(4));
+                vacaciones.setStatus(rs.getBoolean(5));
+                lista.add(vacaciones);
+            }
+        } catch (Exception e) {
+            System.out.println("" + e.toString());
         }
-    } catch (Exception e) {
-        System.out.println("" + e.toString());
+
+        return lista;
     }
+    
+    public boolean actualizarEstadoVacacionesEntreFechas(String cedula, Date fechaInicio, Date fechaFin, byte newState) {
+        try {
 
-    return lista;
-}
+            String sql = "UPDATE tbl_vacaciones SET status = ? "
+                    + "WHERE empleado = ? and fecha BETWEEN ? and ?";
 
+            ps = acceso.prepareStatement(sql);
+            ps.setByte(1, newState);
+            ps.setString(2, cedula);
+            ps.setDate(3, fechaInicio);
+            ps.setDate(4, fechaFin);
+            ps.executeUpdate();
+            
+            return true;
+        } catch (Exception e) {
+            System.out.println("" + e.toString());
+            return false;
+        }
+    }
 
     public boolean insertarVacacion(Vacaciones vacacion) {
         try {

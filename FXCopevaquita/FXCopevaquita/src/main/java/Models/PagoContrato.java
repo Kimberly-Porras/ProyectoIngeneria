@@ -9,20 +9,21 @@ package Models;
  * @author User
  */
 public class PagoContrato {
+
     private int id;
     private double totalContrato;
     private int pagoId;
-    
-    public PagoContrato(){
-    this.id = 0;
-    this.totalContrato = 0.0;
-    this.pagoId = 0;
+
+    public PagoContrato() {
+        this.id = 0;
+        this.totalContrato = 0.0;
+        this.pagoId = 0;
     }
-    
-    public PagoContrato(int id, Double totalContrato, int pagoId){
-    this.id = id;
-    this.totalContrato = totalContrato;
-    this.pagoId = pagoId;
+
+    public PagoContrato(Double totalContrato, int pagoId) {
+        this.id = 0;
+        this.totalContrato = totalContrato;
+        this.pagoId = pagoId;
     }
 
     public int getId() {
@@ -48,6 +49,5 @@ public class PagoContrato {
     public void setPagoId(int pagoId) {
         this.pagoId = pagoId;
     }
-    
-    
+
 }

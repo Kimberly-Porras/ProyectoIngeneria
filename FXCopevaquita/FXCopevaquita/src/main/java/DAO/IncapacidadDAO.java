@@ -58,7 +58,7 @@ public class IncapacidadDAO {
         try {
             String sql = "SELECT id, fecha, monto, motivo, empleado, status "
                     + "FROM tbl_incapacidad "
-                    + "WHERE fecha BETWEEN ? AND ? AND empleado = ?";
+                    + "WHERE status = 1 AND fecha BETWEEN ? AND ? AND empleado = ?";
 
             ps = acceso.prepareStatement(sql);
             ps.setDate(1, new java.sql.Date(fechaInicio.getTime()));
@@ -85,6 +85,26 @@ public class IncapacidadDAO {
         return lista;
     }
 
+    public boolean actualizarEstadoIncapacidadEntreFechas(String cedula, Date fechaInicio, Date fechaFin, byte newState) {
+        try {
+
+            String sql = "UPDATE tbl_incapacidad SET status = ? "
+                    + "WHERE empleado = ? and fecha BETWEEN ? and ?";
+
+            ps = acceso.prepareStatement(sql);
+            ps.setByte(1, newState);
+            ps.setString(2, cedula);
+            ps.setDate(3, fechaInicio);
+            ps.setDate(4, fechaFin);
+            ps.executeUpdate();
+            
+            return true;
+        } catch (Exception e) {
+            System.out.println("" + e.toString());
+            return false;
+        }
+    }
+    
     public boolean insertarIncapacidad(Incapacidad incapacidad) {
         try {
             String sql = "INSERT INTO tbl_incapacidad "

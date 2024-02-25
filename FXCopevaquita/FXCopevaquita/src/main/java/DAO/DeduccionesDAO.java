@@ -60,7 +60,7 @@ public class DeduccionesDAO {
         try {
             String sql = "SELECT id, tipo, monto, cuota, pendiente, empleado, status, fecha_registro "
                     + "FROM tbl_deduccion "
-                    + "WHERE empleado = ? AND fecha_registro BETWEEN ? AND ?";
+                    + "WHERE status = 1 AND empleado = ? AND fecha_registro BETWEEN ? AND ?";
 
             ps = acceso.prepareStatement(sql);
             ps.setString(1, cedula);

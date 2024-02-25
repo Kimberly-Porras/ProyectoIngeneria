@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.GenerarPagosController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.GenerarPagosController">
    <children>
       <VBox alignment="CENTER" spacing="20.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
          <children>
@@ -128,6 +128,20 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="575.0" prefHeight="40.0" prefWidth="1046.0" spacing="15.0">
                <children>
+                  <Label alignment="TOP_LEFT" text="Contratos:">
+                     <font>
+                        <Font name="Lucida Bright" size="22.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtContrato" disable="true" editable="false" prefHeight="34.0" prefWidth="166.0" style="-fx-border-color: #2A8C4A;">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="1046.0" spacing="15.0">
+               <children>
                   <Label alignment="TOP_LEFT" text="Total a pagar: ">
                      <font>
                         <Font name="Lucida Bright" size="22.0" />
@@ -142,7 +156,7 @@
             </HBox>
             <HBox alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#btnGenerarPago" prefHeight="51.0" prefWidth="182.0" style="-fx-background-color: #fc5500;" text="Generar pago" textFill="WHITE">
+                  <Button fx:id="btnBuscar" mnemonicParsing="false" onAction="#btnGenerarPago" prefHeight="51.0" prefWidth="182.0" style="-fx-background-color: #fc5500;" text="Generar pago" textFill="WHITE">
                      <font>
                         <Font name="Lucida Bright" size="17.0" />
                      </font>

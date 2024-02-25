@@ -83,43 +83,61 @@ public class BitacoraEmpleadoDAO {
         return lista;
     }
 
-public List<BitacoraEmpleado> obtenerListaBitacoraPorCedulaEmpleadoEntreFechas(String cedula, Date fechaInicio, Date fechaFin) {
-    BitacoraEmpleado bitacoraEmpleado;
-    List<BitacoraEmpleado> lista = new ArrayList<>();
+    public List<BitacoraEmpleado> obtenerListaBitacoraPorCedulaEmpleadoEntreFechas(String cedula, Date fechaInicio, Date fechaFin) {
+        BitacoraEmpleado bitacoraEmpleado;
+        List<BitacoraEmpleado> lista = new ArrayList<>();
 
-    try {
-        String sql = "SELECT id, empleado, actividad, area, fecha, precio, cantidad, status " +
-                     "FROM tbl_bitacora_empleado " +
-                     "WHERE empleado = ? AND fecha BETWEEN ? AND ?;";
+        try {
+            String sql = "SELECT id, empleado, actividad, area, fecha, precio, cantidad, status "
+                    + "FROM tbl_bitacora_empleado "
+                    + "WHERE empleado = ? AND status = 1 AND fecha BETWEEN ? AND ?";
+            
 
-        ps = acceso.prepareStatement(sql);
-        ps.setString(1, cedula);
-        ps.setDate(2, fechaInicio);
-        ps.setDate(3, fechaFin);
-        
-        System.out.println(ps.toString());
-        
-        rs = ps.executeQuery();
+            ps = acceso.prepareStatement(sql);
+            ps.setString(1, cedula);
+            ps.setDate(2, fechaInicio);
+            ps.setDate(3, fechaFin);
 
-        while (rs.next()) {
-            bitacoraEmpleado = new BitacoraEmpleado();
-            bitacoraEmpleado.setId(rs.getInt(1));
-            bitacoraEmpleado.setEmpleado(rs.getString(2));
-            bitacoraEmpleado.setActividad(rs.getInt(3));
-            bitacoraEmpleado.setArea(rs.getInt(4));
-            bitacoraEmpleado.setFecha(rs.getDate(5));
-            bitacoraEmpleado.setPrecio(rs.getDouble(6));
-            bitacoraEmpleado.setCantidad(rs.getInt(7));
-            bitacoraEmpleado.setStatus(rs.getBoolean(8));
-            lista.add(bitacoraEmpleado);
+            System.out.println(ps.toString());
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                bitacoraEmpleado = new BitacoraEmpleado();
+                bitacoraEmpleado.setId(rs.getInt(1));
+                bitacoraEmpleado.setEmpleado(rs.getString(2));
+                bitacoraEmpleado.setActividad(rs.getInt(3));
+                bitacoraEmpleado.setArea(rs.getInt(4));
+                bitacoraEmpleado.setFecha(rs.getDate(5));
+                bitacoraEmpleado.setPrecio(rs.getDouble(6));
+                bitacoraEmpleado.setCantidad(rs.getInt(7));
+                bitacoraEmpleado.setStatus(rs.getBoolean(8));
+                lista.add(bitacoraEmpleado);
+            }
+        } catch (Exception e) {
+            System.out.println("" + e.toString());
         }
-    } catch (Exception e) {
-        System.out.println("" + e.toString());
+
+        return lista;
     }
+    
+     public boolean actualizarEstadoBitacoraEntreFechas(String cedula, Date fechaInicio, Date fechaFin, byte newState) {
+        try {
 
-    return lista;
-}
+            String sql = "UPDATE tbl_bitacora_empleado SET status = ? "
+                    + "WHERE empleado = ? and fecha BETWEEN ? and ?";
 
+            ps = acceso.prepareStatement(sql);
+            ps.setByte(1, newState);
+            ps.setString(2, cedula);
+            ps.setDate(3, fechaInicio);
+            ps.setDate(4, fechaFin);
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            System.out.println("" + e.toString());
+            return false;
+        }
+    }
 
     public boolean insertarBitacoraEmpleado(BitacoraEmpleado bitacoraEmpleado) {
         try {

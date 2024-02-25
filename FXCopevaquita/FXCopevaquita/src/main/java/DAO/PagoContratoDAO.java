@@ -19,7 +19,7 @@ public class PagoContratoDAO {
     ResultSet rs;
     Connection acceso = Database.DatabaseConnection.getConnection();
     
-     public boolean insertarIncapacidad(PagoContrato pagoContrato) {
+     public boolean pagoContrato(PagoContrato pagoContrato) {
         try {
             String sql = "INSERT INTO tbl_pago_contrato "
                     + "(totalContrato, pagoId) "

@@ -21,8 +21,8 @@ public class PagoVacacion {
         this.pagoId = 0;
     }
 
-    public PagoVacacion(int id, Double totalVacacion, int pagoId) {
-        this.id = id;
+    public PagoVacacion(Double totalVacacion, int pagoId) {
+        this.id = 0;
         this.totalVacacion = totalVacacion;
         this.pagoId = pagoId;
     }

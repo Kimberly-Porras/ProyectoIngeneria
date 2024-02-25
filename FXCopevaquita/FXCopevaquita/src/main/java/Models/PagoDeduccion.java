@@ -21,8 +21,8 @@ public class PagoDeduccion {
         this.totalDeduccion = 0.0;
         this.idPago = 0;
     }
-    public PagoDeduccion(int id, Double totalDeduccion, int idPago) {
-        this.id = id;
+    public PagoDeduccion(Double totalDeduccion, int idPago) {
+        this.id = 0;
         this.totalDeduccion = totalDeduccion;
         this.idPago = idPago;
     }

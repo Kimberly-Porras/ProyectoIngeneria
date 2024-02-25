@@ -18,7 +18,7 @@ public class PagoDeduccionDAO {
     ResultSet rs;
     Connection acceso = Database.DatabaseConnection.getConnection();
     
-    public boolean insertarIncapacidad(PagoDeduccion pagoDeduccion) {
+    public boolean insertarDeduccion(PagoDeduccion pagoDeduccion) {
         try {
             String sql = "INSERT INTO tbl_pago_deduccion "
                     + "(totalDeduccion, idPago) "

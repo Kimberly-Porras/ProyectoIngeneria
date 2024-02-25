@@ -13,26 +13,18 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import Models.Empleado;
-import Models.Incapacidad;
-import Models.Vacaciones;
-import Models.Deduccion;
 
 import javafx.collections.FXCollections;
-import DAO.EmpleadoDAO;
-import DAO.ContratoDAO;
-import DAO.IncapacidadDAO;
-import DAO.VacacionesDAO;
-import DAO.DeduccionesDAO;
 
-import DAO.BitacoraEmpleadoDAO;
-import Models.BitacoraEmpleado;
-import Models.Contrato;
+import DAO.*;
+import Models.*;
+
 import java.util.Optional;
 import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import javafx.util.StringConverter;
 import java.sql.Date;
+import javafx.scene.control.Button;
 
 /**
  * FXML Controller class
@@ -65,6 +57,25 @@ public class GenerarPagosController implements Initializable {
     IncapacidadDAO incapacidadService = new IncapacidadDAO();
     VacacionesDAO vacacionesService = new VacacionesDAO();
     DeduccionesDAO deduccionService = new DeduccionesDAO();
+    PagosDAO pagosService = new PagosDAO();
+    PagoContratoDAO pagoContratoService = new PagoContratoDAO();
+    PagoDeduccionDAO pagoDeduccionService = new PagoDeduccionDAO();
+    PagoIncapacidadDAO pagoIncapacidadService = new PagoIncapacidadDAO();
+    PagoVacacionDAO pagoVacacionService = new PagoVacacionDAO();
+    PagoBitacoraDAO pagoBitacoraService = new PagoBitacoraDAO();
+
+    boolean canGenerate = false;
+    double resultadoPorBitacoras = 0.0;
+    double resultadoPorContratos = 0.0;
+    double resultadoPorIncapacidad = 0.0;
+    double resultadoPorVacaciones = 0.0;
+    double resultadoDeducciones = 0.0;
+    double pago = 0.0;
+
+    @FXML
+    private TextField txtContrato;
+    @FXML
+    private Button btnBuscar;
 
     /**
      * Initializes the controller class.
@@ -110,8 +121,6 @@ public class GenerarPagosController implements Initializable {
 
     @FXML
     private void btnBuscar(ActionEvent event) {
-
-        System.out.println("Iniciar el proceso para calcular el salario del empleado...");
         var empleado = cbxEmpleado1.getSelectionModel().getSelectedItem();
         var fechaInicio = dpFechaInicial1.getValue();
         var fechaFinal = dpFechaFinal1.getValue();
@@ -126,50 +135,58 @@ public class GenerarPagosController implements Initializable {
         var inicio = Date.valueOf(fechaInicio);
         var finalizo = Date.valueOf(fechaFinal);
 
+        // bloquear campos...
+        cbxEmpleado1.setDisable(true);
+        dpFechaFinal1.setDisable(true);
+        dpFechaInicial1.setDisable(true);
+        
         // ¿CUANTO SE GANO POR ACTIVIDADES?
         var bitacoras = bitacoraService.obtenerListaBitacoraPorCedulaEmpleadoEntreFechas(
                 empleado.getCedula(),
                 inicio,
                 finalizo
         );
-        var resultadoPorBitacoras = 0;
+
+        resultadoPorBitacoras = 0.0;
         for (BitacoraEmpleado bitacora : bitacoras) {
             resultadoPorBitacoras += bitacora.getCosto() * bitacora.getCantidad();
         }
-        System.out.println("Se gano por las actividades: " + resultadoPorBitacoras);
 
         // ¿CUANTO SE GANO POR CONTRATOS?
         var contratos = contratoService.obtenerListaContratosEntreFechas(empleado.getCedula(),
                 inicio,
                 finalizo
         );
-        var resultadoPorContratos = 0;
+
+        resultadoPorContratos = 0.0;
         for (Contrato contrato : contratos) {
             resultadoPorContratos += contrato.getMonto();
         }
-        System.out.println("se gano por contratos: " + resultadoPorContratos);
+
         // ¿CUANTO SE GANO POR INCAPACIDAD?
         var incapacidades = incapacidadService.obtenerListaIncapacidadesEntreFechas(
                 empleado.getCedula(),
                 inicio,
                 finalizo
         );
-        var resultadoPorIncapacidad = 0;
+
+        resultadoPorIncapacidad = 0.0;
         for (Incapacidad incapacidad : incapacidades) {
             resultadoPorIncapacidad += incapacidad.getMonto();
         }
-        System.out.println("se gano por incapacidades: " + resultadoPorIncapacidad);
+
         // ¿CUANTO SE GANO EN VACACIONES?
         var vacaciones = vacacionesService.obtenerListaVacacionesEntreFechas(
                 empleado.getCedula(),
                 inicio,
                 finalizo
         );
-        var resultadoVacaciones = 0;
+
+        resultadoPorVacaciones = 0.0;
         for (Vacaciones vacacion : vacaciones) {
-            resultadoVacaciones += vacacion.getMonto();
+            resultadoPorVacaciones += vacacion.getMonto();
         }
-        System.out.println("SE gano en vacaciones: " + resultadoVacaciones);
+
         // ¿CUANTO SE GANO EN DEDUCCIONES?
         var deducciones = deduccionService.obtenerListaDeduccionEntreFechas(
                 empleado.getCedula(),
@@ -177,28 +194,38 @@ public class GenerarPagosController implements Initializable {
                 finalizo
         );
 
-        var resultadoDeducciones = 0;
+        resultadoDeducciones = 0.0;
         for (Deduccion deduccion : deducciones) {
-            resultadoDeducciones += deduccion.getCuota();
-            // actualizar la deducción...
-            var pendiente = deduccion.getPendiente();
-            var couta = deduccion.getCuota();
 
-            deduccion.setPendiente(pendiente - couta);
-            System.out.println("La deducción se actualizaría aquí");
-//            deduccionService.actualizarDeduccion(deduccion);
+            if (deduccion.getPendiente() > 0) {
+                // Debe más de lo que vale la couta...
+                if (deduccion.getPendiente() > deduccion.getCuota()) {
+                    resultadoDeducciones += deduccion.getCuota();
+                } else {
+                    // Debe menos de lo que vale la cuota...
+                    resultadoDeducciones += deduccion.getPendiente();
+                }
+            }
         }
-        System.out.println("El total por deducciones es: " + resultadoDeducciones);
+
         // CALCULAR EL TOTAL...
         // TODO; Crear un DAO de la tabla de porcentaje que consulte y me traiga el %;
-        var total = ((resultadoVacaciones
+        var total = ((resultadoPorVacaciones
                 + resultadoPorIncapacidad
                 + resultadoPorContratos
                 + resultadoPorBitacoras) - resultadoDeducciones);
-        
-        var pago = total - (total * 0.1067);
-        System.out.println("El empleado tiene como pago: " + pago);
 
+        pago = total - (total * 0.1067);
+
+        // Cargar datos en la interfaz grafica...
+        txtMonto.setText(resultadoPorBitacoras + ""); // Salario base..
+        txtDeduccion.setText(resultadoDeducciones * -1 + ""); // Deducciones 
+        txtIncapacidad.setText(resultadoPorIncapacidad + ""); // Incapacidades
+        txtVacacion.setText((resultadoPorVacaciones + "")); // vacaciones
+        txtContrato.setText(resultadoPorContratos + ""); // contratos
+
+        txtTotal.setText(pago + ""); // pago...
+        canGenerate = true;
     }
 
     @FXML
@@ -207,6 +234,95 @@ public class GenerarPagosController implements Initializable {
 
     @FXML
     private void btnGenerarPago(ActionEvent event) {
+        if (canGenerate) {
+            var empleado = cbxEmpleado1.getSelectionModel().getSelectedItem();
+            var fechaInicio = dpFechaInicial1.getValue();
+            var fechaFinal = dpFechaFinal1.getValue();
+
+            var inicio = Date.valueOf(fechaInicio);
+            var finalizo = Date.valueOf(fechaFinal);
+
+            // BITACORAS...
+            // inhabilitar todas las bitacoras...
+            bitacoraService.actualizarEstadoBitacoraEntreFechas(
+                    empleado.getCedula(),
+                    inicio,
+                    finalizo,
+                    (byte) 0
+            );
+            // Generar pago...
+            pagosService.insertarPagos(new Pagos(
+                    0,
+                    inicio,
+                    empleado.getCedula(),
+                    finalizo
+            ));
+            var idPago = pagosService.obtenerIdPago(empleado.getCedula(), inicio, finalizo);
+            // generar el pago por bitacoras...
+            pagoBitacoraService.insertarPagoBitacora(new PagoBitacora(resultadoPorBitacoras, idPago));
+
+            // CONTRATOS...
+            // actualizar estados...
+            contratoService.actualizarEstadoContratoEntreFechas(
+                    empleado.getCedula(),
+                    inicio, finalizo,
+                    (byte) 0
+            );
+
+            // generar el pago por contratos...
+            pagoContratoService.pagoContrato(new PagoContrato(resultadoPorContratos, idPago));
+
+            // INCAPACIDADES
+            // actualizar estados..
+            incapacidadService.actualizarEstadoIncapacidadEntreFechas(
+                    empleado.getCedula(),
+                    inicio,
+                    finalizo,
+                    (byte) 0
+            );
+            // generar el pago por incapacidad...
+            pagoIncapacidadService.insertarIncapacidad(new PagoIncapacidad(resultadoPorIncapacidad, idPago));
+
+            // VACACIONES...
+            // actualizar estados...
+            vacacionesService.actualizarEstadoVacacionesEntreFechas(
+                    empleado.getCedula(),
+                    inicio,
+                    finalizo,
+                    (byte) 0
+            );
+            // generar el pago por vacación...
+            pagoVacacionService.insertarVacacion(new PagoVacacion(resultadoPorVacaciones, idPago));
+
+            // DEDUCCIONES..
+            // ¿CUANTO SE GANO EN DEDUCCIONES?
+            var deducciones = deduccionService.obtenerListaDeduccionEntreFechas(
+                    empleado.getCedula(),
+                    inicio,
+                    finalizo
+            );
+
+            for (Deduccion deduccion : deducciones) {
+                if (deduccion.getPendiente() > 0) {
+                    // Debe más de lo que vale la couta...
+                    if (deduccion.getPendiente() > deduccion.getCuota()) {
+                        resultadoDeducciones += deduccion.getCuota();
+                        var pendiente = deduccion.getPendiente();
+                        var couta = deduccion.getCuota();
+                        deduccion.setPendiente(pendiente - couta);
+                    } else {
+                        // Debe menos de lo que vale la cuota...
+                        resultadoDeducciones += deduccion.getPendiente();
+                        deduccion.setPendiente(0);
+                    }
+                    deduccionService.actualizarDeduccion(deduccion);
+                }
+            }
+            
+            // generar el pago por deducción...
+            pagoDeduccionService.insertarDeduccion(new PagoDeduccion(resultadoPorIncapacidad, idPago));
+            btnBuscar.setDisable(true);
+        }
     }
 
 }

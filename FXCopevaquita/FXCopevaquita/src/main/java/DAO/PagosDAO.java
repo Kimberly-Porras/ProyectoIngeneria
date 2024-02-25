@@ -4,10 +4,13 @@
  */
 package DAO;
 
+import Models.Incapacidad;
 import Models.Pagos;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -30,10 +33,35 @@ public class PagosDAO {
             ps.setObject(2, pagos.getEmpleado());
             ps.setObject(3, pagos.getFechaFinal());
             ps.executeUpdate();
+
             return true;
         } catch (Exception e) {
             System.out.println("" + e.toString());
             return false;
+        }
+
+    }
+
+    public int obtenerIdPago(String cedula, Date inicio, Date fin) {
+        var id = 0;
+        try {
+            String sql = "SELECT id from tbl_pagos where "
+                    + "fecha = ? AND empleado = ? AND fecha_final = ? ";
+
+            ps = acceso.prepareStatement(sql);
+            ps.setObject(1, inicio);
+            ps.setObject(2, cedula);
+            ps.setObject(3, fin);
+            rs = ps.executeQuery();
+            // Obtener el ID generado
+            while (rs.next()) {
+                id = rs.getInt(1);
+            }
+            return id;
+            
+        } catch (Exception e) {
+            System.out.println("" + e.toString());
+            return id;
         }
 
     }

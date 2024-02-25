@@ -61,7 +61,7 @@ public class ContratoDAO {
             String sql = "SELECT id, cedula_empleado, fechaInicio, fechaFinal, fechaRegistro, "
                     + "monto, status, motivo "
                     + "FROM tbl_contrato "
-                    + "WHERE fechaInicio >= ? AND fechaFinal <= ? AND cedula_empleado = ?";
+                    + "WHERE status = 1 AND fechaInicio >= ? AND fechaFinal <= ? AND cedula_empleado = ?";
 
             ps = acceso.prepareStatement(sql);
             ps.setDate(1, new java.sql.Date(fechaInicio.getTime()));
@@ -88,6 +88,25 @@ public class ContratoDAO {
         }
 
         return lista;
+    }
+    
+    public boolean actualizarEstadoContratoEntreFechas(String cedula, Date fechaInicio, Date fechaFin, byte newState) {
+        try {
+
+            String sql = "UPDATE tbl_contrato SET status = ? "
+                    + "WHERE cedula_empleado = ? and fechaInicio BETWEEN ? and ?";
+
+            ps = acceso.prepareStatement(sql);
+            ps.setByte(1, newState);
+            ps.setString(2, cedula);
+            ps.setDate(3, fechaInicio);
+            ps.setDate(4, fechaFin);
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            System.out.println("" + e.toString());
+            return false;
+        }
     }
 
     public boolean insertarContrato(Contrato contrato) {

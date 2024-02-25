@@ -18,7 +18,7 @@ public class PagoVacacionDAO {
     ResultSet rs;
     Connection acceso = Database.DatabaseConnection.getConnection();
     
-    public boolean insertarIncapacidad(PagoVacacion pagoVacacion) {
+    public boolean insertarVacacion(PagoVacacion pagoVacacion) {
         try {
             String sql = "INSERT INTO tbl_pago_vacacion "
                     + "(totalVacacion, pagoId) "

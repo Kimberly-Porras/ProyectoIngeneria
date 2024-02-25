@@ -21,8 +21,8 @@ public class PagoIncapacidad {
         this.totalIncapacidad = 0.0;
         this.pagoId = 0;
     }
-    public PagoIncapacidad(int id, Double totalIncapacidad, int pagoId) {
-        this.id = id;
+    public PagoIncapacidad(Double totalIncapacidad, int pagoId) {
+        this.id = 0;
         this.totalIncapacidad = totalIncapacidad;
         this.pagoId = pagoId;
     }
