@@ -10,32 +10,46 @@ package Models;
  * @author kim03
  */
 public class PagoVacacion {
-    
-     private int idPago;
-    private int idVacacion;
+
+    private int id;
+    private double totalVacacion;
+    private int pagoId;
 
     public PagoVacacion() {
-        this.idPago = 0;
-        this.idVacacion = 0;
-    }
-    public PagoVacacion(int idPago, int idVacacion) {
-        this.idPago = idPago;
-        this.idVacacion = idVacacion;
+        this.id = 0;
+        this.totalVacacion = 0.0;
+        this.pagoId = 0;
     }
 
-    public int getIdPago() {
-        return idPago;
+    public PagoVacacion(int id, Double totalVacacion, int pagoId) {
+        this.id = id;
+        this.totalVacacion = totalVacacion;
+        this.pagoId = pagoId;
     }
 
-    public void setIdPago(int idPago) {
-        this.idPago = idPago;
+    public int getId() {
+        return id;
     }
 
-    public int getIdVacacion() {
-        return idVacacion;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setIdVacacion(int idVacacion) {
-        this.idVacacion = idVacacion;
+    public double getTotalVacacion() {
+        return totalVacacion;
     }
+
+    public void setTotalVacacion(double totalVacacion) {
+        this.totalVacacion = totalVacacion;
+    }
+
+    public int getPagoId() {
+        return pagoId;
+    }
+
+    public void setPagoId(int pagoId) {
+        this.pagoId = pagoId;
+    }
+    
+    
 }
