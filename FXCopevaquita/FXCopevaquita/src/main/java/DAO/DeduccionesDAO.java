@@ -28,7 +28,7 @@ public class DeduccionesDAO {
 
         try {
             String sql = "SELECT id, tipo, monto, "
-                    + "cuota, pendiente, empleado, status "
+                    + "cuota, pendiente, empleado, status, fecha_registro "
                     + "FROM tbl_deduccion ;";
 
             ps = acceso.prepareStatement(sql);
@@ -43,6 +43,7 @@ public class DeduccionesDAO {
                 deduccion.setPendiente(rs.getDouble(5));
                 deduccion.setEmpleado(rs.getString(6));
                 deduccion.setStatus(rs.getBoolean(7));
+                deduccion.setFecha_registro(rs.getDate(8));
                 lista.add(deduccion);
             }
         } catch (Exception e) {
@@ -89,8 +90,8 @@ public class DeduccionesDAO {
     public boolean insertarDeduccion(Deduccion deduccion) {
         try {
             String sql = "INSERT INTO tbl_deduccion (tipo, monto, cuota, "
-                    + "pendiente, empleado, status) "
-                    + "VALUES (?,?,?,?,?,?);";
+                    + "pendiente, empleado, status, fecha_registro) "
+                    + "VALUES (?,?,?,?,?,?,?);";
 
             ps = acceso.prepareStatement(sql);
             ps.setObject(1, deduccion.getTipo());
@@ -99,6 +100,7 @@ public class DeduccionesDAO {
             ps.setObject(4, deduccion.getPendiente());
             ps.setObject(5, deduccion.getEmpleado());
             ps.setObject(6, deduccion.isStatus());
+            ps.setObject(7, deduccion.getFecha_registro());
 
             ps.executeUpdate();
             return true;
@@ -113,7 +115,7 @@ public class DeduccionesDAO {
         try {
 
             String sql = "UPDATE tbl_deduccion SET tipo = ?, monto = ?, "
-                    + "cuota = ?, pendiente = ? , empleado = ?, status = ? "
+                    + "cuota = ?, pendiente = ? , empleado = ?, status = ?, fecha_registro = ? "
                     + "WHERE id = ?;";
 
             ps = acceso.prepareStatement(sql);
@@ -123,7 +125,8 @@ public class DeduccionesDAO {
             ps.setObject(4, deduccion.getPendiente());
             ps.setObject(5, deduccion.getEmpleado());
             ps.setObject(6, deduccion.isStatus());
-            ps.setObject(7, deduccion.getId());
+            ps.setObject(7, deduccion.getFecha_registro());
+            ps.setObject(8, deduccion.getId());
 
             ps.executeUpdate();
             return true;
@@ -138,7 +141,7 @@ public class DeduccionesDAO {
         List<Deduccion> lista = new ArrayList<>();
 
         try {
-            String sql = "SELECT id, tipo, monto, cuota, pendiente, empleado, status FROM tbl_deduccion WHERE empleado = ?;";
+            String sql = "SELECT id, tipo, monto, cuota, pendiente, empleado, status, fecha_registro FROM tbl_deduccion WHERE empleado = ?;";
 
             ps = acceso.prepareStatement(sql);
             ps.setObject(1, cedulaEmpleado);
@@ -153,6 +156,7 @@ public class DeduccionesDAO {
                 deduccion.setPendiente(rs.getDouble(5));
                 deduccion.setEmpleado(rs.getString(6));
                 deduccion.setStatus(rs.getBoolean(7));
+                deduccion.setFecha_registro(rs.getDate(8));
                 lista.add(deduccion);
             }
         } catch (Exception e) {

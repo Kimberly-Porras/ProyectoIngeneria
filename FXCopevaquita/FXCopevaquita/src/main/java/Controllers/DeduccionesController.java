@@ -42,6 +42,8 @@ public class DeduccionesController implements Initializable {
     @FXML
     private TableColumn<Deduccion, String> colNombre;
     @FXML
+    private TableColumn<Deduccion, String> colFecha;
+    @FXML
     private TableColumn<Deduccion, String> colTipoDeduccion;
     @FXML
     private TableColumn<Deduccion, String> colCuota;
@@ -63,6 +65,7 @@ public class DeduccionesController implements Initializable {
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
     ObservableList<Deduccion> ObservableDeduccion = FXCollections.observableArrayList();
     ObservableList<String> observableStatus = FXCollections.observableArrayList("Pendiente", "Cancelado");
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -88,6 +91,7 @@ public class DeduccionesController implements Initializable {
             }
             return new SimpleStringProperty(tipo.getNombre());
         });
+        colFecha.setCellValueFactory(new PropertyValueFactory<>("fecha_registro"));
         colMonto.setCellValueFactory(new PropertyValueFactory<>("monto"));
         colPendiente.setCellValueFactory(new PropertyValueFactory<>("pendiente"));
         colCuota.setCellValueFactory(new PropertyValueFactory<>("cuota"));

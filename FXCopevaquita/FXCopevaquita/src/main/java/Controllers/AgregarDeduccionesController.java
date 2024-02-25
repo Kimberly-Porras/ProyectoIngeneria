@@ -23,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.util.StringConverter;
 
@@ -53,6 +54,8 @@ public class AgregarDeduccionesController implements Initializable {
     Deduccion deduccion = new Deduccion();
     DeduccionesDAO daoDeduccion = new DeduccionesDAO();
     TipoDeduccionDAO daoTipoDeduccion = new TipoDeduccionDAO();
+    @FXML
+    private DatePicker dpFecha;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
