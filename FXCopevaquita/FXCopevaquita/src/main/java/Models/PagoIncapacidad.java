@@ -11,32 +11,45 @@ package Models;
  */
 public class PagoIncapacidad {
 
-    private int idIncapacidad;
-    private int idPago;
+    private int id;
+    private  double totalIncapacidad;
+    private int pagoId;
+    
 
     public PagoIncapacidad() {
-        this.idIncapacidad = 0;
-        this.idPago = 0;
+        this.id = 0;
+        this.totalIncapacidad = 0.0;
+        this.pagoId = 0;
+    }
+    public PagoIncapacidad(int id, Double totalIncapacidad, int pagoId) {
+        this.id = id;
+        this.totalIncapacidad = totalIncapacidad;
+        this.pagoId = pagoId;
     }
 
-    public PagoIncapacidad(int idIncapacidad, int idPago) {
-        this.idIncapacidad = idIncapacidad;
-        this.idPago = idPago;
+    public int getId() {
+        return id;
     }
 
-    public int getIdIncapacidad() {
-        return idIncapacidad;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setIdIncapacidad(int idIncapacidad) {
-        this.idIncapacidad = idIncapacidad;
+    public double getTotalIncapacidad() {
+        return totalIncapacidad;
     }
 
-    public int getIdPago() {
-        return idPago;
+    public void setTotalIncapacidad(double totalIncapacidad) {
+        this.totalIncapacidad = totalIncapacidad;
     }
 
-    public void setIdPago(int idPago) {
-        this.idPago = idPago;
+    public int getPagoId() {
+        return pagoId;
     }
+
+    public void setPagoId(int pagoId) {
+        this.pagoId = pagoId;
+    }
+    
+    
 }
