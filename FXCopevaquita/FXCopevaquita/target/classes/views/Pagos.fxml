@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PagosController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PagosController">
    <children>
       <VBox alignment="CENTER" spacing="20.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
          <children>
@@ -66,7 +66,7 @@
                         <TableColumn fx:id="colEmpleado" prefWidth="75.0" text="Empleado" />
                         <TableColumn fx:id="colFechaInicio" prefWidth="75.0" text="Fecha de inicio" />
                         <TableColumn fx:id="colFechaFin" prefWidth="75.0" text="Fecha final" />
-                        <TableColumn fx:id="colMonto" prefWidth="75.0" text="Monto" />
+                        <TableColumn fx:id="colContratos" prefWidth="75.0" text="Contratos" />
                         <TableColumn fx:id="colIncapacidades" prefWidth="75.0" text="Incapacidades" />
                         <TableColumn fx:id="colVacaciones" prefWidth="75.0" text="Vacaciones" />
                         <TableColumn fx:id="colDeducciones" prefWidth="75.0" text="Deducciones" />

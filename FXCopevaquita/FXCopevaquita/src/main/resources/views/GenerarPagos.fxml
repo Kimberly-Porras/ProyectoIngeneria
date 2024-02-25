@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.GenerarPagosController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.GenerarPagosController">
    <children>
       <VBox alignment="CENTER" spacing="20.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
          <children>
@@ -74,7 +74,7 @@
                         <Font name="Lucida Bright" size="22.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtMonto" onKeyPressed="#OnPressed" prefHeight="34.0" prefWidth="181.0" style="-fx-border-color: #2A8C4A;">
+                  <TextField fx:id="txtMonto" disable="true" onKeyPressed="#OnPressed" prefHeight="34.0" prefWidth="181.0" style="-fx-border-color: #2A8C4A;">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -91,7 +91,7 @@
                         <Font name="Lucida Bright" size="22.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtDeduccion" onKeyPressed="#OnPressed" prefHeight="34.0" prefWidth="192.0" style="-fx-border-color: #2A8C4A;">
+                  <TextField fx:id="txtDeduccion" disable="true" onKeyPressed="#OnPressed" prefHeight="34.0" prefWidth="192.0" style="-fx-border-color: #2A8C4A;">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -105,7 +105,7 @@
                         <Font name="Lucida Bright" size="22.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtIncapacidad" onKeyPressed="#OnPressed" prefHeight="34.0" prefWidth="175.0" style="-fx-border-color: #2A8C4A;">
+                  <TextField fx:id="txtIncapacidad" disable="true" onKeyPressed="#OnPressed" prefHeight="34.0" prefWidth="175.0" style="-fx-border-color: #2A8C4A;">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -119,7 +119,7 @@
                         <Font name="Lucida Bright" size="22.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtVacacion" onKeyPressed="#OnPressed" prefHeight="34.0" prefWidth="211.0" style="-fx-border-color: #2A8C4A;">
+                  <TextField fx:id="txtVacacion" disable="true" onKeyPressed="#OnPressed" prefHeight="34.0" prefWidth="211.0" style="-fx-border-color: #2A8C4A;">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -133,7 +133,7 @@
                         <Font name="Lucida Bright" size="22.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtTotal" editable="false" prefHeight="34.0" prefWidth="166.0" style="-fx-border-color: #2A8C4A;">
+                  <TextField fx:id="txtTotal" disable="true" editable="false" prefHeight="34.0" prefWidth="166.0" style="-fx-border-color: #2A8C4A;">
                      <font>
                         <Font size="15.0" />
                      </font>

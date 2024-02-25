@@ -32,8 +32,6 @@ public class PagosController implements Initializable {
     @FXML
     private TableColumn<?, ?> colFechaFin;
     @FXML
-    private TableColumn<?, ?> colMonto;
-    @FXML
     private TableColumn<?, ?> colIncapacidades;
     @FXML
     private TableColumn<?, ?> colVacaciones;
@@ -41,6 +39,8 @@ public class PagosController implements Initializable {
     private TableColumn<?, ?> colDeducciones;
     @FXML
     private TableColumn<?, ?> colTotal;
+    @FXML
+    private TableColumn<?, ?> colContratos;
     /**
      * Initializes the controller class.
      */
