@@ -11,31 +11,44 @@ package Models;
  */
 public class PagoDeduccion {
     
+    private int id;
+    private  double totalDeduccion;
     private int idPago;
-    private int idDeduccion;
+    
 
     public PagoDeduccion() {
+        this.id = 0;
+        this.totalDeduccion = 0.0;
         this.idPago = 0;
-        this.idDeduccion = 0;
     }
-    public PagoDeduccion(int id, int idDeduccion) {
-        this.idPago = id;
-        this.idDeduccion = idDeduccion;
+    public PagoDeduccion(int id, Double totalDeduccion, int idPago) {
+        this.id = id;
+        this.totalDeduccion = totalDeduccion;
+        this.idPago = idPago;
     }
 
     public int getId() {
-        return idPago;
+        return id;
     }
 
     public void setId(int id) {
-        this.idPago = id;
+        this.id = id;
     }
 
-    public int getIdDeduccion() {
-        return idDeduccion;
+    public double getTotalDeduccion() {
+        return totalDeduccion;
     }
 
-    public void setIdDeduccion(int idDeduccion) {
-        this.idDeduccion = idDeduccion;
+    public void setTotalDeduccion(double totalDeduccion) {
+        this.totalDeduccion = totalDeduccion;
     }
+
+    public int getIdPago() {
+        return idPago;
+    }
+
+    public void setIdPago(int idPago) {
+        this.idPago = idPago;
+    }
+
 }
