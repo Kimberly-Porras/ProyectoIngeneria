@@ -14,26 +14,47 @@ import java.sql.ResultSet;
  * @author aleke
  */
 public class PagoBitacoraDAO {
-     
+
     PreparedStatement ps;
     ResultSet rs;
     Connection acceso = Database.DatabaseConnection.getConnection();
-    
-     public boolean insertarPagoBitacora(PagoBitacora pagoBitacora) {
+
+    public boolean insertarPagoBitacora(PagoBitacora pagoBitacora) {
         try {
             String sql = "INSERT INTO tbl_pago_bitacora "
                     + "(totalBitacora, IdPago) "
                     + "VALUES (?,?);";
-            
+
             ps = acceso.prepareStatement(sql);
             ps.setObject(1, pagoBitacora.getTotalBitacora());
             ps.setObject(2, pagoBitacora.getPagoId());
             ps.executeUpdate();
-            
+
             return true;
         } catch (Exception e) {
             System.out.println("" + e.toString());
             return false;
         }
+    }
+
+    public PagoBitacora obtenerPagoBitacoraPorPago(int pagoId) {
+        PagoBitacora bitacora = new PagoBitacora();
+        try {
+            String sql = "SELECT totalBitacora "
+                    + "FROM tbl_pago_bitacora "
+                    + "WHERE IdPago = ?;";
+            ps = acceso.prepareStatement(sql);
+            ps.setObject(1, pagoId);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                bitacora.setTotalBitacora(rs.getDouble(1));
+                break;
+            }
+        } catch (Exception e) {
+            System.out.println("" + e.toString());
+        }
+
+        return bitacora;
     }
 }

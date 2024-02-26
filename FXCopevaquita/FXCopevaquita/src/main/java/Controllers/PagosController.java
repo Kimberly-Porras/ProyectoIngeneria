@@ -13,6 +13,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+
+import DAO.*;
+import Models.*;
+import java.sql.Date;
+import javafx.beans.Observable;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.cell.PropertyValueFactory;
+
 /**
  * FXML Controller class
  *
@@ -20,35 +30,86 @@ import javafx.scene.control.TableView;
  */
 public class PagosController implements Initializable {
 
+    @FXML
+    private ComboBox<Empleado> cbxEmpleado;
+    @FXML
+    private TableView<Pagos> tblPagos;
+    @FXML
+    private TableColumn<Pagos, String> colEmpleado;
+    @FXML
+    private TableColumn<Pagos, String> colFechaInicio;
+    @FXML
+    private TableColumn<Pagos, String> colFechaFin;
+    @FXML
+    private TableColumn<Pagos, String> colIncapacidades;
+    @FXML
+    private TableColumn<Pagos, String> colVacaciones;
+    @FXML
+    private TableColumn<Pagos, String> colDeducciones;
+    @FXML
+    private TableColumn<Pagos, String> colContratos;
+    @FXML
+    private TableColumn<Pagos, String> colSalarioBase;
 
-    @FXML
-    private ComboBox<?> cbxEmpleado;
-    @FXML
-    private TableView<?> tblPagos;
-    @FXML
-    private TableColumn<?, ?> colEmpleado;
-    @FXML
-    private TableColumn<?, ?> colFechaInicio;
-    @FXML
-    private TableColumn<?, ?> colFechaFin;
-    @FXML
-    private TableColumn<?, ?> colIncapacidades;
-    @FXML
-    private TableColumn<?, ?> colVacaciones;
-    @FXML
-    private TableColumn<?, ?> colDeducciones;
-    @FXML
-    private TableColumn<?, ?> colTotal;
-    @FXML
-    private TableColumn<?, ?> colContratos;
+    private ObservableList<Pagos> observablePagos;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+        configure();
+    }
+
+    public void cargarPagos() {
+        observablePagos = FXCollections.observableArrayList(new PagosDAO().obtenerListaPagos());
+        tblPagos.setItems(observablePagos);
+    }
+
+    public void configure() {
+        cargarPagos();
+        
+        colFechaInicio.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFechaFinal().toString()));
+        colFechaFin.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFecha().toString()));
+
+        // Cargar los datos de la base de datos ...
+        colEmpleado.setCellValueFactory((cellData) -> {
+            var cedula = cellData.getValue().getEmpleado();
+            var empleado = new EmpleadoDAO().obtenerEmpleadoPorCedula(cedula);
+            return new SimpleStringProperty(empleado.getNombreCompleto());
+        });
+
+        colSalarioBase.setCellValueFactory((data) -> {
+            var pagoId = data.getValue().getId();
+            var pago = new PagoBitacoraDAO().obtenerPagoBitacoraPorPago(pagoId);
+            return new SimpleStringProperty(pago.getTotalBitacora() + "");
+        });
+
+        colContratos.setCellValueFactory((data) -> {
+            var pagoId = data.getValue().getId();
+            var pago = new PagoContratoDAO().obtenerPagoContratoPorPago(pagoId);
+            return new SimpleStringProperty(pago.getTotalContrato() + "");
+        });
+
+        colDeducciones.setCellValueFactory((data) -> {
+            var pagoId = data.getValue().getId();
+            var pago = new PagoDeduccionDAO().obtenerPagoDeduccionPorPago(pagoId);
+            return new SimpleStringProperty(pago.getTotalDeduccion() + "");
+        });
+
+        colIncapacidades.setCellValueFactory((data) -> {
+            var pagoId = data.getValue().getId();
+            var pago = new PagoIncapacidadDAO().obtenerPagoIncapacidadPorPago(pagoId);
+            return new SimpleStringProperty(pago.getTotalIncapacidad() + "");
+        });
+
+        colVacaciones.setCellValueFactory((data) -> {
+            var pagoId = data.getValue().getId();
+            var pago = new PagoVacacionDAO().obtenerPagoVacacionPorPago(pagoId);
+            return new SimpleStringProperty(pago.getTotalVacacion() + "");
+        });
+    }
 
     @FXML
     private void cbxEmpleado(ActionEvent event) {
@@ -57,6 +118,11 @@ public class PagosController implements Initializable {
     @FXML
     private void OnGenerarPago(ActionEvent event) {
         OpenWindowsHandler.AbrirVentanaGenerarPagos("/views/GenerarPagos");
+    }
+
+    @FXML
+    private void OnRefrescar(ActionEvent event) {
+        cargarPagos();
     }
 
 }

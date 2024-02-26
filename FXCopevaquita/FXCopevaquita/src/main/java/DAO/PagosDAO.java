@@ -4,6 +4,7 @@
  */
 package DAO;
 
+import Models.Empleado;
 import Models.Incapacidad;
 import Models.Pagos;
 import java.sql.Connection;
@@ -11,6 +12,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -21,6 +24,29 @@ public class PagosDAO {
     PreparedStatement ps;
     ResultSet rs;
     Connection acceso = Database.DatabaseConnection.getConnection();
+
+    public List<Pagos> obtenerListaPagos() {
+        List<Pagos> listaPagos = new ArrayList<>();
+        try {
+            String sql = "SELECT `id`, `fecha`, `empleado`, `fecha_final` FROM `tbl_pagos` WHERE 1";
+            ps = acceso.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Pagos pago = new Pagos(
+                        rs.getInt(1),
+                        rs.getDate(2),
+                        rs.getString(3),
+                        rs.getDate(4)
+                );
+                listaPagos.add(pago);
+            }
+        } catch (Exception e) {
+            System.out.println("" + e.toString());
+        }
+
+        return listaPagos;
+    }
 
     public boolean insertarPagos(Pagos pagos) {
         try {
@@ -58,7 +84,7 @@ public class PagosDAO {
                 id = rs.getInt(1);
             }
             return id;
-            
+
         } catch (Exception e) {
             System.out.println("" + e.toString());
             return id;
