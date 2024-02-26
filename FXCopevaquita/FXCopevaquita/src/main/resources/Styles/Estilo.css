@@ -1,0 +1,39 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+
+//Universidad Nacional, Campus Coto
+//Desarrollado por:
+    //Joxan Portilla Hernandez
+    //Melani Barrantes Hidalgo
+    //Alberto Torres
+    //Kimberly Porras
+//2023
+*/
+
+/*.custom-tableview .table-row-cell:first-child {
+    -fx-background-color: #FF0000;  Color de fondo de la primera fila (encabezado) 
+}*/
+
+.table-view{
+    -fx-background-color: #527074;
+    -fx-background-radius: 14 14 0 0;
+    
+}
+.table-view .column-header-background {
+    -fx-background-color: #527074; /* Color de fondo de la primera columna (encabezado) */
+   
+    -fx-background-insets: 0 0 10 0;
+    
+}
+
+.table-view .column-header, .table-view .filler{
+   -fx-size:50px;  
+   -fx-border-widht: 0 0 10 0;
+   -fx-background-color:transparent;
+}
+
+.table-view .column-header .label{
+    -fx-text-fill: white;
+    
+}
