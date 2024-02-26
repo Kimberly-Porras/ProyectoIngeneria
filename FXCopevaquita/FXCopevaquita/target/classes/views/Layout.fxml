@@ -16,9 +16,17 @@
          <children>
             <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
                <children>
-                  <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="44.0" prefWidth="288.0" style="-fx-background-color: green;">
+                  <HBox maxWidth="1.7976931348623157E308" prefHeight="44.0" prefWidth="288.0" style="-fx-background-color: #3a7658;">
                      <children>
-                        <Label text="COOPEVAQUITA R.L" textFill="WHITE">
+                        <ImageView fitHeight="39.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/Home.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label text="COOPEVAQUITA R.L." textFill="WHITE">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -38,9 +46,9 @@
                <children>
                   <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="786.0" prefWidth="220.0">
                      <children>
-                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="200.0" text="Empleados" textFill="#3fab20">
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="200.0" text="Empleados" textFill="#40916c">
                            <font>
-                              <Font name="Lucida Bright Italic" size="16.0" />
+                              <Font name="Lucida Bright Demibold Italic" size="20.0" />
                            </font>
                         </Label>
                         <Separator prefHeight="13.0" prefWidth="222.0" />
@@ -75,9 +83,9 @@
                            </graphic>
                         </Label>
                         <Separator prefHeight="13.0" prefWidth="222.0" />
-                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="222.0" text="Planilla" textFill="#3fab20">
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="222.0" text="Planilla" textFill="#40916c">
                            <font>
-                              <Font name="Lucida Bright Italic" size="16.0" />
+                              <Font name="Lucida Bright Demibold Italic" size="20.0" />
                            </font>
                         </Label>
                         <Separator prefHeight="13.0" prefWidth="222.0" />
@@ -127,9 +135,9 @@
                            </graphic>
                         </Label>
                         <Separator prefHeight="13.0" prefWidth="222.0" />
-                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="222.0" text="Beneficios" textFill="#3fab20">
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="222.0" text="Beneficios" textFill="#40916c">
                            <font>
-                              <Font name="Lucida Bright Italic" size="16.0" />
+                              <Font name="Lucida Bright Demibold Italic" size="20.0" />
                            </font>
                         </Label>
                         <Separator prefHeight="13.0" prefWidth="222.0" />
@@ -179,9 +187,9 @@
                            </graphic>
                         </Label>
                         <Separator prefHeight="13.0" prefWidth="222.0" />
-                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="222.0" text="Reportes" textFill="#3fab20">
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="222.0" text="Reportes" textFill="#40916c">
                            <font>
-                              <Font name="Lucida Bright Italic" size="16.0" />
+                              <Font name="Lucida Bright Demibold Italic" size="20.0" />
                            </font>
                         </Label>
                         <Separator prefHeight="13.0" prefWidth="222.0" />
@@ -261,9 +269,9 @@
                            </graphic>
                         </Label>
                         <Separator prefHeight="13.0" prefWidth="222.0" />
-                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="222.0" text="Otros" textFill="#3fab20">
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="222.0" text="Otros" textFill="#40916c">
                            <font>
-                              <Font name="Lucida Bright Italic" size="16.0" />
+                              <Font name="Lucida Bright Demibold Italic" size="20.0" />
                            </font>
                         </Label>
                         <Label fx:id="link_config" maxWidth="1.7976931348623157E308" onMouseClicked="#OnAbrirConfiguracion" prefHeight="33.0" prefWidth="222.0" text="Configuración">
@@ -291,7 +299,6 @@
                   <Insets top="50.0" />
                </padding>
             </VBox>
-            <Separator orientation="VERTICAL" prefHeight="572.0" prefWidth="38.0" />
             <VBox fx:id="container_root" alignment="CENTER" HBox.hgrow="ALWAYS" />
          </children>
       </HBox>

@@ -16,13 +16,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }*/
 
 .table-view{
-    -fx-background-color: #527074;
+    -fx-background-color:  #00897B;
     -fx-background-radius: 14 14 0 0;
+     text-align: center;
     
 }
 .table-view .column-header-background {
-    -fx-background-color: #527074; /* Color de fondo de la primera columna (encabezado) */
-   
+    -fx-background-color:  #00897B; /* Color de fondo de la primera columna (encabezado) */
+   -fx-font-size: 16px;
     -fx-background-insets: 0 0 10 0;
     
 }

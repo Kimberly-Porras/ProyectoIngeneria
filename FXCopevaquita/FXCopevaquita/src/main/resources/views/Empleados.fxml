@@ -7,6 +7,8 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -14,67 +16,107 @@
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1382.0" style="-fx-background-color: white;" styleClass="custom-tableview" stylesheets="@../Styles/Estilo.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EmpleadosController">
    <children>
-      <VBox alignment="TOP_CENTER" prefHeight="768.0" prefWidth="1464.0" spacing="25.0" style="-fx-background-color: #d2f0d5;">
+      <VBox alignment="TOP_CENTER" prefHeight="768.0" prefWidth="1464.0" spacing="25.0" style="-fx-background-color: #E0F2F1;">
          <children>
-            <HBox alignment="CENTER" prefHeight="80.0" prefWidth="1380.0" spacing="5.0" style="-fx-background-color: #3a7658;">
+            <HBox alignment="TOP_CENTER" prefHeight="80.0" prefWidth="1382.0" spacing="5.0" style="-fx-background-color: #00695C;">
                <children>
-                  <Button mnemonicParsing="false" onAction="#OnAgregar" prefHeight="37.0" prefWidth="122.0" style="-fx-background-color: trasnparent; -fx-border-color: lightblue; -fx-border-radius: 5px;" text="Agregar">
+                  <Label text="LISTA DE EMPLEADOS" textFill="WHITE">
+                     <font>
+                        <Font name="Lucida Bright" size="31.0" />
+                     </font>
                      <HBox.margin>
-                        <Insets top="2.0" />
+                        <Insets bottom="2.0" left="10.0" top="2.0" />
                      </HBox.margin>
-                     <font>
-                        <Font name="Lucida Bright" size="17.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#OnActualizar" prefHeight="37.0" prefWidth="139.0" style="-fx-background-color: transparent; -fx-border-color: #a9e9a4; -fx-border-radius: 5px;" text="Actualizar">
-                     <HBox.margin>
-                        <Insets top="2.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font name="Lucida Bright" size="17.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#OnExportar" prefHeight="37.0" prefWidth="122.0" style="-fx-background-color: trasnparent; -fx-border-color: lightblue; -fx-border-radius: 5px;" text="exportar">
-                     <font>
-                        <Font name="Lucida Bright" size="17.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#OnRefrescar" prefHeight="37.0" prefWidth="139.0" style="-fx-background-color: transparent; -fx-border-color: #a9e9a4; -fx-border-radius: 5px;" text="Refrescar">
-                     <font>
-                        <Font name="Lucida Bright" size="17.0" />
-                     </font>
-                  </Button>
-                  <ComboBox fx:id="cbx_status" prefWidth="150.0" />
+                  </Label>
                </children>
             </HBox>
             <HBox alignment="CENTER" spacing="10.0">
                <children>
-                  <Label text="Seleccione un empleado: ">
-                     <font>
-                        <Font name="Lucida Bright" size="22.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtFiltrarEmpleado" onKeyReleased="#OnFiltrarEmpleado" prefHeight="28.0" prefWidth="515.0">
+                  <VBox spacing="5.0">
+                     <HBox.margin>
+                        <Insets top="2.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <TextField fx:id="txtFiltrarEmpleado" onKeyReleased="#OnFiltrarEmpleado" prefHeight="38.0" prefWidth="318.0" promptText="Busqueda de empleados" style="-fx-border-color: grey;">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </TextField>
+                  <ComboBox fx:id="cbx_status" prefHeight="38.0" prefWidth="200.0" promptText="Estados" style="-fx-background-color: white; -fx-border-color: grey;" />
                </children>
+            </HBox>
+            <HBox prefHeight="43.0" prefWidth="1382.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#OnAgregar" prefHeight="33.0" prefWidth="139.0" style="-fx-background-color: #6aa9e9; -fx-border-radius: 5px;" text="Agregar" textFill="WHITE">
+                     <font>
+                        <Font name="Lucida Bright" size="17.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/agregar-empleado.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#OnActualizar" prefHeight="46.0" prefWidth="139.0" style="-fx-background-color: #88DC65; -fx-border-radius: 5px;" text="Actualizar" textFill="WHITE">
+                     <font>
+                        <Font name="Lucida Bright" size="17.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/actualizar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#OnRefrescar" prefHeight="36.0" prefWidth="146.0" style="-fx-background-color: #ffd19b; -fx-border-radius: 5px;" text="Refrescar" textFill="WHITE">
+                     <font>
+                        <Font name="Lucida Bright" size="17.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/refrescar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#OnExportar" prefHeight="43.0" prefWidth="130.0" style="-fx-background-color: #ed9696; -fx-border-radius: 5px;" text="Exportar" textFill="WHITE">
+                     <font>
+                        <Font name="Lucida Bright" size="17.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/pdf.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="-26.0" left="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </HBox>
             <HBox alignment="CENTER" prefHeight="656.0" prefWidth="1380.0">
                <children>
-                  <TableView fx:id="tblEmpleados" maxHeight="614.0" prefHeight="614.0" prefWidth="1336.0" style="-fx-background-color: white;">
+                  <TableView fx:id="tblEmpleados" maxHeight="614.0" prefHeight="578.0" prefWidth="1366.0" style="-fx-background-color: white;">
                      <columns>
                         <TableColumn fx:id="colCedula" prefWidth="75.0" text="Cédula" />
                         <TableColumn fx:id="colNombre" prefWidth="75.0" text="Nombre" />
                         <TableColumn fx:id="colApellidos" prefWidth="75.0" text="Apellidos" />
                         <TableColumn fx:id="colSexo" prefWidth="75.0" text="Sexo" />
                         <TableColumn fx:id="colEstadoCivil" prefWidth="75.0" text="Estado civil" />
-                        <TableColumn fx:id="colTipoSangre" prefWidth="75.0" text="Tipo sangre" />
+                        <TableColumn fx:id="colTipoSangre" prefWidth="75.0" text="Sangre" />
                         <TableColumn fx:id="colNivelAcademico" prefWidth="112.0" text="Nivel académico" />
                         <TableColumn fx:id="colCuenta" prefWidth="64.0" text="Cuenta" />
-                        <TableColumn fx:id="colFechaNacimiento" prefWidth="125.6666259765625" text="Fecha de nacimiento" />
-                        <TableColumn fx:id="colFechaIngreso" prefWidth="122.3333740234375" text="Fecha de ingreso" />
+                        <TableColumn fx:id="colFechaNacimiento" prefWidth="125.6666259765625" text="Fecha nacimiento" />
+                        <TableColumn fx:id="colFechaIngreso" prefWidth="122.3333740234375" text="Fecha  ingreso" />
                         <TableColumn fx:id="colTipo" prefWidth="107.666748046875" text="Tipo" />
                         <TableColumn fx:id="colEstado" prefWidth="94.0" text="Estado" />
                      </columns>
@@ -89,6 +131,11 @@
                      </padding>
                   </TableView>
                </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+               <padding>
+                  <Insets bottom="5.0" />
+               </padding>
             </HBox>
          </children>
          <StackPane.margin>
