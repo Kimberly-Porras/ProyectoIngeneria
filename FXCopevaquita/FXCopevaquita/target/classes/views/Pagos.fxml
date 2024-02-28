@@ -15,7 +15,7 @@
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PagosController">
    <children>
-      <VBox alignment="CENTER" spacing="15.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
+      <VBox alignment="CENTER" spacing="15.0" style="-fx-background-color: #E0F2F1;">
          <children>
             <HBox alignment="CENTER" prefHeight="51.0" prefWidth="1247.0" style="-fx-background-color: #00695C;">
                <children>
@@ -75,12 +75,12 @@
                   <Insets bottom="-16.0" />
                </VBox.margin>
                <padding>
-                  <Insets left="20.0" />
+                  <Insets left="22.0" />
                </padding>
             </HBox>
             <HBox alignment="CENTER" prefHeight="380.0" prefWidth="1247.0">
                <children>
-                  <TableView fx:id="tblPagos" prefHeight="470.0" prefWidth="1206.0">
+                  <TableView fx:id="tblPagos" prefHeight="470.0" prefWidth="1206.0" stylesheets="@../Styles/Estilo.css">
                      <columns>
                         <TableColumn fx:id="colEmpleado" prefWidth="75.0" text="Empleado" />
                         <TableColumn fx:id="colFechaInicio" prefWidth="75.0" text="Fecha de inicio" />

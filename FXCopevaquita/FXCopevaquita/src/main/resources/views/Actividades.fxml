@@ -12,33 +12,25 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ActividadesController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="671.0" prefWidth="1046.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ActividadesController">
    <children>
-      <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" spacing="5.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
+      <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" spacing="20.0" style="-fx-background-color: #E0F2F1;">
          <children>
-            <HBox alignment="CENTER">
+            <HBox alignment="CENTER" prefHeight="64.0" prefWidth="1230.0" style="-fx-background-color: #00695C;">
                <children>
-                  <Label alignment="TOP_LEFT" prefHeight="30.0" prefWidth="469.0" text="INFORMACIÓN DE LAS ACTIVIDADES" textFill="#0b986a">
+                  <Label alignment="TOP_LEFT" prefHeight="37.0" prefWidth="512.0" text="INFORMACIÓN DE ACTIVIDADES" textFill="WHITE">
                      <font>
-                        <Font name="Lucida Bright" size="25.0" />
+                        <Font name="Lucida Bright" size="31.0" />
                      </font>
                   </Label>
                </children>
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets />
                </VBox.margin>
             </HBox>
             <HBox alignment="CENTER" prefHeight="23.0" prefWidth="1190.0" spacing="15.0">
                <children>
-                  <Label text="Nombre de la actividad: ">
-                     <font>
-                        <Font name="Lucida Bright" size="22.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <TextField fx:id="txtNombreActividad" prefHeight="22.0" prefWidth="417.0" style="-fx-border-color: #2A8C4A;">
+                  <TextField fx:id="txtNombreActividad" prefHeight="22.0" prefWidth="417.0" promptText="Actividad" style="-fx-border-color: #2A8C4A;">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -51,13 +43,6 @@
                         <Insets top="5.0" />
                      </HBox.margin>
                   </CheckBox>
-               </children>
-               <VBox.margin>
-                  <Insets left="20.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="64.0" prefWidth="1210.0" spacing="15.0">
-               <children>
                   <Button mnemonicParsing="false" onAction="#btnGuardarActividad" prefHeight="43.0" prefWidth="157.0" style="-fx-background-color: lightblue;" text="Guardar">
                      <font>
                         <Font size="20.0" />
@@ -69,15 +54,13 @@
                      </font>
                   </Button>
                </children>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
             </HBox>
             <HBox alignment="CENTER" prefHeight="48.0" prefWidth="1210.0" spacing="10.0">
                <children>
-                  <Label text="Seleccione una actividad: ">
-                     <font>
-                        <Font name="Lucida Bright" size="22.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtFiltrarActividades" onKeyPressed="#OnFiltrarActividad" prefHeight="25.0" prefWidth="481.0" style="-fx-border-color: #2A8C4A;">
+                  <TextField fx:id="txtFiltrarActividades" onKeyPressed="#OnFiltrarActividad" prefHeight="25.0" prefWidth="481.0" promptText="Busqueda de actividades" style="-fx-border-color: #2A8C4A;">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -87,9 +70,9 @@
                   <Insets left="20.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="343.0" prefWidth="1210.0">
+            <HBox alignment="CENTER" prefHeight="385.0" prefWidth="1046.0">
                <children>
-                  <TableView fx:id="tblActividades" prefHeight="312.0" prefWidth="1207.0">
+                  <TableView fx:id="tblActividades" prefHeight="388.0" prefWidth="1190.0" stylesheets="@../Styles/Estilo.css">
                      <columns>
                         <TableColumn fx:id="colIdActividad" prefWidth="98.0" text="Identificador" />
                         <TableColumn fx:id="colNombreActividad" prefWidth="117.0" text="Nombre" />
@@ -104,7 +87,7 @@
                   </TableView>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="56.0" prefWidth="1046.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#btnCargarDatos" prefHeight="45.0" prefWidth="183.0" style="-fx-background-color: #ffba6a;" text="Cargar datos">
                      <font>
@@ -115,7 +98,7 @@
             </HBox>
          </children>
          <StackPane.margin>
-            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+            <Insets />
          </StackPane.margin>
       </VBox>
    </children>

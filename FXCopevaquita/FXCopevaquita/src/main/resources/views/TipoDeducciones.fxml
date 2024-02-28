@@ -12,30 +12,25 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.TipoDeduccionesController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="578.0" prefWidth="1109.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.TipoDeduccionesController">
    <children>
-      <VBox alignment="CENTER" spacing="15.0" style="-fx-background-color: #D2F4E7; -fx-background-radius: 18;">
+      <VBox alignment="CENTER" spacing="20.0" style="-fx-background-color: #E0F2F1;">
          <children>
             <HBox alignment="CENTER">
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets />
                </VBox.margin>
                <children>
-                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="1169.0" text="INFORMACIÓN DE LOS TIPOS DE DEDUCCIONES" textFill="#0b986a">
+                  <Label alignment="CENTER" prefHeight="57.0" prefWidth="1210.0" style="-fx-background-color: #00695C;" text="INFORMACIÓN DE LOS TIPOS DE DEDUCCIONES" textFill="#f2f2f2">
                      <font>
-                        <Font name="Lucida Bright" size="25.0" />
+                        <Font name="Lucida Bright" size="31.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="59.0" prefWidth="1176.0" spacing="15.0">
+            <HBox alignment="CENTER" prefHeight="59.0" prefWidth="1037.0" spacing="15.0">
                <children>
-                  <Label text="Nombre del tipo de deducción:  ">
-                     <font>
-                        <Font name="Lucida Bright" size="20.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtNombreTipoDeducciones" prefHeight="37.0" prefWidth="434.0" style="-fx-border-color: #2A8C4A;">
+                  <TextField fx:id="txtNombreTipoDeducciones" prefHeight="37.0" prefWidth="434.0" promptText="Tipo de deducción" style="-fx-border-color: #2A8C4A;">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -45,13 +40,6 @@
                         <Font name="Lucida Bright" size="23.0" />
                      </font>
                   </CheckBox>
-               </children>
-               <VBox.margin>
-                  <Insets left="25.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="66.0" prefWidth="1176.0" spacing="15.0">
-               <children>
                   <Button mnemonicParsing="false" onAction="#btnGuardarTipoDeducciones" prefHeight="42.0" prefWidth="146.0" style="-fx-background-color: lightblue;" text="Guardar">
                      <font>
                         <Font size="20.0" />
@@ -63,33 +51,31 @@
                      </font>
                   </Button>
                </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </HBox>
             <HBox alignment="CENTER" spacing="10.0">
                <children>
-                  <Label text="Seleccione un tipo de deducción: ">
-                     <font>
-                        <Font name="Lucida Bright" size="22.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtFiltrarTipoDeducciones" onKeyPressed="#OnFiltrarTipoDeducciones" prefHeight="40.0" prefWidth="518.0" style="-fx-border-color: #2A8C4A;">
+                  <TextField fx:id="txtFiltrarTipoDeducciones" onKeyPressed="#OnFiltrarTipoDeducciones" prefHeight="40.0" prefWidth="518.0" promptText="Busqueda de tipos de deducciones" style="-fx-border-color: #2A8C4A;">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </TextField>
                </children>
                <VBox.margin>
-                  <Insets left="20.0" />
+                  <Insets />
                </VBox.margin>
             </HBox>
             <HBox alignment="CENTER">
                <VBox.margin>
-                  <Insets left="15.0" right="15.0" />
+                  <Insets />
                </VBox.margin>
                <children>
-                  <TableView fx:id="tblTipoDeduccion" prefHeight="318.0" prefWidth="1000.0">
+                  <TableView fx:id="tblTipoDeduccion" prefHeight="318.0" prefWidth="1000.0" stylesheets="@../Styles/Estilo.css">
                      <columns>
-                        <TableColumn fx:id="colIdTipoDeduccion" prefWidth="98.0" text="Identificador" />
-                        <TableColumn fx:id="colNombreTipoDeduccion" prefWidth="117.0" text="Nombre" />
+                        <TableColumn fx:id="colIdTipoDeduccion" prefWidth="158.66668701171875" text="Identificador" />
+                        <TableColumn fx:id="colNombreTipoDeduccion" prefWidth="482.33331298828125" text="Nombre" />
                         <TableColumn fx:id="colEstadoTipoDeduccion" prefWidth="120.0" text="Estado" />
                      </columns>
                      <columnResizePolicy>
@@ -106,13 +92,13 @@
                      </font>
                   </Button>
                </children>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
             </HBox>
          </children>
-         <padding>
-            <Insets bottom="10.0" />
-         </padding>
          <StackPane.margin>
-            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+            <Insets />
          </StackPane.margin>
       </VBox>
    </children>
