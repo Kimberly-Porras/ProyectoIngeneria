@@ -29,8 +29,8 @@ import javafx.scene.control.ComboBox;
 
 /**
  * FXML Controller class
- *
- * @author User
+ * @author alber
+ * @author kim03
  */
 public class EmpleadosController implements Initializable {
 

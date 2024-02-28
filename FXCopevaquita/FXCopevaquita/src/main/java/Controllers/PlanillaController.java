@@ -16,8 +16,8 @@ import javafx.scene.control.TableView;
 
 /**
  * FXML Controller class
- *
- * @author User
+ * @author alber
+ * @author kim03
  */
 public class PlanillaController implements Initializable {
 

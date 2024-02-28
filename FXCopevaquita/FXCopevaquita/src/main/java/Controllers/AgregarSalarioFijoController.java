@@ -26,8 +26,8 @@ import javafx.util.StringConverter;
 
 /**
  * FXML Controller class
- *
- * @author User
+ * @author alber
+ * @author kim03
  */
 public class AgregarSalarioFijoController implements Initializable {
 

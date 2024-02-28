@@ -25,8 +25,8 @@ import javafx.scene.input.KeyEvent;
 
 /**
  * FXML Controller class
- *
- * @author User
+ * @author alber
+ * @author kim03
  */
 public class AgregarEmpleadoController implements Initializable {
 

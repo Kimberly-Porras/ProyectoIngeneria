@@ -26,8 +26,8 @@ import DAO.BitacoraSocioDAO;
 
 /**
  * FXML Controller class
- *
- * @author User
+ * @author alber
+ * @author kim03
  */
 public class AgregarBitacoraSocioController implements Initializable {
 

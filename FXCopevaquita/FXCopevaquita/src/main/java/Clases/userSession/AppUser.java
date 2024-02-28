@@ -6,7 +6,8 @@ package Clases.userSession;
 
 /**
  *
- * @author aleke
+ * @author alber
+ * @author kim03
  */
 public class AppUser {
 

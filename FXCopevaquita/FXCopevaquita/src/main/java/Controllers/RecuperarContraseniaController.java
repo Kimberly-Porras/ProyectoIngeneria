@@ -21,8 +21,8 @@ import javafx.stage.Stage;
 
 /**
  * FXML Controller class
- *
- * @author aleke
+ * @author alber
+ * @author kim03
  */
 public class RecuperarContraseniaController implements Initializable {
 

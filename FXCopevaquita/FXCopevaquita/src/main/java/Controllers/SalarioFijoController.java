@@ -30,8 +30,8 @@ import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
- *
- * @author User
+ * @author alber
+ * @author kim03
  */
 public class SalarioFijoController implements Initializable {
 

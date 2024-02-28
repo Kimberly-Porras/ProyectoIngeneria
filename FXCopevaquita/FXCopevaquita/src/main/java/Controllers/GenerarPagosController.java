@@ -28,8 +28,8 @@ import javafx.scene.control.Button;
 
 /**
  * FXML Controller class
- *
- * @author User
+ * @author alber
+ * @author kim03
  */
 public class GenerarPagosController implements Initializable {
 

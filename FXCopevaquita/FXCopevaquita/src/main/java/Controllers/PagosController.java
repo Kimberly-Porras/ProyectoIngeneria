@@ -25,8 +25,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  * FXML Controller class
- *
- * @author User
+ * @author alber
+ * @author kim03
  */
 public class PagosController implements Initializable {
 

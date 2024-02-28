@@ -24,8 +24,8 @@ import java.util.logging.Logger;
 
 /**
  * FXML Controller class
- *
- * @author User
+ * @author alber
+ * @author kim03
  */
 public class LoginController implements Initializable {
 

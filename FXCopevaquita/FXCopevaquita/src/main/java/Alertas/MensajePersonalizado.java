@@ -8,7 +8,8 @@ import javafx.scene.control.Alert;
 
 /**
  *
- * @author User
+ * @author alber
+ * @author kim03
  */
 public final class MensajePersonalizado {
     public static void Ver(String encabezado, String mensaje, Alert.AlertType tipo){

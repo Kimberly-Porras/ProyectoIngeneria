@@ -28,8 +28,8 @@ import java.time.format.DateTimeFormatter;
 
 /**
  * FXML Controller class
- *
- * @author User
+ * @author alber
+ * @author kim03
  */
 public class ActualizarEmpleadoController implements Initializable {
 
