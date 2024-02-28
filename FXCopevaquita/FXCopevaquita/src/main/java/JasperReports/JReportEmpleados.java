@@ -12,8 +12,8 @@ import net.sf.jasperreports.engine.JRException;
 
 /**
  *
- *
- * @author aleke
+ * @author alber
+ * @author kim03
  */
 public class JReportEmpleados {
 
