@@ -1,3 +1,4 @@
+DAO\PagoVacacionDAO.class
 Controllers\ContratosController.class
 Controllers\AgregarVacacionesController.class
 DAO\AbonoDAO.class
@@ -20,11 +21,13 @@ Controllers\AreasController.class
 DAO\EmpleadoDAO.class
 Alertas\MensajePersonalizado.class
 Controllers\BitacoraSocioController.class
+DAO\PagoIncapacidadDAO.class
 Controllers\AgregarRegistroFamiliarController$1.class
 Controllers\PlanillaController.class
 Controllers\EmpleadosController.class
 Models\Pagos.class
 Controllers\ActualizarDeduccionesController$1.class
+DAO\PagoDeduccionDAO.class
 Controllers\RecuperarContraseniaController.class
 Gmail\MailSender.class
 Models\BitacoraAsistencia.class
@@ -54,6 +57,7 @@ Controllers\ActualizarAsistenciaController.class
 Controllers\AgregarContratosController.class
 Controllers\ActualizarSalarioFijoController$1.class
 Controllers\AgregarDeduccionesController.class
+Models\PagoContrato.class
 Controllers\AgregarIncapacidadesController.class
 Controllers\AgregarBitacoraEmpleadoController$2.class
 JasperReports\JAppReport.class
@@ -63,11 +67,14 @@ Controllers\ActualizarEmpleadoController.class
 Controllers\AgregarDeduccionesController$2.class
 Controllers\ActualizarBitacoraSocioController.class
 Controllers\ActualizarContratosController.class
+DAO\PagoContratoDAO.class
 Models\Contrato.class
 Controllers\AgregarBitacoraSocioController$1.class
 Controllers\PagosController.class
 Models\PagoIncapacidad.class
+Controllers\GenerarPagosController$1.class
 Models\Deduccion.class
+DAO\PagoBitacoraDAO.class
 Controllers\ActualizarAsistenciaController$1.class
 Controllers\ActualizarEmpleadoController$1.class
 Models\Parentezco.class
@@ -78,6 +85,7 @@ Controllers\ActualizarRegistroFamiliarController.class
 DAO\IncapacidadDAO.class
 DAO\ReporteDiario.class
 floatingWindows\OpenSecondViewController.class
+Models\PagoBitacora.class
 Controllers\AgregarRegistroFamiliarController.class
 DAO\ParentezcoDAO.class
 Models\BitacoraEmpleado.class
@@ -103,6 +111,7 @@ DAO\BitacoraSocioDAO.class
 Controllers\BitacoraEmpleadoController.class
 Controllers\ActualizarBitacoraEmpleadoController$2.class
 Models\PlanillaSocios.class
+DAO\PagosDAO.class
 Controllers\ActualizarDeduccionesController.class
 Models\Incapacidad.class
 Models\Abono.class
