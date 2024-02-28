@@ -25,7 +25,7 @@ public class DatabaseConnection {
             con = (Connection) DriverManager.getConnection(url, "root", "");
         }
         catch(Exception ex){
-            System.out.println("Conexion fallida");
+            System.out.println("Conexión fallida");
         }
         return con;
     }

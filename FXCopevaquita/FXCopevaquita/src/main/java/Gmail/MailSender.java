@@ -12,7 +12,8 @@ import java.util.Properties;
 
 /**
  *
- * @author aleke
+ * @author alber
+ * @author kim03
  */
 public class MailSender {
     final private String PASSWORD = "ibce bdgu txgi qfsi";

@@ -7,7 +7,8 @@ import java.util.Random;
 
 /**
  *
- * @author aleke
+ * @author alber
+ * @author kim03
  */
 public class RandomCodeGenerator {
      public static String generateRandomCode(int length) {

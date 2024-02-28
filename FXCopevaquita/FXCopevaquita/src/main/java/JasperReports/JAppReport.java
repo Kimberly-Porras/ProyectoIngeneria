@@ -13,6 +13,12 @@ import javax.swing.*;
 import java.util.Map;
 import net.sf.jasperreports.swing.JRViewer;
 
+/**
+ *
+ * @author alber
+ * @author kim03
+ */
+
 public abstract class JAppReport {
 
     private static JasperReport jreport;
