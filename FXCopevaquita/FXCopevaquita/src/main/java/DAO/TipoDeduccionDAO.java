@@ -16,7 +16,8 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author User
+ * @author alber
+ * @author kim03
  */
 public class TipoDeduccionDAO {
     private Connection acceso = Database.DatabaseConnection.getConnection();

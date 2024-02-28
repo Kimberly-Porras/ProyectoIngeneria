@@ -12,7 +12,8 @@ import Models.Credencial;
 
 /**
  *
- * @author aleke
+ * @author alber
+ * @author kim03
  */
 public class CredencialesDAO {
 

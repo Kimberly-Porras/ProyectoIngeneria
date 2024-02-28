@@ -16,7 +16,8 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author User
+ * @author alber
+ * @author kim03
  */
 public class AreaDAO {
     private Connection acceso = Database.DatabaseConnection.getConnection();

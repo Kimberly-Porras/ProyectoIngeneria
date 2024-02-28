@@ -6,7 +6,8 @@ package DAO;
 
 /**
  *
- * @author User
+ * @author alber
+ * @author kim03
  */
 class ReporteDiario {
     

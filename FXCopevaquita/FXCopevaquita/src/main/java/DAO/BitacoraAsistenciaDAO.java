@@ -13,7 +13,8 @@ import java.util.List;
 
 /**
  *
- * @author User
+ * @author alber
+ * @author kim03
  */
 public class BitacoraAsistenciaDAO {
     PreparedStatement ps;

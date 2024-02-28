@@ -12,7 +12,8 @@ import java.sql.ResultSet;
 
 /**
  *
- * @author User
+ * @author alber
+ * @author kim03
  */
 public class PagoDeduccionDAO {
 

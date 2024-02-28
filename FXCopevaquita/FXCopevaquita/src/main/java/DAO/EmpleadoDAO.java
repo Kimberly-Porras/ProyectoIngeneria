@@ -13,7 +13,8 @@ import Models.Empleado;
 
 /**
  *
- * @author aleke
+ * @author alber
+ * @author kim03
  */
 public class EmpleadoDAO {
 

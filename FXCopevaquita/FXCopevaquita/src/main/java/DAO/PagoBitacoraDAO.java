@@ -11,7 +11,8 @@ import java.sql.ResultSet;
 
 /**
  *
- * @author aleke
+ * @author alber
+ * @author kim03
  */
 public class PagoBitacoraDAO {
 
