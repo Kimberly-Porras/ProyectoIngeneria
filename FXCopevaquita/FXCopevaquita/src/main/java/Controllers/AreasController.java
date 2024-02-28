@@ -18,11 +18,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -50,6 +52,8 @@ public class AreasController implements Initializable {
      * Initializes the controller class.
      */
     AreaDAO dao = new AreaDAO();
+    @FXML
+    private Label etiqueta;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -175,6 +179,11 @@ public class AreasController implements Initializable {
     @FXML
     private void btnCargarDatos(ActionEvent event) {
         cargarDatos();
+    }
+
+    @FXML
+    private void Etiqueta(MouseEvent event) {
+        etiqueta.setText("Guardar");
     }
 
 }

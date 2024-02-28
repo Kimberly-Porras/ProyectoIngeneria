@@ -7,54 +7,22 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.BitacoraSocioController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.BitacoraSocioController">
    <children>
-      <VBox alignment="CENTER" prefHeight="652.0" prefWidth="1247.0" spacing="30.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
+      <VBox alignment="CENTER" prefHeight="652.0" prefWidth="1247.0" spacing="15.0" style="-fx-background-color: #E0F2F1;">
          <children>
-            <HBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="1245.0" spacing="5.0">
+            <HBox alignment="CENTER" prefHeight="66.0" prefWidth="1247.0" style="-fx-background-color: #00695C;">
                <children>
-                  <Button mnemonicParsing="false" onAction="#OnAgregar" prefHeight="37.0" prefWidth="135.0" style="-fx-background-color: trasnparent; -fx-border-color: lightblue; -fx-border-radius: 5px;" text="Agregar">
-                     <HBox.margin>
-                        <Insets top="2.0" />
-                     </HBox.margin>
+                  <Label text="REPORTES DIARIOS DE SOCIOS" textFill="WHITE">
                      <font>
-                        <Font name="Lucida Bright" size="17.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#OnActualizar" prefHeight="37.0" prefWidth="152.0" style="-fx-background-color: transparent; -fx-border-color: #a9e9a4; -fx-border-radius: 5px;" text="Actualizar">
-                     <HBox.margin>
-                        <Insets top="2.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font name="Lucida Bright" size="17.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#OnReporteDiarioSocio" prefHeight="37.0" prefWidth="152.0" style="-fx-background-color: transparent; -fx-border-color: #a9e9a4; -fx-border-radius: 5px;" text="Reportes">
-                     <font>
-                        <Font name="Lucida Bright" size="17.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#OnRefrescar" prefHeight="37.0" prefWidth="149.0" style="-fx-background-color: transparent; -fx-border-color: #a9e9a4; -fx-border-radius: 5px;" text="Refrescar">
-                     <font>
-                        <Font name="Lucida Bright" size="17.0" />
-                     </font>
-                  </Button>
-                  <ComboBox fx:id="cbx_status" prefWidth="150.0" />
-               </children>
-               <padding>
-                  <Insets top="5.0" />
-               </padding>
-            </HBox>
-            <HBox alignment="CENTER">
-               <children>
-                  <Label text="LISTA DE REPORTE DE LOS SOCIOS" textFill="#0b986a">
-                     <font>
-                        <Font name="Lucida Bright" size="29.0" />
+                        <Font name="Lucida Bright" size="31.0" />
                      </font>
                   </Label>
                </children>
@@ -64,29 +32,80 @@
             </HBox>
             <HBox alignment="CENTER" spacing="10.0">
                <children>
-                  <Label text="Seleccione un empleado: ">
-                     <font>
-                        <Font name="Lucida Bright" size="22.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <TextField fx:id="txtFiltrarEmpleado" onKeyPressed="#PresionarEnter" prefHeight="36.0" prefWidth="515.0">
+                  <TextField fx:id="txtFiltrarEmpleado" onKeyPressed="#PresionarEnter" prefHeight="40.0" prefWidth="364.0" promptText="Busqueda de empleados" style="-fx-border-color: GREY;">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </TextField>
+                  <ComboBox fx:id="cbx_status" prefHeight="42.0" prefWidth="143.0" promptText="Estados" style="-fx-background-color: WHITE; -fx-border-color: GREY;" />
+                  <Button mnemonicParsing="false" onAction="#OnRefrescar" prefHeight="41.0" prefWidth="45.0" style="-fx-background-color: transparent; -fx-border-radius: 5px;" textFill="WHITE">
+                     <font>
+                        <Font name="Lucida Bright" size="17.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/refrescar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
+            </HBox>
+            <HBox prefHeight="50.0" prefWidth="1245.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#OnAgregar" prefHeight="37.0" prefWidth="117.0" style="-fx-background-color: #6aa9e9; -fx-border-radius: 5px;" text="Agregar" textFill="WHITE">
+                     <font>
+                        <Font name="Lucida Bright" size="17.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="27.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/agregar-empleado.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#OnActualizar" prefHeight="38.0" prefWidth="145.0" style="-fx-background-color: #88DC65; -fx-border-radius: 5px;" text="Actualizar" textFill="WHITE">
+                     <font>
+                        <Font name="Lucida Bright" size="17.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="27.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/actualizar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#OnReporteDiarioSocio" prefHeight="39.0" prefWidth="123.0" style="-fx-background-color: #ed9696;" text="Reportes" textFill="#f8f8f8">
+                     <font>
+                        <Font name="Lucida Bright" size="17.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="27.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/pdf.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="-16.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
             </HBox>
             <HBox alignment="CENTER" prefHeight="477.0" prefWidth="1247.0">
                <children>
-                  <TableView fx:id="tblListarReporteSocio" prefHeight="462.0" prefWidth="1204.0">
+                  <TableView fx:id="tblListarReporteSocio" prefHeight="465.0" prefWidth="1233.0" stylesheets="@../Styles/Estilo.css">
                      <columns>
-                        <TableColumn fx:id="colCedula" prefWidth="200.0" text="Cédula" />
-                        <TableColumn fx:id="colNombre" prefWidth="137.6666259765625" text="Nombre" />
-                        <TableColumn fx:id="colHoras" prefWidth="217.0" text="Cantidad de horas" />
-                        <TableColumn fx:id="colDescripcion" prefWidth="285.6666564941406" text="Descripción" />
+                        <TableColumn fx:id="colCedula" prefWidth="178.0" text="Cédula" />
+                        <TableColumn fx:id="colNombre" prefWidth="382.0" text="Nombre" />
+                        <TableColumn fx:id="colDescripcion" prefWidth="332.0" text="Descripción" />
+                        <TableColumn fx:id="colHoras" prefWidth="154.0" text="Horas" />
                         <TableColumn fx:id="colEstado" prefWidth="137.6666259765625" text="Estado" />
                      </columns>
                      <columnResizePolicy>
@@ -100,7 +119,7 @@
             </HBox>
          </children>
          <StackPane.margin>
-            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+            <Insets />
          </StackPane.margin>
       </VBox>
    </children>

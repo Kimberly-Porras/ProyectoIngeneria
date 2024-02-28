@@ -12,30 +12,25 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AreasController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="885.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AreasController">
    <children>
-      <VBox alignment="CENTER" spacing="15.0" style="-fx-background-color: #D2F4E7; -fx-background-radius: 18;">
+      <VBox alignment="CENTER" spacing="15.0" style="-fx-background-color: #E0F2F1;">
          <children>
-            <HBox alignment="CENTER" prefHeight="32.0" prefWidth="1196.0">
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="1196.0" style="-fx-background-color: #00695C;">
                <children>
-                  <Label alignment="TOP_LEFT" prefHeight="30.0" prefWidth="404.0" text="INFORMACIÓN DE LAS ÁREAS" textFill="#0b986a">
+                  <Label alignment="TOP_LEFT" prefHeight="37.0" prefWidth="395.0" text="INFORMACIÓN DE ÁREAS" textFill="WHITE">
                      <font>
-                        <Font name="Lucida Bright" size="25.0" />
+                        <Font name="Lucida Bright" size="31.0" />
                      </font>
                      <HBox.margin>
-                        <Insets top="10.0" />
+                        <Insets />
                      </HBox.margin>
                   </Label>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="51.0" prefWidth="1196.0" spacing="15.0">
                <children>
-                  <Label text="Nombre de la área: ">
-                     <font>
-                        <Font name="Lucida Bright" size="22.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtNombreArea" prefHeight="37.0" prefWidth="434.0" style="-fx-border-color: #2A8C4A;">
+                  <TextField fx:id="txtNombreArea" prefHeight="37.0" prefWidth="434.0" promptText="Nombre del área" style="-fx-border-color: #2A8C4A;">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -45,33 +40,30 @@
                         <Font name="Lucida Bright" size="19.0" />
                      </font>
                   </CheckBox>
-               </children>
-               <VBox.margin>
-                  <Insets left="20.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#btnGuardarArea" prefHeight="41.0" prefWidth="140.0" style="-fx-background-color: lightblue;" text="Guardar">
+                  <Button mnemonicParsing="false" onAction="#btnGuardarArea" onMouseMoved="#Etiqueta" prefHeight="44.0" prefWidth="118.0" style="-fx-background-color: lightblue;" text="Guardar">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#btnActualizarArea" prefHeight="44.0" prefWidth="160.0" style="-fx-background-color: #a9e9a4;" text="Actualizar">
+                  <Label fx:id="etiqueta" />
+                  <Button mnemonicParsing="false" onAction="#btnActualizarArea" prefHeight="44.0" prefWidth="130.0" style="-fx-background-color: #a9e9a4;" text="Actualizar">
                      <font>
                         <Font name="Lucida Bright" size="19.0" />
                      </font>
                   </Button>
                </children>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
             </HBox>
             <HBox alignment="CENTER" prefHeight="55.0" prefWidth="1196.0" spacing="10.0">
                <children>
-                  <Label text="Seleccione un área: ">
+                  <Label>
                      <font>
                         <Font name="Lucida Bright" size="22.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtFiltrarArea" onKeyPressed="#OnFiltrarArea" prefHeight="25.0" prefWidth="481.0" style="-fx-border-color: #2A8C4A;">
+                  <TextField fx:id="txtFiltrarArea" onKeyPressed="#OnFiltrarArea" prefHeight="25.0" prefWidth="481.0" promptText="Filtrado de áreas" style="-fx-border-color: #2A8C4A;">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -83,10 +75,10 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="317.0" prefWidth="1196.0">
                <children>
-                  <TableView fx:id="tblAreas" prefHeight="288.0" prefWidth="1194.0">
+                  <TableView fx:id="tblAreas" prefHeight="317.0" prefWidth="823.0" style="-fx-background-color: WHITE;" stylesheets="@../Styles/Estilo.css">
                      <columns>
-                        <TableColumn fx:id="colIdArea" prefWidth="98.0" text="Identificador" />
-                        <TableColumn fx:id="colNombreArea" prefWidth="117.0" text="Nombre" />
+                        <TableColumn fx:id="colIdArea" prefWidth="145.33334350585938" text="Identificador" />
+                        <TableColumn fx:id="colNombreArea" prefWidth="381.6666564941406" text="Nombre" />
                         <TableColumn fx:id="colEstadoArea" prefWidth="120.0" text="Estado" />
                      </columns>
                      <columnResizePolicy>
@@ -100,7 +92,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#btnCargarDatos" prefHeight="37.0" prefWidth="180.0" style="-fx-background-color: #ffba6a;" text="Cargar datos">
+                  <Button mnemonicParsing="false" onAction="#btnCargarDatos" prefHeight="44.0" prefWidth="95.0" style="-fx-background-color: #ffba6a;" text="Cargar">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -109,7 +101,7 @@
             </HBox>
          </children>
          <StackPane.margin>
-            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+            <Insets />
          </StackPane.margin>
       </VBox>
    </children>
