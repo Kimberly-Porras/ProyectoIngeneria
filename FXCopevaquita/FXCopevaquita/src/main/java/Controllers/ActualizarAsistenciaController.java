@@ -37,13 +37,21 @@ import javafx.util.StringConverter;
  */
 public class ActualizarAsistenciaController implements Initializable {
 
+    @FXML
     private ComboBox<Empleado> cbxFiltrarEmpleadoActualizar;
+    @FXML
     private TableView<BitacoraAsistencia> tblAsistencia;
+    @FXML
     private TableColumn<BitacoraAsistencia, String> colFecha;
+    @FXML
     private TableColumn<BitacoraAsistencia, String> colPresente;
+    @FXML
     private TableColumn<BitacoraAsistencia, String> colJudtifica;
+    @FXML
     private DatePicker dpFecha;
+    @FXML
     private CheckBox cbPresente;
+    @FXML
     private CheckBox cbJudtifica;
 
     /**
@@ -61,6 +69,9 @@ public class ActualizarAsistenciaController implements Initializable {
     }
 
     public void configurar() {
+         
+        
+        
         colFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
         colPresente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isEstaPresente() ? "Presente" : "Ausente"));
         colJudtifica.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isJustifica() ? "Justificada" : "Sin justificar"));

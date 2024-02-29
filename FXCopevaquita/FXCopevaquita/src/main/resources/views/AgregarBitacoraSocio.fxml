@@ -13,10 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<StackPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgregarBitacoraSocioController">
+<StackPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-radius: 18;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgregarBitacoraSocioController">
    <children>
-      <VBox alignment="CENTER" prefHeight="626.0" prefWidth="986.0" spacing="50.0" style="-fx-background-color: #D2F4E7; -fx-background-radius: 18;">
+      <VBox alignment="CENTER" prefHeight="626.0" prefWidth="986.0" spacing="15.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
          <children>
             <HBox alignment="CENTER">
                <children>
@@ -98,7 +97,7 @@
             </HBox>
          </children>
          <StackPane.margin>
-            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </StackPane.margin>
       </VBox>
    </children>
