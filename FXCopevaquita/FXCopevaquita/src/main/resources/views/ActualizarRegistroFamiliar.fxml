@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -15,35 +15,45 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ActualizarRegistroFamiliarController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="678.0" prefWidth="931.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ActualizarRegistroFamiliarController">
    <children>
-      <VBox prefHeight="643.0" prefWidth="1105.0" spacing="25.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
+      <VBox prefHeight="643.0" prefWidth="1105.0" spacing="15.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
          <children>
-            <HBox alignment="CENTER" prefHeight="87.0" prefWidth="1178.0">
+            <HBox alignment="CENTER" prefHeight="87.0" prefWidth="1178.0" style="-fx-background-color: #00695C; -fx-background-radius: 8;">
                <children>
-                  <Label alignment="TOP_LEFT" text="ACTUALIZACIÓN DE PARENTEZCOS POR EMPLEADOS" textFill="#0b986a">
+                  <Label alignment="TOP_LEFT" text="ACTUALIZACIÓN DE PARENTEZCOS" textFill="WHITE">
                      <font>
-                        <Font name="Lucida Bright" size="29.0" />
+                        <Font name="Lucida Bright Demibold Italic" size="29.0" />
                      </font>
                   </Label>
                </children>
                <VBox.margin>
-                  <Insets top="30.0" />
+                  <Insets />
                </VBox.margin>
             </HBox>
             <HBox alignment="CENTER" prefHeight="58.0" prefWidth="1178.0" spacing="10.0">
                <children>
-                  <Label alignment="TOP_LEFT" text="Seleccione un empleado: ">
-                     <font>
-                        <Font name="Lucida Bright" size="22.0" />
-                     </font>
-                  </Label>
-                  <ComboBox fx:id="cbxFiltrarEmpleadoActualizar" editable="true" onAction="#FiltrarEmpleado" prefHeight="43.0" prefWidth="399.0" style="-fx-border-color: #2A8C4A;" visibleRowCount="20" />
+                  <ComboBox fx:id="cbxFiltrarEmpleadoActualizar" editable="true" onAction="#FiltrarEmpleado" prefHeight="27.0" prefWidth="371.0" promptText="Seleccione un empleado" style="-fx-border-color: #2A8C4A;" visibleRowCount="20" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="225.0" prefWidth="1105.0" spacing="15.0">
+            <HBox>
                <children>
-                  <TableView fx:id="tblParentezco" prefHeight="200.0" prefWidth="711.0">
+                  <Button mnemonicParsing="false" onAction="#onCargar" prefHeight="31.0" prefWidth="71.0" style="-fx-background-color: #ffba6a;" text="Cargar" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="-15.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="18.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="326.0" prefWidth="815.0" spacing="10.0">
+               <children>
+                  <TableView fx:id="tblParentezco" prefHeight="129.0" prefWidth="859.0">
                      <columns>
                         <TableColumn fx:id="colCedula" prefWidth="98.0" text="Cédula" />
                         <TableColumn fx:id="colNombre" prefWidth="117.0" text="Nombre" />
@@ -56,152 +66,130 @@
                      </columns>
                      <columnResizePolicy>
                      </columnResizePolicy>
+                     <stylesheets>
+                        <URL value="@../Styles/Estilo.css" />
+                        <URL value="@../Styles/EstiloAct.css" />
+                     </stylesheets>
                   </TableView>
-                  <VBox prefHeight="173.0" prefWidth="163.0" spacing="10.0">
-                     <children>
-                        <Button mnemonicParsing="false" onAction="#onCargar" prefHeight="42.0" prefWidth="116.0" style="-fx-background-color: #ffba6a;" text="Cargar" textFill="WHITE">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button mnemonicParsing="false" onAction="#onLimpiar" prefHeight="41.0" prefWidth="115.0" style="-fx-background-color: #F08080;" text="Limpiar" textFill="WHITE">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </VBox>
                </children>
                <VBox.margin>
                   <Insets />
                </VBox.margin>
             </HBox>
-            <Separator prefWidth="200.0" />
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="30.0">
+            <HBox alignment="CENTER" />
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                <children>
-                  <Label alignment="TOP_LEFT" text="INFORMACIÓN A ACTUALIZAR">
+                  <HBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="164.0" text="Cédula del familiar:  ">
+                           <font>
+                              <Font name="Lucida Bright" size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtCedula" prefHeight="29.0" prefWidth="315.0" style="-fx-border-color: #2A8C4A;">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="164.0" text="Nombre: ">
+                           <font>
+                              <Font name="Lucida Bright" size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtNombre" prefHeight="29.0" prefWidth="315.0" style="-fx-border-color: #2A8C4A;">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="164.0" text="Apellidos: ">
+                           <font>
+                              <Font name="Lucida Bright" size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtApellidos" prefHeight="29.0" prefWidth="315.0" style="-fx-border-color: #2A8C4A;">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="164.0" text="Sexo: ">
+                           <font>
+                              <Font name="Lucida Bright" size="15.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="cbxSexo" prefHeight="27.0" prefWidth="315.0" style="-fx-border-color: #2A8C4A; -fx-background-color: WHITE;" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="164.0" text="Fecha de nacimiento: ">
+                           <font>
+                              <Font name="Lucida Bright" size="15.0" />
+                           </font>
+                        </Label>
+                        <DatePicker fx:id="dpFechaNacimiento" prefHeight="27.0" prefWidth="315.0" style="-fx-border-color: #2A8C4A;" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="164.0" text="Parentezco: ">
+                           <font>
+                              <Font name="Lucida Bright" size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtParentezco" prefHeight="29.0" prefWidth="315.0" style="-fx-border-color: #2A8C4A;">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="164.0" text="Contacto emergencia:">
+                           <font>
+                              <Font name="Lucida Bright" size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtContactoEmergencia" prefHeight="29.0" prefWidth="315.0" style="-fx-border-color: #2A8C4A;">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER">
+                     <children>
+                        <CheckBox fx:id="cbEstadoEmpleado" mnemonicParsing="false" text="Estado">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </CheckBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#btnActualizar" prefHeight="39.0" prefWidth="138.0" style="-fx-background-color: #a9e9a4;" text="Actualizar">
                      <font>
-                        <Font name="Lucida Bright Demibold Italic" size="22.0" />
+                        <Font name="Lucida Bright" size="20.0" />
                      </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
-               <children>
-                  <VBox prefHeight="114.0" prefWidth="424.0" spacing="10.0">
-                     <children>
-                        <HBox>
-                           <children>
-                              <Label prefHeight="25.0" prefWidth="168.0" text="Cédula del familiar:  ">
-                                 <font>
-                                    <Font name="Lucida Bright" size="15.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="txtCedula" prefHeight="29.0" prefWidth="225.0" style="-fx-border-color: #2A8C4A;">
-                                 <font>
-                                    <Font size="13.0" />
-                                 </font>
-                              </TextField>
-                           </children>
-                        </HBox>
-                        <HBox>
-                           <children>
-                              <Label prefHeight="25.0" prefWidth="98.0" text="Nombre: ">
-                                 <font>
-                                    <Font name="Lucida Bright" size="15.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="txtNombre" prefHeight="29.0" prefWidth="293.0" style="-fx-border-color: #2A8C4A;">
-                                 <font>
-                                    <Font size="13.0" />
-                                 </font>
-                              </TextField>
-                           </children>
-                        </HBox>
-                        <HBox>
-                           <children>
-                              <Label prefHeight="25.0" prefWidth="99.0" text="Apellidos: ">
-                                 <font>
-                                    <Font name="Lucida Bright" size="15.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="txtApellidos" prefHeight="29.0" prefWidth="291.0" style="-fx-border-color: #2A8C4A;">
-                                 <font>
-                                    <Font size="13.0" />
-                                 </font>
-                              </TextField>
-                           </children>
-                        </HBox>
-                        <HBox>
-                           <children>
-                              <Label prefHeight="25.0" prefWidth="100.0" text="Sexo: ">
-                                 <font>
-                                    <Font name="Lucida Bright" size="15.0" />
-                                 </font>
-                              </Label>
-                              <ComboBox fx:id="cbxSexo" prefHeight="27.0" prefWidth="290.0" style="-fx-border-color: #2A8C4A; -fx-background-color: WHITE;" />
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="114.0" prefWidth="353.0" spacing="10.0">
-                     <children>
-                        <HBox>
-                           <children>
-                              <Label prefHeight="25.0" prefWidth="172.0" text="Fecha de nacimiento: ">
-                                 <font>
-                                    <Font name="Lucida Bright" size="15.0" />
-                                 </font>
-                              </Label>
-                              <DatePicker fx:id="dpFechaNacimiento" prefHeight="27.0" prefWidth="168.0" style="-fx-border-color: #2A8C4A;" />
-                           </children>
-                        </HBox>
-                        <HBox>
-                           <children>
-                              <Label prefHeight="25.0" prefWidth="99.0" text="Parentezco: ">
-                                 <font>
-                                    <Font name="Lucida Bright" size="15.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="txtParentezco" prefHeight="29.0" prefWidth="239.0" style="-fx-border-color: #2A8C4A;">
-                                 <font>
-                                    <Font size="13.0" />
-                                 </font>
-                              </TextField>
-                           </children>
-                        </HBox>
-                        <HBox>
-                           <children>
-                              <Label prefHeight="25.0" prefWidth="274.0" text="Contacto emergencia:">
-                                 <font>
-                                    <Font name="Lucida Bright" size="15.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="txtContactoEmergencia" prefHeight="29.0" prefWidth="295.0" style="-fx-border-color: #2A8C4A;">
-                                 <font>
-                                    <Font size="13.0" />
-                                 </font>
-                              </TextField>
-                           </children>
-                        </HBox>
-                        <HBox alignment="TOP_CENTER">
-                           <children>
-                              <CheckBox fx:id="cbEstadoEmpleado" mnemonicParsing="false" text="Estado">
-                                 <font>
-                                    <Font size="19.0" />
-                                 </font>
-                              </CheckBox>
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#btnActualizar" prefHeight="54.0" prefWidth="195.0" style="-fx-background-color: #a9e9a4;" text="Actualizar">
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#onLimpiar" prefHeight="39.0" prefWidth="103.0" style="-fx-background-color: #F08080;" text="Limpiar">
                      <font>
-                        <Font name="Lucida Bright" size="24.0" />
+                        <Font name="Lucida Bright" size="20.0" />
                      </font>
                   </Button>
                </children>
@@ -211,7 +199,7 @@
             </HBox>
          </children>
          <StackPane.margin>
-            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </StackPane.margin>
       </VBox>
    </children>

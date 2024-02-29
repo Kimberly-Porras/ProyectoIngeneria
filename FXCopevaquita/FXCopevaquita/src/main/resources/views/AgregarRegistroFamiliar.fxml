@@ -16,7 +16,7 @@
    <children>
       <VBox alignment="CENTER" prefHeight="545.0" prefWidth="534.0" spacing="20.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
          <children>
-            <Label alignment="TOP_CENTER" prefHeight="41.0" prefWidth="534.0" style="-fx-background-color: #00695C; -fx-background-radius: 8;" text="INFORMACIÓN DEL FAMILIAR" textFill="WHITE">
+            <Label alignment="CENTER" prefHeight="41.0" prefWidth="534.0" style="-fx-background-color: #00695C; -fx-background-radius: 8;" text="INSERCIÓN DE PARENTEZCOS" textFill="WHITE">
                <font>
                   <Font name="Lucida Bright Demibold Italic" size="25.0" />
                </font>
