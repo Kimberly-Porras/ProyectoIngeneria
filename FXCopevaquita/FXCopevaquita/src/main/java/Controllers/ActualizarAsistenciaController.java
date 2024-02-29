@@ -111,7 +111,7 @@ public class ActualizarAsistenciaController implements Initializable {
                             cbxFiltrarEmpleadoActualizar.getValue().getCedula()));
 
             if (exito) {
-                MensajePersonalizado.Ver("EXITO AL ACTUALIZAR", "Incapacidad actualizado correctamente", Alert.AlertType.CONFIRMATION);
+                MensajePersonalizado.Ver("ÉXITO AL ACTUALIZAR", "Incapacidad actualizada correctamente", Alert.AlertType.CONFIRMATION);
                 limpiarCamposActualizar();
                 FiltrarAsistenciaPorCedulaEmpleado();
 
@@ -119,7 +119,7 @@ public class ActualizarAsistenciaController implements Initializable {
                 MensajePersonalizado.Ver("ERROR", "Error al actualizar la incapacidad", Alert.AlertType.ERROR);
             }
         } else {
-            MensajePersonalizado.Ver("INFORMACIÓN INCOMPLETA", "Los campos son requeridos, verifique que la información este completa", Alert.AlertType.WARNING);
+            MensajePersonalizado.Ver("INFORMACIÓN INCOMPLETA", "Los espacios son requeridos, verifique que la información esté completa", Alert.AlertType.WARNING);
 
         }
     }

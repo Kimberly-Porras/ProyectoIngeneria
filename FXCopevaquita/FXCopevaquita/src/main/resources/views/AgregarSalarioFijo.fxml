@@ -34,15 +34,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="45.0" prefWidth="1276.0" spacing="10.0">
                <children>
-                  <Label text="Seleccione un empleado: ">
-                     <font>
-                        <Font name="Lucida Bright" size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <ComboBox fx:id="cbxFiltrarEmpleadoAgre" prefHeight="34.0" prefWidth="422.0" style="-fx-background-color: WHITE; -fx-border-color: GREEN;" />
+                  <ComboBox fx:id="cbxFiltrarEmpleadoAgre" prefHeight="34.0" prefWidth="422.0" promptText="Seleccione un empleado" style="-fx-background-color: WHITE; -fx-border-color: GREEN;" />
                </children>
             </HBox>
             <HBox alignment="CENTER" spacing="15.0">
