@@ -13,30 +13,33 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgregarAsistenciaController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="639.0" style="-fx-background-radius: 18;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgregarAsistenciaController">
    <children>
-      <VBox prefHeight="626.0" prefWidth="1128.0" spacing="30.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
+      <VBox alignment="CENTER" prefHeight="626.0" prefWidth="1128.0" spacing="15.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
          <children>
-            <HBox alignment="CENTER">
+            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="1276.0" style="-fx-background-color: #00695C; -fx-background-radius: 8;">
                <children>
-                  <Label alignment="TOP_LEFT" text="INSERCIÓN DE ASISTENCIAS POR EMPLEADO" textFill="#0b986a">
+                  <Label alignment="TOP_LEFT" text="INSERCIÓN DE ASISTENCIA" textFill="WHITE">
                      <font>
                         <Font name="Lucida Bright" size="29.0" />
                      </font>
                   </Label>
                </children>
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets />
                </VBox.margin>
+               <opaqueInsets>
+                  <Insets top="-50.0" />
+               </opaqueInsets>
             </HBox>
             <HBox alignment="CENTER" prefHeight="95.0" prefWidth="1128.0" spacing="10.0">
                <children>
-                  <Label alignment="TOP_LEFT" text="Seleccione un empleado: ">
+                  <Label alignment="TOP_LEFT">
                      <font>
                         <Font name="Lucida Bright" size="22.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="cbxFiltrarEmpleadoAgre" onAction="#FiltrarEmpleado" prefHeight="34.0" prefWidth="422.0" style="-fx-background-color: white; -fx-border-color: green;" />
+                  <ComboBox fx:id="cbxFiltrarEmpleadoAgre" onAction="#FiltrarEmpleado" prefHeight="34.0" prefWidth="422.0" promptText="Seleccione un empleado" style="-fx-background-color: white; -fx-border-color: grey;" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
@@ -95,7 +98,7 @@
             </HBox>
          </children>
          <StackPane.margin>
-            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </StackPane.margin>
       </VBox>
    </children>
