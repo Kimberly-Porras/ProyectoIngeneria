@@ -14,56 +14,48 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgregarVacacionesController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="417.0" prefWidth="569.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgregarVacacionesController">
    <children>
-      <VBox prefHeight="626.0" prefWidth="1154.0" spacing="35.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
+      <VBox prefHeight="626.0" prefWidth="1154.0" spacing="15.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
          <children>
-            <HBox alignment="CENTER">
+            <HBox alignment="CENTER" style="-fx-background-color: #00695C;">
                <children>
-                  <Label alignment="TOP_LEFT" text="INSERCIÓN DE VACACIONES POR EMPLEADO" textFill="#0b986a">
+                  <Label alignment="TOP_LEFT" text="INSERCIÓN DE VACACIONES" textFill="WHITE">
                      <font>
-                        <Font name="Lucida Bright" size="29.0" />
+                        <Font name="Lucida Bright Demibold Italic" size="29.0" />
                      </font>
                   </Label>
                </children>
                <VBox.margin>
                   <Insets />
                </VBox.margin>
-               <padding>
-                  <Insets top="15.0" />
-               </padding>
             </HBox>
             <HBox alignment="CENTER" spacing="10.0">
                <children>
-                  <Label alignment="TOP_LEFT" text="Seleccione un empleado: ">
-                     <font>
-                        <Font name="Lucida Bright" size="22.0" />
-                     </font>
-                  </Label>
-                  <ComboBox fx:id="cbxFiltrarEmpleado" prefHeight="34.0" prefWidth="422.0" style="-fx-background-color: white; -fx-border-color: green;" />
+                  <ComboBox fx:id="cbxFiltrarEmpleado" prefHeight="34.0" prefWidth="387.0" promptText="Seleccione un empleado" style="-fx-background-color: white; -fx-border-color: GREY;" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" spacing="15.0">
+            <HBox alignment="CENTER" spacing="10.0">
                <children>
-                  <Label alignment="TOP_LEFT" text="Fecha:">
+                  <Label alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="83.0" text="Fecha:">
                      <font>
                         <Font name="Lucida Bright" size="22.0" />
                      </font>
                      <HBox.margin>
-                        <Insets top="5.0" />
+                        <Insets />
                      </HBox.margin>
                   </Label>
-                  <DatePicker fx:id="dpFecha" prefHeight="40.0" prefWidth="268.0" />
+                  <DatePicker fx:id="dpFecha" prefHeight="38.0" prefWidth="315.0" style="-fx-border-color: GREY;" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="209.0" prefHeight="61.0" prefWidth="1154.0" spacing="15.0">
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="209.0" prefHeight="61.0" prefWidth="1154.0" spacing="10.0">
                <children>
-                  <Label alignment="TOP_LEFT" text="Monto:">
+                  <Label alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="83.0" text="Monto:">
                      <font>
                         <Font name="Lucida Bright" size="22.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtMonto" prefHeight="38.0" prefWidth="311.0" style="-fx-border-color: #2A8C4A;">
+                  <TextField fx:id="txtMonto" prefHeight="38.0" prefWidth="315.0" style="-fx-border-color: GREY;">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -82,7 +74,7 @@
                   </CheckBox>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="71.0" prefWidth="529.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#btnGuardar" prefHeight="33.0" prefWidth="163.0" style="-fx-background-color: lightblue;" text="Guardar">
                      <graphic>
@@ -100,7 +92,7 @@
             </HBox>
          </children>
          <StackPane.margin>
-            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </StackPane.margin>
       </VBox>
    </children>

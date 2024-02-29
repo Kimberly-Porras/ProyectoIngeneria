@@ -14,15 +14,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgregarDeduccionesController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="485.0" prefWidth="623.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgregarDeduccionesController">
    <children>
-      <VBox prefHeight="626.0" prefWidth="987.0" spacing="20.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
+      <VBox prefHeight="626.0" prefWidth="987.0" spacing="15.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
          <children>
-            <HBox alignment="TOP_CENTER">
+            <HBox alignment="TOP_CENTER" style="-fx-background-color: #00695C; -fx-background-radius: 8;">
                <children>
-                  <Label alignment="TOP_LEFT" text="INSERCIÓN DE DEDUCCIONES POR EMPLEADO" textFill="#0b986a">
+                  <Label alignment="TOP_LEFT" text="INSERCIÓN DE DEDUCCIONES" textFill="WHITE">
                      <font>
-                        <Font name="Lucida Bright" size="25.0" />
+                        <Font name="Lucida Bright Demibold Italic" size="25.0" />
                      </font>
                   </Label>
                </children>
@@ -30,68 +30,63 @@
                   <Insets />
                </VBox.margin>
             </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="70.0" prefWidth="807.0">
+            <HBox alignment="TOP_CENTER" prefHeight="34.0" prefWidth="987.0">
                <children>
-                  <Label alignment="TOP_LEFT" text="Seleccione un empleado: ">
-                     <font>
-                        <Font name="Lucida Bright" size="20.0" />
-                     </font>
-                  </Label>
-                  <ComboBox fx:id="cbxFiltrarEmpleadoAgre" editable="true" prefHeight="32.0" prefWidth="357.0" style="-fx-border-color: #2A8C4A;" visibleRowCount="20" />
+                  <ComboBox fx:id="cbxFiltrarEmpleadoAgre" editable="true" prefHeight="32.0" prefWidth="357.0" promptText="Seleccione un empleado" style="-fx-border-color: #2A8C4A;" visibleRowCount="20" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="1276.0" spacing="15.0">
+            <HBox alignment="TOP_CENTER" prefHeight="29.0" prefWidth="987.0" spacing="10.0">
                <children>
-                  <Label text="Fecha: ">
+                  <Label alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="196.0" text="Tipo de deducción: ">
                      <font>
                         <Font name="Lucida Bright" size="20.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="dpFecha" prefHeight="37.0" prefWidth="276.0" style="-fx-border-color: #2A8C4A;" />
+                  <ComboBox fx:id="cbxTipoDeduccionAgre" prefHeight="30.0" prefWidth="315.0" style="-fx-background-color: white; -fx-border-color: #2A8C4A;" visibleRowCount="17" />
                </children>
             </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="52.0" prefWidth="1255.0">
+            <HBox alignment="CENTER" prefHeight="31.0" prefWidth="987.0" spacing="10.0">
                <children>
-                  <Label alignment="TOP_LEFT" text="Tipo de deducción: ">
+                  <Label alignment="CENTER_RIGHT" prefWidth="196.0" text="Fecha: ">
                      <font>
                         <Font name="Lucida Bright" size="20.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="cbxTipoDeduccionAgre" prefHeight="27.0" prefWidth="155.0" style="-fx-background-color: white; -fx-border-color: #2A8C4A;" visibleRowCount="17" />
+                  <DatePicker fx:id="dpFecha" prefHeight="30.0" prefWidth="315.0" style="-fx-border-color: #2A8C4A;" />
                </children>
             </HBox>
-            <HBox alignment="TOP_CENTER" spacing="15.0">
+            <HBox alignment="TOP_CENTER" spacing="10.0">
                <children>
-                  <Label alignment="TOP_LEFT" text="Monto:">
+                  <Label alignment="CENTER_RIGHT" prefWidth="196.0" text="Monto:">
                      <font>
                         <Font name="Lucida Bright" size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtMonto" prefHeight="33.0" prefWidth="284.0" style="-fx-border-color: #2A8C4A;">
+                  <TextField fx:id="txtMonto" prefHeight="30.0" prefWidth="315.0" style="-fx-border-color: #2A8C4A;">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </TextField>
                </children>
                <VBox.margin>
-                  <Insets top="-15.0" />
+                  <Insets />
                </VBox.margin>
             </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="37.0" prefWidth="987.0" spacing="15.0">
+            <HBox alignment="TOP_CENTER" prefHeight="37.0" prefWidth="987.0" spacing="10.0">
                <children>
-                  <Label alignment="TOP_LEFT" text="Cuota: ">
+                  <Label alignment="CENTER_RIGHT" prefWidth="196.0" text="Cuota: ">
                      <font>
                         <Font name="Lucida Bright" size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtCuota" prefHeight="33.0" prefWidth="264.0" style="-fx-border-color: #2A8C4A;">
+                  <TextField fx:id="txtCuota" prefHeight="30.0" prefWidth="315.0" style="-fx-border-color: #2A8C4A;">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </TextField>
                </children>
             </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="TOP_CENTER" prefHeight="55.0" prefWidth="662.0">
                <children>
                   <CheckBox fx:id="cbEstadoAgre" mnemonicParsing="false" text="Estado">
                      <font>
@@ -121,7 +116,7 @@
             </HBox>
          </children>
          <StackPane.margin>
-            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </StackPane.margin>
       </VBox>
    </children>
