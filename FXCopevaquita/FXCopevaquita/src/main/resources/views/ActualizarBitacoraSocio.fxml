@@ -5,26 +5,23 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ActualizarBitacoraSocioController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="662.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ActualizarBitacoraSocioController">
    <children>
-      <VBox prefHeight="643.0" prefWidth="1181.0" spacing="20.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
+      <VBox prefHeight="643.0" prefWidth="1181.0" spacing="15.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
          <children>
-            <HBox alignment="CENTER">
+            <HBox alignment="CENTER" style="-fx-background-color: #00695C; -fx-background-radius: 8;">
                <children>
-                  <Label alignment="TOP_LEFT" text="INGRESE LA INFORMACIÓN DESEADA" textFill="#0b986a">
+                  <Label alignment="TOP_LEFT" text="INSERCIÓN REPORTE SOCIOS" textFill="#fcfcfc">
                      <font>
-                        <Font name="Lucida Bright" size="29.0" />
+                        <Font name="Lucida Bright Demibold Italic" size="29.0" />
                      </font>
                   </Label>
                </children>
@@ -32,19 +29,29 @@
                   <Insets />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="1181.0" spacing="10.0">
+            <HBox alignment="CENTER" prefHeight="36.0" prefWidth="1181.0" spacing="10.0">
                <children>
-                  <Label alignment="TOP_LEFT" text="Seleccione un empleado: ">
-                     <font>
-                        <Font name="Lucida Bright" size="22.0" />
-                     </font>
-                  </Label>
-                  <ComboBox fx:id="cbxFiltrarEmpleadoActualizar" editable="true" onAction="#FiltrarEmpleado" prefHeight="38.0" prefWidth="309.0" style="-fx-border-color: #2A8C4A;" visibleRowCount="20" />
+                  <ComboBox fx:id="cbxFiltrarEmpleadoActualizar" editable="true" onAction="#FiltrarEmpleado" prefHeight="38.0" prefWidth="309.0" promptText="Seleccione un empleado" style="-fx-border-color: GREY;" visibleRowCount="20" />
                </children>
+            </HBox>
+            <HBox prefHeight="31.0" prefWidth="1181.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onCargar" prefHeight="29.0" prefWidth="70.0" style="-fx-background-color: #ffba6a;" text="Cargar" textFill="WHITE">
+                     <font>
+                        <Font name="Lucida Bright" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="-16.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="16.0" />
+               </padding>
             </HBox>
             <HBox alignment="CENTER" maxHeight="300.0" prefHeight="160.0" prefWidth="1267.0" spacing="15.0">
                <children>
-                  <TableView fx:id="tblReporteSociooActualizar" prefHeight="160.0" prefWidth="676.0">
+                  <TableView fx:id="tblReporteSociooActualizar" prefHeight="148.0" prefWidth="593.0" stylesheets="@../Styles/EstiloAct.css">
                      <columns>
                         <TableColumn fx:id="colDescripcionActualizar" prefWidth="117.0" text="Descripción" />
                         <TableColumn fx:id="colCantidadHorasActualizar" prefWidth="194.0" text="Cantidad de horas" />
@@ -54,40 +61,16 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <VBox prefHeight="160.0" prefWidth="95.0" spacing="10.0">
-                     <children>
-                        <Button mnemonicParsing="false" onAction="#onCargar" prefHeight="41.0" prefWidth="96.0" style="-fx-background-color: #ffba6a;" text="Cargar" textFill="WHITE">
-                           <font>
-                              <Font name="Lucida Bright" size="20.0" />
-                           </font>
-                        </Button>
-                        <Button mnemonicParsing="false" onAction="#onLimpiar" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: #F08080;" text="Limpiar" textFill="WHITE">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-            <Separator prefWidth="200.0" />
-            <HBox alignment="CENTER" prefHeight="56.0" prefWidth="1181.0">
-               <children>
-                  <Label alignment="TOP_LEFT" text="INFORMACIÓN A ACTUALIZAR" textFill="#0b986a">
-                     <font>
-                        <Font name="Lucida Bright Demibold Italic" size="22.0" />
-                     </font>
-                  </Label>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="1267.0" spacing="15.0">
                <children>
-                  <Label alignment="TOP_LEFT" text="Horas laboradas: ">
+                  <Label alignment="CENTER_RIGHT" prefWidth="201.0" text="Horas laboradas: ">
                      <font>
                         <Font name="Lucida Bright" size="22.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtCantidadHorasAct" prefHeight="38.0" prefWidth="311.0" style="-fx-border-color: #2A8C4A;">
+                  <TextField fx:id="txtCantidadHorasAct" prefHeight="38.0" prefWidth="315.0" style="-fx-border-color: GREY;">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -96,12 +79,12 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="375.0" prefHeight="60.0" prefWidth="1267.0" spacing="15.0">
                <children>
-                  <Label alignment="TOP_LEFT" text="Trabajo laborado: ">
+                  <Label alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="201.0" text="Trabajo laborado: ">
                      <font>
                         <Font name="Lucida Bright" size="22.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtDescripcionAct" prefHeight="38.0" prefWidth="311.0" style="-fx-border-color: #2A8C4A;">
+                  <TextField fx:id="txtDescripcionAct" prefHeight="38.0" prefWidth="315.0" style="-fx-border-color: GREY;">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -120,25 +103,23 @@
                   </CheckBox>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#btnActualizar" prefHeight="54.0" prefWidth="195.0" style="-fx-background-color: #a9e9a4;" text="Actualizar">
-                     <graphic>
-                        <ImageView fitHeight="53.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../../../Proyecto-CoopevaquitaR.L/SistemaPlanilla_CoopevaquitaR.L/src/main/resources/imagenes/garrapata.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
+                  <Button mnemonicParsing="false" onAction="#btnActualizar" prefHeight="39.0" prefWidth="130.0" style="-fx-background-color: #a9e9a4;" text="Actualizar">
                      <font>
-                        <Font name="Lucida Bright" size="24.0" />
+                        <Font name="Lucida Bright" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#onLimpiar" prefHeight="30.0" prefWidth="108.0" style="-fx-background-color: #F08080;" text="Limpiar">
+                     <font>
+                        <Font name="Lucida Bright" size="20.0" />
                      </font>
                   </Button>
                </children>
             </HBox>
          </children>
          <StackPane.margin>
-            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </StackPane.margin>
       </VBox>
    </children>

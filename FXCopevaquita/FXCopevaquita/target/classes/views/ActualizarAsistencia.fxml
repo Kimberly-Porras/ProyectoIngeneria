@@ -6,25 +6,22 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ActualizarAsistenciaController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="669.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ActualizarAsistenciaController">
    <children>
       <VBox alignment="CENTER" prefHeight="667.0" prefWidth="1269.0" spacing="15.0" style="-fx-background-color: #D3F4E7; -fx-background-radius: 18;">
          <children>
-            <HBox alignment="CENTER">
+            <HBox alignment="CENTER" style="-fx-background-color: #00695C; -fx-background-radius: 8;">
                <children>
-                  <Label alignment="TOP_LEFT" text="ACTUALIZACIÓN DE CONTRATOS POR EMPLEADO" textFill="#0b986a">
+                  <Label alignment="TOP_LEFT" text="ACTUALIZACIÓN DE ASISTENCIAS" textFill="WHITE">
                      <font>
-                        <Font name="Lucida Bright" size="29.0" />
+                        <Font name="Lucida Bright Demibold Italic" size="29.0" />
                      </font>
                      <HBox.margin>
                         <Insets />
@@ -35,29 +32,29 @@
                   <Insets />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER" maxHeight="300.0" prefHeight="113.0" prefWidth="1269.0" spacing="15.0">
+            <HBox alignment="CENTER" maxHeight="300.0" prefHeight="59.0" prefWidth="598.0" spacing="15.0">
                <children>
-                  <Label alignment="TOP_LEFT" prefHeight="25.0" prefWidth="257.0" text="Seleccione un empleado: ">
-                     <font>
-                        <Font name="Lucida Bright" size="20.0" />
-                     </font>
-                     <graphic>
-                        <Label alignment="TOP_LEFT" prefHeight="25.0" prefWidth="274.0" text="Seleccione un empleado:">
-                           <font>
-                              <Font name="Lucida Bright" size="20.0" />
-                           </font>
-                        </Label>
-                     </graphic>
-                  </Label>
-                  <ComboBox fx:id="cbxFiltrarEmpleadoActualizar" editable="true" onAction="#FiltrarEmpleado" prefHeight="47.0" prefWidth="438.0" style="-fx-border-color: #2A8C4A;" visibleRowCount="20" />
+                  <ComboBox fx:id="cbxFiltrarEmpleadoActualizar" editable="true" onAction="#FiltrarEmpleado" prefHeight="38.0" prefWidth="337.0" promptText="Seleccione un empleado:" style="-fx-border-color: GREY;" visibleRowCount="20" />
                </children>
+            </HBox>
+            <HBox prefHeight="45.0" prefWidth="668.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onCargar" prefHeight="31.0" prefWidth="87.0" style="-fx-background-color: #ffba6a;" text="Cargar" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="-15.0" />
+               </VBox.margin>
                <padding>
-                  <Insets top="10.0" />
+                  <Insets left="20.0" />
                </padding>
             </HBox>
             <HBox alignment="CENTER" prefHeight="198.0" prefWidth="1269.0">
                <children>
-                  <TableView fx:id="tblAsistencia" prefHeight="126.0" prefWidth="580.0">
+                  <TableView fx:id="tblAsistencia" prefHeight="179.0" prefWidth="564.0" stylesheets="@../Styles/EstiloAct.css">
                      <columns>
                         <TableColumn fx:id="colFecha" prefWidth="121.333251953125" text="Fecha" />
                         <TableColumn fx:id="colPresente" prefWidth="194.0" text="Presente" />
@@ -70,39 +67,20 @@
                         <Insets left="20.0" right="20.0" />
                      </HBox.margin>
                   </TableView>
-                  <VBox spacing="10.0">
-                     <children>
-                        <Button mnemonicParsing="false" onAction="#onCargar" prefHeight="33.0" prefWidth="137.0" style="-fx-background-color: #ffba6a;" text="Cargar" textFill="WHITE">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Button>
-                        <Button mnemonicParsing="false" onAction="#onLimpiar" prefHeight="29.0" prefWidth="136.0" style="-fx-background-color: #F08080;" text="Limpiar" textFill="WHITE">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </VBox>
+                  <VBox spacing="10.0" />
                </children>
             </HBox>
-            <Separator prefWidth="200.0" />
-            <Label alignment="TOP_LEFT" prefHeight="25.0" prefWidth="341.0" text="INFORMACIÓN A ACTUALIZAR">
-               <font>
-                  <Font name="Lucida Bright Demibold Italic" size="20.0" />
-               </font>
-            </Label>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="57.0" prefWidth="1269.0" spacing="10.0">
                <children>
-                  <Label alignment="TOP_LEFT" prefHeight="25.0" prefWidth="167.0" text="Fecha: ">
+                  <Label alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="167.0" text="Fecha: ">
                      <font>
                         <Font name="Lucida Bright" size="20.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="dpFecha" prefHeight="30.0" prefWidth="320.0" style="-fx-border-color: #2A8C4A;" />
+                  <DatePicker fx:id="dpFecha" prefHeight="30.0" prefWidth="320.0" style="-fx-border-color: GREY;" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="108.0" prefWidth="1269.0" spacing="15.0">
+            <HBox alignment="CENTER" prefHeight="44.0" prefWidth="1269.0" spacing="15.0">
                <children>
                   <CheckBox fx:id="cbPresente" mnemonicParsing="false" text="Presente">
                      <font>
@@ -120,18 +98,16 @@
                   </CheckBox>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#btnActualizar" prefHeight="54.0" prefWidth="195.0" style="-fx-background-color: #a9e9a4;" text="Actualizar">
-                     <graphic>
-                        <ImageView fitHeight="53.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../../../Proyecto-CoopevaquitaR.L/SistemaPlanilla_CoopevaquitaR.L/src/main/resources/imagenes/garrapata.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
+                  <Button mnemonicParsing="false" onAction="#btnActualizar" prefHeight="39.0" prefWidth="131.0" style="-fx-background-color: #a9e9a4;" text="Actualizar">
                      <font>
-                        <Font name="Lucida Bright" size="24.0" />
+                        <Font name="Lucida Bright" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#onLimpiar" prefHeight="39.0" prefWidth="123.0" style="-fx-background-color: #F08080;" text="Limpiar">
+                     <font>
+                        <Font name="Lucida Bright" size="20.0" />
                      </font>
                   </Button>
                </children>
@@ -141,7 +117,7 @@
             </HBox>
          </children>
          <StackPane.margin>
-            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </StackPane.margin>
       </VBox>
    </children>

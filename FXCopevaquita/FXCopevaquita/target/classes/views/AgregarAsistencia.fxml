@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="639.0" style="-fx-background-radius: 18;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgregarAsistenciaController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="639.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgregarAsistenciaController">
    <children>
       <VBox alignment="CENTER" prefHeight="626.0" prefWidth="1128.0" spacing="15.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
          <children>
@@ -21,7 +21,7 @@
                <children>
                   <Label alignment="TOP_LEFT" text="INSERCIÓN DE ASISTENCIA" textFill="WHITE">
                      <font>
-                        <Font name="Lucida Bright" size="29.0" />
+                        <Font name="Lucida Bright Demibold Italic" size="29.0" />
                      </font>
                   </Label>
                </children>
