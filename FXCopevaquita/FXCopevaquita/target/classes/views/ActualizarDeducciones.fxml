@@ -61,8 +61,9 @@
                   <TableView fx:id="tblDeduccionesEmpleadosAct" maxHeight="500.0" prefHeight="150.0" prefWidth="857.0" stylesheets="@../Styles/EstiloAct.css">
                      <columns>
                         <TableColumn fx:id="colTipoDeduccionAct" prefWidth="116.0" text="Tipo de deducción" />
-                        <TableColumn fx:id="colMotivoAct" prefWidth="72.0" text="Monto" />
-                        <TableColumn fx:id="colFrecuenciaAct" prefWidth="75.0" text="Couta" />
+                        <TableColumn fx:id="colMontoAct" prefWidth="72.0" text="Monto" />
+                        <TableColumn fx:id="colCuota" prefWidth="75.0" text="Couta" />
+                        <TableColumn fx:id="colPendiente" prefWidth="75.0" text="Pendiente" />
                         <TableColumn fx:id="colEstadoAct" prefWidth="75.0" text="Estado" />
                      </columns>
                      <columnResizePolicy>

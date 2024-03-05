@@ -35,7 +35,7 @@ public class Deduccion {
         this.tipoDeduccion = new TipoDeduccion();
     }
 
-    public Deduccion(int id, int tipo, double monto, double cuota, double pendiente, String empleado, boolean status) {
+    public Deduccion(int id, int tipo, double monto, double cuota, double pendiente, String empleado, boolean status, Date fecha) {
         this.id = id;
         this.tipo = tipo;
         this.monto = monto;
@@ -43,6 +43,7 @@ public class Deduccion {
         this.pendiente = pendiente;
         this.empleado = empleado;
         this.status = status;
+        this.fecha_registro = fecha;
     }
 
     public int getId() {
