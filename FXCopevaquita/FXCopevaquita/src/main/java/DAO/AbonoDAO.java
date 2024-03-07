@@ -24,7 +24,7 @@ public class AbonoDAO {
         try {
             String sql = "INSERT INTO tbl_abono "
                     + "(deduccion, monto, fecha, nota) "
-                    + "VALUES (?,?,?,?,?,?);";
+                    + "VALUES (?,?,?,?);";
 
             ps = acceso.prepareStatement(sql);
             ps.setObject(1, abono.getDeduccion());
@@ -53,7 +53,7 @@ public class AbonoDAO {
             ps.setObject(2, abono.getMonto());
             ps.setObject(3, abono.getFecha());
             ps.setObject(4, abono.getNota());
-            ps.setObject(7, abono.getId());
+            ps.setObject(5, abono.getId());
 
             ps.executeUpdate();
             return true;
@@ -69,7 +69,7 @@ public class AbonoDAO {
         try {
             String sql = "SELECT id, deduccion, monto, fecha, nota "
                     + "FROM tbl_abono "
-                    + "WHERE id_deduccion = ?;";
+                    + "WHERE deduccion = ?;";
             
             ps = acceso.prepareStatement(sql);
             ps.setObject(1, idDeduccion);

@@ -5,7 +5,7 @@
 package Models;
 
 import java.time.LocalDate;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *

@@ -6,10 +6,14 @@ package Controllers;
 
 import Alertas.MensajePersonalizado;
 import DAO.AbonoDAO;
+import DAO.DeduccionesDAO;
+import DAO.EmpleadoDAO;
+import DAO.TipoDeduccionDAO;
 import Models.Abono;
 import Models.Deduccion;
 import Models.Empleado;
 import java.net.URL;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
@@ -22,7 +26,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
@@ -77,7 +80,9 @@ public class AbonoDeduccionesController implements Initializable {
      * Initializes the controller class.
      */
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
+    EmpleadoDAO empleadoDao = new EmpleadoDAO();
     AbonoDAO daoAbono = new AbonoDAO();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         configurarAbonos();
@@ -85,11 +90,17 @@ public class AbonoDeduccionesController implements Initializable {
     }
 
     public void configurarDeducciones() {
-        colTipoDeduccionAct1.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombreTipoDeduccion()));
+        colTipoDeduccionAct1.setCellValueFactory((cellData) -> {
+            var model = cellData.getValue();
+            var ded = new TipoDeduccionDAO().obtenerPorId(model.getTipo());
+            return new SimpleStringProperty(ded.getNombre());
+        });
         colMonto.setCellValueFactory(new PropertyValueFactory<>("monto"));
-        colCuota.setCellValueFactory(new PropertyValueFactory<>("couta"));
+        colCuota.setCellValueFactory(new PropertyValueFactory<>("cuota"));
         colPendiente.setCellValueFactory(new PropertyValueFactory<>("pendiente"));
         colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isStatus() ? "Pendiente" : "Cancelado"));
+
+        colFecha.setCellValueFactory(celldata -> new SimpleStringProperty(celldata.getValue().getFecha_registro().toString()));
 
         cbxFiltrarEmpleadoDetalle.setConverter(new StringConverter<Empleado>() {
             @Override
@@ -110,13 +121,15 @@ public class AbonoDeduccionesController implements Initializable {
                 return firstMatch.orElse(null);
             }
         });
+
+        ObservableEmpleado = FXCollections.observableArrayList(empleadoDao.obtenerListaEmpleados());
+        cbxFiltrarEmpleadoDetalle.setItems(ObservableEmpleado);
     }
 
     public void configurarAbonos() {
         colDescripcionAbono.setCellValueFactory(new PropertyValueFactory<>("nota"));
         colMontoAbono.setCellValueFactory(new PropertyValueFactory<>("monto"));
         colFechaAbono.setCellValueFactory(new PropertyValueFactory<>("fecha"));
-
     }
 
     private void guardar() {
@@ -155,18 +168,21 @@ public class AbonoDeduccionesController implements Initializable {
             return false;
         }
     }
-    
+
     private void limpiarCampos() {
         txtMontoDet.setText("");
         txtDescripcionDet.setText("");
         dpFechaRegistroDet.setValue(LocalDate.now());
+        dpFechaRegistroDet.setValue(null);
     }
-    
+
     private void cargarDatosDeduccionDetalle() {
         var deduc = tblDeducciones.getSelectionModel().getSelectedItem();
         if (deduc != null && !"".equals(deduc.getEmpleado())) {
-            txtTipoDeduccionDet.setText(deduc.getNombreTipoDeduccion());
-            txtMontoTotalDet.setText(deduc.getMonto()+ "");
+            var ded = new TipoDeduccionDAO().obtenerPorId(deduc.getTipo());
+            txtTipoDeduccionDet.setText(ded.getNombre());
+
+            txtMontoTotalDet.setText(deduc.getMonto() + "");
             // cargar detalles de deduccion
             var lista = FXCollections.observableArrayList(daoAbono.obtenerDetalleAbonoIdDeduccion(deduc.getId()));
             tblAbono.setItems(lista);
@@ -174,13 +190,22 @@ public class AbonoDeduccionesController implements Initializable {
             MensajePersonalizado.Ver("SELEECIONE", "Debe de seleccionar una deducción para cargar", Alert.AlertType.WARNING);
         }
     }
-    
+
     @FXML
     private void OnFiltrarEmpleadoDet(ActionEvent event) {
+        var model = cbxFiltrarEmpleadoDetalle.getSelectionModel().getSelectedItem();
+        if (model == null) {
+            return;
+        }
+
+        var deducciones = new DeduccionesDAO().obtenerListaDeduccionesPorCedulaEmpleado(model.getCedula());
+        var data = FXCollections.observableArrayList(deducciones);
+        tblDeducciones.setItems(data);
     }
 
     @FXML
     private void btnCargarDeduccion(ActionEvent event) {
+        cargarDatosDeduccionDetalle();
     }
 
     @FXML
@@ -190,10 +215,42 @@ public class AbonoDeduccionesController implements Initializable {
 
     @FXML
     private void OnActualizar(ActionEvent event) {
+        // TODO: Actualizar...
     }
 
     @FXML
     private void OnCargarDatosAbonos(ActionEvent event) {
+        var abono = tblAbono.getSelectionModel().getSelectedItem();
+
+        if (abono == null) {
+            return;
+        }
+        dpFechaRegistroDet.setValue(abono.getFecha().toLocalDate());
+        txtDescripcionDet.setText(abono.getNota());
+        txtMontoDet.setText(abono.getMonto() + "");
+    }
+
+    private Abono ObtenerAbonoFromDataFields() {
+        var abono = tblAbono.getSelectionModel().getSelectedItem();
+        // edición...
+        if (abono != null) {
+            return new Abono(
+                    abono.getId(),
+                    abono.getDeduccion(),
+                    Double.parseDouble(txtMontoDet.getText()),
+                    Date.valueOf(dpFechaRegistroDet.getValue()),
+                    txtDescripcionDet.getText());
+        };
+        // Creación...
+        var deduc = tblDeducciones.getSelectionModel().getSelectedItem();
+        if (deduc != null) {
+            return new Abono(0, deduc.getId(),
+                    Double.parseDouble(txtMontoDet.getText()),
+                    Date.valueOf(dpFechaRegistroDet.getValue()),
+                    txtDescripcionDet.getText());
+        }
+        
+        return null;
     }
 
 }

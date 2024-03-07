@@ -12,6 +12,7 @@ import Models.Deduccion;
 import Models.Empleado;
 import Models.TipoDeduccion;
 import java.net.URL;
+import java.sql.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
@@ -119,7 +120,9 @@ public class AgregarDeduccionesController implements Initializable {
                             Double.parseDouble(txtCuota.getText()),
                             Double.parseDouble(txtMonto.getText()),
                             cbxFiltrarEmpleadoAgre.getValue().getCedula(),
-                            cbEstadoAgre.isSelected()));
+                            cbEstadoAgre.isSelected(),
+                            Date.valueOf(dpFecha.getValue())
+                    ));
 
             if (exito) {
                 MensajePersonalizado.Ver("EXITO AL INSERTAR", "Deducción insertada correctamente", Alert.AlertType.CONFIRMATION);
