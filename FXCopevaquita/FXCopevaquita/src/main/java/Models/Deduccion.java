@@ -22,7 +22,7 @@ public class Deduccion {
     private boolean status;
     private Date fecha_registro;
 
-    private TipoDeduccion tipoDeduccion;
+ 
 
     public Deduccion() {
         this.id = 0;
@@ -32,7 +32,7 @@ public class Deduccion {
         this.pendiente = 0.0;
         this.empleado = "";
         this.status = false;
-        this.tipoDeduccion = new TipoDeduccion();
+        
     }
 
     public Deduccion(int id, int tipo, double monto, double cuota, double pendiente, String empleado, boolean status, Date fecha) {
@@ -100,14 +100,6 @@ public class Deduccion {
 
     public void setStatus(boolean status) {
         this.status = status;
-    }
-
-    public void setTipoDeduccion(TipoDeduccion tipoDeduccion) {
-        this.tipoDeduccion = tipoDeduccion;
-    }
-
-    public String getNombreTipoDeduccion() {
-        return tipoDeduccion.getNombre();
     }
 
     public Date getFecha_registro() {

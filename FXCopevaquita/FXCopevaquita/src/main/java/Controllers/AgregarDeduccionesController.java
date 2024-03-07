@@ -121,8 +121,7 @@ public class AgregarDeduccionesController implements Initializable {
                             Double.parseDouble(txtMonto.getText()),
                             cbxFiltrarEmpleadoAgre.getValue().getCedula(),
                             cbEstadoAgre.isSelected(),
-                            Date.valueOf(dpFecha.getValue())
-                    ));
+                            Date.valueOf(dpFecha.getValue())));
 
             if (exito) {
                 MensajePersonalizado.Ver("EXITO AL INSERTAR", "Deducción insertada correctamente", Alert.AlertType.CONFIRMATION);

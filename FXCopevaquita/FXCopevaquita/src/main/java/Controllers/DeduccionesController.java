@@ -122,15 +122,12 @@ public class DeduccionesController implements Initializable {
 
     private void filtrarDeduccion() {
         if (txtfiltrarEmpleado.getText() != null && !txtfiltrarEmpleado.getText().trim().equals("")) {
-            Predicate<Deduccion> pReporte = x
-                    -> x.getEmpleado().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase())
-                    || x.getNombreTipoDeduccion().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase());
             Predicate<Empleado> pEmpleado = x
                     -> x.getCedula().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase())
                     || x.getNombre().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase())
                     || x.getApellidos().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase())
                     || x.getNombreCompleto().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase());
-            var listaTemporal = ObservableDeduccion.filtered((x) -> pEmpleado.test(Get(x.getEmpleado())) || pReporte.test(x));
+            var listaTemporal = ObservableDeduccion.filtered((x) -> pEmpleado.test(Get(x.getEmpleado())));
             tblDeduccionesEmpleados.setItems(listaTemporal);
         } else {
             cargarDeducciones(true, false);

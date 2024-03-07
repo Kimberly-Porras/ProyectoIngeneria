@@ -72,9 +72,19 @@ public class LoginController implements Initializable {
     }
 
     @FXML
-    private void onOlvidoContrasenia(MouseEvent event) {
-        // abrir nueva vista...
+private void onOlvidoContrasenia(MouseEvent event) {
+    olvidoContrasena.setStyle("-fx-text-fill: blue;");
+
+    try {
+        // Intenta abrir la nueva ventana
         OpenWindowsHandler.AbrirVentanaRecuperarContrasenia("/views/RecuperarContrasenia");
+        olvidoContrasena.setStyle("-fx-text-fill: black;");
+    } catch (Exception e) {
+        // Maneja cualquier excepción que pueda ocurrir al abrir la nueva ventana
+        e.printStackTrace();
     }
+}
+
+
 
 }
