@@ -80,6 +80,8 @@ public class AbonoDeduccionesController implements Initializable {
      * Initializes the controller class.
      */
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
+    ObservableList<Abono> ObservableAbonos = FXCollections.observableArrayList();
+
     EmpleadoDAO empleadoDao = new EmpleadoDAO();
     AbonoDAO daoAbono = new AbonoDAO();
 
@@ -136,16 +138,29 @@ public class AbonoDeduccionesController implements Initializable {
         var deduc = tblDeducciones.getSelectionModel().getSelectedItem();
         if (deduc != null && !"".equals(deduc.getEmpleado())) {
             if (VerificarEspacios()) {
-                boolean exito = daoAbono.insertarAbono(
-                        new Abono(0,
-                                deduc.getId(),
-                                Double.parseDouble(txtMontoDet.getText()),
-                                java.sql.Date.valueOf(dpFechaRegistroDet.getValue()),
-                                txtDescripcionDet.getText()));
+                var abono = ObtenerAbonoFromDataFields(true);
+                // Antes de insertar el abono, hay que considerar los casos...
+                var pendiente = deduc.getPendiente();
+
+                if (pendiente < abono.getMonto()) {
+                    MensajePersonalizado.Ver("ERROR", "El monto es mayor al saldo pendiente", Alert.AlertType.ERROR);
+                    return;
+                }
+
+                deduc.setPendiente(pendiente - abono.getMonto());
+                boolean exito = daoAbono.generarAbono(abono, deduc);
+
                 if (exito) {
                     MensajePersonalizado.Ver("EXITO AL INSERTAR", "Deducción insertada correctamente", Alert.AlertType.CONFIRMATION);
                     limpiarCampos();
                     cargarDatosDeduccionDetalle();
+
+                    // actualizar la tabla de deducciones..
+                    var model = cbxFiltrarEmpleadoDetalle.getSelectionModel().getSelectedItem();
+                    if (model == null) {
+                        return;
+                    }
+                    cargarDeducciones(model);
                 } else {
                     MensajePersonalizado.Ver("ERROR", "Error al insertar la deducción", Alert.AlertType.ERROR);
                 }
@@ -179,13 +194,14 @@ public class AbonoDeduccionesController implements Initializable {
     private void cargarDatosDeduccionDetalle() {
         var deduc = tblDeducciones.getSelectionModel().getSelectedItem();
         if (deduc != null && !"".equals(deduc.getEmpleado())) {
+
             var ded = new TipoDeduccionDAO().obtenerPorId(deduc.getTipo());
             txtTipoDeduccionDet.setText(ded.getNombre());
-
             txtMontoTotalDet.setText(deduc.getMonto() + "");
+
             // cargar detalles de deduccion
-            var lista = FXCollections.observableArrayList(daoAbono.obtenerDetalleAbonoIdDeduccion(deduc.getId()));
-            tblAbono.setItems(lista);
+            ObservableAbonos = FXCollections.observableArrayList(daoAbono.obtenerAbonosPorDeduccion(deduc.getId()));
+            tblAbono.setItems(ObservableAbonos);
         } else {
             MensajePersonalizado.Ver("SELEECIONE", "Debe de seleccionar una deducción para cargar", Alert.AlertType.WARNING);
         }
@@ -197,7 +213,10 @@ public class AbonoDeduccionesController implements Initializable {
         if (model == null) {
             return;
         }
+        cargarDeducciones(model);
+    }
 
+    private void cargarDeducciones(Empleado model) {
         var deducciones = new DeduccionesDAO().obtenerListaDeduccionesPorCedulaEmpleado(model.getCedula());
         var data = FXCollections.observableArrayList(deducciones);
         tblDeducciones.setItems(data);
@@ -215,7 +234,46 @@ public class AbonoDeduccionesController implements Initializable {
 
     @FXML
     private void OnActualizar(ActionEvent event) {
-        // TODO: Actualizar...
+        var deduc = tblDeducciones.getSelectionModel().getSelectedItem();
+        
+        if (deduc != null && !"".equals(deduc.getEmpleado())) {
+
+            if (VerificarEspacios() && ObtenerAbonoFromDataFields(false) != null) {
+                System.out.println("Los espacios en blanco estan bien....");
+
+                var abono = ObtenerAbonoFromDataFields(false); // modificado..
+                var abonoInmutable = tblAbono.getSelectionModel().getSelectedItem(); // original..
+
+                var pendiente = deduc.getPendiente();
+                // restableceemos el pendiente original, y ajustamos...
+                deduc.setPendiente(pendiente + abonoInmutable.getMonto() - abono.getMonto());
+
+                if (deduc.getPendiente() < 0) {
+                    MensajePersonalizado.Ver("ERROR", "El monto es mayor al saldo pendiente", Alert.AlertType.ERROR);
+                    return;
+                }
+
+                AbonoDAO abonoDao = new AbonoDAO();
+                if (abonoDao.AjustarAbono(abono, deduc)) {
+                    MensajePersonalizado.Ver("EXITO AL ACTUALIZAR", "Deducción actualizada correctamente", Alert.AlertType.CONFIRMATION);
+                    limpiarCampos();
+                    cargarDatosDeduccionDetalle();
+
+                    // actualizar la tabla de deducciones..
+                    var model = cbxFiltrarEmpleadoDetalle.getSelectionModel().getSelectedItem();
+                    if (model == null) {
+                        return;
+                    }
+                    cargarDeducciones(model);
+                }
+
+            } else {
+                MensajePersonalizado.Ver("INFORMACIÓN INCOMPLETA", "Los campos son requeridos, verifique que la información este completa", Alert.AlertType.WARNING);
+            }
+        } else {
+            MensajePersonalizado.Ver("SELEECIONE", "Debe de seleccionar una deducción para cargar", Alert.AlertType.WARNING);
+        }
+
     }
 
     @FXML
@@ -230,10 +288,10 @@ public class AbonoDeduccionesController implements Initializable {
         txtMontoDet.setText(abono.getMonto() + "");
     }
 
-    private Abono ObtenerAbonoFromDataFields() {
+    private Abono ObtenerAbonoFromDataFields(boolean create) {
         var abono = tblAbono.getSelectionModel().getSelectedItem();
         // edición...
-        if (abono != null) {
+        if (!create && abono != null) {
             return new Abono(
                     abono.getId(),
                     abono.getDeduccion(),
@@ -243,13 +301,16 @@ public class AbonoDeduccionesController implements Initializable {
         };
         // Creación...
         var deduc = tblDeducciones.getSelectionModel().getSelectedItem();
-        if (deduc != null) {
-            return new Abono(0, deduc.getId(),
+        if (create && deduc != null) {
+            return new Abono(
+                    0,
+                    deduc.getId(),
                     Double.parseDouble(txtMontoDet.getText()),
-                    Date.valueOf(dpFechaRegistroDet.getValue()),
-                    txtDescripcionDet.getText());
+                    java.sql.Date.valueOf(dpFechaRegistroDet.getValue()),
+                    txtDescripcionDet.getText()
+            );
         }
-        
+
         return null;
     }
 
