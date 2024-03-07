@@ -42,8 +42,6 @@ public class LayoutController implements Initializable {
     @FXML
     private Label link_socios;
     @FXML
-    private Label link_planilla;
-    @FXML
     private Label link_config;
     @FXML
     private Label link_salariosFijos;
@@ -145,7 +143,6 @@ public class LayoutController implements Initializable {
         } 
     }
 
-    @FXML
     private void OnAbrirPlanilla(MouseEvent event) {
         try {
             LoadNode("/views/Planilla");
@@ -179,5 +176,10 @@ public class LayoutController implements Initializable {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    @FXML
+    private void OnCerrar(MouseEvent event) {
+        
     }
 }
