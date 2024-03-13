@@ -19,11 +19,36 @@
          <children>
             <VBox alignment="CENTER" prefHeight="600.0" prefWidth="450.0" style="-fx-background-color: #00897B;">
                <children>
-                  <ImageView fitHeight="327.0" fitWidth="358.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../imagenes/LogoFinal.png" />
-                     </image>
-                  </ImageView>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="327.0" fitWidth="358.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/LogoFinal.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="20.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox>
+                           <children>
+                              <Label alignment="CENTER" prefHeight="62.0" prefWidth="361.0" text="¡La mejor manera de predecir " textFill="WHITE">
+                                 <font>
+                                    <Font name="Bell MT Italic" size="30.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" prefHeight="62.0" prefWidth="361.0" text="el futuro es creándolo juntos!" textFill="WHITE">
+                                 <font>
+                                    <Font name="Bell MT Italic" size="30.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="450.0" spacing="25.0" style="-fx-background-color: white; -fx-border-color: #00897B;">
@@ -42,9 +67,9 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="56.0" prefWidth="358.0">
                      <children>
-                        <Label text="INICIAR SESIÓN">
+                        <Label alignment="CENTER" prefHeight="62.0" prefWidth="361.0" text="Inicio de sesión" textFill="#00897b">
                            <font>
-                              <Font name="Lucida Bright" size="28.0" />
+                              <Font name="Bell MT Italic" size="37.0" />
                            </font>
                         </Label>
                      </children>
@@ -53,7 +78,7 @@
                      <children>
                         <HBox prefHeight="33.0" prefWidth="358.0">
                            <children>
-                              <Label text="USUARIO:">
+                              <Label text="Usuario:">
                                  <font>
                                     <Font name="Lucida Bright Demibold Italic" size="15.0" />
                                  </font>
@@ -108,7 +133,7 @@
                      <children>
                         <HBox prefHeight="33.0" prefWidth="358.0">
                            <children>
-                              <Label text="CONTRASEÑA:">
+                              <Label text="Contraseña:">
                                  <font>
                                     <Font name="Lucida Bright Demibold Italic" size="15.0" />
                                  </font>

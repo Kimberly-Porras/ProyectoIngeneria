@@ -16,15 +16,19 @@
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.RegistroFamiliarController">
    <children>
-      <VBox alignment="CENTER" spacing="15.0" style="-fx-background-color: #E0F2F1;">
+      <VBox alignment="CENTER" spacing="15.0" style="-fx-background-color: white;">
          <children>
-            <HBox alignment="CENTER" prefHeight="48.0" prefWidth="1251.0" style="-fx-background-color: #00695C;">
+            <HBox alignment="CENTER" prefHeight="48.0" prefWidth="1251.0">
                <children>
-                  <Label alignment="TOP_LEFT" prefHeight="37.0" prefWidth="392.0" text="INFORMACIÓN FAMILIAR" textFill="WHITE">
-                     <font>
-                        <Font name="Lucida Bright" size="31.0" />
-                     </font>
-                  </Label>
+                  <HBox alignment="TOP_CENTER" prefHeight="37.0" prefWidth="581.0" style="-fx-background-color: #00897b; -fx-background-radius: 10;">
+                     <children>
+                        <Label alignment="TOP_LEFT" prefHeight="37.0" prefWidth="483.0" text="Módulo de información familiar" textFill="WHITE">
+                           <font>
+                              <Font name="Lucida Bright" size="31.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                </children>
                <padding>
                   <Insets top="10.0" />
@@ -32,12 +36,12 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="23.0" prefWidth="1231.0" spacing="15.0">
                <children>
-                  <TextField fx:id="txtFiltrarParentezco" onKeyPressed="#OnFiltrar" prefHeight="40.0" prefWidth="403.0" promptText="Busqueda de empleados" style="-fx-border-color: grey;">
+                  <TextField fx:id="txtFiltrarParentezco" onKeyPressed="#OnFiltrar" prefHeight="40.0" prefWidth="403.0" promptText="Busqueda de familiares de empleados" style="-fx-border-color: grey;">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </TextField>
-                  <ComboBox fx:id="cbx_status" prefHeight="44.0" prefWidth="161.0" promptText="Estados" style="-fx-border-color: grey; -fx-background-color: white;" />
+                  <ComboBox fx:id="cbx_status" prefHeight="41.0" prefWidth="98.0" promptText="Estados" style="-fx-border-color: grey; -fx-background-color: white;" />
                   <Button mnemonicParsing="false" onAction="#OnRefrescar" prefHeight="41.0" prefWidth="67.0" style="-fx-background-color: transparent; -fx-border-radius: 5px;" textFill="WHITE">
                      <font>
                         <Font name="Lucida Bright" size="17.0" />

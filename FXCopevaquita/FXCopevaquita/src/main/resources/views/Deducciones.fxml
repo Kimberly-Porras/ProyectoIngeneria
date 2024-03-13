@@ -14,17 +14,21 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DeduccionesController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DeduccionesController">
    <children>
-      <VBox prefHeight="652.0" prefWidth="1247.0" spacing="15.0" style="-fx-background-color: #E0F2F1;">
+      <VBox prefHeight="652.0" prefWidth="1247.0" spacing="15.0" style="-fx-background-color: white;">
          <children>
-            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="1247.0" style="-fx-background-color: #00695C;">
+            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="1247.0">
                <children>
-                  <Label text="DEDUCCIONES" textFill="WHITE">
-                     <font>
-                        <Font name="Lucida Bright" size="31.0" />
-                     </font>
-                  </Label>
+                  <HBox alignment="CENTER" style="-fx-background-color: #00897b; -fx-background-radius: 10;">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="37.0" prefWidth="442.0" text="Módulo de deducciones" textFill="WHITE">
+                           <font>
+                              <Font name="Lucida Bright" size="31.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                </children>
                <VBox.margin>
                   <Insets />
@@ -37,7 +41,7 @@
                         <Font size="17.0" />
                      </font>
                   </TextField>
-                  <ComboBox fx:id="cbx_status" prefHeight="40.0" prefWidth="150.0" promptText="Estados" style="-fx-background-color: white; -fx-border-color: grey;" />
+                  <ComboBox fx:id="cbx_status" prefHeight="40.0" prefWidth="105.0" promptText="Estados" style="-fx-background-color: white; -fx-border-color: grey;" />
                   <Button mnemonicParsing="false" onAction="#OnRefrescar" prefHeight="41.0" prefWidth="67.0" style="-fx-background-color: transparent; -fx-border-radius: 5px;" textFill="WHITE">
                      <font>
                         <Font name="Lucida Bright" size="17.0" />
