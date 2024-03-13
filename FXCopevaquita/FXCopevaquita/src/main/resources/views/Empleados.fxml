@@ -14,36 +14,34 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1250.0" style="-fx-background-color: white; -fx-background-radius: 8;" styleClass="custom-tableview" stylesheets="@../Styles/Estilo.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EmpleadosController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1250.0" style="-fx-background-color: white; -fx-background-radius: 8;" styleClass="custom-tableview" stylesheets="@../Styles/Estilo.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EmpleadosController">
    <children>
-      <VBox alignment="TOP_CENTER" prefHeight="768.0" prefWidth="1464.0" spacing="25.0" style="-fx-background-color: #E0F2F1;">
+      <VBox alignment="TOP_CENTER" prefHeight="768.0" prefWidth="1464.0" spacing="25.0" style="-fx-background-color: white;">
          <children>
-            <HBox alignment="TOP_CENTER" prefHeight="80.0" prefWidth="1382.0" spacing="5.0" style="-fx-background-color: #00695C;">
+            <HBox alignment="TOP_CENTER" prefHeight="42.0" prefWidth="1117.0" spacing="5.0" style="-fx-background-radius: 8;">
                <children>
-                  <Label text="LISTA DE EMPLEADOS" textFill="WHITE">
-                     <font>
-                        <Font name="Lucida Bright" size="31.0" />
-                     </font>
+                  <HBox alignment="CENTER" prefHeight="38.0" prefWidth="456.0" style="-fx-background-color: #00897b; -fx-background-radius: 10;">
                      <HBox.margin>
                         <Insets bottom="2.0" left="10.0" top="2.0" />
                      </HBox.margin>
-                  </Label>
+                     <children>
+                        <Label text="Módulo de empleados" textFill="WHITE">
+                           <font>
+                              <Font name="Lucida Bright" size="31.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" />
             <HBox alignment="CENTER" spacing="10.0">
                <children>
-                  <VBox spacing="5.0">
-                     <HBox.margin>
-                        <Insets top="2.0" />
-                     </HBox.margin>
-                  </VBox>
-                  <TextField fx:id="txtFiltrarEmpleado" onKeyReleased="#OnFiltrarEmpleado" prefHeight="38.0" prefWidth="318.0" promptText="Busqueda de empleados" style="-fx-border-color: grey;">
+                  <TextField fx:id="txtFiltrarEmpleado" onKeyReleased="#OnFiltrarEmpleado" prefHeight="39.0" prefWidth="348.0" promptText="Busqueda de empleados" style="-fx-border-color: grey;">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </TextField>
-                  <ComboBox fx:id="cbx_status" prefHeight="38.0" prefWidth="200.0" promptText="Estados" style="-fx-background-color: white; -fx-border-color: grey;" />
+                  <ComboBox fx:id="cbx_status" prefHeight="38.0" prefWidth="87.0" promptText="Estados" style="-fx-background-color: white; -fx-border-color: grey;" />
                   <Button mnemonicParsing="false" onAction="#OnRefrescar" prefHeight="41.0" prefWidth="67.0" style="-fx-background-color: transparent; -fx-border-radius: 5px;" textFill="WHITE">
                      <font>
                         <Font name="Lucida Bright" size="17.0" />
@@ -110,14 +108,14 @@
                      <columns>
                         <TableColumn fx:id="colCedula" prefWidth="75.0" text="Cédula" />
                         <TableColumn fx:id="colNombre" prefWidth="75.0" text="Nombre" />
-                        <TableColumn fx:id="colApellidos" prefWidth="75.0" text="Apellidos" />
-                        <TableColumn fx:id="colSexo" prefWidth="75.0" text="Sexo" />
-                        <TableColumn fx:id="colEstadoCivil" prefWidth="75.0" text="Estado civil" />
-                        <TableColumn fx:id="colTipoSangre" prefWidth="75.0" text="Sangre" />
-                        <TableColumn fx:id="colNivelAcademico" prefWidth="112.0" text="Nivel académico" />
-                        <TableColumn fx:id="colCuenta" prefWidth="64.0" text="Cuenta" />
-                        <TableColumn fx:id="colFechaNacimiento" prefWidth="125.6666259765625" text="Fecha nacimiento" />
-                        <TableColumn fx:id="colFechaIngreso" prefWidth="122.3333740234375" text="Fecha  ingreso" />
+                        <TableColumn fx:id="colApellidos" prefWidth="79.46662902832031" text="Apellidos" />
+                        <TableColumn fx:id="colSexo" prefWidth="46.933380126953125" text="Sexo" />
+                        <TableColumn fx:id="colEstadoCivil" prefWidth="90.39996337890625" text="E. civil" />
+                        <TableColumn fx:id="colTipoSangre" prefWidth="91.20001220703125" text="Sangre" />
+                        <TableColumn fx:id="colNivelAcademico" prefWidth="107.20004272460938" text="Escolaridad" />
+                        <TableColumn fx:id="colCuenta" prefWidth="183.99993896484375" text="Cuenta" />
+                        <TableColumn fx:id="colFechaNacimiento" prefWidth="122.39996337890625" text="Nacimiento" />
+                        <TableColumn fx:id="colFechaIngreso" prefWidth="134.39996337890625" text="Ingreso" />
                         <TableColumn fx:id="colTipo" prefWidth="107.666748046875" text="Tipo" />
                         <TableColumn fx:id="colEstado" prefWidth="94.0" text="Estado" />
                      </columns>

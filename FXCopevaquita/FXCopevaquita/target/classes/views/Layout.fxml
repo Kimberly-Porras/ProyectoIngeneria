@@ -16,7 +16,7 @@
          <children>
             <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
                <children>
-                  <HBox maxWidth="1.7976931348623157E308" prefHeight="44.0" prefWidth="288.0" style="-fx-background-color: #3a7658;">
+                  <HBox maxWidth="1.7976931348623157E308" prefHeight="44.0" prefWidth="288.0" style="-fx-background-color: #00897B;">
                      <children>
                         <ImageView fitHeight="39.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -46,7 +46,7 @@
                <children>
                   <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="786.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="200.0" text="Empleados" textFill="#40916c">
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="200.0" text="Empleados" textFill="#00897b">
                            <font>
                               <Font name="Lucida Bright Demibold Italic" size="20.0" />
                            </font>
@@ -83,7 +83,7 @@
                            </graphic>
                         </Label>
                         <Separator prefHeight="13.0" prefWidth="222.0" />
-                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="222.0" text="Planilla" textFill="#40916c">
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="222.0" text="Planilla" textFill="#00897b">
                            <font>
                               <Font name="Lucida Bright Demibold Italic" size="20.0" />
                            </font>
@@ -135,7 +135,7 @@
                            </graphic>
                         </Label>
                         <Separator prefHeight="13.0" prefWidth="222.0" />
-                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="222.0" text="Beneficios" textFill="#40916c">
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="222.0" text="Beneficios" textFill="#00897b">
                            <font>
                               <Font name="Lucida Bright Demibold Italic" size="20.0" />
                            </font>
@@ -187,7 +187,7 @@
                            </graphic>
                         </Label>
                         <Separator prefHeight="13.0" prefWidth="222.0" />
-                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="222.0" text="Reportes" textFill="#40916c">
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="222.0" text="Reportes" textFill="#00897b">
                            <font>
                               <Font name="Lucida Bright Demibold Italic" size="20.0" />
                            </font>
@@ -254,7 +254,7 @@
                            </graphic>
                         </Label>
                         <Separator prefHeight="13.0" prefWidth="222.0" />
-                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="222.0" text="Otros" textFill="#40916c">
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="222.0" text="Otros" textFill="#00897b">
                            <font>
                               <Font name="Lucida Bright Demibold Italic" size="20.0" />
                            </font>
@@ -284,7 +284,14 @@
                   <Insets top="50.0" />
                </padding>
             </VBox>
-            <VBox fx:id="container_root" alignment="CENTER" HBox.hgrow="ALWAYS" />
+            <VBox fx:id="container_root" alignment="CENTER" prefHeight="836.0" prefWidth="49.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <ImageView fitHeight="572.0" fitWidth="721.0" opacity="0.22" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/LogoFinal.png" />
+                     </image>
+                  </ImageView>
+               </children></VBox>
          </children>
       </HBox>
    </children>

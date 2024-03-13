@@ -9,34 +9,24 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="467.0" prefWidth="761.0" style="-fx-background-color: #00302b;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="467.0" prefWidth="761.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
    <children>
       <HBox alignment="CENTER" prefHeight="200.0" prefWidth="900.0" style="-fx-background-radius: 8;" styleClass="hbox">
          <children>
             <VBox alignment="CENTER" prefHeight="600.0" prefWidth="450.0" style="-fx-background-color: #00897B;">
                <children>
-                  <Pane style="-fx-background-color: #00897B;">
-                     <children>
-                        <ImageView fitHeight="377.0" fitWidth="370.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../imagenes/fondo.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="183.0" fitWidth="180.0" layoutX="95.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../imagenes/LogoFinal.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
+                  <ImageView fitHeight="327.0" fitWidth="358.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/LogoFinal.png" />
+                     </image>
+                  </ImageView>
                </children>
             </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="450.0" spacing="25.0" style="-fx-background-color: white;">
+            <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="450.0" spacing="25.0" style="-fx-background-color: white; -fx-border-color: #00897B;">
                <children>
                   <HBox alignment="TOP_RIGHT" prefHeight="45.0" prefWidth="356.0">
                      <children>
@@ -84,32 +74,35 @@
                                                 <Image url="@../imagenes/usuario.png" />
                                              </image>
                                           </ImageView>
-                                          <TextField fx:id="txtUsuario" alignment="TOP_LEFT" centerShape="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="29.0" prefWidth="267.0" promptText="Ingrese su nombre de usuario" style="-fx-background-color: transparet; -fx-border-width: 2px; -fx-border-radius: 4px;" text="admin">
-                                             <font>
-                                                <Font size="18.0" />
-                                             </font>
+                                          <VBox>
                                              <HBox.margin>
                                                 <Insets />
                                              </HBox.margin>
-                                          </TextField>
+                                             <children>
+                                                <TextField fx:id="txtUsuario" alignment="TOP_LEFT" centerShape="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="29.0" prefWidth="267.0" promptText="Ingrese su nombre de usuario" style="-fx-background-color: transparet; -fx-border-width: 2px; -fx-border-radius: 4px;" text="admin">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </TextField>
+                                                <Separator prefHeight="6.0" prefWidth="257.0" style="-fx-background-image: black;" />
+                                             </children>
+                                          </VBox>
                                        </children>
                                        <VBox.margin>
                                           <Insets left="15.0" />
                                        </VBox.margin>
-                                    </HBox>
-                                    <HBox alignment="CENTER">
-                                       <VBox.margin>
-                                          <Insets top="6.0" />
-                                       </VBox.margin>
-                                       <children>
-                                          <Separator prefHeight="6.0" prefWidth="300.0" style="-fx-background-image: black;" />
-                                       </children>
                                     </HBox>
                                  </children>
                               </VBox>
                            </children>
                         </HBox>
                      </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin>
                   </VBox>
                   <VBox>
                      <children>
@@ -136,25 +129,22 @@
                                                 <Image url="@../imagenes/contraseña.png" />
                                              </image>
                                           </ImageView>
-                                          <PasswordField fx:id="txtContrasena" alignment="TOP_LEFT" prefHeight="35.0" prefWidth="224.0" promptText="Contraseña" style="-fx-background-color: transparent; -fx-border-width: 2px; -fx-border-radius: 4px;" text="admin">
-                                             <font>
-                                                <Font size="18.0" />
-                                             </font>
+                                          <VBox>
                                              <HBox.margin>
                                                 <Insets />
                                              </HBox.margin>
-                                          </PasswordField>
+                                             <children>
+                                                <PasswordField fx:id="txtContrasena" alignment="TOP_LEFT" prefHeight="35.0" prefWidth="224.0" promptText="Contraseña" style="-fx-background-color: transparent; -fx-border-width: 2px; -fx-border-radius: 4px;" text="admin">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </PasswordField>
+                                                <Separator prefHeight="6.0" prefWidth="257.0" style="-fx-background-image: black;" />
+                                             </children>
+                                          </VBox>
                                        </children>
                                        <VBox.margin>
                                           <Insets left="15.0" />
-                                       </VBox.margin>
-                                    </HBox>
-                                    <HBox alignment="CENTER" prefHeight="17.0" prefWidth="361.0">
-                                       <children>
-                                          <Separator prefWidth="300.0" style="-fx-background-size: #2a8c4a;" />
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets top="6.0" />
                                        </VBox.margin>
                                     </HBox>
                                  </children>
@@ -162,6 +152,9 @@
                            </children>
                         </HBox>
                      </children>
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin>
                   </VBox>
                   <HBox alignment="CENTER" prefHeight="36.0" prefWidth="358.0">
                      <children>
