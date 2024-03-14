@@ -7,18 +7,16 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="699.0" prefWidth="639.0" style="-fx-background-radius: 18;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgregarEmpleadoController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="869.0" style="-fx-background-radius: 18; -fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgregarEmpleadoController">
    <children>
-      <VBox alignment="CENTER" prefHeight="626.0" prefWidth="1276.0" spacing="15.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
+      <VBox alignment="CENTER" prefHeight="649.0" prefWidth="829.0" spacing="15.0" style="-fx-background-radius: 18; -fx-background-color: white;">
          <children>
-            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="1276.0" style="-fx-background-color: #00695C; -fx-background-radius: 8;">
+            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="1276.0" style="-fx-background-color: #00897B; -fx-background-radius: 8;">
                <children>
                   <Label alignment="TOP_LEFT" text="INSERCIÓN DE INFORMACIÓN" textFill="WHITE">
                      <font>
@@ -30,172 +28,178 @@
                   <Insets />
                </VBox.margin>
             </HBox>
-            <VBox alignment="CENTER" prefHeight="542.0" prefWidth="563.0" spacing="15.0">
+            <VBox alignment="CENTER" prefHeight="404.0" prefWidth="829.0" spacing="15.0">
                <children>
-                  <HBox alignment="CENTER" spacing="10.0">
+                  <HBox alignment="CENTER" prefHeight="85.0" prefWidth="829.0" spacing="10.0">
                      <children>
-                        <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" prefWidth="233.0" text="Cédula: ">
-                           <font>
-                              <Font name="Lucida Bright" size="22.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets top="5.0" />
-                           </HBox.margin>
-                        </Label>
-                        <TextField fx:id="txtCedulaAgre" onKeyTyped="#validarCedula" prefHeight="38.0" prefWidth="315.0" style="-fx-border-color: #2A8C4A;">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </TextField>
+                        <VBox>
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="RIGHT" prefHeight="28.0" prefWidth="250.0" text="Cédula">
+                                 <font>
+                                    <Font name="Lucida Bright Italic" size="22.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtCedulaAgre" onKeyTyped="#validarCedula" prefHeight="38.0" prefWidth="250.0" style="-fx-border-radius: 8px; -fx-background-color: #EEEEEE;">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox alignment="TOP_RIGHT" prefHeight="91.0" prefWidth="250.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="RIGHT" prefWidth="233.0" text="Nombre: ">
+                                 <font>
+                                    <Font name="Lucida Bright" size="22.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtNombreAgre" onKeyTyped="#validarNombre" prefHeight="38.0" prefWidth="10.0" style="-fx-background-color: #EEEEEE; -fx-border-radius: 8px;">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="85.0" prefWidth="322.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="28.0" prefWidth="318.0" text="Apellidos: ">
+                                 <font>
+                                    <Font name="Lucida Bright" size="22.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtApellidosAgre" onKeyTyped="#validaApellido" prefHeight="38.0" prefWidth="315.0" style="-fx-background-color: #EEEEEE; -fx-border-radius: 8ṕx;">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" spacing="10.0">
+                  <HBox alignment="CENTER" prefHeight="85.0" prefWidth="500.0" spacing="100.0">
                      <children>
-                        <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" prefWidth="233.0" text="Nombre: ">
-                           <font>
-                              <Font name="Lucida Bright" size="22.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="txtNombreAgre" onKeyTyped="#validarNombre" prefHeight="38.0" prefWidth="315.0" style="-fx-border-color: #2A8C4A;">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </TextField>
+                        <VBox>
+                           <children>
+                              <Label alignment="CENTER" prefHeight="28.0" prefWidth="192.0" text="Sexo: ">
+                                 <font>
+                                    <Font name="Lucida Bright" size="22.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="cbxSexoAgre" prefHeight="31.0" prefWidth="192.0" style="-fx-background-color: #EEEEEE; -fx-border-radius: 8px;" visibleRowCount="17" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="59.0" prefWidth="237.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="28.0" prefWidth="236.0" text="Estado civil: ">
+                                 <font>
+                                    <Font name="Lucida Bright" size="22.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtEstadoCilvilAgre" onKeyTyped="#validarEstadoCivil" prefHeight="31.0" prefWidth="233.0" style="-fx-background-color: #EEEEEE; -fx-border-radius: 8px;">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label alignment="CENTER" prefHeight="28.0" prefWidth="151.0" text="Tipo sangre: ">
+                                 <font>
+                                    <Font name="Lucida Bright" size="22.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtTipoSangreAgre" onKeyTyped="#validarTipoSangre" prefHeight="31.0" prefWidth="128.0" style="-fx-background-color: #EEEEEE; -fx-border-radius: 8px;">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefWidth="233.0" spacing="10.0">
+                  <HBox alignment="CENTER" prefHeight="85.0" spacing="10.0">
                      <children>
-                        <Label alignment="TOP_RIGHT" prefWidth="233.0" text="Apellidos: ">
-                           <font>
-                              <Font name="Lucida Bright" size="22.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="txtApellidosAgre" onKeyTyped="#validaApellido" prefHeight="38.0" prefWidth="315.0" style="-fx-border-color: #2A8C4A;">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </TextField>
+                        <VBox prefHeight="85.0" prefWidth="220.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="28.0" prefWidth="233.0" text="Fecha nacimiento: ">
+                                 <font>
+                                    <Font name="Lucida Bright" size="22.0" />
+                                 </font>
+                              </Label>
+                              <DatePicker fx:id="dpFechaNacimientoAgre" prefHeight="36.0" prefWidth="215.0" style="-fx-background-color: #EEEEEE; -fx-border-radius: 8px;" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label alignment="CENTER" prefHeight="28.0" prefWidth="269.0" text="Nivel académico: ">
+                                 <font>
+                                    <Font name="Lucida Bright" size="22.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtNivelAcademicoAgre" onKeyTyped="#validarEstadoCivil" prefHeight="38.0" prefWidth="270.0" style="-fx-background-color: #EEEEEE; -fx-border-radius: 8px;">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label alignment="CENTER" prefHeight="28.0" prefWidth="246.0" text="Número de cuenta: ">
+                                 <font>
+                                    <Font name="Lucida Bright" size="22.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtCuentaAgre" onKeyTyped="#validarEstadoCivil" prefHeight="38.0" prefWidth="223.0" style="-fx-background-color: #EEEEEE; -fx-border-radius: 8px;">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="53.0" prefWidth="500.0" spacing="10.0">
+                  <HBox alignment="CENTER" prefHeight="85.0" prefWidth="829.0" spacing="10.0">
                      <children>
-                        <Label alignment="TOP_RIGHT" prefWidth="233.0" text="Sexo: ">
-                           <font>
-                              <Font name="Lucida Bright" size="22.0" />
-                           </font>
-                        </Label>
-                        <ComboBox fx:id="cbxSexoAgre" prefHeight="38.0" prefWidth="315.0" style="-fx-background-color: white; -fx-border-color: #2A8C4A;" visibleRowCount="17" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" spacing="10.0">
-                     <children>
-                        <Label alignment="TOP_RIGHT" prefWidth="233.0" text="Estado civil: ">
-                           <font>
-                              <Font name="Lucida Bright" size="22.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="txtEstadoCilvilAgre" onKeyTyped="#validarEstadoCivil" prefHeight="38.0" prefWidth="315.0" style="-fx-border-color: #2A8C4A;">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </TextField>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" spacing="10.0">
-                     <children>
-                        <Label alignment="TOP_RIGHT" prefWidth="233.0" text="Tipo de sangre: ">
-                           <font>
-                              <Font name="Lucida Bright" size="22.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="txtTipoSangreAgre" onKeyTyped="#validarTipoSangre" prefHeight="38.0" prefWidth="315.0" style="-fx-border-color: #2A8C4A;">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </TextField>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" spacing="10.0">
-                     <children>
-                        <Label alignment="TOP_RIGHT" prefHeight="28.0" prefWidth="233.0" text="Fecha de nacimiento: ">
-                           <font>
-                              <Font name="Lucida Bright" size="22.0" />
-                           </font>
-                        </Label>
-                        <DatePicker fx:id="dpFechaNacimientoAgre" prefHeight="38.0" prefWidth="315.0" style="-fx-border-color: #2A8C4A;" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" spacing="10.0">
-                     <children>
-                        <Label alignment="TOP_RIGHT" prefWidth="233.0" text="Nivel académico: ">
-                           <font>
-                              <Font name="Lucida Bright" size="22.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="txtNivelAcademicoAgre" onKeyTyped="#validarEstadoCivil" prefHeight="38.0" prefWidth="315.0" style="-fx-border-color: #2A8C4A;">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </TextField>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" spacing="10.0">
-                     <children>
-                        <Label alignment="TOP_RIGHT" prefWidth="233.0" text="Número de cuenta: ">
-                           <font>
-                              <Font name="Lucida Bright" size="22.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="txtCuentaAgre" onKeyTyped="#validarEstadoCivil" prefHeight="38.0" prefWidth="315.0" style="-fx-border-color: #2A8C4A;">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </TextField>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" spacing="10.0">
-                     <children>
-                        <Label alignment="TOP_RIGHT" prefWidth="233.0" text="Fecha de ingreso:">
-                           <font>
-                              <Font name="Lucida Bright" size="22.0" />
-                           </font>
-                        </Label>
-                        <DatePicker fx:id="dpFechaIngresoAgre" prefHeight="38.0" prefWidth="315.0" style="-fx-border-color: #2A8C4A;" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" spacing="10.0">
-                     <children>
-                        <Label alignment="TOP_RIGHT" prefWidth="233.0" text="Rol de empleado:">
-                           <font>
-                              <Font name="Lucida Bright" size="22.0" />
-                           </font>
-                        </Label>
-                        <ComboBox fx:id="cbxTipoEmpleadoAgre" prefHeight="38.0" prefWidth="315.0" style="-fx-background-color: white; -fx-border-color: #2A8C4A;" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="TOP_CENTER">
-                     <children>
-                        <CheckBox fx:id="cbEstadoAgre" mnemonicParsing="false" text="Estado">
-                           <font>
-                              <Font name="Lucida Bright" size="25.0" />
-                           </font>
-                        </CheckBox>
+                        <VBox>
+                           <children>
+                              <Label alignment="CENTER" prefWidth="233.0" text="Fecha ingreso:">
+                                 <font>
+                                    <Font name="Lucida Bright" size="22.0" />
+                                 </font>
+                              </Label>
+                              <DatePicker fx:id="dpFechaIngresoAgre" prefHeight="38.0" prefWidth="230.0" style="-fx-background-color: #EEEEEE; -fx-border-radius: 8px;" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label alignment="CENTER" prefWidth="233.0" text="Rol de empleado:">
+                                 <font>
+                                    <Font name="Lucida Bright" size="22.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="cbxTipoEmpleadoAgre" prefHeight="38.0" prefWidth="222.0" style="-fx-background-color: #EEEEEE; -fx-border-radius: 8px;" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER">
+                           <children>
+                              <CheckBox fx:id="cbEstadoAgre" mnemonicParsing="false" text="Estado">
+                                 <font>
+                                    <Font name="Lucida Bright" size="25.0" />
+                                 </font>
+                              </CheckBox>
+                           </children>
+                        </VBox>
                      </children>
                   </HBox>
                </children>
             </VBox>
             <HBox alignment="CENTER" prefHeight="74.0" prefWidth="1276.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#btnGuardar" prefHeight="44.0" prefWidth="141.0" style="-fx-background-color: lightblue; -fx-background-radius: 5;" text="Guardar">
-                     <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../../../Proyecto-CoopevaquitaR.L/SistemaPlanilla_CoopevaquitaR.L/src/main/resources/imagenes/guardar-como.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
+                  <Button mnemonicParsing="false" onAction="#btnGuardar" prefHeight="44.0" prefWidth="109.0" style="-fx-background-color: #6aa9e9; -fx-background-radius: 5;" text="Guardar" textFill="WHITE">
                      <font>
-                        <Font name="Lucida Bright" size="20.0" />
+                        <Font name="Lucida Bright Demibold" size="20.0" />
                      </font>
                   </Button>
                </children>
