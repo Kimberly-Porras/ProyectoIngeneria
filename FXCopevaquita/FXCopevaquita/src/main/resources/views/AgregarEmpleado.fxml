@@ -39,7 +39,7 @@
                                     <Font name="Lucida Bright Italic" size="22.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="txtCedulaAgre" onKeyTyped="#validarCedula" prefHeight="38.0" prefWidth="250.0" style="-fx-border-radius: 8px; -fx-background-color: #EEEEEE;">
+                              <TextField fx:id="txtCedulaAgre" alignment="CENTER" onKeyTyped="#validarCedula" prefHeight="38.0" prefWidth="250.0" style="-fx-border-radius: 8px; -fx-background-color: #EEEEEE;">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
