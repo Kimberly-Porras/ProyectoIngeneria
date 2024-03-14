@@ -13,17 +13,21 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PagosController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PagosController">
    <children>
-      <VBox alignment="CENTER" spacing="15.0" style="-fx-background-color: #E0F2F1;">
+      <VBox alignment="CENTER" spacing="15.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="51.0" prefWidth="1247.0" style="-fx-background-color: #00695C;">
+            <HBox alignment="CENTER" prefHeight="51.0" prefWidth="1247.0">
                <children>
-                  <Label alignment="TOP_LEFT" text="LISTA DE PAGOS" textFill="WHITE">
-                     <font>
-                        <Font name="Lucida Bright" size="31.0" />
-                     </font>
-                  </Label>
+                  <HBox alignment="CENTER" prefHeight="51.0" prefWidth="333.0" style="-fx-background-color: #00897b; -fx-background-radius: 10;">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="37.0" prefWidth="318.0" text="Módulo de pagos" textFill="WHITE">
+                           <font>
+                              <Font name="Lucida Bright" size="31.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                </children>
                <VBox.margin>
                   <Insets />
