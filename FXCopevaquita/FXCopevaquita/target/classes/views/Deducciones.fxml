@@ -20,7 +20,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="55.0" prefWidth="1247.0">
                <children>
-                  <HBox alignment="CENTER" style="-fx-background-color: #00897b; -fx-background-radius: 10;">
+                  <HBox alignment="CENTER" prefHeight="38.0" style="-fx-background-color: #00897b; -fx-background-radius: 10;">
                      <children>
                         <Label alignment="CENTER" prefHeight="37.0" prefWidth="442.0" text="Módulo de deducciones" textFill="WHITE">
                            <font>

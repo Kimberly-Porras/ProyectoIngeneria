@@ -18,9 +18,9 @@
    <children>
       <VBox prefHeight="609.0" prefWidth="1247.0" spacing="15.0" style="-fx-background-color: white;">
          <children>
-            <HBox alignment="CENTER" prefHeight="48.0" prefWidth="1247.0">
+            <HBox alignment="CENTER" prefHeight="42.0" prefWidth="1117.0" spacing="5.0">
                <children>
-                  <HBox style="-fx-background-color: #00897b; -fx-background-radius: 10;">
+                  <HBox prefHeight="38.0" style="-fx-background-color: #00897b; -fx-background-radius: 10;">
                      <children>
                         <Label alignment="CENTER" prefHeight="37.0" prefWidth="439.0" text="Módulo de contratos" textFill="WHITE">
                            <font>

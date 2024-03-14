@@ -20,7 +20,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="48.0" prefWidth="1251.0">
                <children>
-                  <HBox alignment="TOP_CENTER" prefHeight="37.0" prefWidth="581.0" style="-fx-background-color: #00897b; -fx-background-radius: 10;">
+                  <HBox alignment="TOP_CENTER" prefHeight="38.0" prefWidth="581.0" style="-fx-background-color: #00897b; -fx-background-radius: 10;">
                      <children>
                         <Label alignment="TOP_LEFT" prefHeight="37.0" prefWidth="483.0" text="Módulo de información familiar" textFill="WHITE">
                            <font>

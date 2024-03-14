@@ -18,7 +18,7 @@
    <children>
       <VBox alignment="CENTER" prefHeight="652.0" prefWidth="1247.0" spacing="15.0" style="-fx-background-color: white;">
          <children>
-            <HBox alignment="CENTER" prefHeight="51.0" prefWidth="1250.0">
+            <HBox alignment="CENTER" prefHeight="42.0" prefWidth="1117.0">
                <children>
                   <HBox alignment="CENTER" prefHeight="51.0" prefWidth="386.0" style="-fx-background-color: #00897b; -fx-background-radius: 10;">
                      <children>

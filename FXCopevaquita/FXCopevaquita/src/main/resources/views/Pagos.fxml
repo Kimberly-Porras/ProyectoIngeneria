@@ -17,9 +17,9 @@
    <children>
       <VBox alignment="CENTER" spacing="15.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="51.0" prefWidth="1247.0">
+            <HBox alignment="CENTER" prefHeight="42.0" prefWidth="1117.0" spacing="5.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="51.0" prefWidth="333.0" style="-fx-background-color: #00897b; -fx-background-radius: 10;">
+                  <HBox alignment="CENTER" prefHeight="42.0" prefWidth="353.0" style="-fx-background-color: #00897b; -fx-background-radius: 10;">
                      <children>
                         <Label alignment="CENTER" prefHeight="37.0" prefWidth="318.0" text="Módulo de pagos" textFill="WHITE">
                            <font>
