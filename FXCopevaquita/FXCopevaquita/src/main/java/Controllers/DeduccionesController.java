@@ -24,10 +24,17 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import DAO.EmpleadoDAO;
 import DAO.TipoDeduccionDAO;
+import Database.DatabaseConnection;
+import JasperReports.JAppReport;
+import JasperReports.JReportDeducciones;
+import java.util.HashMap;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import java.sql.Date;
 
 /**
  * FXML Controller class
+ *
  * @author alber
  * @author kim03
  */
@@ -65,7 +72,10 @@ public class DeduccionesController implements Initializable {
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
     ObservableList<Deduccion> ObservableDeduccion = FXCollections.observableArrayList();
     ObservableList<String> observableStatus = FXCollections.observableArrayList("Pendiente", "Cancelado");
-    
+    @FXML
+    private DatePicker dp_inicio;
+    @FXML
+    private DatePicker dp_fin;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -109,15 +119,16 @@ public class DeduccionesController implements Initializable {
     }
 
     public void cargarDeducciones(boolean status, boolean filtro) {
-        if (filtro){
-        var ObservableIncapacidad
+        if (filtro) {
+            var ObservableIncapacidad
                     = FXCollections.observableArrayList(new DeduccionesDAO().obtenerListaDeduccion())
                             .filtered(empl -> empl.isStatus() == status);
             tblDeduccionesEmpleados.setItems(ObservableIncapacidad);
+        } else {
+            var ObservableIncapacidad
+                    = FXCollections.observableArrayList(new DeduccionesDAO().obtenerListaDeduccion());
+            tblDeduccionesEmpleados.setItems(ObservableIncapacidad);
         }
-        else{var ObservableIncapacidad
-                = FXCollections.observableArrayList(new DeduccionesDAO().obtenerListaDeduccion());
-        tblDeduccionesEmpleados.setItems(ObservableIncapacidad);}
     }
 
     private void filtrarDeduccion() {
@@ -161,5 +172,27 @@ public class DeduccionesController implements Initializable {
     @FXML
     private void OnRefrescar(ActionEvent event) {
         cargarDeducciones(true, false);
+    }
+
+    @FXML
+    private void OnReporte(ActionEvent event) {
+        var report = new JReportDeducciones();
+        var jreport = report.getTodasLasDeducciones();
+
+        if (dp_fin.getValue() != null && dp_inicio.getValue() != null) {
+
+            HashMap<String, Object> map = new HashMap();
+            
+            System.out.println("Fechas " + dp_inicio.getValue().toString());
+            
+            map.put("P_inicio", dp_inicio.getValue().toString());
+            map.put("P_fin", dp_fin.getValue().toString());
+
+            JAppReport.getReport(DatabaseConnection.getConnection(), map, jreport);
+            JAppReport.showReport();
+            return;
+        }
+
+        // Lanzar mensaje de abvertencia...
     }
 }

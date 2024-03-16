@@ -22,8 +22,6 @@ import DAO.EmpleadoDAO;
 import Database.DatabaseConnection;
 import JasperReports.JAppReport;
 import JasperReports.JReportEmpleados;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
 

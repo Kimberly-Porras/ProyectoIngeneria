@@ -27,6 +27,7 @@ import javafx.scene.input.KeyEvent;
 
 /**
  * FXML Controller class
+ *
  * @author alber
  * @author kim03
  */
@@ -101,31 +102,33 @@ public class RegistroFamiliarController implements Initializable {
 
     public void cargarParentezcos(boolean status, boolean filtro) {
         if (filtro) {
-            var ObservableParentezco
+            ObservableParentezco
                     = FXCollections.observableArrayList(new ParentezcoDAO().obtenerListaParentezco())
                             .filtered(empl -> empl.isStatus() == status);
             tblParentezco.setItems(ObservableParentezco);
         } else {
-            var ObservableParentezco
+            ObservableParentezco
                     = FXCollections.observableArrayList(new ParentezcoDAO().obtenerListaParentezco());
             tblParentezco.setItems(ObservableParentezco);
         }
     }
 
     private void filtrarParentezco() {
-        if (txtFiltrarParentezco.getText() != null && !txtFiltrarParentezco.getText().trim().equals("")) {
-            Predicate<Empleado> pEmpleado = x
-                    -> x.getCedula().toLowerCase().contains(txtFiltrarParentezco.getText().toLowerCase())
-                    || x.getNombre().toLowerCase().contains(txtFiltrarParentezco.getText().toLowerCase())
-                    || x.getApellidos().toLowerCase().contains(txtFiltrarParentezco.getText().toLowerCase())
-                    || x.getNombreCompleto().toLowerCase().contains(txtFiltrarParentezco.getText().toLowerCase());
-            Predicate<Parentezco> pParentezco = x
-                    -> x.getCedula().toLowerCase().contains(txtFiltrarParentezco.getText().toLowerCase())
-                    || x.getNombre().toLowerCase().contains(txtFiltrarParentezco.getText().toLowerCase())
-                    || x.getApellidos().toLowerCase().contains(txtFiltrarParentezco.getText().toLowerCase())
-                    || x.getNombreCompleto().toLowerCase().contains(txtFiltrarParentezco.getText().toLowerCase());
 
-            var listaTemporal = ObservableParentezco.filtered((x) -> pEmpleado.test(Get(x.getEmpleado())) || pParentezco.test(x));
+        if (txtFiltrarParentezco.getText() != null && !txtFiltrarParentezco.getText().trim().equals("")) {
+            
+            var listaTemporal = ObservableParentezco.filtered((x) -> {
+                var empleado = new EmpleadoDAO().obtenerEmpleadoPorCedula(x.getEmpleado());
+                
+                return x.getCedula().toLowerCase().contains(txtFiltrarParentezco.getText().toLowerCase())
+                        || x.getNombre().toLowerCase().contains(txtFiltrarParentezco.getText().toLowerCase())
+                        || x.getApellidos().toLowerCase().contains(txtFiltrarParentezco.getText().toLowerCase())
+                        || x.getNombreCompleto().toLowerCase().contains(txtFiltrarParentezco.getText().toLowerCase())
+                        || x.getSexo().toLowerCase().contains(txtFiltrarParentezco.getText().toLowerCase())
+                        || x.getContactoEmergencia().toLowerCase().contains(txtFiltrarParentezco.getText().toLowerCase())
+                        || empleado.getNombreCompleto().toLowerCase().contains(txtFiltrarParentezco.getText().toLowerCase());
+            });
+            
             tblParentezco.setItems(listaTemporal);
         } else {
             cargarParentezcos(true, false);
