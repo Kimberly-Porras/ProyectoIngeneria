@@ -7,22 +7,20 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="715.0" style="-fx-background-radius: 18;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgregarBitacoraEmpleadoController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0" prefWidth="720.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgregarBitacoraEmpleadoController">
    <children>
-      <VBox alignment="CENTER" prefHeight="626.0" prefWidth="1073.0" spacing="15.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
+      <VBox alignment="CENTER" prefHeight="626.0" prefWidth="1073.0" spacing="35.0">
          <children>
-            <HBox alignment="CENTER" style="-fx-background-color: #00695C; -fx-background-radius: 8;">
+            <HBox alignment="CENTER" style="-fx-background-color: #00897b; -fx-background-radius: 8;">
                <children>
-                  <Label alignment="TOP_LEFT" text="INSERCIÓN REPORTE DIARIO " textFill="WHITE">
+                  <Label alignment="TOP_LEFT" text="Inserción de reporte empleado" textFill="WHITE">
                      <font>
-                        <Font name="Lucida Bright Demibold Italic" size="29.0" />
+                        <Font name="Lucida Bright Demibold" size="29.0" />
                      </font>
                   </Label>
                </children>
@@ -32,72 +30,76 @@
             </HBox>
             <HBox alignment="CENTER" spacing="15.0">
                <children>
-                  <ComboBox fx:id="cbxFiltrarEmpleadoAgre" prefHeight="34.0" prefWidth="422.0" promptText="Seleccione un empleado" style="-fx-border-color: #2A8C4A; -fx-background-color: white;" />
+                  <ComboBox fx:id="cbxFiltrarEmpleadoAgre" prefHeight="34.0" prefWidth="422.0" promptText="Seleccione un empleado" style="-fx-border-color: #00897b; -fx-background-color: white;" />
                </children>
             </HBox>
             <HBox alignment="CENTER" spacing="15.0">
                <children>
-                  <Label alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="196.0" text="Fecha de registro: ">
-                     <font>
-                        <Font name="Lucida Bright" size="22.0" />
-                     </font>
-                  </Label>
-                  <DatePicker fx:id="dpFechaIngresoAgre" prefHeight="38.0" prefWidth="315.0" style="-fx-border-color: #2A8C4A;" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="209.0" spacing="10.0">
-               <children>
-                  <Label alignment="CENTER_RIGHT" prefWidth="196.0" text="Actividad: ">
-                     <font>
-                        <Font name="Lucida Bright" size="22.0" />
-                     </font>
-                  </Label>
-                  <ComboBox fx:id="cbxActividadesAgre" prefHeight="38.0" prefWidth="315.0" style="-fx-border-color: #2A8C4A; -fx-background-color: WHITE;" visibleRowCount="17" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="209.0" spacing="10.0">
-               <children>
-                  <Label alignment="CENTER_RIGHT" prefWidth="196.0" text="Área: ">
-                     <font>
-                        <Font name="Lucida Bright" size="22.0" />
-                     </font>
-                  </Label>
-                  <ComboBox fx:id="cbxAreasAgre" prefHeight="38.0" prefWidth="315.0" style="-fx-border-color: #2A8C4A; -fx-background-color: WHITE;" visibleRowCount="17" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="1203.0" spacing="10.0">
-               <children>
-                  <Label alignment="CENTER_RIGHT" prefWidth="196.0" text="Cantidad: ">
-                     <font>
-                        <Font name="Lucida Bright" size="22.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtCantidadAgre" prefHeight="18.0" prefWidth="315.0" style="-fx-border-color: #2A8C4A;">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </TextField>
+                  <VBox>
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="196.0" text="Fecha de registro">
+                           <font>
+                              <Font name="Lucida Bright Italic" size="22.0" />
+                           </font>
+                        </Label>
+                        <DatePicker fx:id="dpFechaIngresoAgre" prefHeight="38.0" prefWidth="315.0" style="-fx-border-color: #00897b;" />
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label alignment="CENTER" prefHeight="28.0" prefWidth="215.0" text="Actividad">
+                           <font>
+                              <Font name="Lucida Bright Italic" size="22.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="cbxActividadesAgre" prefHeight="38.0" prefWidth="315.0" style="-fx-border-color: #00897b; -fx-background-color: WHITE;" visibleRowCount="17" />
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label alignment="CENTER" prefHeight="28.0" prefWidth="215.0" text="Área">
+                           <font>
+                              <Font name="Lucida Bright Italic" size="22.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="cbxAreasAgre" prefHeight="38.0" prefWidth="315.0" style="-fx-border-color: #00897b; -fx-background-color: WHITE;" visibleRowCount="17" />
+                     </children>
+                  </VBox>
                </children>
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="437.0" prefHeight="40.0" prefWidth="1203.0" spacing="10.0">
                <children>
-                  <Label alignment="CENTER_RIGHT" prefWidth="196.0" text="Precio: ">
-                     <font>
-                        <Font name="Lucida Bright" size="22.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtPrecioAgre" prefHeight="38.0" prefWidth="315.0" style="-fx-border-color: #2A8C4A;">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="433.0" prefHeight="40.0" prefWidth="1203.0" spacing="15.0">
-               <children>
+                  <VBox>
+                     <children>
+                        <Label alignment="CENTER" prefHeight="28.0" prefWidth="215.0" text="Cantidad">
+                           <font>
+                              <Font name="Lucida Bright Italic" size="22.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtCantidadAgre" prefHeight="33.0" prefWidth="217.0" style="-fx-border-color: #00897b;">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label alignment="CENTER" prefHeight="28.0" prefWidth="203.0" text="Precio">
+                           <font>
+                              <Font name="Lucida Bright Italic" size="22.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtPrecioAgre" prefHeight="33.0" prefWidth="205.0" style="-fx-border-color: #00897b;">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </VBox>
                   <CheckBox fx:id="cbEstadoAgre" mnemonicParsing="false" prefHeight="26.0" prefWidth="131.0" text="Estado">
                      <font>
-                        <Font name="Lucida Bright" size="25.0" />
+                        <Font name="Lucida Bright Italic" size="22.0" />
                      </font>
                      <HBox.margin>
                         <Insets top="15.0" />
@@ -107,16 +109,9 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#btnGuardar" prefHeight="33.0" prefWidth="163.0" style="-fx-background-color: lightblue;" text="Guardar">
-                     <graphic>
-                        <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../../../Proyecto-CoopevaquitaR.L/SistemaPlanilla_CoopevaquitaR.L/src/main/resources/imagenes/guardar-como.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
+                  <Button mnemonicParsing="false" onAction="#btnGuardar" prefHeight="44.0" prefWidth="149.0" style="-fx-background-color: #6aa9e9; -fx-border-radius: 5px;" text="Guardar" textFill="WHITE">
                      <font>
-                        <Font name="Lucida Bright" size="24.0" />
+                        <Font name="Lucida Bright Demibold" size="24.0" />
                      </font>
                   </Button>
                </children>

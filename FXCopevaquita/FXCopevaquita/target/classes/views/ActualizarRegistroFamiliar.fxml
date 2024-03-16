@@ -24,7 +24,7 @@
                <children>
                   <Label alignment="TOP_LEFT" text="Actualización de parentezcos" textFill="WHITE">
                      <font>
-                        <Font name="Lucida Bright" size="29.0" />
+                        <Font name="Lucida Bright Demibold" size="29.0" />
                      </font>
                   </Label>
                </children>

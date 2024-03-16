@@ -7,22 +7,20 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="417.0" prefWidth="569.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgregarVacacionesController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="342.0" prefWidth="719.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgregarVacacionesController">
    <children>
-      <VBox prefHeight="626.0" prefWidth="1154.0" spacing="15.0" style="-fx-background-color: #d2f4e7; -fx-background-radius: 18;">
+      <VBox prefHeight="354.0" prefWidth="679.0" spacing="35.0">
          <children>
-            <HBox alignment="CENTER" style="-fx-background-color: #00695C;">
+            <HBox alignment="CENTER" style="-fx-background-color: #00897b;">
                <children>
-                  <Label alignment="TOP_LEFT" text="INSERCIÓN DE VACACIONES" textFill="WHITE">
+                  <Label alignment="TOP_LEFT" text="Inserción de vacaciones" textFill="WHITE">
                      <font>
-                        <Font name="Lucida Bright Demibold Italic" size="29.0" />
+                        <Font name="Lucida Bright Demibold" size="29.0" />
                      </font>
                   </Label>
                </children>
@@ -32,41 +30,41 @@
             </HBox>
             <HBox alignment="CENTER" spacing="10.0">
                <children>
-                  <ComboBox fx:id="cbxFiltrarEmpleado" prefHeight="34.0" prefWidth="387.0" promptText="Seleccione un empleado" style="-fx-background-color: white; -fx-border-color: GREY;" />
+                  <ComboBox fx:id="cbxFiltrarEmpleado" prefHeight="44.0" prefWidth="387.0" promptText="Seleccione un empleado" style="-fx-background-color: white; -fx-border-color: #00897b;" />
                </children>
             </HBox>
             <HBox alignment="CENTER" spacing="10.0">
                <children>
-                  <Label alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="83.0" text="Fecha:">
-                     <font>
-                        <Font name="Lucida Bright" size="22.0" />
-                     </font>
+                  <VBox>
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
-                  </Label>
-                  <DatePicker fx:id="dpFecha" prefHeight="38.0" prefWidth="315.0" style="-fx-border-color: GREY;" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="209.0" prefHeight="61.0" prefWidth="1154.0" spacing="10.0">
-               <children>
-                  <Label alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="83.0" text="Monto:">
-                     <font>
-                        <Font name="Lucida Bright" size="22.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtMonto" prefHeight="38.0" prefWidth="315.0" style="-fx-border-color: GREY;">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="354.0" spacing="15.0">
-               <children>
+                     <children>
+                        <Label alignment="CENTER" prefHeight="28.0" prefWidth="277.0" text="Fecha">
+                           <font>
+                              <Font name="Lucida Bright Italic" size="22.0" />
+                           </font>
+                        </Label>
+                        <DatePicker fx:id="dpFecha" prefHeight="50.0" prefWidth="278.0" style="-fx-border-color: #00897b;" />
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label alignment="CENTER" prefHeight="28.0" prefWidth="187.0" text="Monto">
+                           <font>
+                              <Font name="Lucida Bright Italic" size="22.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtMonto" alignment="CENTER" prefHeight="26.0" prefWidth="188.0" style="-fx-border-color: #00897b;">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </VBox>
                   <CheckBox fx:id="cbEstadoAgre" mnemonicParsing="false" text="Estado">
                      <font>
-                        <Font name="Lucida Bright" size="24.0" />
+                        <Font name="Lucida Bright Italic" size="20.0" />
                      </font>
                      <HBox.margin>
                         <Insets top="15.0" />
@@ -76,14 +74,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="71.0" prefWidth="529.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#btnGuardar" prefHeight="33.0" prefWidth="163.0" style="-fx-background-color: lightblue;" text="Guardar">
-                     <graphic>
-                        <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../../../Proyecto-CoopevaquitaR.L/SistemaPlanilla_CoopevaquitaR.L/src/main/resources/imagenes/guardar-como.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
+                  <Button mnemonicParsing="false" onAction="#btnGuardar" prefHeight="44.0" prefWidth="155.0" style="-fx-background-color: #6aa9e9; -fx-border-radius: 5px;" text="Guardar" textFill="#fcfcfc">
                      <font>
                         <Font name="Lucida Bright" size="24.0" />
                      </font>

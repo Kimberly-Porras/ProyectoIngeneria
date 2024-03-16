@@ -18,7 +18,7 @@
          <children>
             <Label alignment="CENTER" prefHeight="41.0" prefWidth="534.0" style="-fx-background-color: #00897B; -fx-background-radius: 8;" text="Inserción de parentezcos" textFill="WHITE">
                <font>
-                  <Font name="Lucida Bright" size="25.0" />
+                  <Font name="Lucida Bright Demibold" size="25.0" />
                </font>
                <VBox.margin>
                   <Insets />

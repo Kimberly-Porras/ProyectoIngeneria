@@ -20,7 +20,7 @@
                <children>
                   <Label alignment="TOP_LEFT" text="Inserción de información " textFill="WHITE">
                      <font>
-                        <Font name="Lucida Bright" size="29.0" />
+                        <Font name="Lucida Bright Demibold" size="29.0" />
                      </font>
                   </Label>
                </children>
