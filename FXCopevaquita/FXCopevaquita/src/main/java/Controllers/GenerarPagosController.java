@@ -214,8 +214,10 @@ public class GenerarPagosController implements Initializable {
                 + resultadoPorIncapacidad
                 + resultadoPorContratos
                 + resultadoPorBitacoras) - resultadoDeducciones);
-
-        pago = total - (total * 0.1067);
+        
+        // obtener los porcentajes de rebajo...
+        PorcentajeRebajosDAO rebajos = new PorcentajeRebajosDAO();
+        pago = total - (total * rebajos.obtenerPorcentajesRebajos().getGobierno());
 
         // Cargar datos en la interfaz grafica...
         txtMonto.setText(resultadoPorBitacoras + ""); // Salario base..
