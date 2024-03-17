@@ -16,7 +16,6 @@ import javafx.scene.layout.Pane;
  * @author alber
  * @author kim03
  */
-
 public class LayoutController implements Initializable {
 
     @FXML
@@ -51,7 +50,7 @@ public class LayoutController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }
-    
+
     private void LoadNode(String fxml) throws IOException {
         var node = App.loadFXML(fxml);
         container_root.getChildren().clear();
@@ -114,6 +113,11 @@ public class LayoutController implements Initializable {
 
     @FXML
     private void OnAbrirAguinaldos(MouseEvent event) {
+        try {
+            LoadNode("/views/Aguinaldos");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     @FXML
@@ -136,11 +140,11 @@ public class LayoutController implements Initializable {
 
     @FXML
     private void OnAbrirSocios(MouseEvent event) {
-       try {
+        try {
             LoadNode("/views/BitacoraSocio");
         } catch (Exception ex) {
             ex.printStackTrace();
-        } 
+        }
     }
 
     private void OnAbrirPlanilla(MouseEvent event) {
@@ -148,7 +152,7 @@ public class LayoutController implements Initializable {
             LoadNode("/views/Planilla");
         } catch (Exception ex) {
             ex.printStackTrace();
-        } 
+        }
     }
 
     @FXML
@@ -180,6 +184,6 @@ public class LayoutController implements Initializable {
 
     @FXML
     private void OnCerrar(MouseEvent event) {
-        
+
     }
 }

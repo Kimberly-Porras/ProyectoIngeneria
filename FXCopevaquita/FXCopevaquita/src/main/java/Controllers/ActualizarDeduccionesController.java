@@ -85,6 +85,11 @@ public class ActualizarDeduccionesController implements Initializable {
         ObservableEmpleado = FXCollections.observableArrayList(daoEmpleado.obtenerListaEmpleados());
         cbxFiltrarEmpleadoAct.setItems(ObservableEmpleado);
         
+        cbxFiltrarEmpleadoAct.getEditor().textProperty().addListener((obs, oldValue, newValue) -> {
+            var newItems = FXCollections.observableArrayList(daoEmpleado.obtenerListaAutocompletado(newValue));
+            cbxFiltrarEmpleadoAct.setItems(newItems);
+        });
+        
         colEstadoAct.setCellValueFactory((cellData) -> new SimpleStringProperty(cellData.getValue().isStatus() ? "Activo" : "Inactivo"));
         
         colMontoAct.setCellValueFactory(new PropertyValueFactory<>("monto"));

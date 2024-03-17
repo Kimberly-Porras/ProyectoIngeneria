@@ -60,6 +60,7 @@ C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaq
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\GenerarPagosController.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\Vacaciones.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\AgregarBitacoraSocioController.java
+C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\AguinaldosController.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\Parentezco.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\DAO\PagoDeduccionDAO.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\DAO\CredencialesDAO.java
@@ -67,6 +68,7 @@ C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaq
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\LoginController.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\Incapacidad.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\ActualizarIncapacidadesController.java
+C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\DAO\PorcentajeRebajosDAO.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\DAO\PagosDAO.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\Pagos.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\BitacoraSocio.java

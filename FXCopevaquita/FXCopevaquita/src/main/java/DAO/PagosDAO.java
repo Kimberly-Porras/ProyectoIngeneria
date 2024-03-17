@@ -49,6 +49,32 @@ public class PagosDAO {
         return listaPagos;
     }
 
+    public List<Pagos> obtenerPagosPorEmpleadoPosterioresAUnaFecha(String id, String date) {
+        List<Pagos> listaPagos = new ArrayList<>();
+        try {
+            String sql = "SELECT `id`, `fecha`, `empleado`, `fecha_final` FROM `tbl_pagos` WHERE empleado = ? "
+                    + "AND fecha > ?";
+            ps = acceso.prepareStatement(sql);
+            ps.setString(1, id);
+            ps.setString(2, date);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Pagos pago = new Pagos(
+                        rs.getInt(1),
+                        rs.getDate(2),
+                        rs.getString(3),
+                        rs.getDate(4)
+                );
+                listaPagos.add(pago);
+            }
+        } catch (Exception e) {
+            System.out.println("" + e.toString());
+        }
+
+        return listaPagos;
+    }
+
     public boolean insertarPagos(Pagos pagos) {
         try {
             String sql = "INSERT INTO tbl_pagos "
