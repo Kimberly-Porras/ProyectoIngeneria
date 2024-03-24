@@ -18,12 +18,12 @@ import DAO.CredencialesDAO;
 import Helpers.OpenWindowsHandler;
 import MainApp.App;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * FXML Controller class
+ *
  * @author alber
  * @author kim03
  */
@@ -56,7 +56,7 @@ public class LoginController implements Initializable {
         String user = txtUsuario.getText();
         String password = txtContrasena.getText();
 
-        if (!txtUsuario.getText().isEmpty() && !txtContrasena.getText().isEmpty()) {
+        if (isValidFields(txtContrasena.getText(), txtUsuario.getText())) {
             var credentials = new CredencialesDAO();
             var credential = credentials.obtenerCredencialPorUsuarioYContrasena(user, password);
 
@@ -71,20 +71,25 @@ public class LoginController implements Initializable {
         }
     }
 
-    @FXML
-private void onOlvidoContrasenia(MouseEvent event) {
-    olvidoContrasena.setStyle("-fx-text-fill: blue;");
-
-    try {
-        // Intenta abrir la nueva ventana
-        OpenWindowsHandler.AbrirVentanaRecuperarContrasenia("/views/RecuperarContrasenia");
-        olvidoContrasena.setStyle("-fx-text-fill: black;");
-    } catch (Exception e) {
-        // Maneja cualquier excepción que pueda ocurrir al abrir la nueva ventana
-        e.printStackTrace();
+    public boolean isValidFields(String txt1, String txt2) {
+        if (!txt1.isEmpty() && !txt2.isEmpty()) {
+            return true;
+        }
+        return false;
     }
-}
 
+    @FXML
+    private void onOlvidoContrasenia(MouseEvent event) {
+        olvidoContrasena.setStyle("-fx-text-fill: blue;");
 
+        try {
+            // Intenta abrir la nueva ventana
+            OpenWindowsHandler.AbrirVentanaRecuperarContrasenia("/views/RecuperarContrasenia");
+            olvidoContrasena.setStyle("-fx-text-fill: black;");
+        } catch (Exception e) {
+            // Maneja cualquier excepción que pueda ocurrir al abrir la nueva ventana
+            e.printStackTrace();
+        }
+    }
 
 }

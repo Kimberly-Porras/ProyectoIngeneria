@@ -6,6 +6,7 @@ module MainApp {
     requires java.mail;
     requires jasperreports;
     requires javafx.swing;
+    
     opens MainApp to javafx.fxml;
     opens Layout to javafx.fxml;
     opens Controllers to javafx.fxml;
@@ -14,4 +15,5 @@ module MainApp {
     exports MainApp;
     exports Models;
     exports DAO;
+    requires org.mockito;
 }
