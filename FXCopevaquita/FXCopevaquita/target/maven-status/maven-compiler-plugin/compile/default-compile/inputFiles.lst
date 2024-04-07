@@ -22,6 +22,7 @@ C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaq
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\PorcentajeRebajos.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\ActualizarSalarioFijoController.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\DAO\BitacoraEmpleadoDAO.java
+C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\JasperReports\JReportAguinaldos.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\DAO\TipoDeduccionDAO.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\BitacoraEmpleado.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\ActualizarDeduccionesController.java
@@ -43,6 +44,7 @@ C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaq
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\RegistroFamiliarController.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\AgregarEmpleadoController.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\AgregarVacacionesController.java
+C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\Aguinaldo.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\ActualizarContratosController.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\DAO\PagoIncapacidadDAO.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Database\DatabaseConnection.java
@@ -80,6 +82,7 @@ C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaq
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\EmpleadosController.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\DAO\ReporteDiario.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\PagoVacacion.java
+C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\DAO\AguinaldoDAO.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Gmail\MailSender.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\AgregarBitacoraEmpleadoController.java
 C:\Users\aleke\Documents\FXCopevaquita\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\module-info.java

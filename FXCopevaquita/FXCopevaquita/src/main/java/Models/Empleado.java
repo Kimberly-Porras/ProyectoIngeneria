@@ -13,7 +13,7 @@ import java.util.Date;
  * @author kim03
  */
 public class Empleado {
-    
+
     private String cedula;
     private String nombre;
     private String apellidos;
@@ -26,7 +26,7 @@ public class Empleado {
     private String numeroCuenta;
     private String nivelAcademico;
     private boolean status;
-    
+
     public Empleado() {
         this.cedula = "";
         this.nombre = "";
@@ -41,6 +41,7 @@ public class Empleado {
         this.nivelAcademico = "";
         this.status = false;
     }
+
     public Empleado(String cedula, String nombre, String apellidos, String sexo, String estadoCivil, String tipoSangre, Date fechaNacimiento, Date fechaIngreso, String tipo, String numeroCuenta, String nivelAcademico, boolean status) {
         this.cedula = cedula;
         this.nombre = nombre;
@@ -151,8 +152,8 @@ public class Empleado {
     public void setStatus(boolean status) {
         this.status = status;
     }
-    
-    public String getNombreCompleto(){
-        return this.nombre +" "+ this.apellidos;
+
+    public String getNombreCompleto() {
+        return this.nombre + " " + this.apellidos;
     }
 }

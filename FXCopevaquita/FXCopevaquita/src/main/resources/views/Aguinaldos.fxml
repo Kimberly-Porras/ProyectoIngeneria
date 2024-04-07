@@ -47,12 +47,24 @@
                   </Button>
                </children>
             </HBox>
-            <HBox prefHeight="36.0" prefWidth="1247.0">
+            <HBox prefHeight="36.0" prefWidth="1247.0" spacing="20.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#OnGenerarAguinaldo" prefHeight="37.0" prefWidth="263.0" style="-fx-background-color: #fc5500;" text="Calcular aguinaldo" textFill="WHITE">
                      <HBox.margin>
                         <Insets top="2.0" />
                      </HBox.margin>
+                     <font>
+                        <Font name="Lucida Bright Demibold" size="17.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="27.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/GENRAR%20PAGO.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#OnExportarAguinaldo" prefHeight="37.0" prefWidth="263.0" style="-fx-background-color: #fc5500;" text="Exportar aguinaldos" textFill="WHITE">
                      <font>
                         <Font name="Lucida Bright Demibold" size="17.0" />
                      </font>
