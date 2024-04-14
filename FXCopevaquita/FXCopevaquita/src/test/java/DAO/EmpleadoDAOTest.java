@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
  * @author kim03
  */
 
-@DisplayName("Pruebas sobre las operaciones de empleados...")
+@DisplayName("Pruebas sobre insertar un empleado")
 public class EmpleadoDAOTest {
 
     // Pruebas sobre la inserción...

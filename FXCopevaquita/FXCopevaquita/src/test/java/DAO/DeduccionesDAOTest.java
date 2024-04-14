@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
  * @author kim03
  */
 
-@DisplayName("Corriendo los test de deducciones...")
+@DisplayName("Corriendo los test de deducciones")
 public class DeduccionesDAOTest {
     
     @Test

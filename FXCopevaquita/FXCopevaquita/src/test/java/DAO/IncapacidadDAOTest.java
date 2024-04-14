@@ -19,7 +19,7 @@ import org.junit.jupiter.api.Test;
  * @author kim03
  */
 
-@DisplayName("Corriendo los Test de incapacidades...")
+@DisplayName("Corriendo los Test de incapacidades")
 public class IncapacidadDAOTest {
 
     @Test

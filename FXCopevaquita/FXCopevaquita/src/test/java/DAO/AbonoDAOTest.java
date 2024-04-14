@@ -22,16 +22,16 @@ import org.junit.jupiter.api.Test;
  * @author alber
  * @author kim03
  */
-@DisplayName("Pruebas sobre las operaciones de abonos...")
+@DisplayName("Pruebas sobre las operaciones de abonos")
 public class AbonoDAOTest {
 
     @Test
-    @DisplayName("Los abonos se insertan correctamente! 😱")
+    @DisplayName("Los abonos se insertan correctamente")
     public void insertarAbonos() {
         AbonoDAO abonos = mock(AbonoDAO.class);
 
-        // Al crear un abono el dao realiza la operación correctamente...
-        Abono abonotest = new Abono(); // No olviden el tema de las referencias ...
+        // Al crear un abono el dao realiza la operación correctamente
+        Abono abonotest = new Abono(); 
 
         when(abonos.insertarAbono(abonotest
         )).thenReturn(true);
@@ -40,7 +40,7 @@ public class AbonoDAOTest {
     }
 
     @Test
-    @DisplayName("Los abonos se actualizan correctamente! 😱")
+    @DisplayName("Los abonos se actualizan correctamente")
     public void ActualizarAbonos() {
         AbonoDAO abono = mock(AbonoDAO.class);
         Abono abonotest = new Abono();
@@ -51,7 +51,7 @@ public class AbonoDAOTest {
     }
 
     @Test
-    @DisplayName("Se pueden generarAbonos correctamente! 😱")
+    @DisplayName("Se pueden generarAbonos correctamente")
     public void GenerarAbono() {
         AbonoDAO abono = mock(AbonoDAO.class);
         Abono abonotest = new Abono();

@@ -19,8 +19,8 @@ public class EmpleadoTest {
     @DisplayName("El nombre completo es correcto")
     public void NombreCompleto() {
         Empleado empleado = new Empleado();
-        empleado.setNombre("Alexander");
-        empleado.setApellidos("Barquero");
+        empleado.setNombre("Alberto");
+        empleado.setApellidos("Torres");
 
         assertEquals(empleado.getNombre() + " " + empleado.getApellidos(), empleado.getNombreCompleto());
     }
