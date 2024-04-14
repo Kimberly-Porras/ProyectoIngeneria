@@ -10,8 +10,10 @@ import org.junit.jupiter.api.Test;
 
 /**
  *
- * @author aleke
+ * @author alber
+ * @author kim03
  */
+
 public class EmpleadoTest {
     @Test
     @DisplayName("El nombre completo es correcto")

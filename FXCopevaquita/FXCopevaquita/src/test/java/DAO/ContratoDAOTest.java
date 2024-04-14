@@ -13,7 +13,8 @@ import org.junit.jupiter.api.Test;
 
 /**
  *
- * @author aleke
+ * @author alber
+ * @author kim03
  */
 @DisplayName("Corriendo los test de contratos")
 public class ContratoDAOTest {

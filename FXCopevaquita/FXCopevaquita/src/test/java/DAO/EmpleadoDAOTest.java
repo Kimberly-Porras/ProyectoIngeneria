@@ -12,8 +12,10 @@ import org.junit.jupiter.api.Test;
 
 /**
  *
- * @author aleke
+ * @author alber
+ * @author kim03
  */
+
 @DisplayName("Pruebas sobre las operaciones de empleados...")
 public class EmpleadoDAOTest {
 

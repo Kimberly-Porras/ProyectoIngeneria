@@ -12,8 +12,10 @@ import org.junit.jupiter.api.Test;
 
 /**
  *
- * @author aleke
+ * @author alber
+ * @author kim03
  */
+
 @DisplayName("Corriendo los test de salario fijo en socios")
 public class PlanillaSociosDAOTest {
 
