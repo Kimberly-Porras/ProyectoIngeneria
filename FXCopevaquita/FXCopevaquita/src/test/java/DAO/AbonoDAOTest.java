@@ -51,7 +51,7 @@ public class AbonoDAOTest {
     }
 
     @Test
-    @DisplayName("Se pueden generarAbonos correctamente")
+    @DisplayName("Se pueden generar abonos correctamente")
     public void GenerarAbono() {
         AbonoDAO abono = mock(AbonoDAO.class);
         Abono abonotest = new Abono();
