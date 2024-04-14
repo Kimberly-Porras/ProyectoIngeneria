@@ -19,7 +19,7 @@ import org.junit.jupiter.api.Test;
 @DisplayName("Pruebas sobre insertar un empleado")
 public class EmpleadoDAOTest {
 
-    // Pruebas sobre la inserción...
+    
     @Test
     public void InsertarEmpleadoTest() {
         EmpleadoDAO empleadoDAO = mock(EmpleadoDAO.class);
