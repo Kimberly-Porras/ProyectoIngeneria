@@ -4,6 +4,7 @@
  */
 package Controllers;
 
+import Alertas.MensajePersonalizado;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -24,6 +25,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import javafx.util.StringConverter;
 import java.sql.Date;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 
 /**
@@ -129,6 +131,7 @@ public class GenerarPagosController implements Initializable {
         if (fechaFinal == null
                 || fechaInicio == null
                 || empleado == null) {
+            MensajePersonalizado.Ver("Error", "El rango de fechas es requerido ", Alert.AlertType.ERROR);
             return; // No se puede buscar sin las fechas o el empleado...
         }
 
@@ -287,7 +290,6 @@ public class GenerarPagosController implements Initializable {
                     (byte) 0
             );
             // generar el pago por incapacidad...
-            pagoIncapacidadService.insertarIncapacidad(new PagoIncapacidad(resultadoPorIncapacidad, idPago));
 
             // VACACIONES...
             // actualizar estados...

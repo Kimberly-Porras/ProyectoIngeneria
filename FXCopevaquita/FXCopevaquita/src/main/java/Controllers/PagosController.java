@@ -4,6 +4,7 @@
  */
 package Controllers;
 
+import Alertas.MensajePersonalizado;
 import Helpers.OpenWindowsHandler;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,14 +18,19 @@ import javafx.scene.control.TableView;
 import DAO.*;
 import Models.*;
 import java.sql.Date;
-import javafx.beans.Observable;
+import java.time.LocalDate;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.concurrent.Task;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.ProgressBar;
 
 /**
  * FXML Controller class
+ *
  * @author alber
  * @author kim03
  */
@@ -52,6 +58,35 @@ public class PagosController implements Initializable {
     private TableColumn<Pagos, String> colSalarioBase;
 
     private ObservableList<Pagos> observablePagos;
+    @FXML
+    private DatePicker dpFechaInicial1;
+    @FXML
+    private DatePicker dpFechaFinal1;
+
+    @FXML
+    private ProgressBar progressBar;
+
+    double resultadoPorBitacoras = 0.0;
+    double resultadoPorContratos = 0.0;
+    double resultadoPorIncapacidad = 0.0;
+    double resultadoPorVacaciones = 0.0;
+    double resultadoDeducciones = 0.0;
+    double pago = 0.0;
+
+    EmpleadoDAO empleadoService = new EmpleadoDAO();
+    BitacoraEmpleadoDAO bitacoraService = new BitacoraEmpleadoDAO();
+    ContratoDAO contratoService = new ContratoDAO();
+    IncapacidadDAO incapacidadService = new IncapacidadDAO();
+    VacacionesDAO vacacionesService = new VacacionesDAO();
+    DeduccionesDAO deduccionService = new DeduccionesDAO();
+    PagosDAO pagosService = new PagosDAO();
+    PagoContratoDAO pagoContratoService = new PagoContratoDAO();
+    PagoDeduccionDAO pagoDeduccionService = new PagoDeduccionDAO();
+    PagoIncapacidadDAO pagoIncapacidadService = new PagoIncapacidadDAO();
+    PagoVacacionDAO pagoVacacionService = new PagoVacacionDAO();
+    PagoBitacoraDAO pagoBitacoraService = new PagoBitacoraDAO();
+    @FXML
+    private Button btnGenerarPagoGlobal;
 
     /**
      * Initializes the controller class.
@@ -69,7 +104,7 @@ public class PagosController implements Initializable {
 
     public void configure() {
         cargarPagos();
-        
+
         colFechaInicio.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFechaFinal().toString()));
         colFechaFin.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFecha().toString()));
 
@@ -123,6 +158,232 @@ public class PagosController implements Initializable {
     @FXML
     private void OnRefrescar(ActionEvent event) {
         cargarPagos();
+    }
+
+    private void definirDatosEmpleado(Empleado empleado, Date inicio, Date finalizo) {
+        dpFechaFinal1.setDisable(true);
+        dpFechaInicial1.setDisable(true);
+
+        // ¿CUANTO SE GANO POR ACTIVIDADES?
+        var bitacoras = bitacoraService.obtenerListaBitacoraPorCedulaEmpleadoEntreFechas(
+                empleado.getCedula(),
+                inicio,
+                finalizo
+        );
+
+        resultadoPorBitacoras = 0.0;
+        for (BitacoraEmpleado bitacora : bitacoras) {
+            resultadoPorBitacoras += bitacora.getCosto() * bitacora.getCantidad();
+        }
+
+        // ¿CUANTO SE GANO POR CONTRATOS?
+        var contratos = contratoService.obtenerListaContratosEntreFechas(empleado.getCedula(),
+                inicio,
+                finalizo
+        );
+
+        resultadoPorContratos = 0.0;
+        for (Contrato contrato : contratos) {
+            resultadoPorContratos += contrato.getMonto();
+        }
+
+        // ¿CUANTO SE GANO POR INCAPACIDAD?
+        var incapacidades = incapacidadService.obtenerListaIncapacidadesEntreFechas(
+                empleado.getCedula(),
+                inicio,
+                finalizo
+        );
+
+        resultadoPorIncapacidad = 0.0;
+        for (Incapacidad incapacidad : incapacidades) {
+            resultadoPorIncapacidad += incapacidad.getMonto();
+        }
+
+        // ¿CUANTO SE GANO EN VACACIONES?
+        var vacaciones = vacacionesService.obtenerListaVacacionesEntreFechas(
+                empleado.getCedula(),
+                inicio,
+                finalizo
+        );
+
+        resultadoPorVacaciones = 0.0;
+        for (Vacaciones vacacion : vacaciones) {
+            resultadoPorVacaciones += vacacion.getMonto();
+        }
+
+        // ¿CUANTO SE GANO EN DEDUCCIONES?
+        var deducciones = deduccionService.obtenerListaDeduccionEntreFechas(
+                empleado.getCedula(),
+                inicio,
+                finalizo
+        );
+
+        resultadoDeducciones = 0.0;
+        for (Deduccion deduccion : deducciones) {
+
+            if (deduccion.getPendiente() > 0) {
+                // Debe más de lo que vale la couta...
+                if (deduccion.getPendiente() > deduccion.getCuota()) {
+                    resultadoDeducciones += deduccion.getCuota();
+                } else {
+                    // Debe menos de lo que vale la cuota...
+                    resultadoDeducciones += deduccion.getPendiente();
+                }
+            }
+        }
+
+        // CALCULAR EL TOTAL...
+        // TODO; Crear un DAO de la tabla de porcentaje que consulte y me traiga el %;
+        var total = ((resultadoPorVacaciones
+                + resultadoPorIncapacidad
+                + resultadoPorContratos
+                + resultadoPorBitacoras) - resultadoDeducciones);
+
+        // obtener los porcentajes de rebajo...
+        PorcentajeRebajosDAO rebajos = new PorcentajeRebajosDAO();
+        pago = total;
+
+        if (empleado.getTipo().equals("PEON") || empleado.getTipo().equals("SECRETARIO")) {
+            pago -= total * rebajos.obtenerPorcentajesRebajos().getGobierno();
+        }
+    }
+
+    private void generarPagoEmpleado(Empleado empleado, Date inicio, Date finalizo) {
+        // BITACORAS...
+        // inhabilitar todas las bitacoras...
+        bitacoraService.actualizarEstadoBitacoraEntreFechas(
+                empleado.getCedula(),
+                inicio,
+                finalizo,
+                (byte) 0
+        );
+        // Generar pago...
+        pagosService.insertarPagos(new Pagos(
+                0,
+                inicio,
+                empleado.getCedula(),
+                finalizo
+        ));
+        var idPago = pagosService.obtenerIdPago(empleado.getCedula(), inicio, finalizo);
+        // generar el pago por bitacoras...
+        pagoBitacoraService.insertarPagoBitacora(new PagoBitacora(resultadoPorBitacoras, idPago));
+
+        // CONTRATOS...
+        // actualizar estados...
+        contratoService.actualizarEstadoContratoEntreFechas(
+                empleado.getCedula(),
+                inicio, finalizo,
+                (byte) 0
+        );
+
+        // generar el pago por contratos...
+        pagoContratoService.pagoContrato(new PagoContrato(resultadoPorContratos, idPago));
+
+        // INCAPACIDADES
+        // actualizar estados..
+        incapacidadService.actualizarEstadoIncapacidadEntreFechas(
+                empleado.getCedula(),
+                inicio,
+                finalizo,
+                (byte) 0
+        );
+        // generar el pago por incapacidad...
+
+        // VACACIONES...
+        // actualizar estados...
+        vacacionesService.actualizarEstadoVacacionesEntreFechas(
+                empleado.getCedula(),
+                inicio,
+                finalizo,
+                (byte) 0
+        );
+        // generar el pago por vacación...
+        pagoVacacionService.insertarVacacion(new PagoVacacion(resultadoPorVacaciones, idPago));
+
+        // DEDUCCIONES..
+        // ¿CUANTO SE GANO EN DEDUCCIONES?
+        var deducciones = deduccionService.obtenerListaDeduccionEntreFechas(
+                empleado.getCedula(),
+                inicio,
+                finalizo
+        );
+
+        for (Deduccion deduccion : deducciones) {
+            if (deduccion.getPendiente() > 0) {
+                // Debe más de lo que vale la couta...
+                if (deduccion.getPendiente() > deduccion.getCuota()) {
+                    resultadoDeducciones += deduccion.getCuota();
+                    var pendiente = deduccion.getPendiente();
+                    var couta = deduccion.getCuota();
+                    deduccion.setPendiente(pendiente - couta);
+                } else {
+                    // Debe menos de lo que vale la cuota...
+                    resultadoDeducciones += deduccion.getPendiente();
+                    deduccion.setPendiente(0);
+                }
+                deduccionService.actualizarDeduccion(deduccion);
+            }
+        }
+
+        // generar el pago por deducción...
+        pagoDeduccionService.insertarDeduccion(new PagoDeduccion(resultadoPorIncapacidad, idPago));
+    }
+
+    @FXML
+    private void OnGenerarPagoGlobal() {
+        if (dpFechaInicial1.getValue() == null || dpFechaFinal1.getValue() == null) {
+            MensajePersonalizado.Ver("Problemas en el rango de fechas",
+                    "El rango de fechas es requerido",
+                    Alert.AlertType.ERROR);
+            return;
+        }
+
+        var startDate = dpFechaInicial1.getValue();
+        var endDate = dpFechaFinal1.getValue();
+
+        if (startDate.isAfter(endDate) || startDate.isEqual(endDate)) {
+            MensajePersonalizado.Ver("Problemas en el rango de fechas",
+                    "El rango de fechas es incoherente",
+                    Alert.AlertType.INFORMATION);
+            return;
+        }
+
+        // Bloquear la interacción del usuario
+        btnGenerarPagoGlobal.setDisable(true);
+
+        // Crear un Task para la operación larga
+        Task<Void> task = new Task<>() {
+            @Override
+            protected Void call() throws Exception {
+                var empleados = new EmpleadoDAO().obtenerListaEmpleados();
+                for (Empleado empleado : empleados) {
+                    definirDatosEmpleado(empleado, Date.valueOf(startDate), Date.valueOf(endDate));
+                    generarPagoEmpleado(empleado, Date.valueOf(startDate), Date.valueOf(endDate));
+                    updateProgress(empleados.indexOf(empleado) + 1, empleados.size());
+                }
+                return null;
+            }
+        };
+
+        // Configurar el progreso del Task
+        progressBar.progressProperty().bind(task.progressProperty());
+
+        // Manejar el evento de éxito del Task
+        task.setOnSucceeded((e) -> {
+            // Desbloquear la interacción del usuario
+            MensajePersonalizado.Ver("Operación Completa",
+                    "El proceso de generación de pagos ha finalizado",
+                    Alert.AlertType.INFORMATION);
+
+            btnGenerarPagoGlobal.setDisable(false);
+            dpFechaFinal1.setDisable(false);
+            dpFechaInicial1.setDisable(false);
+            cargarPagos();
+        });
+
+        // Iniciar el Task en un nuevo hilo
+        Thread thread = new Thread(task);
+        thread.start();
     }
 
 }
