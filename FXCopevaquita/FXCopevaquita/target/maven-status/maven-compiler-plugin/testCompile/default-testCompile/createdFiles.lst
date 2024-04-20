@@ -1,1 +1,11 @@
+LoginControllerTest\LoginControllerTest.class
+DAO\DeduccionesDAOTest.class
+DAO\EmpleadoDAOTest.class
+DAO\BitacoraEmpleadoDAOTest.class
+Models\EmpleadoTest.class
 DAO\AbonoDAOTest.class
+DAO\ContratoDAOTest.class
+DAO\IncapacidadDAOTest.class
+DAO\VacacionesDAOTest.class
+DAO\PlanillaSociosDAOTest.class
+Models\AbonoTest.class

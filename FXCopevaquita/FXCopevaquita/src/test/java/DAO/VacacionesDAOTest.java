@@ -12,8 +12,10 @@ import org.junit.jupiter.api.Test;
 
 /**
  *
- * @author aleke
+ * @author alber
+ * @author kim03
  */
+
 @DisplayName("Corriendo las pruebas para insertar una vacación")
 public class VacacionesDAOTest {
     @Test

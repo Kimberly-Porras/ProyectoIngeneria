@@ -10,8 +10,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  *
- * @author aleke
+ * @author alber
+ * @author kim03
  */
+
 public class LoginControllerTest {
     @Test
     public void fieldsValidator() {

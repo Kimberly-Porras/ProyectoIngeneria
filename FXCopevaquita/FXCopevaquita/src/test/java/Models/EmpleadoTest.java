@@ -10,15 +10,17 @@ import org.junit.jupiter.api.Test;
 
 /**
  *
- * @author aleke
+ * @author alber
+ * @author kim03
  */
+
 public class EmpleadoTest {
     @Test
     @DisplayName("El nombre completo es correcto")
     public void NombreCompleto() {
         Empleado empleado = new Empleado();
-        empleado.setNombre("Alexander");
-        empleado.setApellidos("Barquero");
+        empleado.setNombre("Alberto");
+        empleado.setApellidos("Torres");
 
         assertEquals(empleado.getNombre() + " " + empleado.getApellidos(), empleado.getNombreCompleto());
     }

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="343.0" prefWidth="682.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgregarSalarioFijoController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="343.0" prefWidth="682.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgregarSalarioFijoController">
    <children>
       <VBox alignment="CENTER" prefHeight="302.0" prefWidth="1029.0" spacing="35.0">
          <children>
@@ -44,7 +44,7 @@
                               <Font name="Lucida Bright Italic" size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtMonto" alignment="CENTER" prefHeight="40.0" prefWidth="248.0" style="-fx-border-color: #00897b;">
+                        <TextField fx:id="txtMontoAgre" alignment="CENTER" prefHeight="40.0" prefWidth="248.0" style="-fx-border-color: #00897b;">
                            <font>
                               <Font size="17.0" />
                            </font>

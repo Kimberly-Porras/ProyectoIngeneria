@@ -9,12 +9,14 @@ Controllers\AgregarSalarioFijoController$1.class
 Controllers\AgregarDeduccionesController$1.class
 MainApp\App.class
 DAO\PlanillaSociosDAO.class
+JasperReports\JReportAguinaldos.class
 DAO\CredencialesDAO.class
 Controllers\ActualizarBitacoraSocioController$1.class
 Controllers\LoginController.class
 Gmail\MailSender$1.class
 Models\Vacaciones.class
 module-info.class
+Models\Aguinaldo.class
 Database\DatabaseConnection.class
 Controllers\TipoDeduccionesController.class
 Controllers\ActualizarContratosController$1.class
@@ -47,6 +49,7 @@ Controllers\ActualizarDeduccionesController$2.class
 Controllers\ActualizarIncapacidadesController.class
 Controllers\VacacionesController.class
 MainApp\App$ControllerConsumer.class
+DAO\AguinaldoDAO.class
 Controllers\ConfiguracionController.class
 Models\Actividad.class
 Models\Credencial.class
