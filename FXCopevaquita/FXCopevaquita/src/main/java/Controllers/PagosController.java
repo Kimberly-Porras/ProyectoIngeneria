@@ -16,9 +16,14 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 import DAO.*;
+import Database.DatabaseConnection;
+import JasperReports.JAppReport;
+import JasperReports.JReportDeducciones;
+import JasperReports.JReportPlanilla;
 import Models.*;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.HashMap;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -87,6 +92,8 @@ public class PagosController implements Initializable {
     PagoBitacoraDAO pagoBitacoraService = new PagoBitacoraDAO();
     @FXML
     private Button btnGenerarPagoGlobal;
+    @FXML
+    private Button btnGenerarReporte;
 
     /**
      * Initializes the controller class.
@@ -288,6 +295,7 @@ public class PagosController implements Initializable {
                 (byte) 0
         );
         // generar el pago por incapacidad...
+        pagoIncapacidadService.insertarIncapacidad(new PagoIncapacidad(resultadoPorIncapacidad, idPago));
 
         // VACACIONES...
         // actualizar estados...
@@ -384,6 +392,40 @@ public class PagosController implements Initializable {
         // Iniciar el Task en un nuevo hilo
         Thread thread = new Thread(task);
         thread.start();
+    }
+
+    @FXML
+    private void OnGenerarReporte(ActionEvent event) {
+        var report = new JReportPlanilla();
+        var jreport = report.getPlanillaFromDatesRange();
+
+        if (dpFechaInicial1.getValue() == null || dpFechaFinal1.getValue() == null) {
+            MensajePersonalizado.Ver("Problemas en el rango de fechas",
+                    "El rango de fechas es requerido",
+                    Alert.AlertType.ERROR);
+            return;
+        }
+
+        var startDate = dpFechaInicial1.getValue();
+        var endDate = dpFechaFinal1.getValue();
+
+        if (startDate.isAfter(endDate) || startDate.isEqual(endDate)) {
+            MensajePersonalizado.Ver("Problemas en el rango de fechas",
+                    "El rango de fechas es incoherente",
+                    Alert.AlertType.INFORMATION);
+            return;
+        }
+
+        HashMap<String, Object> map = new HashMap();
+
+        System.out.println("Fechas " + startDate.toString());
+
+        map.put("p_dateStart", startDate.toString());
+        map.put("p_endDate", endDate.toString());
+
+        JAppReport.getReport(DatabaseConnection.getConnection(), map, jreport);
+        JAppReport.showReport();
+        return;
     }
 
 }
