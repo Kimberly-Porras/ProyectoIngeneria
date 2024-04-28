@@ -20,6 +20,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -63,6 +64,10 @@ public class ContratosController implements Initializable {
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
     final private ActividadDAO ActividadService = new ActividadDAO();
     ObservableList<String> observableStatus = FXCollections.observableArrayList("Pendiente", "Cancelado");
+    @FXML
+    private DatePicker dp_inicio;
+    @FXML
+    private DatePicker dp_fin;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -154,6 +159,10 @@ public class ContratosController implements Initializable {
     @FXML
     private void OnRefrescar(ActionEvent event) {
         cargarContratos(true, false);
+    }
+
+    @FXML
+    private void OnReporte(ActionEvent event) {
     }
 
 }

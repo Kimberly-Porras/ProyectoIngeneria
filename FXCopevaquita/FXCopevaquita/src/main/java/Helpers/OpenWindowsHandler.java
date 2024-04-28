@@ -88,6 +88,24 @@ public class OpenWindowsHandler {
             ex.printStackTrace();
         }
     }
+    
+    public static void AbrirVentanaPorcentajes(String fxml) {
+        try {
+            var second = App.loadFXML(fxml);
+
+            Scene secondScene = new Scene(second);
+            Stage secondStage = new Stage();
+
+            secondStage.setTitle("Porcentajes");
+            secondStage.initModality(Modality.WINDOW_MODAL);
+            secondStage.initOwner(App.scene.getWindow());
+            secondStage.setScene(secondScene);
+
+            secondStage.showAndWait();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
 
     public static void AbrirVentanaAgregarEmpleado(String fxml) {
         try {

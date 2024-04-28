@@ -14,11 +14,11 @@
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="885.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AreasController">
    <children>
-      <VBox alignment="CENTER" spacing="15.0" style="-fx-background-color: #E0F2F1;">
+      <VBox alignment="CENTER" spacing="10.0" style="-fx-background-color: white;">
          <children>
-            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="1196.0" style="-fx-background-color: #00695C;">
+            <HBox alignment="CENTER" prefHeight="46.0" prefWidth="885.0" style="-fx-background-color: #00695C;">
                <children>
-                  <Label alignment="TOP_LEFT" prefHeight="37.0" prefWidth="395.0" text="INFORMACIÓN DE ÁREAS" textFill="WHITE">
+                  <Label alignment="TOP_LEFT" prefHeight="37.0" prefWidth="395.0" text="Información de áreas" textFill="WHITE">
                      <font>
                         <Font name="Lucida Bright" size="31.0" />
                      </font>
@@ -28,11 +28,11 @@
                   </Label>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="51.0" prefWidth="1196.0" spacing="15.0">
+            <HBox alignment="CENTER" prefHeight="51.0" prefWidth="1196.0" spacing="10.0">
                <children>
-                  <TextField fx:id="txtNombreArea" prefHeight="37.0" prefWidth="434.0" promptText="Nombre del área" style="-fx-border-color: #2A8C4A;">
+                  <TextField fx:id="txtNombreArea" prefHeight="42.0" prefWidth="354.0" promptText="Nombre del área" style="-fx-border-color: #2A8C4A;">
                      <font>
-                        <Font size="19.0" />
+                        <Font size="15.0" />
                      </font>
                   </TextField>
                   <CheckBox fx:id="cbEstadoArea" mnemonicParsing="false" text="Estado">
@@ -40,21 +40,25 @@
                         <Font name="Lucida Bright" size="19.0" />
                      </font>
                   </CheckBox>
-                  <Button mnemonicParsing="false" onAction="#btnGuardarArea" onMouseMoved="#Etiqueta" prefHeight="44.0" prefWidth="118.0" style="-fx-background-color: lightblue;" text="Guardar">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
                   <Label fx:id="etiqueta" />
-                  <Button mnemonicParsing="false" onAction="#btnActualizarArea" prefHeight="44.0" prefWidth="130.0" style="-fx-background-color: #a9e9a4;" text="Actualizar">
-                     <font>
-                        <Font name="Lucida Bright" size="19.0" />
-                     </font>
-                  </Button>
                </children>
                <VBox.margin>
                   <Insets left="20.0" />
                </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="51.0" prefWidth="254.0" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#btnGuardarArea" onMouseMoved="#Etiqueta" prefHeight="34.0" prefWidth="117.0" style="-fx-background-color: #6aa9e9;" text="Guardar" textFill="WHITE">
+                     <font>
+                        <Font name="Lucida Bright Demibold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#btnActualizarArea" prefHeight="34.0" prefWidth="117.0" style="-fx-background-color: #88DC65;" text="Actualizar" textFill="WHITE">
+                     <font>
+                        <Font name="Lucida Bright Demibold" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="55.0" prefWidth="1196.0" spacing="10.0">
                <children>
@@ -63,9 +67,9 @@
                         <Font name="Lucida Bright" size="22.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtFiltrarArea" onKeyPressed="#OnFiltrarArea" prefHeight="25.0" prefWidth="481.0" promptText="Filtrado de áreas" style="-fx-border-color: #2A8C4A;">
+                  <TextField fx:id="txtFiltrarArea" onKeyPressed="#OnFiltrarArea" prefHeight="40.0" prefWidth="287.0" promptText="Filtrado de áreas" style="-fx-border-color: #2A8C4A;">
                      <font>
-                        <Font size="17.0" />
+                        <Font size="15.0" />
                      </font>
                   </TextField>
                </children>
@@ -75,28 +79,32 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="317.0" prefWidth="1196.0">
                <children>
-                  <TableView fx:id="tblAreas" prefHeight="317.0" prefWidth="823.0" style="-fx-background-color: WHITE;" stylesheets="@../Styles/Estilo.css">
-                     <columns>
-                        <TableColumn fx:id="colIdArea" prefWidth="145.33334350585938" text="Identificador" />
-                        <TableColumn fx:id="colNombreArea" prefWidth="381.6666564941406" text="Nombre" />
-                        <TableColumn fx:id="colEstadoArea" prefWidth="120.0" text="Estado" />
-                     </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
+                  <VBox>
                      <HBox.margin>
                         <Insets left="15.0" right="15.0" />
                      </HBox.margin>
-                  </TableView>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#btnCargarDatos" prefHeight="44.0" prefWidth="95.0" style="-fx-background-color: #ffba6a;" text="Cargar">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
+                     <children>
+                        <HBox prefHeight="41.0" prefWidth="823.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#btnCargarDatos" prefHeight="44.0" prefWidth="95.0" style="-fx-background-color: #ffba6a;" text="Cargar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Lucida Bright Demibold" size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <TableView fx:id="tblAreas" prefHeight="317.0" prefWidth="823.0" style="-fx-background-color: WHITE;" stylesheets="@../Styles/Estilo.css">
+                           <columns>
+                              <TableColumn fx:id="colIdArea" prefWidth="145.33334350585938" text="Identificador" />
+                              <TableColumn fx:id="colNombreArea" prefWidth="381.6666564941406" text="Nombre" />
+                              <TableColumn fx:id="colEstadoArea" prefWidth="120.0" text="Estado" />
+                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </VBox>
                </children>
             </HBox>
          </children>

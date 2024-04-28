@@ -19,6 +19,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -27,6 +28,7 @@ import javafx.scene.input.KeyEvent;
 
 /**
  * FXML Controller class
+ *
  * @author alber
  * @author kim03
  */
@@ -46,14 +48,16 @@ public class AsistenciaController implements Initializable {
     private TableColumn<BitacoraAsistencia, String> colPresente;
     @FXML
     private TableColumn<BitacoraAsistencia, String> colJustifica;
+    @FXML
+    private DatePicker dp_inicio;
+    @FXML
+    private DatePicker dp_fin;
 
     /**
      * Initializes the controller class.
      */
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
     ObservableList<BitacoraAsistencia> ObservableAsistencia = FXCollections.observableArrayList();
-    
-    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -73,17 +77,15 @@ public class AsistenciaController implements Initializable {
         });
         colFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
         colPresente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isEstaPresente() ? "Presente" : "Ausente"));
-        colJustifica.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isJustifica()? "Justificada" : "Sin justificar"));
+        colJustifica.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isJustifica() ? "Justificada" : "Sin justificar"));
     }
 
-
-    
     public void cargarBitacorasAsistencias() {
         var ObservableAsistencia
                 = FXCollections.observableArrayList(new BitacoraAsistenciaDAO().obtenerListaBitacoraAsitencia());
         tblBitacoraAsistencia.setItems(ObservableAsistencia);
     }
-    
+
 //    private void filtrarAsistencias() {
 //        if (txtFiltrarEmpleado.getText() != null && !txtFiltrarEmpleado.getText().trim().equals("")) {
 //            Predicate<BitacoraAsistencia> pVacacion = x
@@ -99,11 +101,10 @@ public class AsistenciaController implements Initializable {
 //            tblBitacoraAsistencia.setItems(ObservableAsistencia);
 //        }
 //    }
-
     private Empleado Get(String cedula) {
         return ObservableEmpleado.filtered(x -> x.getCedula().equals(cedula)).get(0);
     }
-    
+
     @FXML
     private void OnAgregar(ActionEvent event) {
         OpenWindowsHandler.AbrirVentanaAgregarBitaAsistencia("/views/AgregarAsistencia");
@@ -111,7 +112,7 @@ public class AsistenciaController implements Initializable {
 
     @FXML
     private void OnActualizar(ActionEvent event) {
-         OpenWindowsHandler.AbrirVentanaActualizarBitaAsistencia("/views/ActualizarAsistencia");
+        OpenWindowsHandler.AbrirVentanaActualizarBitaAsistencia("/views/ActualizarAsistencia");
     }
 
     @FXML
@@ -121,7 +122,11 @@ public class AsistenciaController implements Initializable {
 
     @FXML
     private void OnRefrescar(ActionEvent event) {
-     cargarBitacorasAsistencias();
+        cargarBitacorasAsistencias();
+    }
+
+    @FXML
+    private void OnExportar(ActionEvent event) {
     }
 
 }

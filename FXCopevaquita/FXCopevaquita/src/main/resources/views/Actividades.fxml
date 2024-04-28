@@ -12,13 +12,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="671.0" prefWidth="1046.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ActividadesController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="671.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ActividadesController">
    <children>
-      <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" spacing="20.0" style="-fx-background-color: #E0F2F1;">
+      <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" spacing="20.0" style="-fx-background-color: white;">
          <children>
             <HBox alignment="CENTER" prefHeight="64.0" prefWidth="1230.0" style="-fx-background-color: #00695C;">
                <children>
-                  <Label alignment="TOP_LEFT" prefHeight="37.0" prefWidth="512.0" text="INFORMACIÓN DE ACTIVIDADES" textFill="WHITE">
+                  <Label alignment="TOP_LEFT" prefHeight="37.0" prefWidth="512.0" text="Información de actividades" textFill="WHITE">
                      <font>
                         <Font name="Lucida Bright" size="31.0" />
                      </font>
@@ -30,7 +30,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="23.0" prefWidth="1190.0" spacing="15.0">
                <children>
-                  <TextField fx:id="txtNombreActividad" prefHeight="22.0" prefWidth="417.0" promptText="Actividad" style="-fx-border-color: #2A8C4A;">
+                  <TextField fx:id="txtNombreActividad" prefHeight="42.0" prefWidth="357.0" promptText="Actividad" style="-fx-border-color: #2A8C4A;">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -43,20 +43,24 @@
                         <Insets top="5.0" />
                      </HBox.margin>
                   </CheckBox>
-                  <Button mnemonicParsing="false" onAction="#btnGuardarActividad" prefHeight="43.0" prefWidth="157.0" style="-fx-background-color: lightblue;" text="Guardar">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#btnActualizarActividad" prefHeight="38.0" prefWidth="168.0" style="-fx-background-color: #a9e9a4;" text="Actualizar">
-                     <font>
-                        <Font name="Lucida Bright" size="20.0" />
-                     </font>
-                  </Button>
                </children>
                <VBox.margin>
                   <Insets left="20.0" />
                </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#btnGuardarActividad" prefHeight="34.0" prefWidth="118.0" style="-fx-background-color: #6aa9e9;" text="Guardar" textFill="WHITE">
+                     <font>
+                        <Font name="Lucida Bright Demibold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#btnActualizarActividad" prefHeight="34.0" prefWidth="118.0" style="-fx-background-color: #88DC65;" text="Actualizar" textFill="WHITE">
+                     <font>
+                        <Font name="Lucida Bright Demibold" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="48.0" prefWidth="1210.0" spacing="10.0">
                <children>
@@ -72,30 +76,39 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="385.0" prefWidth="1046.0">
                <children>
-                  <TableView fx:id="tblActividades" prefHeight="388.0" prefWidth="1190.0" stylesheets="@../Styles/Estilo.css">
-                     <columns>
-                        <TableColumn fx:id="colIdActividad" prefWidth="98.0" text="Identificador" />
-                        <TableColumn fx:id="colNombreActividad" prefWidth="117.0" text="Nombre" />
-                        <TableColumn fx:id="colEstadoActividad" prefWidth="120.0" text="Estado" />
-                     </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
+                  <HBox>
                      <HBox.margin>
                         <Insets left="20.0" right="20.0" />
                      </HBox.margin>
-                  </TableView>
+                     <children>
+                        <VBox>
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#btnCargarDatos" prefHeight="33.0" prefWidth="78.0" style="-fx-background-color: #ffba6a;" text="Cargar" textFill="WHITE">
+                                       <font>
+                                          <Font name="Lucida Bright Demibold" size="15.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <TableView fx:id="tblActividades" prefHeight="388.0" prefWidth="1190.0" stylesheets="@../Styles/Estilo.css">
+                                 <columns>
+                                    <TableColumn fx:id="colIdActividad" prefWidth="98.0" text="Identificador" />
+                                    <TableColumn fx:id="colNombreActividad" prefWidth="117.0" text="Nombre" />
+                                    <TableColumn fx:id="colEstadoActividad" prefWidth="120.0" text="Estado" />
+                                 </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="56.0" prefWidth="1046.0">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#btnCargarDatos" prefHeight="45.0" prefWidth="183.0" style="-fx-background-color: #ffba6a;" text="Cargar datos">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-               </children>
-            </HBox>
+            <HBox alignment="CENTER" prefHeight="56.0" prefWidth="1046.0" />
          </children>
          <StackPane.margin>
             <Insets />

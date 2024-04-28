@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.input.MouseEvent;
 
 /**
  *
@@ -27,18 +28,23 @@ public class ConfiguracionController implements Initializable {
     }    
 
     @FXML
-    private void onGestionarActividades(ActionEvent event) {
+    private void OnActividades(MouseEvent event) {
         OpenWindowsHandler.AbrirVentanaActividades("/views/Actividades");
     }
 
     @FXML
-    private void onGestionarAreas(ActionEvent event) {
+    private void OnAreas(MouseEvent event) {
         OpenWindowsHandler.AbrirVentanaAreas("/views/Areas");
     }
 
     @FXML
-    private void onGestionarDeducciones(ActionEvent event) {
-      OpenWindowsHandler.AbrirVentanaTipoDeducciones("/views/TipoDeducciones");
+    private void OnTipoDeducciones(MouseEvent event) {
+        OpenWindowsHandler.AbrirVentanaTipoDeducciones("/views/TipoDeducciones");
+    }
+
+    @FXML
+    private void OnPorcentajes(MouseEvent event) {
+        OpenWindowsHandler.AbrirVentanaPorcentajes("/views/Porcentajes");
     }
     
 }
