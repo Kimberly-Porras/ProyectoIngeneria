@@ -42,7 +42,7 @@
                      </font>
                   </TextField>
                   <ComboBox fx:id="cbx_status" prefHeight="38.0" prefWidth="87.0" promptText="Estados" style="-fx-background-color: white; -fx-border-color: grey;" />
-                  <Button mnemonicParsing="false" onAction="#OnRefrescar" prefHeight="41.0" prefWidth="67.0" style="-fx-background-color: transparent; -fx-border-radius: 5px;" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#OnRefrescar" prefHeight="41.0" prefWidth="142.0" style="-fx-background-color: transparent; -fx-border-radius: 5px;" text="Refrescar">
                      <font>
                         <Font name="Lucida Bright" size="17.0" />
                      </font>
@@ -104,7 +104,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="656.0" prefWidth="1380.0">
                <children>
-                  <TableView fx:id="tblEmpleados" maxHeight="614.0" prefHeight="578.0" prefWidth="1366.0" style="-fx-background-color: white;">
+                  <TableView fx:id="tblEmpleados" maxHeight="614.0" prefHeight="578.0" prefWidth="1366.0" style="-fx-background-color: white;" stylesheets="@../Styles/Estilo.css">
                      <columns>
                         <TableColumn fx:id="colCedula" prefWidth="75.0" text="Cédula" />
                         <TableColumn fx:id="colNombre" prefWidth="75.0" text="Nombre" />
