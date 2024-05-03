@@ -24,7 +24,6 @@ JasperReports\JReportDeducciones.class
 Controllers\AreasController.class
 DAO\EmpleadoDAO.class
 Alertas\MensajePersonalizado.class
-JasperReports\JReportPlanilla.class
 Controllers\BitacoraSocioController.class
 DAO\PagoIncapacidadDAO.class
 Controllers\AgregarRegistroFamiliarController$1.class
@@ -94,7 +93,6 @@ DAO\ReporteDiario.class
 floatingWindows\OpenSecondViewController.class
 Models\PagoBitacora.class
 Controllers\AgregarRegistroFamiliarController.class
-Controllers\PagosController$1.class
 DAO\ParentezcoDAO.class
 Models\BitacoraEmpleado.class
 Controllers\ActualizarContratosController$2.class

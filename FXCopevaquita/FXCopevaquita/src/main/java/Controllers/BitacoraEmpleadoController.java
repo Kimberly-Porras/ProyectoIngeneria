@@ -19,8 +19,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -62,12 +60,6 @@ public class BitacoraEmpleadoController implements Initializable {
     final private ActividadDAO actividadService = new ActividadDAO();
     final private AreaDAO areaService = new AreaDAO();
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
-    @FXML
-    private ComboBox<?> cbx_status;
-    @FXML
-    private DatePicker dp_inicio;
-    @FXML
-    private DatePicker dp_fin;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -20,7 +20,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -54,10 +53,6 @@ public class VacacionesController implements Initializable {
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
     ObservableList<Vacaciones> ObservableVacaciones = FXCollections.observableArrayList();
     ObservableList<String> observableStatus = FXCollections.observableArrayList("Pendiente", "Cancelado");
-    @FXML
-    private DatePicker dp_inicio;
-    @FXML
-    private DatePicker dp_fin;
 
     /**
      * Initializes the controller class.
@@ -152,10 +147,6 @@ public class VacacionesController implements Initializable {
     @FXML
     private void OnRefrescar(ActionEvent event) {
         cargarVacaciones(true, false);
-    }
-
-    @FXML
-    private void OnReporte(ActionEvent event) {
     }
 
 }

@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ContratosController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ContratosController">
    <children>
       <VBox prefHeight="609.0" prefWidth="1247.0" spacing="15.0" style="-fx-background-color: white;">
          <children>
@@ -43,6 +43,18 @@
                      </font>
                   </TextField>
                   <ComboBox fx:id="cbx_status" prefHeight="38.0" prefWidth="110.0" promptText="Estados" style="-fx-background-color: white; -fx-border-color: grey;" />
+                  <Button mnemonicParsing="false" onAction="#OnRefrescar" prefHeight="41.0" prefWidth="67.0" style="-fx-background-color: transparent; -fx-border-radius: 5px;" textFill="WHITE">
+                     <font>
+                        <Font name="Lucida Bright" size="17.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/refrescar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </HBox>
             <HBox prefHeight="45.0" prefWidth="1247.0">
@@ -71,19 +83,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#OnRefrescar" prefHeight="46.0" prefWidth="135.0" style="-fx-background-color: #7ec4cf; -fx-border-radius: 5px;" text="Refrescar" textFill="WHITE">
-                     <font>
-                        <Font name="Lucida Bright" size="17.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="34.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../imagenes/refrescar.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="793.0" spacing="10.0">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="926.0" spacing="10.0">
                      <children>
                         <DatePicker fx:id="dp_inicio" prefHeight="31.0" prefWidth="134.0" promptText="Fecha de inicio " />
                         <DatePicker fx:id="dp_fin" prefHeight="31.0" prefWidth="134.0" promptText="Fecha de fin" />

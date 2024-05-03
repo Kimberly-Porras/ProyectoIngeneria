@@ -37,7 +37,7 @@
                   <ComboBox fx:id="cbxFiltrarEmpleadoActualizar" editable="true" onAction="#FiltrarEmpleado" prefHeight="27.0" prefWidth="371.0" promptText="Seleccione un empleado" style="-fx-border-color: #00695C;" visibleRowCount="20" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT">
+            <HBox alignment="CENTER">
                <children>
                   <Button mnemonicParsing="false" onAction="#onCargar" prefHeight="31.0" prefWidth="71.0" style="-fx-background-color: #ffba6a;" text="Cargar" textFill="WHITE">
                      <font>
@@ -48,6 +48,9 @@
                <VBox.margin>
                   <Insets bottom="-15.0" />
                </VBox.margin>
+               <padding>
+                  <Insets left="18.0" />
+               </padding>
             </HBox>
             <HBox alignment="CENTER" prefHeight="326.0" prefWidth="815.0" spacing="10.0">
                <children>

@@ -90,11 +90,11 @@ public class AgregarEmpleadoController implements Initializable {
                 );
 
                 if (exito) {
-                    MensajePersonalizado.Ver("EXITO AL INSERTAR", "Empleado insertado correctamente", Alert.AlertType.CONFIRMATION);
+                    MensajePersonalizado.Ver("EXITO AL INSERTAR", "Usuario insertado correctamente", Alert.AlertType.CONFIRMATION);
                     limpiarCamposAgregar();
                     
                 } else {
-                    MensajePersonalizado.Ver("ERROR AL INSERTAR", "Error al insertar el empleado", Alert.AlertType.ERROR);
+                    MensajePersonalizado.Ver("ERROR AL INSERTAR", "Error al insertar el usuario", Alert.AlertType.ERROR);
                 }
 
             } else {

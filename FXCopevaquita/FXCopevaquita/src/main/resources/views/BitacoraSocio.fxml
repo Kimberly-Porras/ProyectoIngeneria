@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -15,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.BitacoraSocioController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.BitacoraSocioController">
    <children>
       <VBox alignment="CENTER" prefHeight="652.0" prefWidth="1247.0" spacing="15.0" style="-fx-background-color: white;">
          <children>
@@ -42,36 +41,8 @@
                         <Font size="17.0" />
                      </font>
                   </TextField>
-                  <ComboBox fx:id="cbx_status" prefHeight="41.0" prefWidth="118.0" promptText="Estados" style="-fx-background-color: WHITE; -fx-border-color: GREY;" />
-               </children>
-            </HBox>
-            <HBox prefHeight="33.0" prefWidth="1250.0">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#OnAgregar" prefHeight="51.0" prefWidth="135.0" style="-fx-background-color: #6aa9e9; -fx-border-radius: 5px;" text="Agregar" textFill="WHITE">
-                     <font>
-                        <Font name="Lucida Bright" size="17.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="27.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../imagenes/agregar-empleado.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#OnActualizar" prefHeight="58.0" prefWidth="145.0" style="-fx-background-color: #88DC65; -fx-border-radius: 5px;" text="Actualizar" textFill="WHITE">
-                     <font>
-                        <Font name="Lucida Bright" size="17.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="27.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../imagenes/actualizar.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#OnRefrescar" prefHeight="41.0" prefWidth="135.0" style="-fx-background-color: #7ec4cf; -fx-border-radius: 5px;" text="Refrescar" textFill="WHITE">
+                  <ComboBox fx:id="cbx_status" prefHeight="42.0" prefWidth="143.0" promptText="Estados" style="-fx-background-color: WHITE; -fx-border-color: GREY;" />
+                  <Button mnemonicParsing="false" onAction="#OnRefrescar" prefHeight="41.0" prefWidth="45.0" style="-fx-background-color: transparent; -fx-border-radius: 5px;" textFill="WHITE">
                      <font>
                         <Font name="Lucida Bright" size="17.0" />
                      </font>
@@ -83,24 +54,46 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="818.0" spacing="10.0">
-                     <children>
-                        <DatePicker fx:id="dp_inicio" prefHeight="31.0" prefWidth="134.0" promptText="Fecha de inicio " />
-                        <DatePicker fx:id="dp_fin" prefHeight="31.0" prefWidth="134.0" promptText="Fecha de fin" />
-                        <Button mnemonicParsing="false" onAction="#OnReporteDiarioSocio" prefHeight="39.0" prefWidth="123.0" style="-fx-background-color: #ed9696;" text="Exportar" textFill="#f8f8f8">
-                           <font>
-                              <Font name="Lucida Bright" size="17.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="27.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../imagenes/pdf.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                  </HBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="50.0" prefWidth="1245.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#OnAgregar" prefHeight="38.0" prefWidth="135.0" style="-fx-background-color: #6aa9e9; -fx-border-radius: 5px;" text="Agregar" textFill="WHITE">
+                     <font>
+                        <Font name="Lucida Bright" size="17.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="27.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/agregar-empleado.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#OnActualizar" prefHeight="38.0" prefWidth="145.0" style="-fx-background-color: #88DC65; -fx-border-radius: 5px;" text="Actualizar" textFill="WHITE">
+                     <font>
+                        <Font name="Lucida Bright" size="17.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="27.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/actualizar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#OnReporteDiarioSocio" prefHeight="39.0" prefWidth="123.0" style="-fx-background-color: #ed9696;" text="Reportes" textFill="#f8f8f8">
+                     <font>
+                        <Font name="Lucida Bright" size="17.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="27.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/pdf.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
                <VBox.margin>
                   <Insets bottom="-16.0" />
@@ -122,9 +115,6 @@
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
-                     <padding>
-                        <Insets bottom="5.0" />
-                     </padding>
                   </TableView>
                </children>
                <VBox.margin>

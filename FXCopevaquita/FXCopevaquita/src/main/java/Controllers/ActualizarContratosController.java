@@ -157,7 +157,6 @@ public class ActualizarContratosController implements Initializable {
             if (exito) {
                 MensajePersonalizado.Ver("EXITO AL ACTUALIZAR", "Contrato actualizado correctamente", Alert.AlertType.CONFIRMATION);
                 limpiarCampos();
-                configurar();
             } else {
                 MensajePersonalizado.Ver("ERROR", "Error al actualizar el contrato", Alert.AlertType.ERROR);
             }
@@ -200,6 +199,7 @@ public class ActualizarContratosController implements Initializable {
         dpFechaFinalAct.setValue(contrato.getFechaFinal().toLocalDate());
         dpFecharegistroAct.setValue(contrato.getFechaRegistro().toLocalDate());
         cbEstadoAct.setSelected(contrato.isStatus());
+        //FALTA LA ACTIVIDAD 
         Actividad actividad = actividadService.obtenerPorId(contrato.getMotivo());
         cbxActividades.setValue(actividad);
     }
