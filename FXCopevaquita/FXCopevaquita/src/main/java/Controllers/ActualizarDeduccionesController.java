@@ -57,7 +57,14 @@ public class ActualizarDeduccionesController implements Initializable {
     private TextField txtCuota;
     @FXML
     private CheckBox cbEstado;
-
+    @FXML
+    private TableColumn<Deduccion, String> colMontoAct;
+    @FXML
+    private TableColumn<Deduccion, String> colCuota;
+    @FXML
+    private DatePicker dpFecha;
+    @FXML
+    private TableColumn<Deduccion, String> colPendiente;
     /**
      * Initializes the controller class.
      */
@@ -67,14 +74,7 @@ public class ActualizarDeduccionesController implements Initializable {
     TipoDeduccionDAO daoTipoDeduccion = new TipoDeduccionDAO();
     Deduccion deduccion = new Deduccion();
     DeduccionesDAO daoDeducciones = new DeduccionesDAO();
-    @FXML
-    private TableColumn<Deduccion, String> colMontoAct;
-    @FXML
-    private TableColumn<Deduccion, String> colCuota;
-    @FXML
-    private DatePicker dpFecha;
-    @FXML
-    private TableColumn<Deduccion, String> colPendiente;
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

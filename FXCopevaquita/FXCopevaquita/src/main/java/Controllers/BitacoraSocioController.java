@@ -10,7 +10,6 @@ import Helpers.OpenWindowsHandler;
 import Models.BitacoraSocio;
 import Models.Empleado;
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import javafx.beans.property.SimpleStringProperty;
@@ -20,6 +19,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -54,6 +54,10 @@ public class BitacoraSocioController implements Initializable {
     ObservableList<BitacoraSocio> ObservableBitacoraSocio = FXCollections.observableArrayList();
     final private EmpleadoDAO empleadoService = new EmpleadoDAO();
     ObservableList<String> observableStatus = FXCollections.observableArrayList("Activo", "Inactivo");
+    @FXML
+    private DatePicker dp_inicio;
+    @FXML
+    private DatePicker dp_fin;
 
     /**
      * Initializes the controller class.

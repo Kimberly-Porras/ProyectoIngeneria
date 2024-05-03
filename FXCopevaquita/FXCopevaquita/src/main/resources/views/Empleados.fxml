@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1250.0" style="-fx-background-color: white; -fx-background-radius: 8;" styleClass="custom-tableview" stylesheets="@../Styles/Estilo.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EmpleadosController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1250.0" style="-fx-background-color: white; -fx-background-radius: 8;" styleClass="custom-tableview" stylesheets="@../Styles/Estilo.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EmpleadosController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="768.0" prefWidth="1464.0" spacing="25.0" style="-fx-background-color: white;">
          <children>
@@ -36,7 +36,7 @@
             </HBox>
             <HBox alignment="CENTER" spacing="10.0">
                <children>
-                  <TextField fx:id="txtFiltrarEmpleado" onKeyReleased="#OnFiltrarEmpleado" prefHeight="39.0" prefWidth="348.0" promptText="Busqueda de empleados" style="-fx-border-color: grey;">
+                  <TextField fx:id="txtFiltrarEmpleado" onKeyReleased="#OnFiltrarEmpleado" prefHeight="39.0" prefWidth="348.0" promptText="Búsqueda de empleados" style="-fx-border-color: grey;">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -46,7 +46,7 @@
             </HBox>
             <HBox prefHeight="43.0" prefWidth="1382.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#OnAgregar" prefHeight="50.0" prefWidth="139.0" style="-fx-background-color: #6aa9e9; -fx-border-radius: 5px;" text="Agregar" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#OnAgregar" prefHeight="52.0" prefWidth="139.0" style="-fx-background-color: #6aa9e9; -fx-border-radius: 5px;" text="Agregar" textFill="WHITE">
                      <font>
                         <Font name="Lucida Bright" size="17.0" />
                      </font>
@@ -58,7 +58,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#OnActualizar" prefHeight="50.0" prefWidth="149.0" style="-fx-background-color: #88DC65; -fx-border-radius: 5px;" text="Actualizar" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#OnActualizar" prefHeight="60.0" prefWidth="149.0" style="-fx-background-color: #88DC65; -fx-border-radius: 5px;" text="Actualizar" textFill="WHITE">
                      <font>
                         <Font name="Lucida Bright" size="17.0" />
                      </font>
@@ -70,7 +70,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#OnRefrescar" prefHeight="41.0" prefWidth="142.0" style="-fx-background-color: #7ec4cf; -fx-border-radius: 5px;" text="Refrescar" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#OnRefrescar" prefHeight="59.0" prefWidth="142.0" style="-fx-background-color: #7ec4cf; -fx-border-radius: 5px;" text="Refrescar" textFill="WHITE">
                      <font>
                         <Font name="Lucida Bright" size="17.0" />
                      </font>
@@ -82,7 +82,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#OnExportar" prefHeight="51.0" prefWidth="130.0" style="-fx-background-color: #ed9696; -fx-border-radius: 5px;" text="Exportar" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#OnExportar" prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #ed9696; -fx-border-radius: 5px;" text="Exportar" textFill="WHITE">
                      <font>
                         <Font name="Lucida Bright" size="17.0" />
                      </font>

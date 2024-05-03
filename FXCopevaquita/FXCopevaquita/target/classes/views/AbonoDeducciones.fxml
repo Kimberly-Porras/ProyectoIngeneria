@@ -29,7 +29,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="283.0" prefWidth="1130.0">
+            <HBox alignment="CENTER" prefHeight="279.0" prefWidth="1030.0">
                <children>
                   <VBox prefHeight="365.0" prefWidth="594.0">
                      <children>
@@ -56,9 +56,9 @@
                               <Insets />
                            </VBox.margin>
                         </HBox>
-                        <HBox alignment="TOP_CENTER" prefHeight="174.0" prefWidth="588.0">
+                        <HBox alignment="TOP_CENTER" prefHeight="150.0" prefWidth="593.0">
                            <children>
-                              <TableView fx:id="tblDeducciones" maxHeight="500.0" prefHeight="174.0" prefWidth="604.0" stylesheets="@../Styles/EstiloAct.css">
+                              <TableView fx:id="tblDeducciones" maxHeight="500.0" prefHeight="137.0" prefWidth="593.0" stylesheets="@../Styles/EstiloAct.css">
                                  <columns>
                                     <TableColumn fx:id="colFecha" prefWidth="105.0" text="Fecha" />
                                     <TableColumn fx:id="colTipoDeduccionAct1" prefWidth="182.0" text="Tipo de deducción" />
@@ -78,22 +78,27 @@
                         </HBox>
                      </children>
                   </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               <children>
                   <VBox alignment="TOP_CENTER" prefHeight="223.0" prefWidth="437.0">
                      <children>
-                        <HBox prefHeight="51.0" prefWidth="431.0">
+                        <HBox prefHeight="31.0" prefWidth="437.0">
                            <children>
                               <Button mnemonicParsing="false" onAction="#OnCargarDatosAbonos" prefHeight="29.0" prefWidth="74.0" style="-fx-background-color: #ffba6a;" text="Cargar" textFill="WHITE">
                                  <font>
                                     <Font name="Lucida Bright Demibold" size="15.0" />
-                                 </font></Button>
+                                 </font>
+                              </Button>
                            </children>
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
                         </HBox>
-                        <HBox prefHeight="219.0" prefWidth="456.0">
+                        <HBox prefHeight="150.0" prefWidth="427.0">
                            <children>
-                              <TableView fx:id="tblAbono" prefHeight="204.0" prefWidth="411.0" stylesheets="@../Styles/EstiloAct.css">
+                              <TableView fx:id="tblAbono" prefHeight="150.0" prefWidth="411.0" stylesheets="@../Styles/EstiloAct.css">
                                  <columns>
                                     <TableColumn fx:id="colFechaAbono" prefWidth="75.0" text="Fecha registro" />
                                     <TableColumn fx:id="colDescripcionAbono" prefWidth="75.0" text="Descripción" />
@@ -105,6 +110,9 @@
                                  <HBox.margin>
                                     <Insets top="-5.0" />
                                  </HBox.margin>
+                                 <padding>
+                                    <Insets bottom="20.0" />
+                                 </padding>
                               </TableView>
                            </children>
                            <VBox.margin>
@@ -113,14 +121,7 @@
                         </HBox>
                         <HBox alignment="TOP_CENTER" />
                      </children>
-                     <HBox.margin>
-                        <Insets top="40.0" />
-                     </HBox.margin>
                   </VBox>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-               <children>
                   <VBox prefHeight="100.0" prefWidth="551.0" spacing="15.0">
                      <children>
                         <HBox alignment="TOP_CENTER" prefHeight="58.0" prefWidth="431.0" spacing="15.0">
