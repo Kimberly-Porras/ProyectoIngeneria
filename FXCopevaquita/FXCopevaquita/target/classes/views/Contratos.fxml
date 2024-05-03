@@ -59,7 +59,7 @@
             </HBox>
             <HBox prefHeight="45.0" prefWidth="1247.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#OnAgregar" prefHeight="43.0" prefWidth="139.0" style="-fx-background-color: #6aa9e9; -fx-border-radius: 5px;" text="Agregar" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#OnAgregar" prefHeight="55.0" prefWidth="139.0" style="-fx-background-color: #6aa9e9; -fx-border-radius: 5px;" text="Agregar" textFill="WHITE">
                      <font>
                         <Font name="Lucida Bright" size="17.0" />
                      </font>
@@ -87,7 +87,7 @@
                      <children>
                         <DatePicker fx:id="dp_inicio" prefHeight="31.0" prefWidth="134.0" promptText="Fecha de inicio " />
                         <DatePicker fx:id="dp_fin" prefHeight="31.0" prefWidth="134.0" promptText="Fecha de fin" />
-                        <Button mnemonicParsing="false" onAction="#OnReporte" prefHeight="27.0" prefWidth="120.0" style="-fx-background-color: #ed9696;" text="Exportar" textFill="WHITE">
+                        <Button mnemonicParsing="false" onAction="#OnReporte" prefHeight="45.0" prefWidth="122.0" style="-fx-background-color: #ed9696;" text="Exportar" textFill="WHITE">
                            <font>
                               <Font name="Lucida Bright" size="17.0" />
                            </font>

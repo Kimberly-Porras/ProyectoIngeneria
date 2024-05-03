@@ -42,23 +42,11 @@
                      </font>
                   </TextField>
                   <ComboBox fx:id="cbx_status" prefHeight="38.0" prefWidth="87.0" promptText="Estados" style="-fx-background-color: white; -fx-border-color: grey;" />
-                  <Button mnemonicParsing="false" onAction="#OnRefrescar" prefHeight="41.0" prefWidth="142.0" style="-fx-background-color: transparent; -fx-border-radius: 5px;" text="Refrescar">
-                     <font>
-                        <Font name="Lucida Bright" size="17.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="34.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../imagenes/refrescar.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
                </children>
             </HBox>
             <HBox prefHeight="43.0" prefWidth="1382.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#OnAgregar" prefHeight="29.0" prefWidth="139.0" style="-fx-background-color: #6aa9e9; -fx-border-radius: 5px;" text="Agregar" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#OnAgregar" prefHeight="50.0" prefWidth="139.0" style="-fx-background-color: #6aa9e9; -fx-border-radius: 5px;" text="Agregar" textFill="WHITE">
                      <font>
                         <Font name="Lucida Bright" size="17.0" />
                      </font>
@@ -70,7 +58,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#OnActualizar" prefHeight="38.0" prefWidth="149.0" style="-fx-background-color: #88DC65; -fx-border-radius: 5px;" text="Actualizar" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#OnActualizar" prefHeight="50.0" prefWidth="149.0" style="-fx-background-color: #88DC65; -fx-border-radius: 5px;" text="Actualizar" textFill="WHITE">
                      <font>
                         <Font name="Lucida Bright" size="17.0" />
                      </font>
@@ -82,7 +70,19 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#OnExportar" prefHeight="24.0" prefWidth="130.0" style="-fx-background-color: #ed9696; -fx-border-radius: 5px;" text="Exportar" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#OnRefrescar" prefHeight="41.0" prefWidth="142.0" style="-fx-background-color: #7ec4cf; -fx-border-radius: 5px;" text="Refrescar" textFill="WHITE">
+                     <font>
+                        <Font name="Lucida Bright" size="17.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/refrescar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#OnExportar" prefHeight="51.0" prefWidth="130.0" style="-fx-background-color: #ed9696; -fx-border-radius: 5px;" text="Exportar" textFill="WHITE">
                      <font>
                         <Font name="Lucida Bright" size="17.0" />
                      </font>
