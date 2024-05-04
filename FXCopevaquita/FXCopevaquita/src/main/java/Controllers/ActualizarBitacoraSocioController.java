@@ -68,7 +68,7 @@ public class ActualizarBitacoraSocioController implements Initializable {
     }
 
     public void cargar() {
-        ObservableEmpleado = FXCollections.observableArrayList(daoEmpleado.obtenerListaEmpleados());
+        ObservableEmpleado = FXCollections.observableArrayList(daoEmpleado.obtenerListaEmpleadosInternos());
         cbxFiltrarEmpleadoActualizar.setItems(ObservableEmpleado);
 
         cbxFiltrarEmpleadoActualizar.setConverter(new StringConverter<Empleado>() {

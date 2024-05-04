@@ -116,7 +116,7 @@ public class AgregarBitacoraEmpleadoController implements Initializable {
                 return firstMatch.orElse(null);
             }
         });
-        ObservableEmpleado = FXCollections.observableArrayList(daoEmpleado.obtenerListaEmpleados());
+        ObservableEmpleado = FXCollections.observableArrayList(daoEmpleado.obtenerListaEmpleadosExternos());
         cbxFiltrarEmpleadoAgre.setItems(ObservableEmpleado);
         cbxFiltrarEmpleadoAgre.setConverter(new StringConverter<Empleado>() {
             @Override

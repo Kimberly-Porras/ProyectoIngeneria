@@ -81,7 +81,7 @@ public class SalarioFijoController implements Initializable {
         });
 
         colMonto.setCellValueFactory(new PropertyValueFactory<>("monto"));
-        colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isStatus() ? "Pendiente" : "Cancelado"));
+        colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isStatus() ? "Activo" : "inactivo"));
         cbx_status.setItems(observableStatus);
         cbx_status.setOnAction(event -> {
             var value = cbx_status.getValue();

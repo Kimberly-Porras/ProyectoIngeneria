@@ -36,7 +36,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="42.0" prefWidth="1269.0">
                <children>
-                  <ComboBox fx:id="cbxFiltrarEmpleadoAct" editable="true" onAction="#OnFiltrarEmpleado" prefHeight="35.0" prefWidth="399.0" promptText="Seleccione un empleado" style="-fx-border-color: #2A8C4A;" visibleRowCount="20" />
+                  <ComboBox fx:id="cbxFiltrarEmpleadoAct" editable="true" onAction="#OnFiltrarEmpleado" onKeyReleased="#OnSearchEmployee" prefHeight="35.0" prefWidth="399.0" promptText="Seleccione un empleado" style="-fx-border-color: #2A8C4A;" visibleRowCount="20" />
                </children>
                <VBox.margin>
                   <Insets top="10.0" />

@@ -6,6 +6,7 @@ package Controllers;
 
 import Alertas.MensajePersonalizado;
 import DAO.AguinaldoDAO;
+import DAO.AguinaldoExportarDAO;
 import DAO.DeduccionesDAO;
 import DAO.EmpleadoDAO;
 import DAO.PagoBitacoraDAO;
@@ -18,10 +19,13 @@ import Database.DatabaseConnection;
 import JasperReports.JAppReport;
 import JasperReports.JReportAguinaldos;
 import Models.Aguinaldo;
+import Models.AguinaldoExportar;
 import Models.Empleado;
 import Models.PagoBitacora;
 import Models.Pagos;
 import java.net.URL;
+import java.sql.Date;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -99,7 +103,6 @@ public class AguinaldosController implements Initializable {
         tblEmpleados.setItems(observableEmpleado);
     }
 
-
     private int obtenerListaAguinaldos() {
         if (dp_inicio.getValue() == null) {
             return 2; // Aquí poner una alerta de que se seleccione un elemento y se ponga la fecha...
@@ -108,7 +111,7 @@ public class AguinaldosController implements Initializable {
         var dateSeleted = dp_inicio.getValue();
 
         List<Empleado> empleados = empleadosService.obtenerListaEmpleados();
-        List<Aguinaldo> aguinaldos = new ArrayList();
+        List<AguinaldoExportar> aguinaldos = new ArrayList();
 
         for (Empleado empleado : empleados) {
             var aguinaldo = obtenerAguinaldoExportar(empleado, dateSeleted);
@@ -118,16 +121,16 @@ public class AguinaldosController implements Initializable {
         }
 
         dp_inicio.setDisable(false);
-        new AguinaldoDAO().removeAguinaldos();
+        new AguinaldoExportarDAO().removeAguinaldos();
         if (aguinaldos.size() > 0) {
-            boolean insercion = new AguinaldoDAO().insertarAguinaldos(aguinaldos);
+            boolean insercion = new AguinaldoExportarDAO().insertarAguinaldos(aguinaldos);
             return insercion ? 1 : 0;
         }
 
         return 0;
     }
 
-    private Aguinaldo obtenerAguinaldoExportar(Empleado empleado, LocalDate dateSeleted) {
+    private AguinaldoExportar obtenerAguinaldoExportar(Empleado empleado, LocalDate dateSeleted) {
         dp_inicio.setDisable(true);
         var pagos = pagosService.obtenerPagosPorEmpleadoPosterioresAUnaFecha(empleado.getCedula(), dateSeleted.toString());
         var meses = pagos.size() / 2; // Cada dos quincenas son un mes...
@@ -148,7 +151,7 @@ public class AguinaldosController implements Initializable {
         }
 
         // Dividir los pagos entre la cantidad de meses trabajados...
-        var aguinaldo = new Aguinaldo(empleado.getNombre(), empleado.getApellidos(),
+        var aguinaldo = new AguinaldoExportar(empleado.getNombre(), empleado.getApellidos(),
                 empleado.getNumeroCuenta(), empleado.getTipo(), total / meses);
 
         return aguinaldo;
@@ -165,11 +168,14 @@ public class AguinaldosController implements Initializable {
         var pagos = pagosService.obtenerPagosPorEmpleadoPosterioresAUnaFecha(model.getCedula(), dateSeleted.toString());
         var meses = pagos.size() / 2; // Cada dos quincenas son un mes...
 
-        if (meses < 3) {
-            MensajePersonalizado.Ver("Error ", "Mae, ocupa al menos 3 meses de contrato", Alert.AlertType.ERROR);
+        System.out.println("meses: " + meses);
+
+        if (meses < 1) {
+            MensajePersonalizado.Ver("Error ", "Mae, ocupa al menos 1 mese de contrato", Alert.AlertType.ERROR);
             return;
         }
-        var total = 0.0;
+        
+        double total = 0.0;
 
         // sumar todos los pagos de esos meses...
         for (Pagos pago : pagos) {
@@ -180,10 +186,27 @@ public class AguinaldosController implements Initializable {
             total -= new PagoDeduccionDAO().obtenerPagoDeduccionPorPago(pago.getId()).getTotalDeduccion(); // Total por deducciones...
         }
 
+        System.out.println("total: " + total);
+
+        // Inhabilitar los pagos usados...
+        for (Pagos pago : pagos) {
+            pagosService.actualizarStatusPago(0, pago.getId());
+        }
+
         // Dividir los pagos entre la cantidad de meses trabajados...
-        var aguinaldo = total / meses;
+        double aguinaldoMonto = total / meses;
+
+        // Crear los aguinaldos en la base de datos...
+        var aguinaldoModel = new Aguinaldo(0,
+                aguinaldoMonto,
+                Date.valueOf(dp_inicio.getValue()),
+                new Date(System.currentTimeMillis()),
+                model.getCedula()
+        );
+
+        new AguinaldoDAO().insertarAguinaldo(aguinaldoModel);
         MensajePersonalizado.Ver("Cálculo: ", "El aguinaldo a partir del " + dateSeleted.toString()
-                + " Tiene un valor de: " + aguinaldo, Alert.AlertType.INFORMATION);
+                + " Tiene un valor de: " + aguinaldoMonto, Alert.AlertType.INFORMATION);
     }
 
     @FXML

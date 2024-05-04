@@ -117,8 +117,7 @@ public class AgregarEmpleadoController implements Initializable {
                 && dpFechaIngresoAgre.getValue() != null
                 && !dpFechaNacimientoAgre.getValue().format(DateTimeFormatter.ISO_DATE).trim().equals("")
                 && !dpFechaIngresoAgre.getValue().format(DateTimeFormatter.ISO_DATE).trim().equals("")
-                && !cbxTipoEmpleadoAgre.getValue().equals("")
-                && !cbEstadoAgre.getText().trim().equals("");
+                && !cbxTipoEmpleadoAgre.getValue().equals("");
     }
     
     public void limpiarCamposAgregar() {
@@ -133,7 +132,6 @@ public class AgregarEmpleadoController implements Initializable {
         dpFechaNacimientoAgre.setValue(LocalDate.now());
         dpFechaIngresoAgre.setValue(LocalDate.now());
         cbxTipoEmpleadoAgre.setValue("");
-        cbEstadoAgre.setText("");
     }
     
     @FXML

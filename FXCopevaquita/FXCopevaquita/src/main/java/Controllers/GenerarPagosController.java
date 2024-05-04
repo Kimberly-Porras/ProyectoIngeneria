@@ -30,6 +30,7 @@ import javafx.scene.control.Button;
 
 /**
  * FXML Controller class
+ *
  * @author alber
  * @author kim03
  */
@@ -142,7 +143,7 @@ public class GenerarPagosController implements Initializable {
         cbxEmpleado1.setDisable(true);
         dpFechaFinal1.setDisable(true);
         dpFechaInicial1.setDisable(true);
-        
+
         // ¿CUANTO SE GANO POR ACTIVIDADES?
         var bitacoras = bitacoraService.obtenerListaBitacoraPorCedulaEmpleadoEntreFechas(
                 empleado.getCedula(),
@@ -151,8 +152,14 @@ public class GenerarPagosController implements Initializable {
         );
 
         resultadoPorBitacoras = 0.0;
-        for (BitacoraEmpleado bitacora : bitacoras) {
-            resultadoPorBitacoras += bitacora.getCosto() * bitacora.getCantidad();
+
+        if (!empleado.getTipo().equals("SOCIO")) {
+            for (BitacoraEmpleado bitacora : bitacoras) {
+                resultadoPorBitacoras += bitacora.getCosto() * bitacora.getCantidad();
+            }
+        } else {
+            var planilla = new PlanillaSociosDAO().obtenerPlanillaPorCedulaEmpleado(empleado.getCedula());
+            resultadoPorBitacoras = planilla.getMonto();
         }
 
         // ¿CUANTO SE GANO POR CONTRATOS?
@@ -217,12 +224,12 @@ public class GenerarPagosController implements Initializable {
                 + resultadoPorIncapacidad
                 + resultadoPorContratos
                 + resultadoPorBitacoras) - resultadoDeducciones);
-        
+
         // obtener los porcentajes de rebajo...
         PorcentajeRebajosDAO rebajos = new PorcentajeRebajosDAO();
         pago = total;
-        
-        if(empleado.getTipo().equals("PEON") || empleado.getTipo().equals("SECRETARIO")) {
+
+        if (empleado.getTipo().equals("PEON") || empleado.getTipo().equals("SECRETARIO")) {
             pago -= total * rebajos.obtenerPorcentajesRebajos().getGobierno();
         }
 
@@ -239,6 +246,7 @@ public class GenerarPagosController implements Initializable {
 
     @FXML
     private void OnPressed(KeyEvent event) {
+        
     }
 
     @FXML
@@ -326,7 +334,7 @@ public class GenerarPagosController implements Initializable {
                     deduccionService.actualizarDeduccion(deduccion);
                 }
             }
-            
+
             // generar el pago por deducción...
             pagoDeduccionService.insertarDeduccion(new PagoDeduccion(resultadoPorIncapacidad, idPago));
             btnBuscar.setDisable(true);

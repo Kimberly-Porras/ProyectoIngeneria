@@ -4,25 +4,35 @@
  */
 package Models;
 
+import java.sql.Date;
+
 /**
  *
  * @author aleke
  */
 public class Aguinaldo {
-    private int id;
-    private String nombre;
-    private String apellidos;
-    private String numeroCuenta;
-    private String tipo;
-    private double aguinaldoCalculado;
 
-    public Aguinaldo(String nombre, String apellidos, String numeroCuenta, String tipo, double aguinaldoCalculado) {
+    private int id;
+    private double total;
+    private Date fecha_ini;
+    private Date fecha_fin;
+    private String empleado;
+
+    public Aguinaldo() {
         this.id = 0;
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.numeroCuenta = numeroCuenta;
-        this.tipo = tipo;
-        this.aguinaldoCalculado = aguinaldoCalculado;
+        this.total = 0;
+        this.fecha_ini = null;
+        this.fecha_fin = null;
+        this.empleado = "";
+
+    }
+
+    public Aguinaldo(int id, double total, Date fecha_ini, Date fecha_fin, String empleado) {
+        this.id = id;
+        this.total = total;
+        this.fecha_ini = fecha_ini;
+        this.fecha_fin = fecha_fin;
+        this.empleado = empleado;
     }
 
     public int getId() {
@@ -33,43 +43,35 @@ public class Aguinaldo {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public double getTotal() {
+        return total;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setTotal(double total) {
+        this.total = total;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public Date getFecha_ini() {
+        return fecha_ini;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public void setFecha_ini(Date fecha_ini) {
+        this.fecha_ini = fecha_ini;
     }
 
-    public String getNumeroCuenta() {
-        return numeroCuenta;
+    public Date getFecha_fin() {
+        return fecha_fin;
     }
 
-    public void setNumeroCuenta(String numeroCuenta) {
-        this.numeroCuenta = numeroCuenta;
+    public void setFecha_fin(Date fecha_fin) {
+        this.fecha_fin = fecha_fin;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getEmpleado() {
+        return empleado;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public double getAguinaldoCalculado() {
-        return aguinaldoCalculado;
-    }
-
-    public void setAguinaldoCalculado(double aguinaldoCalculado) {
-        this.aguinaldoCalculado = aguinaldoCalculado;
+    public void setEmpleado(String empleado) {
+        this.empleado = empleado;
     }
 }

@@ -31,6 +31,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.util.StringConverter;
 
 /**
@@ -40,7 +41,7 @@ import javafx.util.StringConverter;
  * @author kim03
  */
 public class ActualizarDeduccionesController implements Initializable {
-    
+
     @FXML
     private ComboBox<Empleado> cbxFiltrarEmpleadoAct;
     @FXML
@@ -62,6 +63,8 @@ public class ActualizarDeduccionesController implements Initializable {
      * Initializes the controller class.
      */
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
+    ObservableList<Deduccion> ObservableDeduccion = FXCollections.observableArrayList();
+
     ObservableList<TipoDeduccion> ObservableTipoDeduccion = FXCollections.observableArrayList();
     EmpleadoDAO daoEmpleado = new EmpleadoDAO();
     TipoDeduccionDAO daoTipoDeduccion = new TipoDeduccionDAO();
@@ -75,36 +78,31 @@ public class ActualizarDeduccionesController implements Initializable {
     private DatePicker dpFecha;
     @FXML
     private TableColumn<Deduccion, String> colPendiente;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         configurar();
     }
-    
+
     public void configurar() {
         ObservableEmpleado = FXCollections.observableArrayList(daoEmpleado.obtenerListaEmpleados());
         cbxFiltrarEmpleadoAct.setItems(ObservableEmpleado);
-        
-        cbxFiltrarEmpleadoAct.getEditor().textProperty().addListener((obs, oldValue, newValue) -> {
-            var newItems = FXCollections.observableArrayList(daoEmpleado.obtenerListaAutocompletado(newValue));
-            cbxFiltrarEmpleadoAct.setItems(newItems);
-        });
-        
+
         colEstadoAct.setCellValueFactory((cellData) -> new SimpleStringProperty(cellData.getValue().isStatus() ? "Activo" : "Inactivo"));
-        
+
         colMontoAct.setCellValueFactory(new PropertyValueFactory<>("monto"));
-        
+
         colTipoDeduccionAct.setCellValueFactory((celldata) -> {
             var model = celldata.getValue();
             var tipoDeduccion = new TipoDeduccionDAO().obtenerPorId(model.getTipo());
-            
+
             return new SimpleStringProperty(tipoDeduccion.getNombre());
         });
-        
+
         colCuota.setCellValueFactory(new PropertyValueFactory<>("cuota"));
-        
+
         colPendiente.setCellValueFactory(new PropertyValueFactory<>("pendiente"));
-        
+
         cbxFiltrarEmpleadoAct.setConverter(new StringConverter<Empleado>() {
             @Override
             public String toString(Empleado t) {
@@ -113,7 +111,7 @@ public class ActualizarDeduccionesController implements Initializable {
                 }
                 return t.getNombreCompleto();
             }
-            
+
             @Override
             public Empleado fromString(String t) {
                 if (t == null || t.isEmpty()) {
@@ -124,7 +122,7 @@ public class ActualizarDeduccionesController implements Initializable {
                 return firstMatch.orElse(null);
             }
         });
-        
+
         ObservableTipoDeduccion = FXCollections.observableArrayList(daoTipoDeduccion.obtenerListaTipoDeduccion());
         cbxTipoDeduccionAct.setItems(ObservableTipoDeduccion);
         cbxTipoDeduccionAct.setConverter(new StringConverter<TipoDeduccion>() {
@@ -135,7 +133,7 @@ public class ActualizarDeduccionesController implements Initializable {
                 }
                 return t.getNombre();
             }
-            
+
             @Override
             public TipoDeduccion fromString(String t) {
                 if (t == null || t.isEmpty()) {
@@ -147,8 +145,9 @@ public class ActualizarDeduccionesController implements Initializable {
             }
         });
     }
-    
+
     private void actualizar() {
+        cbxFiltrarEmpleadoAct.setDisable(true);
         if (VerificarEspaciosActualizar()) {
             boolean exito = daoDeducciones.actualizarDeduccion(
                     new Deduccion(
@@ -158,22 +157,24 @@ public class ActualizarDeduccionesController implements Initializable {
                             Double.parseDouble(txtCuota.getText()),
                             Double.parseDouble(txtMonto.getText()),
                             cbxFiltrarEmpleadoAct.getValue().getCedula(),
-                            cbEstado.isSelected(), 
+                            cbEstado.isSelected(),
                             Date.valueOf(dpFecha.getValue())
                     ));
-            
+
             if (exito) {
                 MensajePersonalizado.Ver("EXITO AL ACTUALIZAR", "Deducción actualizada correctamente", Alert.AlertType.CONFIRMATION);
                 limpiarCamposActualizar();
+                CargarDeduccionEmpleado(cbxFiltrarEmpleadoAct.getValue().getCedula());
             } else {
                 MensajePersonalizado.Ver("ERROR", "Error al actualizar la deducción", Alert.AlertType.ERROR);
             }
         } else {
             MensajePersonalizado.Ver("Los campos son requeridos, verifique que la información este completa", "INFORMACIÓN INCOMPLETA", Alert.AlertType.WARNING);
-            
+
         }
+        cbxFiltrarEmpleadoAct.setDisable(false);
     }
-    
+
     public boolean VerificarEspaciosActualizar() {
         if (deduccion != null && deduccion.getId() != 0
                 && txtCuota.getText() != null && !txtCuota.getText().trim().equals("")
@@ -186,7 +187,7 @@ public class ActualizarDeduccionesController implements Initializable {
             return false;
         }
     }
-    
+
     private void limpiarCamposActualizar() {
         txtCuota.setText("");
         txtMonto.setText("");
@@ -195,11 +196,11 @@ public class ActualizarDeduccionesController implements Initializable {
         deduccion = new Deduccion();
         dpFecha.setValue(null);
     }
-    
+
     private Empleado Get(String cedula) {
         return ObservableEmpleado.filtered(x -> x.getCedula().equals(cedula)).get(0);
     }
-    
+
     private void cargarCamposActualizar() {
         cbxFiltrarEmpleadoAct.setValue(Get(deduccion.getEmpleado()));
         TipoDeduccion tipoDeduccion = daoTipoDeduccion.obtenerPorId(deduccion.getTipo());
@@ -209,7 +210,7 @@ public class ActualizarDeduccionesController implements Initializable {
         cbEstado.setSelected(deduccion.isStatus());
         dpFecha.setValue(deduccion.getFecha_registro().toLocalDate());
     }
-    
+
     private void cargarDeduccionesPorEmpleado() {
         deduccion = tblDeduccionesEmpleadosAct.getSelectionModel().getSelectedItem();
         if (deduccion != null && deduccion.getId() != 0) {
@@ -218,38 +219,58 @@ public class ActualizarDeduccionesController implements Initializable {
             MensajePersonalizado.Ver("NO SELECCIONADO", "Por favor seleccione una deduccion", Alert.AlertType.WARNING);
         }
     }
-    
+
+    private void CargarDeduccionEmpleado(String cedula) {
+        try {
+            ObservableDeduccion = FXCollections
+                    .observableArrayList(daoDeducciones.obtenerListaDeduccionesPorCedulaEmpleado(cedula));
+            tblDeduccionesEmpleadosAct.setItems(ObservableDeduccion);
+
+        } catch (Exception ex) {
+            MensajePersonalizado.Ver("Error", "Error al buscar las deducciones del empleado, más información: " + ex.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+
     private void FiltrarDeduccionesPorCedulaEmpleado() {
         try {
-            var empleado = cbxFiltrarEmpleadoAct.getValue();
+            Empleado empleado = cbxFiltrarEmpleadoAct.getValue();
+            System.out.println("empleado: " + empleado);
             if (empleado != null && !empleado.getCedula().isEmpty()) {
-                var lista = FXCollections.observableArrayList(daoDeducciones.obtenerListaDeduccionesPorCedulaEmpleado(empleado.getCedula()));
-                System.out.println("Si hay registros");
-                tblDeduccionesEmpleadosAct.setItems(lista);
+                ObservableDeduccion = FXCollections.observableArrayList(daoDeducciones.obtenerListaDeduccionesPorCedulaEmpleado(empleado.getCedula()));
+                tblDeduccionesEmpleadosAct.setItems(ObservableDeduccion);
             }
         } catch (Exception ex) {
             MensajePersonalizado.Ver("Error", "Error al buscar las deducciones del empleado, más información: " + ex.getMessage(), Alert.AlertType.ERROR);
         }
     }
-    
+
     @FXML
     private void OnFiltrarEmpleado(ActionEvent event) {
         FiltrarDeduccionesPorCedulaEmpleado();
     }
-    
+
     @FXML
     private void onCargar(ActionEvent event) {
         cargarDeduccionesPorEmpleado();
     }
-    
+
     @FXML
     private void onLimpiar(ActionEvent event) {
         limpiarCamposActualizar();
     }
-    
+
     @FXML
     private void btnActualizar(ActionEvent event) {
         actualizar();
     }
-    
+
+    @FXML
+    private void OnSearchEmployee(KeyEvent event) {
+        var combo = (ComboBox<Empleado>) event.getSource();
+        var text = combo.getEditor().getText().isEmpty() ? "" : combo.getEditor().getText().trim();
+
+        ObservableEmpleado = FXCollections.observableArrayList(daoEmpleado.obtenerListaAutocompletado(text));
+        cbxFiltrarEmpleadoAct.setItems(ObservableEmpleado);
+    }
+
 }

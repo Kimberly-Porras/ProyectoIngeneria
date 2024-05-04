@@ -55,7 +55,7 @@ public class AgregarBitacoraSocioController implements Initializable {
 
     public void configurar() {
         
-        ObservableEmpleado = FXCollections.observableArrayList(daoEmpleado.obtenerListaEmpleados());
+        ObservableEmpleado = FXCollections.observableArrayList(daoEmpleado.obtenerListaEmpleadosInternos());
         cbxFiltrarEmpleadoAgre.setItems(ObservableEmpleado);
 
         cbxFiltrarEmpleadoAgre.setConverter(new StringConverter<Empleado>() {

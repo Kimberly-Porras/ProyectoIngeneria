@@ -114,7 +114,7 @@ public class ActualizarBitacoraEmpleadoController implements Initializable {
         colFechaRegistroActualizar.setCellValueFactory(new PropertyValueFactory<>("fecha"));
 
         // LLENANDO EL CBX
-        ObservableEmpleado = FXCollections.observableArrayList(empleadoService.obtenerListaEmpleados());
+        ObservableEmpleado = FXCollections.observableArrayList(empleadoService.obtenerListaEmpleadosExternos());
         cbxFiltrarEmpleadoActualizar.setItems(ObservableEmpleado);
 
         ObservableActividad = FXCollections.observableArrayList(actividadService.obtenerListaActividades());

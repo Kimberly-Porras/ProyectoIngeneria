@@ -179,8 +179,14 @@ public class PagosController implements Initializable {
         );
 
         resultadoPorBitacoras = 0.0;
-        for (BitacoraEmpleado bitacora : bitacoras) {
-            resultadoPorBitacoras += bitacora.getCosto() * bitacora.getCantidad();
+
+        if (!empleado.getTipo().equals("SOCIO")) {
+            for (BitacoraEmpleado bitacora : bitacoras) {
+                resultadoPorBitacoras += bitacora.getCosto() * bitacora.getCantidad();
+            }
+        } else {
+            var planilla = new PlanillaSociosDAO().obtenerPlanillaPorCedulaEmpleado(empleado.getCedula());
+            resultadoPorBitacoras = planilla.getMonto();
         }
 
         // ¿CUANTO SE GANO POR CONTRATOS?
