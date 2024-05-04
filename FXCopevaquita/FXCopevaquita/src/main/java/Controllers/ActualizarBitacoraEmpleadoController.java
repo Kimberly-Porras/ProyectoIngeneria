@@ -9,12 +9,10 @@ import DAO.ActividadDAO;
 import DAO.AreaDAO;
 import DAO.EmpleadoDAO;
 import DAO.BitacoraEmpleadoDAO;
-
 import Models.Empleado;
 import Models.Actividad;
 import Models.Area;
 import Models.BitacoraEmpleado;
-
 import java.net.URL;
 import java.sql.Date;
 import java.util.Optional;
@@ -197,7 +195,7 @@ public class ActualizarBitacoraEmpleadoController implements Initializable {
                 tblReporteEmpleadoActualizar.setItems(lista);
             }
         } catch (Exception ex) {
-            MensajePersonalizado.Ver("Error", "Error al buscar las vacaciones del empleado, más información: " + ex.getMessage(), Alert.AlertType.ERROR);
+            MensajePersonalizado.Ver("Error", "Error al buscar los resportes del empleado, más información: " + ex.getMessage(), Alert.AlertType.ERROR);
         }
     }
 
@@ -220,7 +218,7 @@ public class ActualizarBitacoraEmpleadoController implements Initializable {
         if (bitacora != null && bitacora.getId() != 0) {
             cargarCamposActualizar();
         } else {
-            MensajePersonalizado.Ver("NO SELECCIONADO", "Por favor seleccione un contrato", Alert.AlertType.WARNING);
+            MensajePersonalizado.Ver("NO SELECCIONADO", "Por favor seleccione un reporte diario", Alert.AlertType.WARNING);
         }
     }
 
@@ -238,10 +236,10 @@ public class ActualizarBitacoraEmpleadoController implements Initializable {
                             cbEstadoAct.isSelected()
                     ));
             if (exito) {
-                MensajePersonalizado.Ver("EXITO AL ACTUALIZAR", "Contrato actualizado correctamente", Alert.AlertType.CONFIRMATION);
+                MensajePersonalizado.Ver("EXITO AL ACTUALIZAR", "Reporte diario actualizado correctamente", Alert.AlertType.CONFIRMATION);
                 limpiarCampos();
             } else {
-                MensajePersonalizado.Ver("ERROR", "Error al actualizar el contrato", Alert.AlertType.ERROR);
+                MensajePersonalizado.Ver("ERROR", "Error al actualizar el reporte diario", Alert.AlertType.ERROR);
             }
         } else {
             MensajePersonalizado.Ver("INFORMACIÓN INCOMPLETA", "Los campos son requeridos, verifique que la información este completa", Alert.AlertType.WARNING);
@@ -287,6 +285,7 @@ public class ActualizarBitacoraEmpleadoController implements Initializable {
 
     @FXML
     private void onLimpiar(ActionEvent event) {
+        limpiarCampos();
     }
 
     @FXML

@@ -21,6 +21,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -49,6 +50,10 @@ public class SalarioFijoController implements Initializable {
     private TableColumn<PlanillaSocios, String> colEstado;
     @FXML
     private ComboBox<String> cbx_status;
+    @FXML
+    private DatePicker dp_inicio;
+    @FXML
+    private DatePicker dp_fin;
 
     /**
      * Initializes the controller class.
@@ -56,6 +61,7 @@ public class SalarioFijoController implements Initializable {
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
     ObservableList<PlanillaSocios> Observableplanilla = FXCollections.observableArrayList();
     ObservableList<String> observableStatus = FXCollections.observableArrayList("Pendiente", "Cancelado");
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -142,6 +148,10 @@ public class SalarioFijoController implements Initializable {
     @FXML
     private void OnRefrescar(ActionEvent event) {
         cargarPlanillasSocios(true, false);
+    }
+
+    @FXML
+    private void OnReporte(ActionEvent event) {
     }
 
 }

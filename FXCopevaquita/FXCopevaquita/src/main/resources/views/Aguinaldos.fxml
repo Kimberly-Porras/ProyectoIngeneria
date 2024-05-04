@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -13,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AguinaldosController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AguinaldosController">
    <children>
       <VBox alignment="CENTER" spacing="15.0">
          <children>
@@ -38,18 +39,17 @@
                   <Insets />
                </VBox.margin>
                <children>
-                  <Label text="Pueden poner un filtro aquí" />
-                  <DatePicker fx:id="dp_inicio" />
-                  <Button mnemonicParsing="false" onAction="#OnRefrescar" prefHeight="41.0" prefWidth="67.0" style="-fx-background-color: transparent; -fx-border-radius: 5px;" textFill="WHITE">
+                  <TextField fx:id="filtrarEmpleado" onKeyPressed="#PresioanrEnter" prefHeight="40.0" prefWidth="417.0" promptText="Busqueda de empleados" style="-fx-border-color: grey;">
                      <font>
-                        <Font name="Lucida Bright" size="17.0" />
+                        <Font size="17.0" />
                      </font>
-                  </Button>
+                  </TextField>
                </children>
             </HBox>
             <HBox prefHeight="36.0" prefWidth="1247.0" spacing="20.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#OnGenerarAguinaldo" prefHeight="37.0" prefWidth="263.0" style="-fx-background-color: #fc5500;" text="Calcular aguinaldo" textFill="WHITE">
+                  <DatePicker fx:id="dp_inicio" prefHeight="36.0" prefWidth="174.0" promptText="Fecha de inicio" />
+                  <Button mnemonicParsing="false" onAction="#OnGenerarAguinaldo" prefHeight="37.0" prefWidth="135.0" style="-fx-background-color: #fc5500;" text="Calcular" textFill="WHITE">
                      <HBox.margin>
                         <Insets top="2.0" />
                      </HBox.margin>
@@ -64,18 +64,22 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#OnExportarAguinaldo" prefHeight="37.0" prefWidth="263.0" style="-fx-background-color: #fc5500;" text="Exportar aguinaldos" textFill="WHITE">
-                     <font>
-                        <Font name="Lucida Bright Demibold" size="17.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="27.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../imagenes/GENRAR%20PAGO.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
+                  <HBox alignment="TOP_RIGHT" prefHeight="39.0" prefWidth="857.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#OnExportarAguinaldo" prefHeight="39.0" prefWidth="129.0" style="-fx-background-color: #ed9696;" text="Exportar" textFill="WHITE">
+                           <font>
+                              <Font name="Lucida Bright Demibold" size="17.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="27.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../imagenes/pdf.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
                <VBox.margin>
                   <Insets bottom="-16.0" />

@@ -37,7 +37,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 
 /**
  * FXML Controller class
@@ -69,6 +71,8 @@ public class AguinaldosController implements Initializable {
     ObservableList<Empleado> observableEmpleado = FXCollections.observableArrayList();
     @FXML
     private DatePicker dp_inicio;
+    @FXML
+    private TextField filtrarEmpleado;
 
     /**
      * Initializes the controller class.
@@ -95,9 +99,6 @@ public class AguinaldosController implements Initializable {
         tblEmpleados.setItems(observableEmpleado);
     }
 
-    @FXML
-    private void OnRefrescar(ActionEvent event) {
-    }
 
     private int obtenerListaAguinaldos() {
         if (dp_inicio.getValue() == null) {
@@ -204,6 +205,10 @@ public class AguinaldosController implements Initializable {
 
         JAppReport.getReport(DatabaseConnection.getConnection(), null, jreport);
         JAppReport.showReport();
+    }
+
+    @FXML
+    private void PresioanrEnter(KeyEvent event) {
     }
 
 }
