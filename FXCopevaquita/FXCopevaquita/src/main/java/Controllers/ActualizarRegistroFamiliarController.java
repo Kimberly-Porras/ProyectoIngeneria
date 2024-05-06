@@ -79,6 +79,7 @@ public class ActualizarRegistroFamiliarController implements Initializable {
      * Initializes the controller class.
      */
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
+    ObservableList<Parentezco> ObservableParentezco = FXCollections.observableArrayList();
     EmpleadoDAO daoEmpleado = new EmpleadoDAO();
     Parentezco parentezco = new Parentezco();
     ParentezcoDAO daoParentezco = new ParentezcoDAO();
@@ -139,7 +140,7 @@ public class ActualizarRegistroFamiliarController implements Initializable {
             if (exito) {
                 MensajePersonalizado.Ver("EXITO AL ACTUALIZAR", "Parentezco actualizado correctamente", Alert.AlertType.CONFIRMATION);
                 limpiarCampos();
-                FiltrarParentezcosPorCedulaEmpleado();
+                cargarParentezcos(cbxFiltrarEmpleadoActualizar.getValue().getCedula());
 
             } else {
                 MensajePersonalizado.Ver("ERROR", "Error al actualizar el parentezco", Alert.AlertType.ERROR);
@@ -205,7 +206,7 @@ public class ActualizarRegistroFamiliarController implements Initializable {
                 tblParentezco.setItems(lista);
             }
         } catch (Exception ex) {
-            MensajePersonalizado.Ver("Error", "Error al buscar las incapacidades del empleado, más información: " + ex.getMessage(), Alert.AlertType.ERROR);
+            MensajePersonalizado.Ver("Error", "Error al buscar los registros de parentezcos del empleado, más información: " + ex.getMessage(), Alert.AlertType.ERROR);
         }
     }
     
@@ -214,7 +215,17 @@ public class ActualizarRegistroFamiliarController implements Initializable {
         if (parentezco != null && parentezco.getCedula()!= "") {
             cargarCamposActualizar();
         } else {
-            MensajePersonalizado.Ver("NO SELECCIONADO", "Por favor seleccione una incapacidad", Alert.AlertType.WARNING);
+            MensajePersonalizado.Ver("NO SELECCIONADO", "Por favor seleccione una persona del parentezco", Alert.AlertType.WARNING);
+        }
+    }
+    
+    private void cargarParentezcos(String cedula) {
+        try {
+            ObservableParentezco= FXCollections.observableArrayList(daoParentezco.obtenerListaParentezcosPorCedulaEmpleado(cedula));
+                tblParentezco.setItems(ObservableParentezco);
+            
+        } catch (Exception ex) {
+            MensajePersonalizado.Ver("Error", "Error al buscar los registros de parentezcos del empleado, más información: " + ex.getMessage(), Alert.AlertType.ERROR);
         }
     }
     @FXML
