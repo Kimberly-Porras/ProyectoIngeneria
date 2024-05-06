@@ -33,6 +33,7 @@ import javafx.util.StringConverter;
 
 /**
  * FXML Controller class
+ *
  * @author alber
  * @author kim03
  */
@@ -59,13 +60,14 @@ public class ActualizarVacacionesController implements Initializable {
      * Initializes the controller class.
      */
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
+    ObservableList<Vacaciones> ObservableVacaciones = FXCollections.observableArrayList();
     EmpleadoDAO daoEmpleado = new EmpleadoDAO();
     Vacaciones vacacion = new Vacaciones();
     VacacionesDAO daoVacaciones = new VacacionesDAO();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       configurar();
+        configurar();
     }
 
     public void configurar() {
@@ -139,39 +141,49 @@ public class ActualizarVacacionesController implements Initializable {
         dpFecha.setValue(null);
     }
 
-    
     private void FiltrarVacacionesPorCedulaEmpleado() {
         try {
             var empleado = cbxFiltrarEmpleadoActualizar.getValue();
-            
+
             if (empleado != null && !empleado.getCedula().isEmpty()) {
                 var lista = FXCollections.observableArrayList(daoVacaciones.obtenerListaVacacionesPorCedulaEmpleado(empleado.getCedula()));
-                System.out.println("lista: " + lista.size());
                 tblVacacionesActualizar.setItems(lista);
             }
         } catch (Exception ex) {
             MensajePersonalizado.Ver("Error", "Error al buscar las vacaciones del empleado, más información: " + ex.getMessage(), Alert.AlertType.ERROR);
         }
     }
-    
+
     private Empleado Get(String cedula) {
         return ObservableEmpleado.filtered(x -> x.getCedula().equals(cedula)).get(0);
     }
-    
+
     private void cargarCamposActualizar() {
         dpFecha.setValue(vacacion.getFecha().toLocalDate());
         cbxFiltrarEmpleadoActualizar.setValue(Get(vacacion.getEmpleado()));
         txtMonto.setText(vacacion.getMonto() + "");
         cbEstadoAct.setSelected(vacacion.isStatus());
     }
-    
+
     private void cargarVacaionesPorEmpleado() {
         vacacion = tblVacacionesActualizar.getSelectionModel().getSelectedItem();
-        
+
         if (vacacion != null && vacacion.getId() != 0) {
             cargarCamposActualizar();
         } else {
             MensajePersonalizado.Ver("NO SELECCIONADO", "Por favor seleccione una incapacidad", Alert.AlertType.WARNING);
+        }
+    }
+
+    private void cargarVacaciones(String cedula) {
+        try {
+            ObservableVacaciones
+                    = FXCollections.observableArrayList(daoVacaciones.obtenerListaVacacionesPorCedulaEmpleado(cedula));
+
+                tblVacacionesActualizar.setItems(ObservableVacaciones);
+            
+        } catch (Exception ex) {
+            MensajePersonalizado.Ver("Error", "Error al buscar las vacaciones del empleado, más información: " + ex.getMessage(), Alert.AlertType.ERROR);
         }
     }
     
