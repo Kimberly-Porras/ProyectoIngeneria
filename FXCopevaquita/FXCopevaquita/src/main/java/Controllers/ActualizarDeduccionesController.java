@@ -13,7 +13,6 @@ import Models.Empleado;
 import Models.TipoDeduccion;
 import java.net.URL;
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;

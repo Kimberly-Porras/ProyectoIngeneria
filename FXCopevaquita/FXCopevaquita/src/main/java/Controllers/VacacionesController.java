@@ -10,7 +10,6 @@ import Helpers.OpenWindowsHandler;
 import Models.Empleado;
 import Models.Vacaciones;
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import javafx.beans.property.SimpleStringProperty;
@@ -93,14 +92,6 @@ public class VacacionesController implements Initializable {
         });
     }
 
-    private String GetNombreCompleto(String cedula) {
-        Optional<Empleado> empleadoOptional = ObservableEmpleado.stream()
-                .filter(x -> x.getCedula().equals(cedula))
-                .findFirst();
-
-        return empleadoOptional.map(Empleado::getNombreCompleto).orElse("");
-    }
-
     public void cargarVacaciones(boolean status, boolean filtro) {
         if (filtro) {
             var ObservableIncapacidad
@@ -142,7 +133,6 @@ public class VacacionesController implements Initializable {
     @FXML
     private void OnActualizar(ActionEvent event) {
         OpenWindowsHandler.AbrirVentanaActualizarVacaciones("/views/ActualizarVacaciones");
-
     }
 
     @FXML

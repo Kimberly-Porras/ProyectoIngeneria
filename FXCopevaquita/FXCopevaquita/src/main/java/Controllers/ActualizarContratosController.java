@@ -32,9 +32,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.StringConverter;
 
-
 /**
  * FXML Controller class
+ *
  * @author alber
  * @author kim03
  */
@@ -71,6 +71,7 @@ public class ActualizarContratosController implements Initializable {
 
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
     ObservableList<Actividad> ObservableActividad = FXCollections.observableArrayList();
+    ObservableList<Contrato> ObservableContrato = FXCollections.observableArrayList();
     Contrato contrato = new Contrato();
     Actividad actividad = new Actividad();
     ContratoDAO daoContrato = new ContratoDAO();
@@ -157,6 +158,7 @@ public class ActualizarContratosController implements Initializable {
             if (exito) {
                 MensajePersonalizado.Ver("EXITO AL ACTUALIZAR", "Contrato actualizado correctamente", Alert.AlertType.CONFIRMATION);
                 limpiarCampos();
+                cargarCamposPorContrato(cbxFiltrarEmpleadoActualizar.getValue().getCedula());
             } else {
                 MensajePersonalizado.Ver("ERROR", "Error al actualizar el contrato", Alert.AlertType.ERROR);
             }
@@ -204,6 +206,17 @@ public class ActualizarContratosController implements Initializable {
         cbxActividades.setValue(actividad);
     }
 
+    private void cargarCamposPorContrato(String cedula) {
+        try {
+            ObservableContrato = 
+                    FXCollections.observableArrayList(daoContrato.obtenerListaContratoPorCedulaEmpleado(cedula));
+                tblContratoAct.setItems(ObservableContrato);
+            
+        } catch (Exception ex) {
+            MensajePersonalizado.Ver("Error", "Error al buscar los contratos del empleado, más información: " + ex.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+
     private Empleado Get(String cedula) {
         return ObservableEmpleado.filtered(x -> x.getCedula().equals(cedula)).get(0);
     }
@@ -225,7 +238,7 @@ public class ActualizarContratosController implements Initializable {
                 tblContratoAct.setItems(lista);
             }
         } catch (Exception ex) {
-            MensajePersonalizado.Ver("Error", "Error al buscar las vacaciones del empleado, más información: " + ex.getMessage(), Alert.AlertType.ERROR);
+            MensajePersonalizado.Ver("Error", "Error al buscar los contratos del empleado, más información: " + ex.getMessage(), Alert.AlertType.ERROR);
         }
     }
 

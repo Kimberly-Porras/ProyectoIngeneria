@@ -30,7 +30,6 @@ import JasperReports.JReportDeducciones;
 import java.util.HashMap;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import java.sql.Date;
 
 /**
  * FXML Controller class
