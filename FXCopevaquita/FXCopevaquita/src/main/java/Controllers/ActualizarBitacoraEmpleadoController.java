@@ -81,6 +81,7 @@ public class ActualizarBitacoraEmpleadoController implements Initializable {
     ObservableList<Area> ObservableArea;
 
     BitacoraEmpleado bitacora = new BitacoraEmpleado();
+    ObservableList<BitacoraEmpleado> ObservableBitacoraEmpleado = FXCollections.observableArrayList();
 
     /**
      * Initializes the controller class.
@@ -185,19 +186,7 @@ public class ActualizarBitacoraEmpleadoController implements Initializable {
         });
     }
 
-    @FXML
-    private void FiltrarEmpleado(ActionEvent event) {
-        try {
-            var empleado = cbxFiltrarEmpleadoActualizar.getValue();
-            if (empleado != null && !empleado.getCedula().isEmpty()) {
-                var lista = FXCollections.observableArrayList(bitacoraService.obtenerListaBitacoraPorCedulaEmpleado(empleado.getCedula())
-                );
-                tblReporteEmpleadoActualizar.setItems(lista);
-            }
-        } catch (Exception ex) {
-            MensajePersonalizado.Ver("Error", "Error al buscar los resportes del empleado, más información: " + ex.getMessage(), Alert.AlertType.ERROR);
-        }
-    }
+    
 
     private void cargarCamposActualizar() {
         txtCantidadAct.setText(bitacora.getCantidad() + "");
@@ -238,6 +227,7 @@ public class ActualizarBitacoraEmpleadoController implements Initializable {
             if (exito) {
                 MensajePersonalizado.Ver("EXITO AL ACTUALIZAR", "Reporte diario actualizado correctamente", Alert.AlertType.CONFIRMATION);
                 limpiarCampos();
+                cargarBitacoras(cbxFiltrarEmpleadoActualizar.getValue().getCedula());
             } else {
                 MensajePersonalizado.Ver("ERROR", "Error al actualizar el reporte diario", Alert.AlertType.ERROR);
             }
@@ -277,7 +267,36 @@ public class ActualizarBitacoraEmpleadoController implements Initializable {
 
         return true;
     }
+    
+    private void filtarEmpleado(){
+    try {
+            var empleado = cbxFiltrarEmpleadoActualizar.getValue();
+            if (empleado != null && !empleado.getCedula().isEmpty()) {
+                var lista = FXCollections.observableArrayList(bitacoraService.obtenerListaBitacoraPorCedulaEmpleado(empleado.getCedula())
+                );
+                tblReporteEmpleadoActualizar.setItems(lista);
+            }
+        } catch (Exception ex) {
+            MensajePersonalizado.Ver("Error", "Error al buscar los reportes del empleado, más información: " + ex.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
 
+    private void cargarBitacoras(String cedula){
+    try {
+            ObservableBitacoraEmpleado = FXCollections.observableArrayList(bitacoraService.obtenerListaBitacoraPorCedulaEmpleado(cedula)
+                );
+                tblReporteEmpleadoActualizar.setItems(ObservableBitacoraEmpleado);
+            
+        } catch (Exception ex) {
+            MensajePersonalizado.Ver("Error", "Error al buscar los reportes del empleado, más información: " + ex.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+    
+    @FXML
+    private void FiltrarEmpleado(ActionEvent event) {
+        filtarEmpleado();
+    }
+    
     @FXML
     private void onCargar(ActionEvent event) {
         cargarBitacoraPorEmpleado();
