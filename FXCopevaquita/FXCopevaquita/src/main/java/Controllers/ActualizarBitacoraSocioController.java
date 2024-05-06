@@ -112,7 +112,7 @@ public class ActualizarBitacoraSocioController implements Initializable {
             if (exito) {
                 MensajePersonalizado.Ver("EXITO AL ACTUALIZAR", "Bitacora de socio actualizado correctamente", Alert.AlertType.CONFIRMATION);
                 limpiarCamposActualizar();
-                cargarReporteSocioPorEmpleado();
+                cargarBItacoras(cbxFiltrarEmpleadoActualizar.getValue().getCedula());
             } else {
                 MensajePersonalizado.Ver("ERROR", "Error al actualizar la bitacora socio", Alert.AlertType.ERROR);
             }
@@ -122,12 +122,6 @@ public class ActualizarBitacoraSocioController implements Initializable {
         }
     }
 
-//    private void RefrescarBitacoraSocio() {
-//        // se obtinen los reportes diarios
-//        ObservableBitacoraSocio = FXCollections.observableArrayList(daoBitacora.obtenerListaBitacoraSocioPorCedula(cedulaEmpleado));
-//
-//        tblReporteSociooActualizar.setItems(ObservableBitacoraSocio);
-//    }
     public boolean VerificarEspaciosActualizar() {
         if (bitacoraSocio != null && bitacoraSocio.getId() != 0
                 && txtCantidadHorasAct.getText() != null
@@ -171,9 +165,20 @@ public class ActualizarBitacoraSocioController implements Initializable {
             var empleado = cbxFiltrarEmpleadoActualizar.getValue();
             if (empleado != null && !empleado.getCedula().isEmpty()) {
                 var lista = FXCollections.observableArrayList(daoBitacora.obtenerListaBitacoraSocioPorCedula(empleado.getCedula()));
-                //tblContratoAct.setItems(null);
                 tblReporteSociooActualizar.setItems(lista);
             }
+        } catch (Exception ex) {
+            MensajePersonalizado.Ver("Error", "Error al buscar los reportes del socio, más información: " + ex.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+    
+    private void cargarBItacoras(String Cedula) {
+        try {
+            ObservableBitacoraSocio 
+                    = FXCollections.observableArrayList(daoBitacora.obtenerListaBitacoraSocioPorCedula(Cedula));
+
+                tblReporteSociooActualizar.setItems(ObservableBitacoraSocio);
+            
         } catch (Exception ex) {
             MensajePersonalizado.Ver("Error", "Error al buscar los reportes del socio, más información: " + ex.getMessage(), Alert.AlertType.ERROR);
         }
