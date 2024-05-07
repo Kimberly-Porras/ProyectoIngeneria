@@ -11,7 +11,6 @@ import Models.Empleado;
 import Models.Parentezco;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.function.Predicate;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -133,10 +132,6 @@ public class RegistroFamiliarController implements Initializable {
         } else {
             cargarParentezcos(true, false);
         }
-    }
-
-    private Empleado Get(String cedula) {
-        return ObservableEmpleado.filtered(x -> x.getCedula().equals(cedula)).get(0);
     }
 
     @FXML

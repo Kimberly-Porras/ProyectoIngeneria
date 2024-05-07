@@ -119,33 +119,33 @@ public class DeduccionesController implements Initializable {
 
     public void cargarDeducciones(boolean status, boolean filtro) {
         if (filtro) {
-            var ObservableIncapacidad
+            ObservableDeduccion
                     = FXCollections.observableArrayList(new DeduccionesDAO().obtenerListaDeduccion())
                             .filtered(empl -> empl.isStatus() == status);
-            tblDeduccionesEmpleados.setItems(ObservableIncapacidad);
+            tblDeduccionesEmpleados.setItems(ObservableDeduccion);
         } else {
-            var ObservableIncapacidad
+            ObservableDeduccion
                     = FXCollections.observableArrayList(new DeduccionesDAO().obtenerListaDeduccion());
-            tblDeduccionesEmpleados.setItems(ObservableIncapacidad);
+            tblDeduccionesEmpleados.setItems(ObservableDeduccion);
         }
     }
 
     private void filtrarDeduccion() {
         if (txtfiltrarEmpleado.getText() != null && !txtfiltrarEmpleado.getText().trim().equals("")) {
-            Predicate<Empleado> pEmpleado = x
-                    -> x.getCedula().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase())
-                    || x.getNombre().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase())
-                    || x.getApellidos().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase())
-                    || x.getNombreCompleto().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase());
-            var listaTemporal = ObservableDeduccion.filtered((x) -> pEmpleado.test(Get(x.getEmpleado())));
+
+            var listaTemporal = ObservableDeduccion.filtered((x) -> {
+                var empleado = new EmpleadoDAO().obtenerEmpleadoPorCedula(x.getEmpleado());
+                return x.getEmpleado().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase())
+                        || empleado.getApellidos().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase())
+                        || empleado.getNombre().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase())
+                        || empleado.getNombreCompleto().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase())
+                        || x.getEmpleado().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase());
+            });
+
             tblDeduccionesEmpleados.setItems(listaTemporal);
         } else {
             cargarDeducciones(true, false);
         }
-    }
-
-    private Empleado Get(String cedula) {
-        return ObservableEmpleado.filtered(x -> x.getCedula().equals(cedula)).get(0);
     }
 
     @FXML
@@ -181,9 +181,9 @@ public class DeduccionesController implements Initializable {
         if (dp_fin.getValue() != null && dp_inicio.getValue() != null) {
 
             HashMap<String, Object> map = new HashMap();
-            
+
             System.out.println("Fechas " + dp_inicio.getValue().toString());
-            
+
             map.put("P_inicio", dp_inicio.getValue().toString());
             map.put("P_fin", dp_fin.getValue().toString());
 
