@@ -94,31 +94,26 @@ public class VacacionesController implements Initializable {
 
     public void cargarVacaciones(boolean status, boolean filtro) {
         if (filtro) {
-            var ObservableIncapacidad
+            ObservableVacaciones
                     = FXCollections.observableArrayList(new VacacionesDAO().obtenerListaVacaciones())
                             .filtered(vac -> vac.isStatus() == status);
-            tblVacacion.setItems(ObservableIncapacidad);
+            tblVacacion.setItems(ObservableVacaciones);
         } else {
-            var ObservableIncapacidad
+            ObservableVacaciones
                     = FXCollections.observableArrayList(new VacacionesDAO().obtenerListaVacaciones());
-            tblVacacion.setItems(ObservableIncapacidad);
+            tblVacacion.setItems(ObservableVacaciones);
         }
-    }
-
-    private Empleado Get(String cedula) {
-        return ObservableEmpleado.filtered(x -> x.getCedula().equals(cedula)).get(0);
     }
 
     private void filtrarVacacion() {
         if (filtrarEmpleado.getText() != null && !filtrarEmpleado.getText().trim().equals("")) {
-            Predicate<Vacaciones> pVacacion = x
-                    -> x.getEmpleado().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase());
-            Predicate<Empleado> pEmpleado = x
-                    -> x.getCedula().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase())
-                    || x.getNombre().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase())
-                    || x.getApellidos().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase())
-                    || x.getNombreCompleto().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase());
-            var listaTemporal = ObservableVacaciones.filtered((x) -> pEmpleado.test(Get(x.getEmpleado())) || pVacacion.test(x));
+            var listaTemporal = ObservableVacaciones.filtered((x) -> {
+                var empleado = new EmpleadoDAO().obtenerEmpleadoPorCedula(x.getEmpleado());
+            return x.getEmpleado().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase())
+                    || empleado.getNombre().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase())
+                    || empleado.getApellidos().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase())
+                    || empleado.getNombreCompleto().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase());
+            });
             tblVacacion.setItems(listaTemporal);
         } else {
             cargarVacaciones(true, false);
