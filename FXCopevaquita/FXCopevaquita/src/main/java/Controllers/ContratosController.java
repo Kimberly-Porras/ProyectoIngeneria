@@ -29,6 +29,7 @@ import javafx.scene.input.KeyEvent;
 
 /**
  * FXML Controller class
+ *
  * @author alber
  * @author kim03
  */
@@ -56,6 +57,10 @@ public class ContratosController implements Initializable {
     private TableColumn<Contrato, String> colActividad;
     @FXML
     private ComboBox<String> cbx_status;
+    @FXML
+    private DatePicker dp_inicio;
+    @FXML
+    private DatePicker dp_fin;
 
     /**
      * Initializes the controller class.
@@ -64,10 +69,6 @@ public class ContratosController implements Initializable {
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
     final private ActividadDAO ActividadService = new ActividadDAO();
     ObservableList<String> observableStatus = FXCollections.observableArrayList("Pendiente", "Cancelado");
-    @FXML
-    private DatePicker dp_inicio;
-    @FXML
-    private DatePicker dp_fin;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -110,12 +111,12 @@ public class ContratosController implements Initializable {
 
     public void cargarContratos(boolean status, boolean filtro) {
         if (filtro) {
-            var ObservableContrato
+            ObservableContrato
                     = FXCollections.observableArrayList(new ContratoDAO().obtenerListaContratos())
                             .filtered(cont -> cont.isStatus() == status);
             tblListaContrato.setItems(ObservableContrato);
         } else {
-            var ObservableContrato
+            ObservableContrato
                     = FXCollections.observableArrayList(new ContratoDAO().obtenerListaContratos());
             tblListaContrato.setItems(ObservableContrato);
         }
@@ -123,15 +124,14 @@ public class ContratosController implements Initializable {
 
     private void filtrarContrato() {
         if (txtFiltrarEmpleado.getText() != null && !txtFiltrarEmpleado.getText().trim().equals("")) {
-            Predicate<Contrato> pContrato = x
-                    -> x.getCedulaEmpleado().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase());
-            Predicate<Empleado> pEmpleado = x
-                    -> x.getCedula().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
-                    || x.getNombre().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
-                    || x.getApellidos().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
-                    || x.getNombreCompleto().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase());
-            var listaTemporal = ObservableContrato.filtered((x) -> pEmpleado.test(Get(x.getCedulaEmpleado())) || pContrato.test(x));
-            tblListaContrato.setItems(listaTemporal);
+            var listaTemporal = ObservableContrato.filtered((x) -> {
+                var empleado = new EmpleadoDAO().obtenerEmpleadoPorCedula(x.getCedulaEmpleado());
+                return x.getCedulaEmpleado().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
+                        || empleado.getNombre().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
+                        || empleado.getApellidos().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
+                        || empleado.getNombreCompleto().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase());
+            });
+             tblListaContrato.setItems(listaTemporal);
         } else {
             cargarContratos(true, false);
         }
