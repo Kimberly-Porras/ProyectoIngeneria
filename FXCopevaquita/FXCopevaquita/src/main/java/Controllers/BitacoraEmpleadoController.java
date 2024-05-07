@@ -29,6 +29,7 @@ import javafx.scene.input.KeyEvent;
 
 /**
  * FXML Controller class
+ *
  * @author alber
  * @author kim03
  */
@@ -54,6 +55,12 @@ public class BitacoraEmpleadoController implements Initializable {
     private TableColumn<BitacoraEmpleado, String> colEstado;
     @FXML
     private TableColumn<BitacoraEmpleado, String> colNombre;
+    @FXML
+    private ComboBox<String> cbx_status;
+    @FXML
+    private DatePicker dp_inicio;
+    @FXML
+    private DatePicker dp_fin;
 
     /**
      * Initializes the controller class.
@@ -62,17 +69,13 @@ public class BitacoraEmpleadoController implements Initializable {
     final private ActividadDAO actividadService = new ActividadDAO();
     final private AreaDAO areaService = new AreaDAO();
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
-    @FXML
-    private ComboBox<?> cbx_status;
-    @FXML
-    private DatePicker dp_inicio;
-    @FXML
-    private DatePicker dp_fin;
+    ObservableList<BitacoraEmpleado> ObservableBitacoraEmpleado = FXCollections.observableArrayList();
+    ObservableList<String> observableStatus = FXCollections.observableArrayList("Pendiente", "Cancelado");
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         configurar();
-        cargarBitacoras();
+        cargarBitacoras(true, false);
     }
 
     public void configurar() {
@@ -105,14 +108,49 @@ public class BitacoraEmpleadoController implements Initializable {
         colCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
         colPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
         colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isStatus() ? "Pendiente" : "Cancelado"));
+    
+        cbx_status.setItems(observableStatus);
+        cbx_status.setOnAction(event -> {
+            var value = cbx_status.getValue();
+            if (value.equals("Pendiente")) {
+                cargarBitacoras(true, true);
+            } else {
+                cargarBitacoras(false, true);
+            }
+        });
     }
 
-    public void cargarBitacoras() {
-        var ObservableContrato
-                = FXCollections.observableArrayList(new BitacoraEmpleadoDAO().obtenerListaBitacoraEmpleado());
-        tblListarReporteEmpleado.setItems(ObservableContrato);
+    public void cargarBitacoras(boolean status, boolean filtro) {
+        if (filtro) {
+            ObservableBitacoraEmpleado
+                    = FXCollections.observableArrayList(new BitacoraEmpleadoDAO().obtenerListaBitacoraEmpleado())
+                            .filtered(empl -> empl.isStatus() == status);
+            tblListarReporteEmpleado.setItems(ObservableBitacoraEmpleado);
+        } else {
+            ObservableBitacoraEmpleado
+                    = FXCollections.observableArrayList(new BitacoraEmpleadoDAO().obtenerListaBitacoraEmpleado());
+            tblListarReporteEmpleado.setItems(ObservableBitacoraEmpleado);
+        }
     }
 
+    private void filtrarDeduccion() {
+        if (txtFiltrarEmpleado.getText() != null && !txtFiltrarEmpleado.getText().trim().equals("")) {
+
+            var listaTemporal = ObservableBitacoraEmpleado.filtered((x) -> {
+                var empleado = new EmpleadoDAO().obtenerEmpleadoPorCedula(x.getEmpleado());
+                return x.getEmpleado().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
+                        || empleado.getApellidos().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
+                        || empleado.getNombre().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
+                        || empleado.getNombreCompleto().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase());
+
+            });
+            tblListarReporteEmpleado.setItems(listaTemporal);
+
+        } else {
+            cargarBitacoras(true, false);
+        }
+    }
+    
     @FXML
     private void OnAgregar(ActionEvent event) {
         OpenWindowsHandler.AbrirVentanaAgregarBitacoraEmpleado("/views/AgregarBitacoraEmpleado");
@@ -124,18 +162,17 @@ public class BitacoraEmpleadoController implements Initializable {
     }
 
     @FXML
-    private void OnReportDaily(ActionEvent event) {
-
-    }
-
-    @FXML
-    private void PresionarEnter(KeyEvent event) {
-
-    }
-
-    @FXML
     private void OnRefrescar(ActionEvent event) {
-        cargarBitacoras();
+        cargarBitacoras(true,false);
+    }
+
+    @FXML
+    private void OnFiltrarEmpleado(KeyEvent event) {
+        filtrarDeduccion();
+    }
+
+    @FXML
+    private void OnReporte(ActionEvent event) {
     }
 
 }
