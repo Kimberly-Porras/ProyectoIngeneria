@@ -5,13 +5,11 @@
 package Controllers;
 
 import DAO.EmpleadoDAO;
-import DAO.IncapacidadDAO;
 import DAO.PlanillaSociosDAO;
 import Helpers.OpenWindowsHandler;
 import Models.Empleado;
 import Models.PlanillaSocios;
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import javafx.beans.property.SimpleStringProperty;
@@ -31,6 +29,7 @@ import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
+ *
  * @author alber
  * @author kim03
  */
@@ -61,7 +60,6 @@ public class SalarioFijoController implements Initializable {
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
     ObservableList<PlanillaSocios> Observableplanilla = FXCollections.observableArrayList();
     ObservableList<String> observableStatus = FXCollections.observableArrayList("Pendiente", "Cancelado");
-    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -95,12 +93,12 @@ public class SalarioFijoController implements Initializable {
 
     public void cargarPlanillasSocios(boolean status, boolean filtro) {
         if (filtro) {
-            var Observableplanilla
+            Observableplanilla
                     = FXCollections.observableArrayList(new PlanillaSociosDAO().obtenerListaPlanillaSocios())
                             .filtered(empl -> empl.isStatus() == status);
             tblSalarioFijo.setItems(Observableplanilla);
         } else {
-            var Observableplanilla
+            Observableplanilla
                     = FXCollections.observableArrayList(new PlanillaSociosDAO().obtenerListaPlanillaSocios());
             tblSalarioFijo.setItems(Observableplanilla);
         }
@@ -108,32 +106,28 @@ public class SalarioFijoController implements Initializable {
 
     private void filtrarPlanillas() {
         if (filtrarEmpleado.getText() != null && !filtrarEmpleado.getText().trim().equals("")) {
-            Predicate<PlanillaSocios> pPlanillaSocios = x
-                    -> x.getEmpleado().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase());
-            Predicate<Empleado> pEmpleado = x
-                    -> x.getCedula().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase())
-                    || x.getNombre().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase())
-                    || x.getApellidos().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase())
-                    || x.getNombreCompleto().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase());
-            var listaTemporal = Observableplanilla.filtered((x) -> pEmpleado.test(Get(x.getEmpleado())) || pPlanillaSocios.test(x));
+
+            var listaTemporal = Observableplanilla.filtered((x) -> {
+                var empleado = new EmpleadoDAO().obtenerEmpleadoPorCedula(x.getEmpleado());
+                return x.getEmpleado().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase())
+                        || empleado.getNombre().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase())
+                        || empleado.getApellidos().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase())
+                        || empleado.getNombreCompleto().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase());
+            });
             tblSalarioFijo.setItems(listaTemporal);
         } else {
             cargarPlanillasSocios(true, false);
         }
     }
 
-    private Empleado Get(String cedula) {
-        return ObservableEmpleado.filtered(x -> x.getCedula().equals(cedula)).get(0);
-    }
-
     @FXML
     private void OnAgregar(ActionEvent event) {
-         OpenWindowsHandler.AbrirVentanaAgregarSalarioFijo("/views/AgregarSalarioFijo");
+        OpenWindowsHandler.AbrirVentanaAgregarSalarioFijo("/views/AgregarSalarioFijo");
     }
 
     @FXML
     private void OnActualizar(ActionEvent event) {
-         OpenWindowsHandler.AbrirVentanaActualizarSalarioFijo("/views/ActualizarSalarioFijo");
+        OpenWindowsHandler.AbrirVentanaActualizarSalarioFijo("/views/ActualizarSalarioFijo");
     }
 
     @FXML
