@@ -137,9 +137,6 @@ public class ContratosController implements Initializable {
         }
     }
 
-    private Empleado Get(String cedula) {
-        return ObservableEmpleado.filtered(x -> x.getCedula().equals(cedula)).get(0);
-    }
 
     @FXML
     private void OnAgregar(ActionEvent event) {
