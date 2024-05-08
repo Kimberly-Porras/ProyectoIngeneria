@@ -184,8 +184,8 @@ public class DeduccionesController implements Initializable {
             
             System.out.println("Fechas " + dp_inicio.getValue().toString());
             
-            map.put("PInicio", dp_inicio.getValue().toString());
-            map.put("PFin", dp_fin.getValue().toString());
+            map.put("P_inicio", dp_inicio.getValue().toString());
+            map.put("P_fin", dp_fin.getValue().toString());
 
             JAppReport.getReport(DatabaseConnection.getConnection(), map, jreport);
             JAppReport.showReport();
