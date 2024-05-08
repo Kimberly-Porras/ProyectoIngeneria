@@ -61,6 +61,10 @@ public class DeduccionesController implements Initializable {
     private TableColumn<Deduccion, String> colPendiente;
     @FXML
     private ComboBox<String> cbx_status;
+    @FXML
+    private DatePicker dp_inicio;
+    @FXML
+    private DatePicker dp_fin;
 
     final private EmpleadoDAO empleadoService = new EmpleadoDAO();
     final private TipoDeduccionDAO tipoDeduccionService = new TipoDeduccionDAO();
@@ -71,10 +75,6 @@ public class DeduccionesController implements Initializable {
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
     ObservableList<Deduccion> ObservableDeduccion = FXCollections.observableArrayList();
     ObservableList<String> observableStatus = FXCollections.observableArrayList("Pendiente", "Cancelado");
-    @FXML
-    private DatePicker dp_inicio;
-    @FXML
-    private DatePicker dp_fin;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -119,25 +119,26 @@ public class DeduccionesController implements Initializable {
 
     public void cargarDeducciones(boolean status, boolean filtro) {
         if (filtro) {
-            var ObservableIncapacidad
+            ObservableDeduccion
                     = FXCollections.observableArrayList(new DeduccionesDAO().obtenerListaDeduccion())
                             .filtered(empl -> empl.isStatus() == status);
-            tblDeduccionesEmpleados.setItems(ObservableIncapacidad);
+            tblDeduccionesEmpleados.setItems(ObservableDeduccion);
         } else {
-            var ObservableIncapacidad
+            ObservableDeduccion
                     = FXCollections.observableArrayList(new DeduccionesDAO().obtenerListaDeduccion());
-            tblDeduccionesEmpleados.setItems(ObservableIncapacidad);
+            tblDeduccionesEmpleados.setItems(ObservableDeduccion);
         }
     }
 
     private void filtrarDeduccion() {
         if (txtfiltrarEmpleado.getText() != null && !txtfiltrarEmpleado.getText().trim().equals("")) {
-            Predicate<Empleado> pEmpleado = x
-                    -> x.getCedula().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase())
-                    || x.getNombre().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase())
-                    || x.getApellidos().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase())
-                    || x.getNombreCompleto().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase());
-            var listaTemporal = ObservableDeduccion.filtered((x) -> pEmpleado.test(Get(x.getEmpleado())));
+            var listaTemporal = ObservableDeduccion.filtered((x) -> {
+                var empleado = new EmpleadoDAO().obtenerEmpleadoPorCedula(x.getEmpleado());
+                return x.getEmpleado().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase())
+                        || empleado.getNombre().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase())
+                        || empleado.getApellidos().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase())
+                        || empleado.getNombreCompleto().toLowerCase().contains(txtfiltrarEmpleado.getText().toLowerCase());
+            });
             tblDeduccionesEmpleados.setItems(listaTemporal);
         } else {
             cargarDeducciones(true, false);

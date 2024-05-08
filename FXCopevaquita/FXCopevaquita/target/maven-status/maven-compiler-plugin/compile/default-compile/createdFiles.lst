@@ -27,7 +27,6 @@ Alertas\MensajePersonalizado.class
 Controllers\BitacoraSocioController.class
 DAO\PagoIncapacidadDAO.class
 Controllers\AgregarRegistroFamiliarController$1.class
-Controllers\PlanillaController.class
 Controllers\EmpleadosController.class
 Models\Pagos.class
 Controllers\ActualizarDeduccionesController$1.class

@@ -92,10 +92,10 @@ public class AgregarAsistenciaController implements Initializable {
                             cbxFiltrarEmpleadoAgre.getValue().getCedula()));
 
             if (exito) {
-                MensajePersonalizado.Ver("EXITO AL INSERTAR", "Incapacidadn insertado correctamente", Alert.AlertType.CONFIRMATION);
+                MensajePersonalizado.Ver("EXITO AL INSERTAR", "Asistencia insertada correctamente", Alert.AlertType.CONFIRMATION);
                 limpiarCamposAgregar();
             } else {
-                MensajePersonalizado.Ver("ERROR", "Error al insertar la incapacidad", Alert.AlertType.ERROR);
+                MensajePersonalizado.Ver("ERROR", "Error al insertar la asistencia", Alert.AlertType.ERROR);
             }
         } else {
             MensajePersonalizado.Ver("INFORMACIÓN INCOMPLETA", "Los campos son requeridos, verifique que la información este completa", Alert.AlertType.WARNING);
