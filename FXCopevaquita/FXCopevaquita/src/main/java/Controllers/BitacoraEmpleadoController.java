@@ -133,7 +133,7 @@ public class BitacoraEmpleadoController implements Initializable {
         }
     }
 
-    private void filtrarDeduccion() {
+    private void filtrarBitacoras() {
         if (txtFiltrarEmpleado.getText() != null && !txtFiltrarEmpleado.getText().trim().equals("")) {
 
             var listaTemporal = ObservableBitacoraEmpleado.filtered((x) -> {
@@ -168,7 +168,7 @@ public class BitacoraEmpleadoController implements Initializable {
 
     @FXML
     private void OnFiltrarEmpleado(KeyEvent event) {
-        filtrarDeduccion();
+        filtrarBitacoras();
     }
 
     @FXML

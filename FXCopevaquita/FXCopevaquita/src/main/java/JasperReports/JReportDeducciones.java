@@ -18,7 +18,7 @@ public class JReportDeducciones {
      public JasperReport getTodasLasDeducciones() {
 
         JasperReport report = null;
-        InputStream input = getClass().getResourceAsStream("/reports/deducciones.jrxml");
+        InputStream input = getClass().getResourceAsStream("/reports/ReporteDeducciones.jrxml");
 
         if (input == null) {
             System.out.println("No se pudo cargar el archivo example.jrxml");
