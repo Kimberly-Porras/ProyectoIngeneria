@@ -4,9 +4,13 @@
  */
 package Controllers;
 
+import DAO.PorcentajeRebajosDAO;
 import Models.PorcentajeRebajos;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -25,24 +29,36 @@ public class PorcentajesController implements Initializable {
 
 
     @FXML
-    private CheckBox cbEstadoActividad;
-    @FXML
     private TableView<PorcentajeRebajos> tblPorcentajes;
-    @FXML
-    private TableColumn<PorcentajeRebajos, String> colIdActividad;
     @FXML
     private TableColumn<PorcentajeRebajos, String> colPorcentaje;
     @FXML
-    private TableColumn<PorcentajeRebajos, String> colEstadoActividad;
+     private TableColumn<PorcentajeRebajos, String> colId;
+    @FXML
+    private TableColumn<PorcentajeRebajos, String> colEstadoPorcentaje;
     @FXML
     private TextField txtPorcentaje;
+    @FXML
+    private CheckBox cbEstadoPorcentaje;
+    
+    PorcentajeRebajosDAO daoRebajos = new PorcentajeRebajosDAO();
     /**
      * Initializes the controller class.
      */
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+    public void cargar(){
+    List<PorcentajeRebajos> listaTipoDeduccion = daoRebajos.obtenerTodos();
+        ObservableList<PorcentajeRebajos> TipoDeduccionObservable = FXCollections.observableArrayList(listaTipoDeduccion);
+        tblPorcentajes.setItems(TipoDeduccionObservable);
+        
+        
+    };
     
     @FXML
     private void btnActualizarActividad(ActionEvent event) {

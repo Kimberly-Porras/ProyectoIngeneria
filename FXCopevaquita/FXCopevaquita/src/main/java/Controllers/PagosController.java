@@ -14,7 +14,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-
 import DAO.*;
 import Database.DatabaseConnection;
 import JasperReports.JAppReport;
@@ -24,6 +23,8 @@ import Models.*;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.Optional;
+import java.util.function.Predicate;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -32,6 +33,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ProgressBar;
+import javafx.util.StringConverter;
 
 /**
  * FXML Controller class
@@ -95,6 +97,10 @@ public class PagosController implements Initializable {
     @FXML
     private Button btnGenerarReporte;
 
+    ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
+    EmpleadoDAO daoEmpleado = new EmpleadoDAO();
+    PagosDAO daoPago = new PagosDAO();
+
     /**
      * Initializes the controller class.
      */
@@ -151,10 +157,29 @@ public class PagosController implements Initializable {
             var pago = new PagoVacacionDAO().obtenerPagoVacacionPorPago(pagoId);
             return new SimpleStringProperty(pago.getTotalVacacion() + "");
         });
-    }
 
-    @FXML
-    private void cbxEmpleado(ActionEvent event) {
+        ObservableEmpleado = FXCollections.observableArrayList(daoEmpleado.obtenerListaEmpleados());
+        cbxEmpleado.setItems(ObservableEmpleado);
+
+        cbxEmpleado.setConverter(new StringConverter<Empleado>() {
+            @Override
+            public String toString(Empleado t) {
+                if (t == null) {
+                    return "";
+                }
+                return t.getNombreCompleto();
+            }
+
+            @Override
+            public Empleado fromString(String t) {
+                if (t == null || t.isEmpty()) {
+                    return null;
+                }
+                Predicate<String> find = (x) -> x != null && x.equals(t);
+                Optional<Empleado> firstMatch = ObservableEmpleado.filtered(x -> find.test(x.getNombreCompleto())).stream().findFirst();
+                return firstMatch.orElse(null);
+            }
+        });
     }
 
     @FXML
@@ -343,6 +368,18 @@ public class PagosController implements Initializable {
         pagoDeduccionService.insertarDeduccion(new PagoDeduccion(resultadoPorIncapacidad, idPago));
     }
 
+//    private void FiltrarPagosPorCedulaEmpleado() {
+//        try {
+//            var empleado = cbxEmpleado.getValue();
+//            if (empleado != null && !empleado.getCedula().isEmpty()) {
+//                var lista = FXCollections.observableArrayList(daoPago.obtenerListaIncapacidadPorCedulaEmpleado(empleado.getCedula()));
+//                tblPagos.setItems(lista);
+//            }
+//        } catch (Exception ex) {
+//            MensajePersonalizado.Ver("Error", "Error al buscar las incapacidades del empleado, más información: " + ex.getMessage(), Alert.AlertType.ERROR);
+//        }
+//    }
+    
     @FXML
     private void OnGenerarPagoGlobal() {
         if (dpFechaInicial1.getValue() == null || dpFechaFinal1.getValue() == null) {
@@ -432,6 +469,10 @@ public class PagosController implements Initializable {
         JAppReport.getReport(DatabaseConnection.getConnection(), map, jreport);
         JAppReport.showReport();
         return;
+    }
+
+    @FXML
+    private void FiltrarEmpleado(ActionEvent event) {
     }
 
 }
