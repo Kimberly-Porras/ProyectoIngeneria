@@ -5,25 +5,23 @@
 package JasperReports;
 
 import java.io.InputStream;
-
+import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.JRException;
 
 /**
  *
  * @author alber
- * @author kim03
  */
-public class JReportEmpleados {
-
-    public JasperReport getTodosLosEmpleados() {
+public class JReportVacaciones {
+    
+    public JasperReport getTodasLasVacaciones() {
 
         JasperReport report = null;
-        InputStream input = getClass().getResourceAsStream("/reports/ReporteEmpleado.jrxml");
+        InputStream input = getClass().getResourceAsStream("/reports/ReporteVacaciones.jrxml");
 
         if (input == null) {
-            System.out.println("No se pudo cargar el archivo");
+            System.out.println("No se pudo cargar el archivo example.jrxml");
             return report;
         }
 
@@ -35,4 +33,6 @@ public class JReportEmpleados {
 
         return report;
     }
+    
+    
 }

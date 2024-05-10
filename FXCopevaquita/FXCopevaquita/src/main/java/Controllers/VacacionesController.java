@@ -6,10 +6,15 @@ package Controllers;
 
 import DAO.EmpleadoDAO;
 import DAO.VacacionesDAO;
+import Database.DatabaseConnection;
 import Helpers.OpenWindowsHandler;
+import JasperReports.JAppReport;
+import JasperReports.JReportDeducciones;
+import JasperReports.JReportVacaciones;
 import Models.Empleado;
 import Models.Vacaciones;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -141,6 +146,25 @@ public class VacacionesController implements Initializable {
 
     @FXML
     private void OnReporte(ActionEvent event) {
+        var report = new JReportVacaciones();
+        var jreport = report.getTodasLasVacaciones();
+
+        if (dp_fin.getValue() != null && dp_inicio.getValue() != null) {
+
+            HashMap<String, Object> map = new HashMap();
+
+            System.out.println("Fechas " + dp_inicio.getValue().toString());
+
+            map.put("PInicio", dp_inicio.getValue().toString());
+            map.put("PFin", dp_fin.getValue().toString());
+
+            JAppReport.getReport(DatabaseConnection.getConnection(), map, jreport);
+            JAppReport.showReport();
+            return;
+        }
+
+        // Lanzar mensaje de abvertencia...
+    }
     }
 
-}
+

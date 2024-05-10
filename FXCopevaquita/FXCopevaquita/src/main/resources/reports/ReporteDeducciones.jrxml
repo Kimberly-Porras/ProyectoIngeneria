@@ -147,7 +147,10 @@ INNER JOIN tbl_tipo_deduccion td ON td.id = ded.tipo WHERE ded.fecha_registro BE
 				<text><![CDATA[Hora de reporte:]]></text>
 			</staticText>
 			<image hAlign="Center">
-				<reportElement x="-10" y="28" width="98" height="69" uuid="3545d6ac-75f8-4c4e-a2f1-9940aa81fba1"/>
+				<reportElement x="2" y="27" width="90" height="70" uuid="871ed27d-3401-49f4-ae22-48fb10513a0d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 				<imageExpression><![CDATA["C:/Users/alber/OneDrive/Documentos/GitHub/ProyectoIngeneria/FXCopevaquita/FXCopevaquita/src/main/resources/reports/LogoFinal.png"]]></imageExpression>
 			</image>
 		</band>
