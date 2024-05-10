@@ -74,6 +74,28 @@
                         </HBox>
                      </children>
                   </VBox>
+                  <VBox layoutX="149.0" layoutY="10.0" onMouseClicked="#OnCredenciales" prefHeight="127.0" prefWidth="208.0" style="-fx-border-color: #828282; -fx-border-radius: 5px;">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="34.0" prefWidth="208.0" style="-fx-background-color: #00897b; -fx-background-radius: 3; -fx-border-color: #828282;">
+                           <children>
+                              <Label text="Credenciales" textFill="WHITE">
+                                 <font>
+                                    <Font name="Lucida Bright Demibold" size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="147.0" prefWidth="206.0">
+                           <children>
+                              <ImageView fitHeight="110.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../imagenes/credenciales.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="207.0" prefWidth="713.0" spacing="20.0">

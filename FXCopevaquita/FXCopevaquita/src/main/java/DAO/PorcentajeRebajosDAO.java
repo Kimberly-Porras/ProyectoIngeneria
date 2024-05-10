@@ -8,6 +8,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import Models.PorcentajeRebajos;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,6 +23,29 @@ public class PorcentajeRebajosDAO {
     ResultSet rs;
     Connection acceso = Database.DatabaseConnection.getConnection();
 
+    
+    public ArrayList<PorcentajeRebajos> obtenerTodos() {
+        var porcentajeRebajos = new ArrayList<PorcentajeRebajos>();
+        try {
+            ps = acceso.prepareStatement("SELECT id, gobierno, exceso1, exceso2, exceso3 FROM tbl_porcentaje_rebajos");
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                porcentajeRebajos.add(new PorcentajeRebajos(
+                        rs.getInt(1),
+                        rs.getDouble(2),
+                        rs.getDouble(3),
+                        rs.getDouble(4),
+                        rs.getDouble(5)
+                        
+                ));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(TipoDeduccionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return porcentajeRebajos;
+    }
     public PorcentajeRebajos obtenerPorcentajesRebajos() {
         PorcentajeRebajos por = new PorcentajeRebajos();
 

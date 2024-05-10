@@ -46,5 +46,10 @@ public class ConfiguracionController implements Initializable {
     private void OnPorcentajes(MouseEvent event) {
         OpenWindowsHandler.AbrirVentanaPorcentajes("/views/Porcentajes");
     }
+
+    @FXML
+    private void OnCredenciales(MouseEvent event) {
+         OpenWindowsHandler.AbrirVentanaCredenciales("/views/Credenciales");
+    }
     
 }

@@ -60,7 +60,7 @@ public class OpenWindowsHandler {
             Scene secondScene = new Scene(second);
             Stage secondStage = new Stage();
 
-            secondStage.setTitle("Areas");
+            secondStage.setTitle("Áreas");
             secondStage.initModality(Modality.WINDOW_MODAL);
             secondStage.initOwner(App.scene.getWindow());
             secondStage.setScene(secondScene);
@@ -186,7 +186,7 @@ public class OpenWindowsHandler {
             Scene secondScene = new Scene(second);
             Stage secondStage = new Stage();
 
-            secondStage.setTitle("Insercion de deducciones");
+            secondStage.setTitle("Agregar deducciones");
             secondStage.initModality(Modality.WINDOW_MODAL);
             secondStage.initOwner(App.scene.getWindow());
             secondStage.setScene(secondScene);
@@ -204,7 +204,7 @@ public class OpenWindowsHandler {
             Scene secondScene = new Scene(second);
             Stage secondStage = new Stage();
 
-            secondStage.setTitle("Actualizacion de deducciones");
+            secondStage.setTitle("Actualizar deducciones");
             secondStage.initModality(Modality.WINDOW_MODAL);
             secondStage.initOwner(App.scene.getWindow());
             secondStage.setScene(secondScene);
@@ -240,7 +240,7 @@ public class OpenWindowsHandler {
             Scene secondScene = new Scene(second);
             Stage secondStage = new Stage();
 
-            secondStage.setTitle("Actualizacion de contratos");
+            secondStage.setTitle("Actualizar contratos");
             secondStage.initModality(Modality.WINDOW_MODAL);
             secondStage.initOwner(App.scene.getWindow());
             secondStage.setScene(secondScene);
@@ -258,7 +258,7 @@ public class OpenWindowsHandler {
             Scene secondScene = new Scene(second);
             Stage secondStage = new Stage();
 
-            secondStage.setTitle("Insercion de contratos");
+            secondStage.setTitle("Agregar contratos");
             secondStage.initModality(Modality.WINDOW_MODAL);
             secondStage.initOwner(App.scene.getWindow());
             secondStage.setScene(secondScene);
@@ -366,7 +366,7 @@ public class OpenWindowsHandler {
             Scene secondScene = new Scene(second);
             Stage secondStage = new Stage();
 
-            secondStage.setTitle("Agregar bitacora empleado");
+            secondStage.setTitle("Agregar bitácora empleado");
             secondStage.initModality(Modality.WINDOW_MODAL);
             secondStage.initOwner(App.scene.getWindow());
             secondStage.setScene(secondScene);
@@ -384,7 +384,7 @@ public class OpenWindowsHandler {
             Scene secondScene = new Scene(second);
             Stage secondStage = new Stage();
 
-            secondStage.setTitle("Actualizar bitacora empleado");
+            secondStage.setTitle("Actualizar bitácora empleado");
             secondStage.initModality(Modality.WINDOW_MODAL);
             secondStage.initOwner(App.scene.getWindow());
             secondStage.setScene(secondScene);
@@ -402,7 +402,7 @@ public class OpenWindowsHandler {
             Scene secondScene = new Scene(second);
             Stage secondStage = new Stage();
 
-            secondStage.setTitle("Agregar bitacora socio");
+            secondStage.setTitle("Agregar bitácora socio");
             secondStage.initModality(Modality.WINDOW_MODAL);
             secondStage.initOwner(App.scene.getWindow());
             secondStage.setScene(secondScene);
@@ -420,7 +420,7 @@ public class OpenWindowsHandler {
             Scene secondScene = new Scene(second);
             Stage secondStage = new Stage();
 
-            secondStage.setTitle("Actualizar bitacora socio");
+            secondStage.setTitle("Actualizar bitácora socio");
             secondStage.initModality(Modality.WINDOW_MODAL);
             secondStage.initOwner(App.scene.getWindow());
             secondStage.setScene(secondScene);
@@ -438,7 +438,7 @@ public class OpenWindowsHandler {
             Scene secondScene = new Scene(second);
             Stage secondStage = new Stage();
 
-            secondStage.setTitle("Agregar bitacora asistencia");
+            secondStage.setTitle("Agregar bitácora asistencia");
             secondStage.initModality(Modality.WINDOW_MODAL);
             secondStage.initOwner(App.scene.getWindow());
             secondStage.setScene(secondScene);
@@ -456,7 +456,7 @@ public class OpenWindowsHandler {
             Scene secondScene = new Scene(second);
             Stage secondStage = new Stage();
 
-            secondStage.setTitle("Actualizar bitacora asistencia");
+            secondStage.setTitle("Actualizar bitácora asistencia");
             secondStage.initModality(Modality.WINDOW_MODAL);
             secondStage.initOwner(App.scene.getWindow());
             secondStage.setScene(secondScene);
@@ -493,6 +493,24 @@ public class OpenWindowsHandler {
             Stage secondStage = new Stage();
 
             secondStage.setTitle("Actualizar salarios fijos");
+            secondStage.initModality(Modality.WINDOW_MODAL);
+            secondStage.initOwner(App.scene.getWindow());
+            secondStage.setScene(secondScene);
+
+            secondStage.showAndWait();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+     
+     public static void AbrirVentanaCredenciales(String fxml) {
+        try {
+            var second = App.loadFXML(fxml);
+
+            Scene secondScene = new Scene(second);
+            Stage secondStage = new Stage();
+
+            secondStage.setTitle("Credenciales");
             secondStage.initModality(Modality.WINDOW_MODAL);
             secondStage.initOwner(App.scene.getWindow());
             secondStage.setScene(secondScene);

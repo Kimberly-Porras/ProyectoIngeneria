@@ -42,6 +42,7 @@ Helpers\OpenWindowsHandler.class
 Controllers\AgregarBitacoraEmpleadoController.class
 Controllers\AgregarBitacoraEmpleadoController$3.class
 DAO\VacacionesDAO.class
+Controllers\PorcentajesController.class
 Controllers\GenerarPagosController.class
 DAO\AreaDAO.class
 Controllers\ActualizarDeduccionesController$2.class
@@ -92,12 +93,14 @@ DAO\ReporteDiario.class
 floatingWindows\OpenSecondViewController.class
 Models\PagoBitacora.class
 Controllers\AgregarRegistroFamiliarController.class
+Controllers\PagosController$1.class
 DAO\ParentezcoDAO.class
 Models\BitacoraEmpleado.class
 Controllers\ActualizarContratosController$2.class
 Controllers\AgregarIncapacidadesController$1.class
 Controllers\ActualizarRegistroFamiliarController$1.class
 Models\BitacoraSocio.class
+Controllers\PagosController$2.class
 Gmail\RandomCodeGenerator.class
 Models\Area.class
 Controllers\AgregarVacacionesController$1.class

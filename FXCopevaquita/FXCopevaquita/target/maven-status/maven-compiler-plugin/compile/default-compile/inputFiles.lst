@@ -8,6 +8,7 @@ C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\IncapacidadesController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\AgregarIncapacidadesController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\BitacoraSocio.java
+C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\CredencialesController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\DAO\PlanillaSociosDAO.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\TipoDeduccion.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\SalarioFijoController.java
@@ -52,6 +53,7 @@ C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\AsistenciaController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\ConfiguracionController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\Deduccion.java
+C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\PorcentajesController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\floatingWindows\OpenSecondViewController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\TipoDeduccionesController.java
 C:\Users\User\Documents\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\ActualizarAsistenciaController.java
