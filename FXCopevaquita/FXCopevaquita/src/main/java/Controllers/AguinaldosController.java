@@ -77,6 +77,8 @@ public class AguinaldosController implements Initializable {
     private DatePicker dp_inicio;
     @FXML
     private TextField filtrarEmpleado;
+    @FXML
+    private DatePicker dp_fin;
 
     /**
      * Initializes the controller class.
@@ -108,13 +110,18 @@ public class AguinaldosController implements Initializable {
             return 2; // Aquí poner una alerta de que se seleccione un elemento y se ponga la fecha...
         }
 
+        if (dp_fin.getValue() == null) {
+            return 2; // Aquí poner una alerta de que se seleccione un elemento y se ponga la fecha...
+        }
+
         var dateSeleted = dp_inicio.getValue();
+        var dateSeleted2 = dp_fin.getValue();
 
         List<Empleado> empleados = empleadosService.obtenerListaEmpleados();
         List<AguinaldoExportar> aguinaldos = new ArrayList();
 
         for (Empleado empleado : empleados) {
-            var aguinaldo = obtenerAguinaldoExportar(empleado, dateSeleted);
+            var aguinaldo = obtenerAguinaldoExportar(empleado, dateSeleted, dateSeleted2);
             if (aguinaldo != null) {
                 aguinaldos.add(aguinaldo);
             }
@@ -130,12 +137,13 @@ public class AguinaldosController implements Initializable {
         return 0;
     }
 
-    private AguinaldoExportar obtenerAguinaldoExportar(Empleado empleado, LocalDate dateSeleted) {
+    private AguinaldoExportar obtenerAguinaldoExportar(Empleado empleado, LocalDate dateSeleted, LocalDate dateSelected2) {
         dp_inicio.setDisable(true);
-        var pagos = pagosService.obtenerPagosPorEmpleadoPosterioresAUnaFecha(empleado.getCedula(), dateSeleted.toString());
-        var meses = pagos.size() / 2; // Cada dos quincenas son un mes...
+        var pagos = pagosService.obtenerPagosPorEmpleadoPosterioresAUnaFechaExportar(empleado.getCedula(), dateSeleted.toString(), dateSelected2.toString());
+        var meses = pagos.size();// Cada dos quincenas son un mes...
 
-        if (meses < 3) {
+        if (meses < 1) {
+            // TAREA PONER UN AVÍSOOOOOOOOOOOOO!
             return null;
         }
 
@@ -152,29 +160,42 @@ public class AguinaldosController implements Initializable {
 
         // Dividir los pagos entre la cantidad de meses trabajados...
         var aguinaldo = new AguinaldoExportar(empleado.getNombre(), empleado.getApellidos(),
-                empleado.getNumeroCuenta(), empleado.getTipo(), total / meses);
+                empleado.getNumeroCuenta(), empleado.getTipo(), total * 8.33
+        );
 
         return aguinaldo;
     }
 
     @FXML
     private void OnGenerarAguinaldo(ActionEvent event) {
-        if (tblEmpleados.getSelectionModel().getSelectedItem() == null || dp_inicio.getValue() == null) {
-            return; // Aquí poner una alerta de que se seleccione un elemento y se ponga la fecha...
+        if (tblEmpleados.getSelectionModel().getSelectedItem() == null
+                || dp_inicio.getValue() == null
+                || dp_fin.getValue() == null) {
+
+            if (tblEmpleados.getSelectionModel().getSelectedItem() == null) {
+                MensajePersonalizado.Ver("Error", "No hay nigún empleado seleccionado",
+                        Alert.AlertType.INFORMATION);
+            }
+
+            if (dp_inicio.getValue() == null || dp_fin.getValue() == null) {
+                MensajePersonalizado.Ver("Error", "Debe seleccionar el rango de fechas",
+                        Alert.AlertType.INFORMATION);
+            }
+
+            return;// Aquí poner una alerta de que se seleccione un elemento y se ponga la fecha...
         }
         var model = tblEmpleados.getSelectionModel().getSelectedItem();
         var dateSeleted = dp_inicio.getValue();
+        var dateSeleted2 = dp_fin.getValue();
 
-        var pagos = pagosService.obtenerPagosPorEmpleadoPosterioresAUnaFecha(model.getCedula(), dateSeleted.toString());
-        var meses = pagos.size() / 2; // Cada dos quincenas son un mes...
-
-        System.out.println("meses: " + meses);
+        var pagos = pagosService.obtenerPagosPorEmpleadoPosterioresAUnaFecha(model.getCedula(), dateSeleted.toString(), dateSeleted2.toString());
+        var meses = pagos.size(); // Cada dos quincenas son un mes...
 
         if (meses < 1) {
-            MensajePersonalizado.Ver("Error ", "Mae, ocupa al menos 1 mese de contrato", Alert.AlertType.ERROR);
+            MensajePersonalizado.Ver("Error ", "Mae, ocupa al menos una quincena de contrato", Alert.AlertType.ERROR);
             return;
         }
-        
+
         double total = 0.0;
 
         // sumar todos los pagos de esos meses...
@@ -186,21 +207,19 @@ public class AguinaldosController implements Initializable {
             total -= new PagoDeduccionDAO().obtenerPagoDeduccionPorPago(pago.getId()).getTotalDeduccion(); // Total por deducciones...
         }
 
-        System.out.println("total: " + total);
-
         // Inhabilitar los pagos usados...
         for (Pagos pago : pagos) {
             pagosService.actualizarStatusPago(0, pago.getId());
         }
 
         // Dividir los pagos entre la cantidad de meses trabajados...
-        double aguinaldoMonto = total / meses;
+        double aguinaldoMonto = total * 8.33;
 
         // Crear los aguinaldos en la base de datos...
         var aguinaldoModel = new Aguinaldo(0,
                 aguinaldoMonto,
                 Date.valueOf(dp_inicio.getValue()),
-                new Date(System.currentTimeMillis()),
+                Date.valueOf(dp_fin.getValue()),
                 model.getCedula()
         );
 

@@ -138,7 +138,7 @@ WHERE vac.fecha BETWEEN $P{PInicio} and $P{PFin}]]>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<imageExpression><![CDATA["C:/Users/alber/OneDrive/Documentos/GitHub/ProyectoIngeneria/FXCopevaquita/FXCopevaquita/src/main/resources/reports/LogoFinal.png"]]></imageExpression>
+				<imageExpression><![CDATA["C:/ImagesProgram/LogoFinal.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>

@@ -47,14 +47,45 @@ public class PagosDAO {
         return listaPagos;
     }
 
-    public List<Pagos> obtenerPagosPorEmpleadoPosterioresAUnaFecha(String id, String date) {
+    public List<Pagos> obtenerPagosPorEmpleadoPosterioresAUnaFecha(String id, String date, String date2) {
         List<Pagos> listaPagos = new ArrayList<>();
+        
         try {
             String sql = "SELECT `id`, `fecha`, `empleado`, `fecha_final`, status FROM `tbl_pagos` WHERE empleado = ? "
-                    + "AND fecha >= ? AND status = 1";
+                    + "AND fecha >= ? AND fecha <= ? AND status = 1";
             ps = acceso.prepareStatement(sql);
             ps.setString(1, id);
             ps.setString(2, date);
+            ps.setString(3, date2);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Pagos pago = new Pagos(
+                        rs.getInt(1),
+                        rs.getDate(2),
+                        rs.getString(3),
+                        rs.getDate(4),
+                        rs.getBoolean(5)
+                );
+                listaPagos.add(pago);
+            }
+        } catch (Exception e) {
+            System.out.println("" + e.toString());
+        }
+        System.out.println("el total de pagos: " + listaPagos.size());
+        return listaPagos;
+    }
+    
+     public List<Pagos> obtenerPagosPorEmpleadoPosterioresAUnaFechaExportar(String id, String date, String date2) {
+        List<Pagos> listaPagos = new ArrayList<>();
+        
+        try {
+            String sql = "SELECT `id`, `fecha`, `empleado`, `fecha_final`, status FROM `tbl_pagos` WHERE empleado = ? "
+                    + "AND fecha >= ? AND fecha <= ? AND status = 0";
+            ps = acceso.prepareStatement(sql);
+            ps.setString(1, id);
+            ps.setString(2, date);
+            ps.setString(3, date2);
             rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -137,7 +168,7 @@ public class PagosDAO {
             return false;
         }
     }
-    
+
 //    public List<Pagos> obtenerListaIncapacidadPorCedulaEmpleado(String cedulaEmpleado) {
 //        Pagos pagos0;
 //        List<Pagos> lista = new ArrayList<>();

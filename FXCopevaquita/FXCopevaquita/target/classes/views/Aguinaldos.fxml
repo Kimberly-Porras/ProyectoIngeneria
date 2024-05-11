@@ -49,6 +49,7 @@
             <HBox prefHeight="36.0" prefWidth="1247.0" spacing="20.0">
                <children>
                   <DatePicker fx:id="dp_inicio" prefHeight="36.0" prefWidth="174.0" promptText="Fecha de inicio" />
+                  <DatePicker fx:id="dp_fin" prefHeight="36.0" prefWidth="174.0" promptText="Fecha de fin" />
                   <Button mnemonicParsing="false" onAction="#OnGenerarAguinaldo" prefHeight="37.0" prefWidth="135.0" style="-fx-background-color: #fc5500;" text="Calcular" textFill="WHITE">
                      <HBox.margin>
                         <Insets top="2.0" />
@@ -77,8 +78,14 @@
                                  </image>
                               </ImageView>
                            </graphic>
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
                         </Button>
                      </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
                   </HBox>
                </children>
                <VBox.margin>
