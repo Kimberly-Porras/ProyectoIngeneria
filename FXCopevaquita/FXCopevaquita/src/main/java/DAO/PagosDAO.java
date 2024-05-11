@@ -137,4 +137,34 @@ public class PagosDAO {
             return false;
         }
     }
+    
+//    public List<Pagos> obtenerListaIncapacidadPorCedulaEmpleado(String cedulaEmpleado) {
+//        Pagos pagos0;
+//        List<Pagos> lista = new ArrayList<>();
+//
+//        try {
+//            String sql = "SELECT id, fecha, "
+//                    + "monto, motivo, empleado, status FROM tbl_incapacidad "
+//                    + "WHERE empleado = ?;";
+//
+//            ps = acceso.prepareStatement(sql);
+//            ps.setObject(1, cedulaEmpleado);
+//            rs = ps.executeQuery();
+//
+//            while (rs.next()) {
+//                incapacidad = new Incapacidad();
+//                incapacidad.setId(rs.getInt(1));
+//                incapacidad.setFecha(rs.getDate(2));
+//                incapacidad.setMonto(rs.getDouble(3));
+//                incapacidad.setMotivo(rs.getString(4));
+//                incapacidad.setEmpleado(rs.getString(5));
+//                incapacidad.setStatus(rs.getBoolean(6));
+//                lista.add(incapacidad);
+//            }
+//        } catch (Exception e) {
+//            System.out.println("" + e.toString());
+//        }
+//
+//        return lista;
+//    }
 }

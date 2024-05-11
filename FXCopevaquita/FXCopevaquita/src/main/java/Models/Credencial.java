@@ -23,13 +23,15 @@ public class Credencial {
         this.empleado = "";
         this.usuario = "";
         this.contrasenia = "";
+        this.correo = "";
         this.status = false;
     }
-    public Credencial(int id, String empleado, String usuario, String contrasenia, boolean status) {
+    public Credencial(int id, String empleado, String usuario, String contrasenia,String correo, boolean status) {
         this.id = id;
         this.empleado = empleado;
         this.usuario = usuario;
         this.contrasenia = contrasenia;
+        this.correo = correo;
         this.status = status;
     }
 
@@ -65,6 +67,7 @@ public class Credencial {
         this.contrasenia = contrasenia;
     }
 
+    
     public boolean getStatus() {
         return status;
     }
@@ -81,5 +84,8 @@ public class Credencial {
         this.correo = correo;
     }
 
-    
+    public boolean isStatus() {
+        return status;
+    }
+
 }

@@ -10,7 +10,6 @@ import Helpers.OpenWindowsHandler;
 import Models.BitacoraSocio;
 import Models.Empleado;
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import javafx.beans.property.SimpleStringProperty;
@@ -29,6 +28,7 @@ import javafx.scene.input.KeyEvent;
 
 /**
  * FXML Controller class
+ *
  * @author alber
  * @author kim03
  */
@@ -59,7 +59,6 @@ public class BitacoraSocioController implements Initializable {
     ObservableList<BitacoraSocio> ObservableBitacoraSocio = FXCollections.observableArrayList();
     final private EmpleadoDAO empleadoService = new EmpleadoDAO();
     ObservableList<String> observableStatus = FXCollections.observableArrayList("Activo", "Inactivo");
-    
 
     /**
      * Initializes the controller class.
@@ -97,14 +96,13 @@ public class BitacoraSocioController implements Initializable {
 
     private void filtrarBitacoraSocio() {
         if (txtFiltrarEmpleado.getText() != null && !txtFiltrarEmpleado.getText().trim().equals("")) {
-            Predicate<BitacoraSocio> pReporte = x
-                    -> x.getCedula_empleado().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase());
-            Predicate<Empleado> pEmpleado = x
-                    -> x.getCedula().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
-                    || x.getNombre().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
-                    || x.getApellidos().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
-                    || x.getNombreCompleto().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase());
-            var listaTemporal = ObservableBitacoraSocio.filtered((x) -> pEmpleado.test(Get(x.getCedula_empleado())) || pReporte.test(x));
+            var listaTemporal = ObservableBitacoraSocio.filtered((x) -> {
+                var empleado = new EmpleadoDAO().obtenerEmpleadoPorCedula(x.getCedulaEmpleado());
+                return x.getCedula_empleado().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
+                        || empleado.getNombre().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
+                        || empleado.getApellidos().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase())
+                        || empleado.getNombreCompleto().toLowerCase().contains(txtFiltrarEmpleado.getText().toLowerCase());
+            });
             tblListarReporteSocio.setItems(listaTemporal);
         } else {
             cargarBitacoraSocio(true, false);
@@ -113,19 +111,15 @@ public class BitacoraSocioController implements Initializable {
 
     public void cargarBitacoraSocio(boolean status, boolean filtro) {
         if (filtro) {
-            var ObservableIncapacidad
+            ObservableBitacoraSocio
                     = FXCollections.observableArrayList(new BitacoraSocioDAO().obtenerListaBitacoraSocio())
                             .filtered(empl -> empl.isStatus() == status);
-            tblListarReporteSocio.setItems(ObservableIncapacidad);
+            tblListarReporteSocio.setItems(ObservableBitacoraSocio);
         } else {
-            var ObservableIncapacidad
+            ObservableBitacoraSocio
                     = FXCollections.observableArrayList(new BitacoraSocioDAO().obtenerListaBitacoraSocio());
-            tblListarReporteSocio.setItems(ObservableIncapacidad);
+            tblListarReporteSocio.setItems(ObservableBitacoraSocio);
         }
-    }
-
-    private Empleado Get(String cedula) {
-        return ObservableEmpleado.filtered(x -> x.getCedula().equals(cedula)).get(0);
     }
 
     @FXML

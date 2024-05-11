@@ -14,12 +14,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-
 import javafx.collections.FXCollections;
-
 import DAO.*;
 import Models.*;
-
 import java.util.Optional;
 import java.util.function.Predicate;
 import javafx.collections.ObservableList;

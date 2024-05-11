@@ -73,49 +73,13 @@
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" />
+                                 </padding>
                               </TableView>
                            </children>
                         </HBox>
                      </children>
-                  </VBox>
-                  <VBox alignment="TOP_CENTER" prefHeight="223.0" prefWidth="437.0">
-                     <children>
-                        <HBox prefHeight="51.0" prefWidth="431.0">
-                           <children>
-                              <Button mnemonicParsing="false" onAction="#OnCargarDatosAbonos" prefHeight="29.0" prefWidth="74.0" style="-fx-background-color: #ffba6a;" text="Cargar" textFill="WHITE">
-                                 <font>
-                                    <Font name="Lucida Bright Demibold" size="15.0" />
-                                 </font></Button>
-                           </children>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </HBox>
-                        <HBox prefHeight="219.0" prefWidth="456.0">
-                           <children>
-                              <TableView fx:id="tblAbono" prefHeight="204.0" prefWidth="411.0" stylesheets="@../Styles/EstiloAct.css">
-                                 <columns>
-                                    <TableColumn fx:id="colFechaAbono" prefWidth="75.0" text="Fecha registro" />
-                                    <TableColumn fx:id="colDescripcionAbono" prefWidth="75.0" text="Descripción" />
-                                    <TableColumn fx:id="colMontoAbono" prefWidth="75.0" text="Monto" />
-                                 </columns>
-                                 <columnResizePolicy>
-                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                 </columnResizePolicy>
-                                 <HBox.margin>
-                                    <Insets top="-5.0" />
-                                 </HBox.margin>
-                              </TableView>
-                           </children>
-                           <VBox.margin>
-                              <Insets right="10.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <HBox alignment="TOP_CENTER" />
-                     </children>
-                     <HBox.margin>
-                        <Insets top="40.0" />
-                     </HBox.margin>
                   </VBox>
                </children>
             </HBox>
@@ -188,6 +152,48 @@
                            </children>
                         </HBox>
                      </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="223.0" prefWidth="437.0">
+                     <children>
+                        <HBox prefHeight="51.0" prefWidth="431.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#OnCargarDatosAbonos" prefHeight="29.0" prefWidth="74.0" style="-fx-background-color: #ffba6a;" text="Cargar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Lucida Bright Demibold" size="15.0" />
+                                 </font></Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="219.0" prefWidth="456.0">
+                           <children>
+                              <TableView fx:id="tblAbono" prefHeight="179.0" prefWidth="431.0" stylesheets="@../Styles/EstiloAct.css">
+                                 <columns>
+                                    <TableColumn fx:id="colFechaAbono" prefWidth="75.0" text="Fecha registro" />
+                                    <TableColumn fx:id="colDescripcionAbono" prefWidth="75.0" text="Descripción" />
+                                    <TableColumn fx:id="colMontoAbono" prefWidth="75.0" text="Monto" />
+                                 </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" />
+                                 </padding>
+                              </TableView>
+                           </children>
+                           <VBox.margin>
+                              <Insets right="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="TOP_CENTER" />
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
                   </VBox>
                </children>
             </HBox>

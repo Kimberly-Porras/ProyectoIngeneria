@@ -96,12 +96,12 @@ public class IncapacidadesController implements Initializable {
 
     public void cargarIncapacidades(boolean status, boolean filtro) {
         if (filtro) {
-            var ObservableIncapacidad
+            ObservableIncapacidad
                     = FXCollections.observableArrayList(new IncapacidadDAO().obtenerListaIncapacidades())
                             .filtered(empl -> empl.isStatus() == status);
             tblIncapacidad.setItems(ObservableIncapacidad);
         } else {
-            var ObservableIncapacidad
+            ObservableIncapacidad
                     = FXCollections.observableArrayList(new IncapacidadDAO().obtenerListaIncapacidades());
             tblIncapacidad.setItems(ObservableIncapacidad);
         }
@@ -109,22 +109,17 @@ public class IncapacidadesController implements Initializable {
 
     private void filtrarIncapacidad() {
         if (filtrarEmpleado.getText() != null && !filtrarEmpleado.getText().trim().equals("")) {
-            Predicate<Incapacidad> pVacacion = x
-                    -> x.getEmpleado().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase());
-            Predicate<Empleado> pEmpleado = x
-                    -> x.getCedula().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase())
-                    || x.getNombre().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase())
-                    || x.getApellidos().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase())
-                    || x.getNombreCompleto().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase());
-            var listaTemporal = ObservableIncapacidad.filtered((x) -> pEmpleado.test(Get(x.getEmpleado())) || pVacacion.test(x));
+            var listaTemporal = ObservableIncapacidad.filtered((x) ->{
+            var empleado = new EmpleadoDAO().obtenerEmpleadoPorCedula(x.getEmpleado());
+            return x.getEmpleado().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase())
+                    || empleado.getNombre().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase())
+                    || empleado.getApellidos().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase())
+                    || empleado.getNombreCompleto().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase());
+            });
             tblIncapacidad.setItems(listaTemporal);
         } else {
             cargarIncapacidades(true, false);
         }
-    }
-
-    private Empleado Get(String cedula) {
-        return ObservableEmpleado.filtered(x -> x.getCedula().equals(cedula)).get(0);
     }
 
     @FXML
@@ -141,8 +136,7 @@ public class IncapacidadesController implements Initializable {
     private void PresioanrEnter(KeyEvent event) {
         filtrarIncapacidad();
     }
-
-
+    
     @FXML
     private void OnRefrescar(ActionEvent event) {
          cargarIncapacidades(true, false);

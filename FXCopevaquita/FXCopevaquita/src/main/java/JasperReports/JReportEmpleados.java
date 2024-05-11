@@ -20,10 +20,10 @@ public class JReportEmpleados {
     public JasperReport getTodosLosEmpleados() {
 
         JasperReport report = null;
-        InputStream input = getClass().getResourceAsStream("/reports/todosLosEmpleados.jrxml");
+        InputStream input = getClass().getResourceAsStream("/reports/ReporteEmpleado.jrxml");
 
         if (input == null) {
-            System.out.println("No se pudo cargar el archivo Coffee.jrxml");
+            System.out.println("No se pudo cargar el archivo");
             return report;
         }
 

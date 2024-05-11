@@ -58,20 +58,19 @@ public class ActualizarAsistenciaController implements Initializable {
      * Initializes the controller class.
      */
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
+    ObservableList<BitacoraAsistencia> ObservableAsistencia = FXCollections.observableArrayList();
+
     EmpleadoDAO daoEmpleado = new EmpleadoDAO();
     BitacoraAsistencia asistencia = new BitacoraAsistencia();
     BitacoraAsistenciaDAO daoAsistencia = new BitacoraAsistenciaDAO();
 
-
-  @Override
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
         configurar();
     }
 
     public void configurar() {
-         
-        
-        
+
         colFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
         colPresente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isEstaPresente() ? "Presente" : "Ausente"));
         colJudtifica.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isJustifica() ? "Justificada" : "Sin justificar"));
@@ -111,12 +110,12 @@ public class ActualizarAsistenciaController implements Initializable {
                             cbxFiltrarEmpleadoActualizar.getValue().getCedula()));
 
             if (exito) {
-                MensajePersonalizado.Ver("ÉXITO AL ACTUALIZAR", "Incapacidad actualizada correctamente", Alert.AlertType.CONFIRMATION);
+                MensajePersonalizado.Ver("ÉXITO AL ACTUALIZAR", "Asistencia actualizada correctamente", Alert.AlertType.CONFIRMATION);
                 limpiarCamposActualizar();
-                FiltrarAsistenciaPorCedulaEmpleado();
+                cargarAsistenciaEmpleado(cbxFiltrarEmpleadoActualizar.getValue().getCedula());
 
             } else {
-                MensajePersonalizado.Ver("ERROR", "Error al actualizar la incapacidad", Alert.AlertType.ERROR);
+                MensajePersonalizado.Ver("ERROR", "Error al actualizar la asistencia", Alert.AlertType.ERROR);
             }
         } else {
             MensajePersonalizado.Ver("INFORMACIÓN INCOMPLETA", "Los espacios son requeridos, verifique que la información esté completa", Alert.AlertType.WARNING);
@@ -145,9 +144,9 @@ public class ActualizarAsistenciaController implements Initializable {
         dpFecha.setValue(asistencia.getFecha().toLocalDate());
         cbxFiltrarEmpleadoActualizar.setValue(Get(asistencia.getEmpleado()));
         cbPresente.setSelected(asistencia.isEstaPresente());
-         cbJudtifica.setSelected(asistencia.isJustifica());
+        cbJudtifica.setSelected(asistencia.isJustifica());
     }
-    
+
     private void cargarAsistenciaPorEmpleado() {
         asistencia = tblAsistencia.getSelectionModel().getSelectedItem();
         if (asistencia != null && asistencia.getId() != 0) {
@@ -156,11 +155,11 @@ public class ActualizarAsistenciaController implements Initializable {
             MensajePersonalizado.Ver("NO SELECCIONADO", "Por favor seleccione una asistencia", Alert.AlertType.WARNING);
         }
     }
-    
+
     private Empleado Get(String cedula) {
         return ObservableEmpleado.filtered(x -> x.getCedula().equals(cedula)).get(0);
     }
-    
+
     private void FiltrarAsistenciaPorCedulaEmpleado() {
         try {
             var empleado = cbxFiltrarEmpleadoActualizar.getValue();
@@ -172,6 +171,18 @@ public class ActualizarAsistenciaController implements Initializable {
             MensajePersonalizado.Ver("Error", "Error al buscar las asistencias del empleado, más información: " + ex.getMessage(), Alert.AlertType.ERROR);
         }
     }
+
+    public void cargarAsistenciaEmpleado(String cedula) {
+        try {
+            ObservableAsistencia
+                    = FXCollections.observableArrayList(daoAsistencia.obtenerListaAsietenciaPorCedulaEmpleado(cedula));
+            tblAsistencia.setItems(ObservableAsistencia);
+
+        } catch (Exception ex) {
+            MensajePersonalizado.Ver("Error", "Error al buscar las asistencias del empleado, más información: " + ex.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+
     @FXML
     private void FiltrarEmpleado(ActionEvent event) {
         FiltrarAsistenciaPorCedulaEmpleado();

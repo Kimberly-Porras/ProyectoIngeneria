@@ -37,7 +37,7 @@
             </HBox>
             <HBox alignment="CENTER" spacing="10.0">
                <children>
-                  <TextField fx:id="txtFiltrarEmpleado" onKeyPressed="#PresionarEnter" prefHeight="38.0" prefWidth="388.0" promptText="Busqueda de reporte diario de empleado">
+                  <TextField fx:id="txtFiltrarEmpleado" onKeyPressed="#OnFiltrarEmpleado" prefHeight="38.0" prefWidth="388.0" promptText="Busqueda de reporte diario de empleado">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -87,7 +87,7 @@
                      <children>
                         <DatePicker fx:id="dp_inicio" prefHeight="31.0" prefWidth="134.0" promptText="Fecha de inicio " />
                         <DatePicker fx:id="dp_fin" prefHeight="31.0" prefWidth="134.0" promptText="Fecha de fin" />
-                        <Button mnemonicParsing="false" onAction="#OnReportDaily" prefHeight="44.0" prefWidth="121.0" style="-fx-background-color: #ed9696;" text="Exportar" textFill="WHITE">
+                        <Button mnemonicParsing="false" onAction="#OnReporte" prefHeight="44.0" prefWidth="121.0" style="-fx-background-color: #ed9696;" text="Exportar" textFill="WHITE">
                            <font>
                               <Font name="Lucida Bright" size="17.0" />
                            </font>

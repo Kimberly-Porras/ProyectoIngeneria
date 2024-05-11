@@ -6,13 +6,16 @@ package Controllers;
 
 import DAO.EmpleadoDAO;
 import DAO.VacacionesDAO;
+import Database.DatabaseConnection;
 import Helpers.OpenWindowsHandler;
+import JasperReports.JAppReport;
+import JasperReports.JReportDeducciones;
+import JasperReports.JReportVacaciones;
 import Models.Empleado;
 import Models.Vacaciones;
 import java.net.URL;
-import java.util.Optional;
+import java.util.HashMap;
 import java.util.ResourceBundle;
-import java.util.function.Predicate;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -93,41 +96,28 @@ public class VacacionesController implements Initializable {
         });
     }
 
-    private String GetNombreCompleto(String cedula) {
-        Optional<Empleado> empleadoOptional = ObservableEmpleado.stream()
-                .filter(x -> x.getCedula().equals(cedula))
-                .findFirst();
-
-        return empleadoOptional.map(Empleado::getNombreCompleto).orElse("");
-    }
-
     public void cargarVacaciones(boolean status, boolean filtro) {
         if (filtro) {
-            var ObservableIncapacidad
+            ObservableVacaciones
                     = FXCollections.observableArrayList(new VacacionesDAO().obtenerListaVacaciones())
                             .filtered(vac -> vac.isStatus() == status);
-            tblVacacion.setItems(ObservableIncapacidad);
+            tblVacacion.setItems(ObservableVacaciones);
         } else {
-            var ObservableIncapacidad
+            ObservableVacaciones
                     = FXCollections.observableArrayList(new VacacionesDAO().obtenerListaVacaciones());
-            tblVacacion.setItems(ObservableIncapacidad);
+            tblVacacion.setItems(ObservableVacaciones);
         }
-    }
-
-    private Empleado Get(String cedula) {
-        return ObservableEmpleado.filtered(x -> x.getCedula().equals(cedula)).get(0);
     }
 
     private void filtrarVacacion() {
         if (filtrarEmpleado.getText() != null && !filtrarEmpleado.getText().trim().equals("")) {
-            Predicate<Vacaciones> pVacacion = x
-                    -> x.getEmpleado().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase());
-            Predicate<Empleado> pEmpleado = x
-                    -> x.getCedula().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase())
-                    || x.getNombre().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase())
-                    || x.getApellidos().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase())
-                    || x.getNombreCompleto().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase());
-            var listaTemporal = ObservableVacaciones.filtered((x) -> pEmpleado.test(Get(x.getEmpleado())) || pVacacion.test(x));
+            var listaTemporal = ObservableVacaciones.filtered((x) -> {
+                var empleado = new EmpleadoDAO().obtenerEmpleadoPorCedula(x.getEmpleado());
+            return x.getEmpleado().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase())
+                    || empleado.getNombre().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase())
+                    || empleado.getApellidos().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase())
+                    || empleado.getNombreCompleto().toLowerCase().contains(filtrarEmpleado.getText().toLowerCase());
+            });
             tblVacacion.setItems(listaTemporal);
         } else {
             cargarVacaciones(true, false);
@@ -142,7 +132,6 @@ public class VacacionesController implements Initializable {
     @FXML
     private void OnActualizar(ActionEvent event) {
         OpenWindowsHandler.AbrirVentanaActualizarVacaciones("/views/ActualizarVacaciones");
-
     }
 
     @FXML
@@ -157,6 +146,25 @@ public class VacacionesController implements Initializable {
 
     @FXML
     private void OnReporte(ActionEvent event) {
+        var report = new JReportVacaciones();
+        var jreport = report.getTodasLasVacaciones();
+
+        if (dp_fin.getValue() != null && dp_inicio.getValue() != null) {
+
+            HashMap<String, Object> map = new HashMap();
+
+            System.out.println("Fechas " + dp_inicio.getValue().toString());
+
+            map.put("PInicio", dp_inicio.getValue().toString());
+            map.put("PFin", dp_fin.getValue().toString());
+
+            JAppReport.getReport(DatabaseConnection.getConnection(), map, jreport);
+            JAppReport.showReport();
+            return;
+        }
+
+        // Lanzar mensaje de abvertencia...
+    }
     }
 
-}
+

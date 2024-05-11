@@ -97,7 +97,7 @@ public class AgregarIncapacidadesController implements Initializable {
                             cbEstadoAgre.isSelected()));
 
             if (exito) {
-                MensajePersonalizado.Ver("EXITO AL INSERTAR", "Incapacidadn insertado correctamente", Alert.AlertType.CONFIRMATION);
+                MensajePersonalizado.Ver("EXITO AL INSERTAR", "Incapacidad insertado correctamente", Alert.AlertType.CONFIRMATION);
                 limpiarCamposAgregar();
             } else {
                 MensajePersonalizado.Ver("ERROR", "Error al insertar la incapacidad", Alert.AlertType.ERROR);

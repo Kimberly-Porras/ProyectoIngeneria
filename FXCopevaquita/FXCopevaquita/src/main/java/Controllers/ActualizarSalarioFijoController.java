@@ -10,8 +10,6 @@ import DAO.PlanillaSociosDAO;
 import Models.Empleado;
 import Models.PlanillaSocios;
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
@@ -32,6 +30,7 @@ import javafx.util.StringConverter;
 
 /**
  * FXML Controller class
+ *
  * @author alber
  * @author kim03
  */
@@ -54,6 +53,7 @@ public class ActualizarSalarioFijoController implements Initializable {
      * Initializes the controller class.
      */
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
+    ObservableList<PlanillaSocios> ObservablePlanillaSocios = FXCollections.observableArrayList();
     EmpleadoDAO daoEmpleado = new EmpleadoDAO();
     PlanillaSocios planilla = new PlanillaSocios();
     PlanillaSociosDAO daoPlanilla = new PlanillaSociosDAO();
@@ -103,7 +103,7 @@ public class ActualizarSalarioFijoController implements Initializable {
             if (exito) {
                 MensajePersonalizado.Ver("EXITO AL ACTUALIZAR", "Salario actualizado correctamente", Alert.AlertType.CONFIRMATION);
                 limpiarCamposActualizar();
-                FiltrarPlanillaPorCedulaEmpleado();
+                cargarSalarios(cbxFiltrarEmpleado.getValue().getCedula());
 
             } else {
                 MensajePersonalizado.Ver("ERROR", "Error al actualizar el salario", Alert.AlertType.ERROR);
@@ -141,7 +141,7 @@ public class ActualizarSalarioFijoController implements Initializable {
         cbEstado.setSelected(planilla.isStatus());
     }
 
-     private void cargarPlanillasPorEmpleado() {
+    private void cargarPlanillasPorEmpleado() {
         planilla = tblSalarios.getSelectionModel().getSelectedItem();
         if (planilla != null && planilla.getId() != 0) {
             cargarCamposActualizar();
@@ -150,7 +150,7 @@ public class ActualizarSalarioFijoController implements Initializable {
         }
     }
 
-     private void FiltrarPlanillaPorCedulaEmpleado() {
+    private void FiltrarPlanillaPorCedulaEmpleado() {
         try {
             var empleado = cbxFiltrarEmpleado.getValue();
             if (empleado != null && !empleado.getCedula().isEmpty()) {
@@ -161,7 +161,18 @@ public class ActualizarSalarioFijoController implements Initializable {
             MensajePersonalizado.Ver("Error", "Error al buscar las incapacidades del empleado, más información: " + ex.getMessage(), Alert.AlertType.ERROR);
         }
     }
-     
+
+    private void cargarSalarios(String cedula) {
+        try {
+            ObservablePlanillaSocios 
+                    = FXCollections.observableArrayList(daoPlanilla.obtenerListaPlanillaPorCedulaEmpleado(cedula));
+                tblSalarios.setItems(ObservablePlanillaSocios);
+            
+        } catch (Exception ex) {
+            MensajePersonalizado.Ver("Error", "Error al buscar las incapacidades del empleado, más información: " + ex.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+
     @FXML
     private void FiltrarEmpleado(ActionEvent event) {
         FiltrarPlanillaPorCedulaEmpleado();

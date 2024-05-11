@@ -30,7 +30,6 @@ JasperReports\JReportPlanilla.class
 Controllers\BitacoraSocioController.class
 DAO\PagoIncapacidadDAO.class
 Controllers\AgregarRegistroFamiliarController$1.class
-Controllers\PlanillaController.class
 Controllers\EmpleadosController.class
 Models\Pagos.class
 Controllers\ActualizarDeduccionesController$1.class
@@ -46,6 +45,7 @@ Helpers\OpenWindowsHandler.class
 Controllers\AgregarBitacoraEmpleadoController.class
 Controllers\AgregarBitacoraEmpleadoController$3.class
 DAO\VacacionesDAO.class
+Controllers\PorcentajesController.class
 Controllers\GenerarPagosController.class
 DAO\AreaDAO.class
 Controllers\ActualizarDeduccionesController$2.class
@@ -103,6 +103,7 @@ Controllers\ActualizarContratosController$2.class
 Controllers\AgregarIncapacidadesController$1.class
 Controllers\ActualizarRegistroFamiliarController$1.class
 Models\BitacoraSocio.class
+Controllers\PagosController$2.class
 Gmail\RandomCodeGenerator.class
 MainApp\Main.class
 Models\Area.class

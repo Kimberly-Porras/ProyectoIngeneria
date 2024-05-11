@@ -40,7 +40,7 @@
                   <Insets />
                </VBox.margin>
                <children>
-                  <ComboBox fx:id="cbxEmpleado" onAction="#cbxEmpleado" prefHeight="39.0" prefWidth="327.0" promptText="Busqueda de empleados" style="-fx-border-color: #00897b; -fx-background-color: white;">
+                  <ComboBox fx:id="cbxEmpleado" editable="true" onAction="#FiltrarEmpleado" prefHeight="39.0" prefWidth="327.0" promptText="Busqueda de empleados" style="-fx-border-color: #00897b; -fx-background-color: white;">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
