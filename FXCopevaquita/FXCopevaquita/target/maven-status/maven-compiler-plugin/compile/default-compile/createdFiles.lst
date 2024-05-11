@@ -6,9 +6,11 @@ Controllers\AgregarEmpleadoController.class
 Controllers\ActividadesController.class
 Controllers\AguinaldosController.class
 Controllers\AgregarSalarioFijoController$1.class
+Models\AguinaldoExportar.class
 Controllers\AgregarDeduccionesController$1.class
 MainApp\App.class
 DAO\PlanillaSociosDAO.class
+DAO\AguinaldoExportarDAO.class
 JasperReports\JReportAguinaldos.class
 DAO\CredencialesDAO.class
 Controllers\ActualizarBitacoraSocioController$1.class
@@ -24,6 +26,7 @@ JasperReports\JReportDeducciones.class
 Controllers\AreasController.class
 DAO\EmpleadoDAO.class
 Alertas\MensajePersonalizado.class
+JasperReports\JReportPlanilla.class
 Controllers\BitacoraSocioController.class
 DAO\PagoIncapacidadDAO.class
 Controllers\AgregarRegistroFamiliarController$1.class
@@ -93,6 +96,7 @@ DAO\ReporteDiario.class
 floatingWindows\OpenSecondViewController.class
 Models\PagoBitacora.class
 Controllers\AgregarRegistroFamiliarController.class
+Controllers\PagosController$1.class
 DAO\ParentezcoDAO.class
 Models\BitacoraEmpleado.class
 Controllers\ActualizarContratosController$2.class
@@ -100,6 +104,7 @@ Controllers\AgregarIncapacidadesController$1.class
 Controllers\ActualizarRegistroFamiliarController$1.class
 Models\BitacoraSocio.class
 Gmail\RandomCodeGenerator.class
+MainApp\Main.class
 Models\Area.class
 Controllers\AgregarVacacionesController$1.class
 Controllers\AgregarAsistenciaController$1.class

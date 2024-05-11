@@ -4,6 +4,7 @@
  */
 package Controllers;
 
+import Alertas.MensajePersonalizado;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -20,6 +21,7 @@ import MainApp.App;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.control.Alert;
 
 /**
  * FXML Controller class
@@ -68,6 +70,10 @@ public class LoginController implements Initializable {
                 }
                 return;
             }
+
+            MensajePersonalizado.Ver("Error",
+                    "El usuario no es válido",
+                    Alert.AlertType.INFORMATION);
         }
     }
 
