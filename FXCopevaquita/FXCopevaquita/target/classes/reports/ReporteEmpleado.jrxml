@@ -79,38 +79,7 @@
 		<band height="40" splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="115" splitType="Stretch">
-			<staticText>
-				<reportElement x="90" y="85" width="205" height="15" uuid="baaf9469-8666-4680-a6fd-cf200eac1711"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Correo electrónico: ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="90" y="30" width="210" height="25" uuid="8509dbdd-26f2-43e0-b0bc-c6066cf673c7">
-					<property name="local_mesure_unitheight" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement>
-					<font size="16" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Coopevaquita R.L]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="90" y="55" width="205" height="15" uuid="5afdc2da-3cb8-465e-b512-f090539e2dac"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Dirección: ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="90" y="70" width="205" height="15" uuid="0d93497b-60e7-4381-9aa9-d4353b496eb2"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Número telefónico:]]></text>
-			</staticText>
+		<band height="124" splitType="Stretch">
 			<line>
 				<reportElement x="3" y="100" width="790" height="1" uuid="5da0959c-0986-4eac-b37a-438704b70a2c">
 					<property name="local_mesure_unitheight" value="pixel"/>
@@ -157,13 +126,47 @@
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 			</line>
-			<image hAlign="Center" vAlign="Top">
-				<reportElement x="0" y="27" width="90" height="70" uuid="5cd61c22-89b0-449d-8252-16541e9000b0">
+			<image hAlign="Center">
+				<reportElement x="-12" y="27" width="102" height="70" uuid="af6a9ec5-75b8-4511-bf5a-9ed60fe3d777">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<imageExpression><![CDATA["C:/Users/alber/OneDrive/Documentos/GitHub/ProyectoIngeneria/FXCopevaquita/FXCopevaquita/src/main/resources/reports/LogoFinal.png"]]></imageExpression>
+				<imageExpression><![CDATA["C:/ImagenesProgram/LogoFinal.png"]]></imageExpression>
 			</image>
+			<staticText>
+				<reportElement x="90" y="30" width="210" height="25" uuid="f7433581-2add-47bb-b88d-944b87dd6318">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Coopevaquita R.L]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="68" width="205" height="15" uuid="0fb19e25-faa0-4cd1-94c5-e0902ceee1de"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número telefónico: 8644-8417.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="83" width="240" height="15" uuid="60fe1ccc-7915-42ae-9cc2-df5b155babc3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirección: Km29, Puntarenas, Corredores, Laurel.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="53" width="230" height="15" uuid="af4573e2-731b-457c-a177-0b1e27c50628"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Correo electrónico: coopevaquita74@outlook.com 
+ ]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>

@@ -69,16 +69,6 @@ INNER JOIN tbl_tipo_deduccion td ON td.id = ded.tipo WHERE ded.fecha_registro BE
 	</background>
 	<title>
 		<band height="110" splitType="Stretch">
-			<staticText>
-				<reportElement x="90" y="30" width="210" height="25" uuid="da977311-edb4-4609-abe4-a5c6ab1e4009">
-					<property name="local_mesure_unitheight" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement>
-					<font size="16" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Coopevaquita R.L]]></text>
-			</staticText>
 			<line>
 				<reportElement x="2" y="20" width="798" height="1" uuid="31c7d95d-6bae-4e2f-a18b-5b468879c9b5">
 					<property name="local_mesure_unitheight" value="pixel"/>
@@ -89,13 +79,6 @@ INNER JOIN tbl_tipo_deduccion td ON td.id = ded.tipo WHERE ded.fecha_registro BE
 				<reportElement x="680" y="80" width="100" height="30" uuid="26e82a95-d1f9-4e34-960d-1cfb0404db71"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="90" y="55" width="205" height="15" uuid="f43cf4c5-f0e0-49f8-a99d-c05fa3fab7cf"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Dirección: ]]></text>
-			</staticText>
 			<textField pattern="EEEEE dd MMMMM, yyyy">
 				<reportElement x="680" y="60" width="120" height="20" uuid="0cb34611-6e39-4861-9938-9699b14d3bf2"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
@@ -109,13 +92,6 @@ INNER JOIN tbl_tipo_deduccion td ON td.id = ded.tipo WHERE ded.fecha_registro BE
 					<font fontName="Berlin Sans FB Demi" size="22" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Reporte de deducciones ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="90" y="85" width="205" height="15" uuid="611c4b1c-72b6-4e7e-96b7-ec3bc3693933"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Correo electrónico: ]]></text>
 			</staticText>
 			<line>
 				<reportElement x="3" y="100" width="790" height="1" uuid="e4dcd633-5338-4638-8a83-1a0e2af555a5">
@@ -132,13 +108,6 @@ INNER JOIN tbl_tipo_deduccion td ON td.id = ded.tipo WHERE ded.fecha_registro BE
 				<text><![CDATA[Fecha de reporte:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="90" y="70" width="205" height="15" uuid="c8894efb-9f70-4dfc-828d-cdf5bc66dd6c"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Número telefónico:]]></text>
-			</staticText>
-			<staticText>
 				<reportElement x="535" y="80" width="140" height="20" uuid="aedb98cf-6b1d-4ed9-866b-b4eafb9cbe83"/>
 				<box rightPadding="4"/>
 				<textElement textAlignment="Right">
@@ -146,12 +115,45 @@ INNER JOIN tbl_tipo_deduccion td ON td.id = ded.tipo WHERE ded.fecha_registro BE
 				</textElement>
 				<text><![CDATA[Hora de reporte:]]></text>
 			</staticText>
-			<image hAlign="Center">
-				<reportElement x="2" y="27" width="90" height="70" uuid="871ed27d-3401-49f4-ae22-48fb10513a0d">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<staticText>
+				<reportElement x="90" y="30" width="210" height="25" uuid="71462764-c2ff-4ed6-ae9a-3845d384eb18">
+					<property name="local_mesure_unitheight" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<imageExpression><![CDATA["C:/Users/alber/OneDrive/Documentos/GitHub/ProyectoIngeneria/FXCopevaquita/FXCopevaquita/src/main/resources/reports/LogoFinal.png"]]></imageExpression>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Coopevaquita R.L]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="83" width="240" height="15" uuid="514dd66e-a1e4-4799-b7d2-b9a8a33f1ce5"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirección: Km29, Puntarenas, Corredores, Laurel.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="55" width="230" height="15" uuid="c9707057-fefd-4488-9f30-3ad3feac65ec"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Correo electrónico: coopevaquita74@outlook.com 
+ ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="70" width="205" height="15" uuid="e2501b5c-759a-412a-a2ee-e3cb25497cf8"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número telefónico: 8644-8417.]]></text>
+			</staticText>
+			<image hAlign="Center">
+				<reportElement x="-12" y="27" width="102" height="70" uuid="bb746b89-3eaa-4bb1-a40f-bedce52125cc">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA["C:/ImagenesProgram/LogoFinal.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>
@@ -182,7 +184,7 @@ INNER JOIN tbl_tipo_deduccion td ON td.id = ded.tipo WHERE ded.fecha_registro BE
 				<reportElement style="Column header" mode="Opaque" x="264" y="0" width="88" height="18" forecolor="#FFFFFF" backcolor="#00897B" uuid="8efa0190-199e-489c-b91c-5e57bb773666">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b838a1ad-6baf-4fc9-a33b-afcd641a74ce"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tw Cen MT" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha registro]]></text>
