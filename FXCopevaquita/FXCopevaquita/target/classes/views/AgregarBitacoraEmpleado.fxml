@@ -18,7 +18,7 @@
          <children>
             <HBox alignment="CENTER" style="-fx-background-color: #00897b; -fx-background-radius: 8;">
                <children>
-                  <Label alignment="TOP_LEFT" text="Inserción de reporte empleado" textFill="WHITE">
+                  <Label alignment="TOP_LEFT" text="Inserción de registro de actividades" textFill="WHITE">
                      <font>
                         <Font name="Lucida Bright Demibold" size="29.0" />
                      </font>

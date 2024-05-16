@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: DAO.AbonoDAOTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.885 s - in DAO.AbonoDAOTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.897 s - in DAO.AbonoDAOTest

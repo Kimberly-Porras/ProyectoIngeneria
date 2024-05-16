@@ -21,7 +21,7 @@
          <children>
             <HBox alignment="CENTER" style="-fx-background-color: #00897b;">
                <children>
-                  <Label alignment="TOP_LEFT" text="Actualización reporte empleado" textFill="WHITE">
+                  <Label alignment="TOP_LEFT" text="Actualización registro de actividades" textFill="WHITE">
                      <font>
                         <Font name="Lucida Bright Demibold" size="29.0" />
                      </font>

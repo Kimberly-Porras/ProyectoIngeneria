@@ -16,7 +16,7 @@
    <children>
       <VBox alignment="CENTER" prefHeight="363.0" prefWidth="723.0" spacing="20.0" style="-fx-background-color: white;">
          <children>
-            <Label alignment="CENTER" prefHeight="41.0" prefWidth="534.0" style="-fx-background-color: #00897B; -fx-background-radius: 8;" text="Inserción de parentezcos" textFill="WHITE">
+            <Label alignment="CENTER" prefHeight="41.0" prefWidth="534.0" style="-fx-background-color: #00897B; -fx-background-radius: 8;" text="Inserción de parentescos" textFill="WHITE">
                <font>
                   <Font name="Lucida Bright Demibold" size="25.0" />
                </font>
@@ -99,7 +99,7 @@
                   </VBox>
                   <VBox>
                      <children>
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="184.0" text="Parentezco">
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="184.0" text="Parentesco">
                            <font>
                               <Font name="Lucida Bright Italic" size="15.0" />
                            </font>

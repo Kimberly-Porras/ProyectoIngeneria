@@ -90,7 +90,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#btnActualizar" prefHeight="39.0" prefWidth="131.0" style="-fx-background-color: #88DC65; -fx-border-radius: 5px;" text="Actualizar" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#btnActualizar" prefHeight="39.0" prefWidth="142.0" style="-fx-background-color: #88DC65; -fx-border-radius: 5px;" text="Actualizar" textFill="WHITE">
                      <font>
                         <Font name="Lucida Bright Demibold" size="20.0" />
                      </font>

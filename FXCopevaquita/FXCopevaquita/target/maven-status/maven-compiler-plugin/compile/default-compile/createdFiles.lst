@@ -89,6 +89,7 @@ Controllers\ActualizarEmpleadoController$1.class
 Models\Parentezco.class
 Models\PorcentajeRebajos.class
 Controllers\ActualizarVacacionesController$1.class
+JasperReports\JReportVacaciones.class
 Controllers\DeduccionesController.class
 Controllers\ActualizarRegistroFamiliarController.class
 DAO\IncapacidadDAO.class

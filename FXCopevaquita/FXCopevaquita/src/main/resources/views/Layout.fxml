@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Layout.LayoutController">
+<StackPane alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Layout.LayoutController">
    <children>
       <HBox StackPane.alignment="CENTER_LEFT">
          <children>
@@ -193,7 +193,7 @@
                            </font>
                         </Label>
                         <Separator prefHeight="13.0" prefWidth="222.0" />
-                        <Label fx:id="link_empleados" maxWidth="1.7976931348623157E308" onMouseClicked="#OnAbrirEmpleados" prefHeight="33.0" prefWidth="222.0" text="Registro empleado">
+                        <Label fx:id="link_empleados" maxWidth="1.7976931348623157E308" onMouseClicked="#OnAbrirEmpleados" prefHeight="33.0" prefWidth="222.0" text="Registro actividades">
                            <font>
                               <Font name="Lucida Bright" size="15.0" />
                            </font>

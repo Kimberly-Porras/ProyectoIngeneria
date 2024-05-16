@@ -65,7 +65,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <HBox alignment="TOP_RIGHT" prefHeight="39.0" prefWidth="857.0">
+                  <HBox alignment="TOP_RIGHT" prefHeight="39.0" prefWidth="713.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#OnExportarAguinaldo" prefHeight="39.0" prefWidth="129.0" style="-fx-background-color: #ed9696;" text="Exportar" textFill="WHITE">
                            <font>

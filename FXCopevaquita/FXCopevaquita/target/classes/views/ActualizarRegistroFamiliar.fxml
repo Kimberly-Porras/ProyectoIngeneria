@@ -22,7 +22,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="61.0" prefWidth="891.0" style="-fx-background-color: #00897B; -fx-background-radius: 8;">
                <children>
-                  <Label alignment="TOP_LEFT" text="Actualización de parentezcos" textFill="WHITE">
+                  <Label alignment="TOP_LEFT" text="Actualización de parentescos" textFill="WHITE">
                      <font>
                         <Font name="Lucida Bright Demibold" size="29.0" />
                      </font>
@@ -61,7 +61,7 @@
                         <TableColumn fx:id="colApellidos" prefWidth="144.0" text="Apellidos" />
                         <TableColumn fx:id="colSexo" prefWidth="108.0" text="Sexo" />
                         <TableColumn fx:id="colFechaNacimiento" prefWidth="140.0" text="Nacimiento" />
-                        <TableColumn fx:id="colParentezco" prefWidth="106.0" text="Parentezco" />
+                        <TableColumn fx:id="colParentezco" prefWidth="106.0" text="Parentesco" />
                         <TableColumn fx:id="colContactos" prefWidth="119.0" text="Contactos" />
                         <TableColumn fx:id="colEstado" prefWidth="58.0" text="Estado" />
                      </columns>
@@ -150,7 +150,7 @@
                         </VBox>
                         <VBox>
                            <children>
-                              <Label alignment="CENTER" prefHeight="25.0" prefWidth="256.0" text="Parentezco">
+                              <Label alignment="CENTER" prefHeight="25.0" prefWidth="256.0" text="Parentesco">
                                  <font>
                                     <Font name="Lucida Bright Italic" size="15.0" />
                                  </font>

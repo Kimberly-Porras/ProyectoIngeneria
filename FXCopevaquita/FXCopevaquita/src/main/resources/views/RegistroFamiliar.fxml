@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1250.0" style="-fx-background-color: white; -fx-background-radius: 8;" styleClass="custom-tableview" stylesheets="@../Styles/Estilo.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.RegistroFamiliarController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1250.0" style="-fx-background-color: white; -fx-background-radius: 8;" styleClass="custom-tableview" stylesheets="@../Styles/Estilo.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.RegistroFamiliarController">
    <children>
       <VBox alignment="TOP_CENTER" spacing="15.0" style="-fx-background-color: white;">
          <children>
@@ -97,7 +97,7 @@
                         <TableColumn fx:id="colApellidos" prefWidth="158.0" text="Apellidos" />
                         <TableColumn fx:id="colSexo" prefWidth="108.3333740234375" text="Sexo" />
                         <TableColumn fx:id="colFechaNacimiento" prefWidth="124.6666259765625" text="Nacimiento" />
-                        <TableColumn fx:id="colParentezco" prefWidth="117.6666259765625" text="Parentezco" />
+                        <TableColumn fx:id="colParentezco" prefWidth="117.6666259765625" text="Parentesco" />
                         <TableColumn fx:id="colContactos" prefWidth="120.0" text="Contactos" />
                         <TableColumn fx:id="colEstado" prefWidth="120.0" text="Estado" />
                      </columns>

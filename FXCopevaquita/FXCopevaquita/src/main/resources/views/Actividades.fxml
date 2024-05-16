@@ -30,7 +30,12 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="23.0" prefWidth="1190.0" spacing="15.0">
                <children>
-                  <TextField fx:id="txtNombreActividad" prefHeight="42.0" prefWidth="357.0" promptText="Actividad" style="-fx-border-color: #2A8C4A;">
+                  <Label alignment="CENTER" prefHeight="28.0" prefWidth="142.0" text="Actividad:">
+                     <font>
+                        <Font name="Lucida Bright" size="22.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtNombreActividad" prefHeight="42.0" prefWidth="357.0" style="-fx-border-color: #00695C;">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -64,7 +69,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="48.0" prefWidth="1210.0" spacing="10.0">
                <children>
-                  <TextField fx:id="txtFiltrarActividades" onKeyPressed="#OnFiltrarActividad" prefHeight="25.0" prefWidth="481.0" promptText="Busqueda de actividades" style="-fx-border-color: #2A8C4A;">
+                  <TextField fx:id="txtFiltrarActividades" onKeyPressed="#OnFiltrarActividad" prefHeight="25.0" prefWidth="481.0" promptText="Búsqueda de actividades" style="-fx-border-color: #00695C;">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -101,6 +106,9 @@
                                  <columnResizePolicy>
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                  </columnResizePolicy>
+                                 <padding>
+                                    <Insets bottom="5.0" />
+                                 </padding>
                               </TableView>
                            </children>
                         </VBox>

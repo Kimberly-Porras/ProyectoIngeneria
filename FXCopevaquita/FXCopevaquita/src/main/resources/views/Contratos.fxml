@@ -83,7 +83,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="822.0" spacing="10.0">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="778.0" spacing="10.0">
                      <children>
                         <DatePicker fx:id="dp_inicio" prefHeight="31.0" prefWidth="134.0" promptText="Fecha de inicio " />
                         <DatePicker fx:id="dp_fin" prefHeight="31.0" prefWidth="134.0" promptText="Fecha de fin" />

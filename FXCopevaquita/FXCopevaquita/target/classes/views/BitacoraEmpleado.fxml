@@ -23,7 +23,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="57.0" prefWidth="648.0" style="-fx-background-color: #00897b; -fx-background-radius: 10;">
                      <children>
-                        <Label alignment="CENTER" text="Módulo de reporte diarios de empleados" textFill="WHITE">
+                        <Label alignment="CENTER" text="Módulo de registro de actividades" textFill="WHITE">
                            <font>
                               <Font name="Lucida Bright" size="31.0" />
                            </font>
