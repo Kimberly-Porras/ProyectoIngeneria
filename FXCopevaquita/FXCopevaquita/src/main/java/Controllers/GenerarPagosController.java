@@ -227,7 +227,7 @@ public class GenerarPagosController implements Initializable {
         pago = total;
 
         if (empleado.getTipo().equals("PEON") || empleado.getTipo().equals("SECRETARIO")) {
-            pago -= total * rebajos.obtenerPorcentajesRebajos().getGobierno();
+            pago -= total * rebajos.obtenerPorcentajeRebajos().getGobierno();
         }
 
         // Cargar datos en la interfaz grafica...

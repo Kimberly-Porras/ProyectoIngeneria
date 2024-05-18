@@ -23,6 +23,7 @@ import Models.*;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 import javafx.beans.property.SimpleStringProperty;
@@ -33,6 +34,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.util.StringConverter;
 
 /**
@@ -43,7 +46,6 @@ import javafx.util.StringConverter;
  */
 public class PagosController implements Initializable {
 
-    @FXML
     private ComboBox<Empleado> cbxEmpleado;
     @FXML
     private TableView<Pagos> tblPagos;
@@ -100,6 +102,8 @@ public class PagosController implements Initializable {
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
     EmpleadoDAO daoEmpleado = new EmpleadoDAO();
     PagosDAO daoPago = new PagosDAO();
+    @FXML
+    private TextField txt_filtrarEmpleado;
 
     /**
      * Initializes the controller class.
@@ -118,8 +122,8 @@ public class PagosController implements Initializable {
     public void configure() {
         cargarPagos();
 
-        colFechaInicio.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFechaFinal().toString()));
-        colFechaFin.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFecha().toString()));
+        colFechaFin.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFechaFinal().toString()));
+        colFechaInicio.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFecha().toString()));
 
         // Cargar los datos de la base de datos ...
         colEmpleado.setCellValueFactory((cellData) -> {
@@ -156,29 +160,6 @@ public class PagosController implements Initializable {
             var pagoId = data.getValue().getId();
             var pago = new PagoVacacionDAO().obtenerPagoVacacionPorPago(pagoId);
             return new SimpleStringProperty(pago.getTotalVacacion() + "");
-        });
-
-        ObservableEmpleado = FXCollections.observableArrayList(daoEmpleado.obtenerListaEmpleados());
-        cbxEmpleado.setItems(ObservableEmpleado);
-
-        cbxEmpleado.setConverter(new StringConverter<Empleado>() {
-            @Override
-            public String toString(Empleado t) {
-                if (t == null) {
-                    return "";
-                }
-                return t.getNombreCompleto();
-            }
-
-            @Override
-            public Empleado fromString(String t) {
-                if (t == null || t.isEmpty()) {
-                    return null;
-                }
-                Predicate<String> find = (x) -> x != null && x.equals(t);
-                Optional<Empleado> firstMatch = ObservableEmpleado.filtered(x -> find.test(x.getNombreCompleto())).stream().findFirst();
-                return firstMatch.orElse(null);
-            }
         });
     }
 
@@ -282,7 +263,7 @@ public class PagosController implements Initializable {
         pago = total;
 
         if (empleado.getTipo().equals("PEON") || empleado.getTipo().equals("SECRETARIO")) {
-            pago -= total * rebajos.obtenerPorcentajesRebajos().getGobierno();
+            pago -= total * rebajos.obtenerPorcentajeRebajos().getGobierno();
         }
     }
 
@@ -472,7 +453,24 @@ public class PagosController implements Initializable {
     }
 
     @FXML
-    private void FiltrarEmpleado(ActionEvent event) {
+    private void FilterEmployee(KeyEvent event) {
+        var text = txt_filtrarEmpleado.getText();
+        List<Empleado> empleados = new EmpleadoDAO().obtenerListaAutocompletado(text);
+        
+        List<String> cedulas = empleados.stream()
+                .map(e -> e.getCedula())
+                .toList();
+        
+        var newData = FXCollections.observableArrayList(
+                observablePagos.stream()
+                .filter(e -> {
+                    return cedulas.contains(e.getEmpleado());
+                })
+                .toList()
+        );
+        
+        tblPagos.setItems(newData);
     }
+
 
 }
