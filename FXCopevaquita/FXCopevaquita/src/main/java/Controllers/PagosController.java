@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -459,14 +460,14 @@ public class PagosController implements Initializable {
         
         List<String> cedulas = empleados.stream()
                 .map(e -> e.getCedula())
-                .toList();
+                .collect(Collectors.toList());
         
         var newData = FXCollections.observableArrayList(
                 observablePagos.stream()
                 .filter(e -> {
                     return cedulas.contains(e.getEmpleado());
                 })
-                .toList()
+                .collect(Collectors.toList())
         );
         
         tblPagos.setItems(newData);
