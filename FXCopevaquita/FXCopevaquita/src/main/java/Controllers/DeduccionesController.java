@@ -195,4 +195,25 @@ public class DeduccionesController implements Initializable {
 
         // Lanzar mensaje de abvertencia...
     }
+
+    @FXML
+    private void OnReporteIndividual(ActionEvent event) {
+        var report = new JReportDeducciones();
+        var jreport = report.getDeduccionPorEmpleado();
+
+        var model = tblDeduccionesEmpleados.getSelectionModel().getSelectedItem();
+
+        if (dp_inicio.getValue() != null && model != null) {
+
+            var empleadoCedula = model.getEmpleado();
+
+            HashMap<String, Object> map = new HashMap();
+            map.put("fecha", dp_inicio.getValue().toString());
+            map.put("cedula", empleadoCedula);
+
+            JAppReport.getReport(DatabaseConnection.getConnection(), map, jreport);
+            JAppReport.showReport();
+            return;
+        }
+    }
 }

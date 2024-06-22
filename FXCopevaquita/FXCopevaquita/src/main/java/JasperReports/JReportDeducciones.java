@@ -14,11 +14,30 @@ import net.sf.jasperreports.engine.JasperReport;
  * @author aleke
  */
 public class JReportDeducciones {
-    
-     public JasperReport getTodasLasDeducciones() {
+
+    public JasperReport getTodasLasDeducciones() {
 
         JasperReport report = null;
         InputStream input = getClass().getResourceAsStream("/reports/ReporteDeducciones.jrxml");
+
+        if (input == null) {
+            System.out.println("No se pudo cargar el archivo example.jrxml");
+            return report;
+        }
+
+        try {
+            report = JasperCompileManager.compileReport(input);
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
+
+        return report;
+    }
+
+    public JasperReport getDeduccionPorEmpleado() {
+
+        JasperReport report = null;
+        InputStream input = getClass().getResourceAsStream("/reports/DeduccionesPorEmpleado.jrxml");
 
         if (input == null) {
             System.out.println("No se pudo cargar el archivo example.jrxml");

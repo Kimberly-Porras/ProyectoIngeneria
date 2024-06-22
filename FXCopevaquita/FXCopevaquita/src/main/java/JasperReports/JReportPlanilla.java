@@ -14,10 +14,30 @@ import net.sf.jasperreports.engine.JasperReport;
  * @author aleke
  */
 public class JReportPlanilla {
-     public JasperReport getPlanillaFromDatesRange() {
+
+    public JasperReport getPlanillaFromDatesRange() {
 
         JasperReport report = null;
         InputStream input = getClass().getResourceAsStream("/reports/planilla.jrxml");
+
+        if (input == null) {
+            System.out.println("No se pudo cargar el archivo planilla.jrxml");
+            return report;
+        }
+
+        try {
+            report = JasperCompileManager.compileReport(input);
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
+
+        return report;
+    }
+
+    public JasperReport getReporteIndividual() {
+
+        JasperReport report = null;
+        InputStream input = getClass().getResourceAsStream("/reports/PagoPorEmpleado.jrxml");
 
         if (input == null) {
             System.out.println("No se pudo cargar el archivo planilla.jrxml");

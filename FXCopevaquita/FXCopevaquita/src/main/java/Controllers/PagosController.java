@@ -105,6 +105,8 @@ public class PagosController implements Initializable {
     PagosDAO daoPago = new PagosDAO();
     @FXML
     private TextField txt_filtrarEmpleado;
+    @FXML
+    private Button btnGenerarReporte1;
 
     /**
      * Initializes the controller class.
@@ -471,6 +473,45 @@ public class PagosController implements Initializable {
         );
         
         tblPagos.setItems(newData);
+    }
+
+    @FXML
+    private void OnGenerarReporteIndividual(ActionEvent event) {
+        var report = new JReportPlanilla();
+        var jreport = report.getReporteIndividual();
+        
+        var model = tblPagos.getSelectionModel().getSelectedItem();
+
+        if (dpFechaInicial1.getValue() == null || dpFechaFinal1.getValue() == null || model == null) {
+            MensajePersonalizado.Ver("Problemas en el rango de fechas o selección del empleado",
+                    "El rango de fechas es requerido y el empleado tambien",
+                    Alert.AlertType.ERROR);
+            return;
+        }
+
+        var startDate = dpFechaInicial1.getValue();
+        var endDate = dpFechaFinal1.getValue();
+
+        if (startDate.isAfter(endDate) || startDate.isEqual(endDate)) {
+            MensajePersonalizado.Ver("Problemas en el rango de fechas",
+                    "El rango de fechas es incoherente",
+                    Alert.AlertType.INFORMATION);
+            return;
+        }
+
+        HashMap<String, Object> map = new HashMap();
+
+        System.out.println("Fechas " + startDate.toString());
+        
+        System.out.println("Los datos son ; " + startDate.toString() + endDate.toString() + model.getEmpleado());
+
+        map.put("fecha", startDate.toString());
+        map.put("fecha_fin", endDate.toString());        
+        map.put("cedula", model.getEmpleado());
+
+        JAppReport.getReport(DatabaseConnection.getConnection(), map, jreport);
+        JAppReport.showReport();
+        return;
     }
 
 

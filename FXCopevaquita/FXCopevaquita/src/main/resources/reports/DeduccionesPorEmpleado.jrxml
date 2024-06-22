@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DeduccionesPorEmpleado" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="df013db5-f76e-44d3-b0df-bcbc46d93160">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[dGJsX2RlZHVjY2lvbiAsMTk5LDE1LDkzNzU3YzE0LTA4MzktNDZkMy04YWM5LWM4MDk3NTg4Yjli
+YTt0YmxfdGlwb19kZWR1Y2Npb24gLDM4NywxNSxkOTZjYWI4Yy0xYzM2LTQ3MmUtYTc4MC1hMTFi
+NjgwMTY5NWI7dGJsX2VtcGxlYWRvICwxNSwxNSxhYWYwODBkNi05NDQzLTQwZTMtYTY1Ny0wNGY3
+ZmNlOTU5MTE7]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="planillaDB"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="cedula" class="java.lang.String"/>
+	<parameter name="fecha" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT cedula as `Cédula`, empleado.nombre as Nombre, deduccion.fecha_registro as Fecha, 
+tipo_deduccion.nombre as `Tipo de deducción`, monto as Monto, cuota as Couta, pendiente as Pendiente, deduccion.status as Estado FROM `tbl_deduccion` deduccion
+inner join tbl_tipo_deduccion tipo_deduccion on tipo_deduccion.id = deduccion.tipo
+inner join tbl_empleado empleado on empleado.cedula = deduccion.empleado
+WHERE empleado = $P{cedula} and fecha_registro > $P{fecha}]]>
+	</queryString>
+	<field name="Cédula" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="cedula"/>
+		<property name="com.jaspersoft.studio.field.label" value="Cédula"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_empleado"/>
+	</field>
+	<field name="Nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="Nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_empleado"/>
+	</field>
+	<field name="Fecha" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="fecha_registro"/>
+		<property name="com.jaspersoft.studio.field.label" value="Fecha"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_deduccion"/>
+	</field>
+	<field name="Tipo de deducción" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="Tipo de deducción"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_tipo_deduccion"/>
+	</field>
+	<field name="Monto" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="monto"/>
+		<property name="com.jaspersoft.studio.field.label" value="Monto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_deduccion"/>
+	</field>
+	<field name="Couta" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="cuota"/>
+		<property name="com.jaspersoft.studio.field.label" value="Couta"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_deduccion"/>
+	</field>
+	<field name="Pendiente" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="pendiente"/>
+		<property name="com.jaspersoft.studio.field.label" value="Pendiente"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_deduccion"/>
+	</field>
+	<field name="Estado" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="status"/>
+		<property name="com.jaspersoft.studio.field.label" value="Estado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_deduccion"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="270" y="0" width="263" height="62" uuid="bc1ce1da-8232-46ea-be55-cec4abb986dd"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Coffee Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="303" y="62" width="196" height="22" uuid="f6a78448-8260-4445-a9e0-e3fb53b080d9"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Coffee SubTitle]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="94" width="383" height="42" uuid="8240065e-64b6-4170-b5d9-6341598e7b35"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor purus gravida arcu aliquam mattis. Donec et nulla libero, ut varius massa. Nulla sed turpis elit. Etiam aliquet mauris a ligula hendrerit in auctor leo lobortis.]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="e9d2002a-c8ee-4649-a258-640dad29110c"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="100" height="15" forecolor="#736343" uuid="b0707922-3232-4d5e-8ed8-ac16226f8062">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ef5d88cb-608b-4137-ad8f-364e6e7f5c84"/>
+				</reportElement>
+				<text><![CDATA[Cédula]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="100" y="0" width="100" height="15" forecolor="#736343" uuid="508c5492-860a-45fc-85fb-931f7adea6b8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0a9cccd8-3c1e-47b3-9d6e-94f36c2a2ddb"/>
+				</reportElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="200" y="0" width="100" height="15" forecolor="#736343" uuid="d8d4d6ca-c94e-4fa5-9cf7-5a727db1bbe6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b0560d6d-ebc6-455e-9d05-4e6092123d60"/>
+				</reportElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="300" y="0" width="100" height="15" forecolor="#736343" uuid="a2d90d03-7cdf-4b2e-8ad4-a1ceb08564d6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2f0c051f-1e18-4a68-8e58-fff657298333"/>
+				</reportElement>
+				<text><![CDATA[Tipo de deducción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="400" y="0" width="100" height="15" forecolor="#736343" uuid="360f1a7c-e442-4edc-a6b0-a2408c6e1901">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="74e285c9-9364-420e-9269-9622088ab9b8"/>
+				</reportElement>
+				<text><![CDATA[Monto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="500" y="0" width="100" height="15" forecolor="#736343" uuid="f2d3bd00-8868-430e-8349-7576d87fe462">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d101cbfb-c30d-441d-8af0-933f3672761a"/>
+				</reportElement>
+				<text><![CDATA[Couta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="600" y="0" width="100" height="15" forecolor="#736343" uuid="933565c3-ddc2-4684-9fb6-8451c4b1857a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bcdd75d8-142a-429e-84e4-be9e08ad8c94"/>
+				</reportElement>
+				<text><![CDATA[Pendiente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="700" y="0" width="100" height="15" forecolor="#736343" uuid="02dd7b96-6e3b-49d4-b8bf-48c0de228f92">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f84740b0-38b8-413e-8134-bf54e8c84a58"/>
+				</reportElement>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="fa7cec56-4ec1-48e6-a26e-7266a995d174"/>
+				<textField textAdjust="StretchHeight">
+					<reportElement style="Detail" x="0" y="0" width="100" height="15" uuid="e241baf6-fa26-420f-9d77-f12b3af68da5">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ef5d88cb-608b-4137-ad8f-364e6e7f5c84"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{Cédula}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement style="Detail" x="100" y="0" width="100" height="15" uuid="c09e4d3a-6b4d-4b35-905a-b645cf791307">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0a9cccd8-3c1e-47b3-9d6e-94f36c2a2ddb"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{Nombre}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement style="Detail" x="200" y="0" width="100" height="15" uuid="696cc9c7-816d-4918-a1b5-3f4c1cf05aac">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b0560d6d-ebc6-455e-9d05-4e6092123d60"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{Fecha}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement style="Detail" x="300" y="0" width="100" height="15" uuid="03485898-f1b9-410d-8187-0c2ddfbf112f">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2f0c051f-1e18-4a68-8e58-fff657298333"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{Tipo de deducción}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement style="Detail" x="400" y="0" width="100" height="15" uuid="b29c7dc7-f15a-4c6e-9719-cbf8e57bfd8b">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="74e285c9-9364-420e-9269-9622088ab9b8"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{Monto}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement style="Detail" x="500" y="0" width="100" height="15" uuid="d179b490-833d-44f0-85e5-2120c2c45baa">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d101cbfb-c30d-441d-8af0-933f3672761a"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{Couta}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement style="Detail" x="600" y="0" width="100" height="15" uuid="678d62bf-46e2-4b7b-a1cc-ca41058ee5dc">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bcdd75d8-142a-429e-84e4-be9e08ad8c94"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{Pendiente}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement style="Detail" x="700" y="0" width="100" height="15" uuid="a27f26e4-5b3b-4cfa-9037-4f821ce33eb3">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f84740b0-38b8-413e-8134-bf54e8c84a58"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{Estado}.equals( 1 ) ? "Pendiente":  "Pagado"]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="fa5e88d5-a011-4e32-8f12-ce923f903111"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="5d8169bd-4a75-48c8-8a68-6d3ad5ba9402"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="e5e27efa-b599-499b-9ca3-848cb511cb7b"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="18cfe1ca-f7d6-48b0-9827-28578b42a5e0"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="fbce24bb-3cb1-44a3-8eec-8c067ddbe5b5"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
