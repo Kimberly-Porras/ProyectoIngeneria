@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import Database.DatabaseConnection;
 import Models.Credencial;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.scene.control.Alert;
 
 /**
@@ -51,6 +53,33 @@ public class CredencialesDAO {
             }
 
             return credencial;
+        } catch (Exception e) {
+            System.out.println("" + e.toString());
+            return null;
+        }
+    }
+
+    public ArrayList<Credencial> obtenerTodos() {
+        ArrayList<Credencial> credenciales = new ArrayList<Credencial>();
+        try {
+            String sql = "SELECT * FROM tbl_credencial";
+
+            ps = acceso.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                var credencialTemp = new Credencial();
+                credencialTemp.setId(rs.getInt(1));
+                credencialTemp.setEmpleado(rs.getString(2));
+                credencialTemp.setUsuario(rs.getString(3));
+                credencialTemp.setCorreo(rs.getString(4));
+                credencialTemp.setContrasenia(rs.getString(5));
+                credencialTemp.setStatus(rs.getBoolean(6));
+
+                credenciales.add(credencialTemp);
+            }
+
+            return credenciales;
         } catch (Exception e) {
             System.out.println("" + e.toString());
             return null;

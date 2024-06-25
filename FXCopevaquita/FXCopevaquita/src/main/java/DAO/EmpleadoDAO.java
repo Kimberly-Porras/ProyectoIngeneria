@@ -155,6 +155,39 @@ public class EmpleadoDAO {
 
         return empleado;
     }
+    
+    public List<Empleado> obtenerListaEmpleados() {
+        List<Empleado> listaEmpleados = new ArrayList<>();
+
+        try {
+            String sql = "SELECT cedula, nombre, apellidos, sexo, estadoCivil,"
+                    + " tipoSangre, fechaNacimiento, fechaIngreso, tipo, numeroCuenta, nivelAcademico, status "
+                    + "FROM tbl_empleado;";
+            ps = acceso.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Empleado empleado = new Empleado();
+                empleado.setCedula(rs.getString(1));
+                empleado.setNombre(rs.getString(2));
+                empleado.setApellidos(rs.getString(3));
+                empleado.setSexo(rs.getString(4));
+                empleado.setEstadoCivil(rs.getString(5));
+                empleado.setTipoSangre(rs.getString(6));
+                empleado.setFechaNacimiento(rs.getDate(7));
+                empleado.setFechaIngreso(rs.getDate(8));
+                empleado.setTipo(rs.getString(9));
+                empleado.setNumeroCuenta(rs.getString(10));
+                empleado.setNivelAcademico(rs.getString(11));
+                empleado.setStatus(rs.getBoolean(12));
+                listaEmpleados.add(empleado);
+            }
+        } catch (Exception e) {
+            System.out.println("" + e.toString());
+        }
+
+        return listaEmpleados;
+    }
 
     public Empleado obtenerEmpleadoPorEstado(boolean estado) {
         Empleado empleado = new Empleado();
@@ -190,13 +223,14 @@ public class EmpleadoDAO {
         return empleado;
     }
 
-    public List<Empleado> obtenerListaEmpleados() {
+    public List<Empleado> obtenerListaEmpleadosAdministradores() {
         List<Empleado> listaEmpleados = new ArrayList<>();
 
         try {
-            String sql = "SELECT cedula, nombre, apellidos, sexo, estadoCivil,"
-                    + " tipoSangre, fechaNacimiento, fechaIngreso, tipo, numeroCuenta, nivelAcademico, status "
-                    + "FROM tbl_empleado;";
+            String sql = "SELECT * FROM `tbl_empleado`\n"
+                    + "inner JOIN tbl_credencial on tbl_credencial.empleado = "
+                    + "tbl_empleado.cedula";
+            
             ps = acceso.prepareStatement(sql);
             rs = ps.executeQuery();
 
@@ -222,7 +256,7 @@ public class EmpleadoDAO {
 
         return listaEmpleados;
     }
-    
+
     public List<Empleado> obtenerListaEmpleadosExternos() {
         List<Empleado> listaEmpleados = new ArrayList<>();
 
@@ -255,8 +289,8 @@ public class EmpleadoDAO {
 
         return listaEmpleados;
     }
-    
-     public List<Empleado> obtenerListaEmpleadosInternos() {
+
+    public List<Empleado> obtenerListaEmpleadosInternos() {
         List<Empleado> listaEmpleados = new ArrayList<>();
 
         try {
