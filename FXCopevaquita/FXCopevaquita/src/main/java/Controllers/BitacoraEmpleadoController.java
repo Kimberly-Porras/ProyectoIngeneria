@@ -8,10 +8,16 @@ import DAO.ActividadDAO;
 import DAO.AreaDAO;
 import DAO.BitacoraEmpleadoDAO;
 import DAO.EmpleadoDAO;
+import Database.DatabaseConnection;
 import Helpers.OpenWindowsHandler;
+import JasperReports.JAppReport;
+import JasperReports.JReporteIncapacidadNuevo;
+import JasperReports.JReporteRegistroEmpleadoGeneralNuevo;
+import JasperReports.JReporteRegistroEmpleadoUnitarioNuevo;
 import Models.BitacoraEmpleado;
 import Models.Empleado;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -172,7 +178,47 @@ public class BitacoraEmpleadoController implements Initializable {
     }
 
     @FXML
-    private void OnReporte(ActionEvent event) {
+    private void OnReporteExportarGeneral(ActionEvent event) {
+        
+        var report = new JReporteRegistroEmpleadoGeneralNuevo();
+        var jreport = report.getTodosLosRegistroEmpleados();
+
+        if (dp_fin.getValue() != null && dp_inicio.getValue() != null) {
+
+            HashMap<String, Object> map = new HashMap();
+
+            System.out.println("Fechas " + dp_inicio.getValue().toString());
+
+            map.put("PInicio", dp_inicio.getValue().toString());
+            map.put("PFin", dp_fin.getValue().toString());
+
+            JAppReport.getReport(DatabaseConnection.getConnection(), map, jreport);
+            JAppReport.showReport();
+            return;
+        }
+        
+    }
+
+    @FXML
+    private void OnReporteUnitario(ActionEvent event) {
+        
+         var report = new JReporteRegistroEmpleadoUnitarioNuevo();
+        var jreport = report.getRegistroDiarioUnitarioEmpleados();
+
+        if (dp_fin.getValue() != null && dp_inicio.getValue() != null) {
+
+            HashMap<String, Object> map = new HashMap();
+
+            System.out.println("Fechas " + dp_inicio.getValue().toString());
+
+            map.put("PInicio", dp_inicio.getValue().toString());
+            map.put("PFin", dp_fin.getValue().toString());
+
+            JAppReport.getReport(DatabaseConnection.getConnection(), map, jreport);
+            JAppReport.showReport();
+            return;
+        }
+        
     }
 
 }
