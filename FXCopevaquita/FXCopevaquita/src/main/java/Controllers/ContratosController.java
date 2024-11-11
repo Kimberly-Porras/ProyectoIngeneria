@@ -7,10 +7,15 @@ package Controllers;
 import DAO.ActividadDAO;
 import DAO.ContratoDAO;
 import DAO.EmpleadoDAO;
+import Database.DatabaseConnection;
 import Helpers.OpenWindowsHandler;
+import JasperReports.JAppReport;
+import JasperReports.JReporteAsistenciaNuevo;
+import JasperReports.JReporteContratoNuevo;
 import Models.Contrato;
 import Models.Empleado;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import javafx.beans.property.SimpleStringProperty;
@@ -160,6 +165,23 @@ public class ContratosController implements Initializable {
 
     @FXML
     private void OnReporte(ActionEvent event) {
+        
+        var report = new JReporteContratoNuevo();
+        var jreport = report.getTodosLosContratos();
+
+        if (dp_fin.getValue() != null && dp_inicio.getValue() != null) {
+
+            HashMap<String, Object> map = new HashMap();
+
+            System.out.println("Fechas " + dp_inicio.getValue().toString());
+
+            map.put("PInicio", dp_inicio.getValue().toString());
+            map.put("PFin", dp_fin.getValue().toString());
+
+            JAppReport.getReport(DatabaseConnection.getConnection(), map, jreport);
+            JAppReport.showReport();
+            return;
+        }
     }
 
 }
