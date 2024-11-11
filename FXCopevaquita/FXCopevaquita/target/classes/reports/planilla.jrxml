@@ -54,8 +54,7 @@ FROM
     LEFT JOIN tbl_pago_incapacidad pi ON p.id = pi.pagoId
     LEFT JOIN tbl_pago_deduccion pd ON p.id = pd.idPago
     CROSS JOIN Totales t WHERE
-    p.fecha >= $P{p_dateStart}  AND p.fecha_final <= $P{p_endDate}
-]]>
+    p.fecha >= $P{p_dateStart}  AND p.fecha_final <= $P{p_endDate}]]>
 	</queryString>
 	<field name="idPago" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="id"/>
@@ -137,9 +136,9 @@ FROM
 		<groupHeader>
 			<band height="40">
 				<textField>
-					<reportElement style="SubTitle" x="0" y="14" width="504" height="24" forecolor="#006600" uuid="53b06611-b6d2-4c3c-a10e-2b349a2d73d3"/>
+					<reportElement style="SubTitle" mode="Opaque" x="0" y="16" width="504" height="24" forecolor="#15297C" uuid="53b06611-b6d2-4c3c-a10e-2b349a2d73d3"/>
 					<textElement>
-						<font isBold="true"/>
+						<font size="15" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{nombre} + " " + $F{apellidos} + " - " + $F{cedula}]]></textFieldExpression>
 				</textField>
@@ -153,30 +152,119 @@ FROM
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="68" splitType="Stretch">
-			<staticText>
-				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="3eb8e1ab-7e38-4368-89db-62b6501a8c67"/>
-				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[Registro de pagos]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="SubTitle" x="0" y="46" width="219" height="22" uuid="0b5308cc-82cf-49a0-8011-6f875d4c5e32"/>
-				<text><![CDATA[Trámite generado entre]]></text>
-			</staticText>
+		<band height="118" splitType="Stretch">
 			<textField>
-				<reportElement style="Detail" x="220" y="50" width="159" height="15" uuid="6feb8beb-667a-4446-b179-04674660559f">
+				<reportElement style="Detail" x="130" y="88" width="56" height="15" uuid="6feb8beb-667a-4446-b179-04674660559f">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="375b0153-15e4-49a5-aa41-a69722654c37"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{p_dateStart}]]></textFieldExpression>
 			</textField>
+			<image hAlign="Center">
+				<reportElement x="-30" y="32" width="102" height="70" uuid="c4ea93e5-e965-4b38-8053-8b4e1a2f5789">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA["C:/ImagenesProgram/LogoFinal.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="70" y="22" width="210" height="25" uuid="4d52f1a9-5b8a-4f60-9d60-c715c62eb5ac">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Coopevaquita R.L]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="101" y="-15" width="396" height="25" forecolor="#15297C" backcolor="#FFFFFF" uuid="b9e7816b-7c2d-44a9-9f94-3eeddd820fde">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Berlin Sans FB Demi" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte de planilla]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-20" y="10" width="595" height="1" uuid="c0177026-7b14-4b01-8b09-b77bcec4ca30">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="70" y="73" width="240" height="15" uuid="4dc1738d-18f5-410f-927a-6da1a2f388f0"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirección: Km 29, Puntarenas, Corredores, Laurel.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="60" width="205" height="15" uuid="a3b0f8ac-ea59-42ca-b791-91e69a6f6db8"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número telefónico: 8644-8417.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="45" width="230" height="15" uuid="ca415494-57c5-4f22-98ed-03b4926bd536"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Correo electrónico: coopevaquita74@outlook.com 
+ ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="88" width="80" height="15" uuid="a0f2d26b-3a42-45e3-8f90-5d5cd7600f25"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha inicial:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="315" y="45" width="140" height="20" uuid="1b9db06b-eca5-4a60-b1db-d619f998bb50"/>
+				<box rightPadding="4"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de reporte:]]></text>
+			</staticText>
+			<textField pattern="HH:mm a">
+				<reportElement x="455" y="65" width="100" height="30" uuid="b5252107-444e-4d3b-9b88-fa5bd34628d4"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="310" y="65" width="140" height="20" uuid="e9c45ef4-54ba-4446-addf-45a9b39f5e01"/>
+				<box rightPadding="4"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hora de reporte:]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM, yyyy">
+				<reportElement x="455" y="45" width="120" height="20" uuid="321b3b28-6a61-45db-b04f-baa311f20ef2"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
 			<textField>
-				<reportElement style="Detail" x="379" y="50" width="172" height="15" uuid="e99a8158-2c3a-40fb-bec6-f73b479fde34">
+				<reportElement style="Detail" x="122" y="103" width="58" height="15" uuid="e99a8158-2c3a-40fb-bec6-f73b479fde34">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="165a5447-f496-48b5-918f-8c2cc137e72f"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$P{p_endDate}]]></textFieldExpression>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_endDate} ]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="70" y="103" width="80" height="15" uuid="f0fd1fc2-5c10-435b-bcc2-9ae164153e8f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha final:]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
@@ -191,77 +279,83 @@ FROM
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement style="Column header" x="0" y="19" width="70" height="15" uuid="117a2b0c-8f09-40db-9e87-254f10a1e8b0">
+				<reportElement style="Column header" mode="Opaque" x="0" y="19" width="70" height="15" forecolor="#FFFFFF" backcolor="#00897B" uuid="117a2b0c-8f09-40db-9e87-254f10a1e8b0">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="375b0153-15e4-49a5-aa41-a69722654c37"/>
 				</reportElement>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10"/>
 				</textElement>
-				<text><![CDATA[Inicial]]></text>
+				<text><![CDATA[F. Inicial]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="70" y="19" width="60" height="15" uuid="c7324361-a551-4af2-9585-33b8c04bee69">
+				<reportElement style="Column header" mode="Opaque" x="70" y="19" width="60" height="15" forecolor="#FFFFFF" backcolor="#00897B" uuid="c7324361-a551-4af2-9585-33b8c04bee69">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="165a5447-f496-48b5-918f-8c2cc137e72f"/>
 				</reportElement>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10"/>
 				</textElement>
-				<text><![CDATA[Final]]></text>
+				<text><![CDATA[F. Final]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="130" y="19" width="56" height="15" uuid="2349e8d1-29bb-4cb2-a34b-1dc550596f54">
+				<reportElement style="Column header" mode="Opaque" x="130" y="19" width="56" height="15" forecolor="#FFFFFF" backcolor="#00897B" uuid="2349e8d1-29bb-4cb2-a34b-1dc550596f54">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5eb780ae-21b2-45fd-a106-414eee072d48"/>
 				</reportElement>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10"/>
 				</textElement>
 				<text><![CDATA[Base]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="186" y="19" width="70" height="15" uuid="c024e78a-2508-427d-8959-7a5430cde5a4">
+				<reportElement style="Column header" mode="Opaque" x="186" y="19" width="70" height="15" forecolor="#FFFFFF" backcolor="#00897B" uuid="c024e78a-2508-427d-8959-7a5430cde5a4">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5615d683-0db2-47ce-8425-db3ee10027f6"/>
 				</reportElement>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10"/>
 				</textElement>
 				<text><![CDATA[Contratos]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="256" y="19" width="70" height="15" uuid="3cde142f-e7b3-4024-b5af-3c8e8f149688">
+				<reportElement style="Column header" mode="Opaque" x="256" y="19" width="70" height="15" forecolor="#FFFFFF" backcolor="#00897B" uuid="3cde142f-e7b3-4024-b5af-3c8e8f149688">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4957e2e1-052f-4f3d-aebb-ce1d4e9a1633"/>
 				</reportElement>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10"/>
 				</textElement>
 				<text><![CDATA[Vacaciones]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="325" y="19" width="77" height="15" uuid="5792c10b-8702-4ad1-8bfa-0a37f4ef3440">
+				<reportElement style="Column header" mode="Opaque" x="325" y="19" width="77" height="15" forecolor="#FFFFFF" backcolor="#00897B" uuid="5792c10b-8702-4ad1-8bfa-0a37f4ef3440">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a58da730-2595-4eb3-ba56-86ad3e9f3dfa"/>
 				</reportElement>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10"/>
 				</textElement>
 				<text><![CDATA[Incapacidades]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="402" y="20" width="79" height="15" uuid="fd25fe8c-6c52-47d0-ac0e-3c9362a09c5a">
+				<reportElement style="Column header" mode="Opaque" x="402" y="19" width="79" height="15" forecolor="#FFFFFF" backcolor="#00897B" uuid="fd25fe8c-6c52-47d0-ac0e-3c9362a09c5a">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b52292d2-7fb3-402b-b91f-6973fa7b13cd"/>
 				</reportElement>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10"/>
 				</textElement>
-				<text><![CDATA[deducciones]]></text>
+				<text><![CDATA[Deducciones]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="481" y="20" width="79" height="15" uuid="1cd3513f-9a01-47ff-9c81-bd5c7da7c26d">
+				<reportElement style="Column header" mode="Opaque" x="481" y="19" width="79" height="15" forecolor="#FFFFFF" backcolor="#00897B" uuid="1cd3513f-9a01-47ff-9c81-bd5c7da7c26d">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b52292d2-7fb3-402b-b91f-6973fa7b13cd"/>
 				</reportElement>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10"/>
 				</textElement>
 				<text><![CDATA[Pago]]></text>
 			</staticText>
+			<line>
+				<reportElement x="-20" y="10" width="595" height="1" uuid="65719e1c-85bc-41b7-82a2-c26d4108896b">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
@@ -338,56 +432,6 @@ FROM
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
 			</line>
-			<staticText>
-				<reportElement x="130" y="10" width="56" height="20" uuid="41d71412-f16c-4e0c-a59d-f945abca1096"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Base]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="186" y="10" width="70" height="20" uuid="3a3fa61a-7dfd-4fe1-b9eb-47295928eace"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Contratos]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="256" y="10" width="69" height="20" uuid="e4af73ec-9109-49b1-8115-8f67523b956d"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Vacaciones]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="325" y="10" width="77" height="20" uuid="cc806c0a-7b47-4c7f-b955-49c1b71bdcc8"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Incapacidades]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="403" y="10" width="78" height="20" uuid="f63f04f8-78c7-46fc-8864-6e6c2e9aa645"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Deducciones]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="130" y="30" width="56" height="30" uuid="322aa266-99e1-4a34-980d-fbba2f9fcc55"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{totalBitacoraGeneral}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="186" y="30" width="70" height="30" uuid="724d060a-91e7-443c-b272-45241bd2fca8"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{totalContratoGeneral}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="256" y="30" width="70" height="30" uuid="35ed5fa6-6668-414e-a514-21a1a361fa04"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{totalVacacionGeneral}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="325" y="30" width="78" height="30" uuid="cbd4beb4-5c7f-4b98-ac17-fc7ff6de0890"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{totalIncapacidadGeneral}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="402" y="30" width="79" height="30" uuid="a3563e4f-44ac-4cb7-998a-49bf8674e393"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{totalDeduccionGeneral}]]></textFieldExpression>
-			</textField>
 		</band>
 	</columnFooter>
 	<pageFooter>
@@ -406,13 +450,56 @@ FROM
 				</textElement>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
-			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="ef9fc35f-c45f-4ec6-a5cc-ec2020109ea7"/>
-				<textElement>
-					<font size="10" isBold="false"/>
-				</textElement>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			<staticText>
+				<reportElement x="124" y="-30" width="69" height="20" uuid="e4af73ec-9109-49b1-8115-8f67523b956d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Vacaciones]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-2" y="-30" width="56" height="20" uuid="41d71412-f16c-4e0c-a59d-f945abca1096"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Base]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="54" y="-10" width="70" height="30" uuid="724d060a-91e7-443c-b272-45241bd2fca8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{totalContratoGeneral}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="193" y="-10" width="78" height="30" uuid="cbd4beb4-5c7f-4b98-ac17-fc7ff6de0890"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{totalIncapacidadGeneral}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="-10" width="79" height="30" uuid="a3563e4f-44ac-4cb7-998a-49bf8674e393"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{totalDeduccionGeneral}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="-2" y="-10" width="56" height="30" uuid="322aa266-99e1-4a34-980d-fbba2f9fcc55"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{totalBitacoraGeneral}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="124" y="-10" width="70" height="30" uuid="35ed5fa6-6668-414e-a514-21a1a361fa04"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{totalVacacionGeneral}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="193" y="-30" width="77" height="20" uuid="cc806c0a-7b47-4c7f-b955-49c1b71bdcc8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Incapacidades]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="271" y="-30" width="78" height="20" uuid="f63f04f8-78c7-46fc-8864-6e6c2e9aa645"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Deducciones]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="54" y="-30" width="70" height="20" uuid="3a3fa61a-7dfd-4fe1-b9eb-47295928eace"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Contratos]]></text>
+			</staticText>
 		</band>
 	</pageFooter>
 	<summary>
