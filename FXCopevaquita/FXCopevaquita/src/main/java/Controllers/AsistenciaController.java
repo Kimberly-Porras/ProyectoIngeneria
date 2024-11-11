@@ -6,10 +6,15 @@ package Controllers;
 
 import DAO.BitacoraAsistenciaDAO;
 import DAO.EmpleadoDAO;
+import Database.DatabaseConnection;
 import Helpers.OpenWindowsHandler;
+import JasperReports.JAppReport;
+import JasperReports.JReportVacaciones;
+import JasperReports.JReporteAsistenciaNuevo;
 import Models.BitacoraAsistencia;
 import Models.Empleado;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -127,6 +132,25 @@ public class AsistenciaController implements Initializable {
 
     @FXML
     private void OnExportar(ActionEvent event) {
+        
+        var report = new JReporteAsistenciaNuevo();
+        var jreport = report.getTodasLasAsistencias();
+
+        if (dp_fin.getValue() != null && dp_inicio.getValue() != null) {
+
+            HashMap<String, Object> map = new HashMap();
+
+            System.out.println("Fechas " + dp_inicio.getValue().toString());
+
+            map.put("PInicio", dp_inicio.getValue().toString());
+            map.put("PFin", dp_fin.getValue().toString());
+
+            JAppReport.getReport(DatabaseConnection.getConnection(), map, jreport);
+            JAppReport.showReport();
+            return;
+        }
+        
+        
     }
 
 }
