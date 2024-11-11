@@ -73,91 +73,24 @@ WHERE empleado = $P{cedula} and fecha_registro > $P{fecha}]]>
 	<title>
 		<band height="136" splitType="Stretch">
 			<staticText>
-				<reportElement x="540" y="60" width="140" height="20" uuid="f50c72fb-224f-4102-9964-5ead344a4439"/>
-				<box rightPadding="4"/>
+				<reportElement style="Title" x="270" y="0" width="263" height="62" uuid="bc1ce1da-8232-46ea-be55-cec4abb986dd"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Coffee Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="303" y="62" width="196" height="22" uuid="f6a78448-8260-4445-a9e0-e3fb53b080d9"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Coffee SubTitle]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="94" width="383" height="42" uuid="8240065e-64b6-4170-b5d9-6341598e7b35"/>
 				<textElement textAlignment="Right">
-					<font isBold="true"/>
+					<font size="10"/>
 				</textElement>
-				<text><![CDATA[Fecha de reporte:]]></text>
+				<text><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor purus gravida arcu aliquam mattis. Donec et nulla libero, ut varius massa. Nulla sed turpis elit. Etiam aliquet mauris a ligula hendrerit in auctor leo lobortis.]]></text>
 			</staticText>
-			<line>
-				<reportElement x="3" y="100" width="790" height="1" uuid="61379baf-7388-4524-bb10-290628bb898e">
-					<property name="local_mesure_unitheight" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-			</line>
-			<textField pattern="HH:mm a">
-				<reportElement x="680" y="80" width="100" height="30" uuid="fc9d1612-d9af-42bc-b8c8-8260fcef4e60"/>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-			</textField>
-			<image hAlign="Center">
-				<reportElement x="-12" y="27" width="102" height="70" uuid="d156952d-efc9-4330-b178-65cb3b64ee50">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
-				<imageExpression><![CDATA["C:/ImagenesProgram/LogoFinal.png"]]></imageExpression>
-			</image>
-			<staticText>
-				<reportElement x="90" y="30" width="210" height="25" uuid="4093055d-5d27-4c5a-bfe0-753a803b4178">
-					<property name="local_mesure_unitheight" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement>
-					<font size="16" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Coopevaquita R.L]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="231" y="-10" width="396" height="25" forecolor="#15297C" backcolor="#FFFFFF" uuid="795d2941-3405-4e57-a5cf-dd78e3ba5997">
-					<property name="local_mesure_unitheight" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Berlin Sans FB Demi" size="22" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Reporte de registro diario de empleado]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="90" y="83" width="240" height="15" uuid="ae373328-2dfa-4a84-b888-cc623e80c398"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Dirección: Km 29, Puntarenas, Corredores, Laurel.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="90" y="70" width="205" height="15" uuid="34495753-3641-4c2c-ac82-16d390a546d9"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Número telefónico: 8644-8417.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="535" y="80" width="140" height="20" uuid="17a6bd69-0735-417f-a958-a1a449a01f8a"/>
-				<box rightPadding="4"/>
-				<textElement textAlignment="Right">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Hora de reporte:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="90" y="55" width="230" height="15" uuid="9c337d4d-486e-4c82-a5ba-e7d9eb76e539"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Correo electrónico: coopevaquita74@outlook.com 
- ]]></text>
-			</staticText>
-			<line>
-				<reportElement x="2" y="20" width="798" height="1" uuid="ef56e4b0-375d-498b-af56-2545686d6713">
-					<property name="local_mesure_unitheight" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-			</line>
-			<textField pattern="EEEEE dd MMMMM, yyyy">
-				<reportElement x="680" y="60" width="120" height="20" uuid="d16ccf07-3c58-4b4e-b140-a60bf0dec0bd"/>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-			</textField>
 		</band>
 	</title>
 	<pageHeader>
@@ -172,75 +105,51 @@ WHERE empleado = $P{cedula} and fecha_registro > $P{fecha}]]>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement style="Column header" mode="Opaque" x="0" y="0" width="100" height="15" forecolor="#FFFFFF" backcolor="#00897B" uuid="b0707922-3232-4d5e-8ed8-ac16226f8062">
+				<reportElement style="Column header" x="0" y="0" width="100" height="15" forecolor="#736343" uuid="b0707922-3232-4d5e-8ed8-ac16226f8062">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ef5d88cb-608b-4137-ad8f-364e6e7f5c84"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Times New Roman" size="12"/>
-				</textElement>
 				<text><![CDATA[Cédula]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" mode="Opaque" x="100" y="0" width="100" height="15" forecolor="#FFFFFF" backcolor="#00897B" uuid="508c5492-860a-45fc-85fb-931f7adea6b8">
+				<reportElement style="Column header" x="100" y="0" width="100" height="15" forecolor="#736343" uuid="508c5492-860a-45fc-85fb-931f7adea6b8">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0a9cccd8-3c1e-47b3-9d6e-94f36c2a2ddb"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Times New Roman" size="12"/>
-				</textElement>
 				<text><![CDATA[Nombre]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" mode="Opaque" x="200" y="0" width="100" height="15" forecolor="#FFFFFF" backcolor="#00897B" uuid="d8d4d6ca-c94e-4fa5-9cf7-5a727db1bbe6">
+				<reportElement style="Column header" x="200" y="0" width="100" height="15" forecolor="#736343" uuid="d8d4d6ca-c94e-4fa5-9cf7-5a727db1bbe6">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b0560d6d-ebc6-455e-9d05-4e6092123d60"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Times New Roman" size="12"/>
-				</textElement>
 				<text><![CDATA[Fecha]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" mode="Opaque" x="300" y="0" width="100" height="15" forecolor="#FFFFFF" backcolor="#00897B" uuid="a2d90d03-7cdf-4b2e-8ad4-a1ceb08564d6">
+				<reportElement style="Column header" x="300" y="0" width="100" height="15" forecolor="#736343" uuid="a2d90d03-7cdf-4b2e-8ad4-a1ceb08564d6">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2f0c051f-1e18-4a68-8e58-fff657298333"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Times New Roman" size="12"/>
-				</textElement>
 				<text><![CDATA[Tipo de deducción]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" mode="Opaque" x="400" y="0" width="100" height="15" forecolor="#FFFFFF" backcolor="#00897B" uuid="360f1a7c-e442-4edc-a6b0-a2408c6e1901">
+				<reportElement style="Column header" x="400" y="0" width="100" height="15" forecolor="#736343" uuid="360f1a7c-e442-4edc-a6b0-a2408c6e1901">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="74e285c9-9364-420e-9269-9622088ab9b8"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Times New Roman" size="12"/>
-				</textElement>
 				<text><![CDATA[Monto]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" mode="Opaque" x="500" y="0" width="100" height="15" forecolor="#FFFFFF" backcolor="#00897B" uuid="f2d3bd00-8868-430e-8349-7576d87fe462">
+				<reportElement style="Column header" x="500" y="0" width="100" height="15" forecolor="#736343" uuid="f2d3bd00-8868-430e-8349-7576d87fe462">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d101cbfb-c30d-441d-8af0-933f3672761a"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Times New Roman" size="12"/>
-				</textElement>
 				<text><![CDATA[Couta]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" mode="Opaque" x="600" y="0" width="100" height="15" forecolor="#FFFFFF" backcolor="#00897B" uuid="933565c3-ddc2-4684-9fb6-8451c4b1857a">
+				<reportElement style="Column header" x="600" y="0" width="100" height="15" forecolor="#736343" uuid="933565c3-ddc2-4684-9fb6-8451c4b1857a">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bcdd75d8-142a-429e-84e4-be9e08ad8c94"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Times New Roman" size="12"/>
-				</textElement>
 				<text><![CDATA[Pendiente]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" mode="Opaque" x="700" y="0" width="100" height="15" forecolor="#FFFFFF" backcolor="#00897B" uuid="02dd7b96-6e3b-49d4-b8bf-48c0de228f92">
+				<reportElement style="Column header" x="700" y="0" width="100" height="15" forecolor="#736343" uuid="02dd7b96-6e3b-49d4-b8bf-48c0de228f92">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f84740b0-38b8-413e-8134-bf54e8c84a58"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Times New Roman" size="12"/>
-				</textElement>
 				<text><![CDATA[Estado]]></text>
 			</staticText>
 		</band>
@@ -253,72 +162,48 @@ WHERE empleado = $P{cedula} and fecha_registro > $P{fecha}]]>
 					<reportElement style="Detail" x="0" y="0" width="100" height="15" uuid="e241baf6-fa26-420f-9d77-f12b3af68da5">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ef5d88cb-608b-4137-ad8f-364e6e7f5c84"/>
 					</reportElement>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Times New Roman" size="12"/>
-					</textElement>
 					<textFieldExpression><![CDATA[$F{Cédula}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
 					<reportElement style="Detail" x="100" y="0" width="100" height="15" uuid="c09e4d3a-6b4d-4b35-905a-b645cf791307">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0a9cccd8-3c1e-47b3-9d6e-94f36c2a2ddb"/>
 					</reportElement>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Times New Roman" size="12"/>
-					</textElement>
 					<textFieldExpression><![CDATA[$F{Nombre}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
 					<reportElement style="Detail" x="200" y="0" width="100" height="15" uuid="696cc9c7-816d-4918-a1b5-3f4c1cf05aac">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b0560d6d-ebc6-455e-9d05-4e6092123d60"/>
 					</reportElement>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Times New Roman" size="12"/>
-					</textElement>
-					<textFieldExpression><![CDATA[ new SimpleDateFormat("MM/dd/YYY").format($F{Fecha})]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{Fecha}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
 					<reportElement style="Detail" x="300" y="0" width="100" height="15" uuid="03485898-f1b9-410d-8187-0c2ddfbf112f">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2f0c051f-1e18-4a68-8e58-fff657298333"/>
 					</reportElement>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Times New Roman" size="12"/>
-					</textElement>
 					<textFieldExpression><![CDATA[$F{Tipo de deducción}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
 					<reportElement style="Detail" x="400" y="0" width="100" height="15" uuid="b29c7dc7-f15a-4c6e-9719-cbf8e57bfd8b">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="74e285c9-9364-420e-9269-9622088ab9b8"/>
 					</reportElement>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Times New Roman" size="12"/>
-					</textElement>
 					<textFieldExpression><![CDATA[$F{Monto}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
 					<reportElement style="Detail" x="500" y="0" width="100" height="15" uuid="d179b490-833d-44f0-85e5-2120c2c45baa">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d101cbfb-c30d-441d-8af0-933f3672761a"/>
 					</reportElement>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Times New Roman" size="12"/>
-					</textElement>
 					<textFieldExpression><![CDATA[$F{Couta}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
 					<reportElement style="Detail" x="600" y="0" width="100" height="15" uuid="678d62bf-46e2-4b7b-a1cc-ca41058ee5dc">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bcdd75d8-142a-429e-84e4-be9e08ad8c94"/>
 					</reportElement>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Times New Roman" size="12"/>
-					</textElement>
 					<textFieldExpression><![CDATA[$F{Pendiente}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
 					<reportElement style="Detail" x="700" y="0" width="100" height="15" uuid="a27f26e4-5b3b-4cfa-9037-4f821ce33eb3">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f84740b0-38b8-413e-8134-bf54e8c84a58"/>
 					</reportElement>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Times New Roman" size="12"/>
-					</textElement>
 					<textFieldExpression><![CDATA[$F{Estado}.equals( 1 ) ? "Pendiente":  "Pagado"]]></textFieldExpression>
 				</textField>
 			</frame>
@@ -335,7 +220,32 @@ WHERE empleado = $P{cedula} and fecha_registro > $P{fecha}]]>
 		</band>
 	</columnFooter>
 	<pageFooter>
-		<band height="25" splitType="Stretch"/>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="5d8169bd-4a75-48c8-8a68-6d3ad5ba9402"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="e5e27efa-b599-499b-9ca3-848cb511cb7b"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="18cfe1ca-f7d6-48b0-9827-28578b42a5e0"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="fbce24bb-3cb1-44a3-8eec-8c067ddbe5b5"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
 	</pageFooter>
 	<summary>
 		<band splitType="Stretch"/>
