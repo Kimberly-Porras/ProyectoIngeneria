@@ -6,10 +6,15 @@ package Controllers;
 
 import DAO.BitacoraSocioDAO;
 import DAO.EmpleadoDAO;
+import Database.DatabaseConnection;
 import Helpers.OpenWindowsHandler;
+import JasperReports.JAppReport;
+import JasperReports.JReporteRegistroSocioNuevo;
+import JasperReports.JReporteSalarioFijoNuevojrxml;
 import Models.BitacoraSocio;
 import Models.Empleado;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import javafx.beans.property.SimpleStringProperty;
@@ -134,6 +139,20 @@ public class BitacoraSocioController implements Initializable {
 
     @FXML
     private void OnReporteDiarioSocio(ActionEvent event) {
+        
+        var report = new JReporteRegistroSocioNuevo();
+        var jreport = report.getTodosLosRegistroSocio();
+
+        if (dp_fin.getValue() != null && dp_inicio.getValue() != null) {
+
+            HashMap<String, Object> map = new HashMap();
+
+           
+
+            JAppReport.getReport(DatabaseConnection.getConnection(), map, jreport);
+            JAppReport.showReport();
+            return;
+        }
     }
 
     @FXML

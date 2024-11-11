@@ -27,6 +27,7 @@ C:\Users\alber\OneDrive\Documentos\GitHub\ProyectoIngeneria\FXCopevaquita\FXCope
 C:\Users\alber\OneDrive\Documentos\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\module-info.java
 C:\Users\alber\OneDrive\Documentos\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\ContratosController.java
 C:\Users\alber\OneDrive\Documentos\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\AreasController.java
+C:\Users\alber\OneDrive\Documentos\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\JasperReports\JReporteRegistroSocioNuevo.java
 C:\Users\alber\OneDrive\Documentos\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\AgregarBitacoraSocioController.java
 C:\Users\alber\OneDrive\Documentos\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\DAO\PagoBitacoraDAO.java
 C:\Users\alber\OneDrive\Documentos\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\MainApp\Main.java
@@ -46,6 +47,8 @@ C:\Users\alber\OneDrive\Documentos\GitHub\ProyectoIngeneria\FXCopevaquita\FXCope
 C:\Users\alber\OneDrive\Documentos\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Controllers\ActualizarDeduccionesController.java
 C:\Users\alber\OneDrive\Documentos\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Clases\userSession\AppUser.java
 C:\Users\alber\OneDrive\Documentos\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\JasperReports\JReportAguinaldos.java
+C:\Users\alber\OneDrive\Documentos\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\JasperReports\JReporteIncapacidadNuevo.java
+C:\Users\alber\OneDrive\Documentos\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\JasperReports\JReporteSalarioFijoNuevojrxml.java
 C:\Users\alber\OneDrive\Documentos\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\DAO\IncapacidadDAO.java
 C:\Users\alber\OneDrive\Documentos\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\DAO\PorcentajeRebajosDAO.java
 C:\Users\alber\OneDrive\Documentos\GitHub\ProyectoIngeneria\FXCopevaquita\FXCopevaquita\src\main\java\Models\BitacoraAsistencia.java
