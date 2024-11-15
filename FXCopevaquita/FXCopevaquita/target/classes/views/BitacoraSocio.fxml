@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.BitacoraSocioController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.BitacoraSocioController">
    <children>
       <VBox alignment="CENTER" prefHeight="652.0" prefWidth="1247.0" spacing="15.0" style="-fx-background-color: white;">
          <children>
@@ -115,6 +115,7 @@
                      <columns>
                         <TableColumn fx:id="colCedula" prefWidth="178.0" text="Cédula" />
                         <TableColumn fx:id="colNombre" prefWidth="382.0" text="Nombre" />
+                        <TableColumn fx:id="colFechaRegistro" prefWidth="382.0" text="F. registro" />
                         <TableColumn fx:id="colDescripcion" prefWidth="332.0" text="Descripción" />
                         <TableColumn fx:id="colHoras" prefWidth="154.0" text="Horas" />
                         <TableColumn fx:id="colEstado" prefWidth="137.6666259765625" text="Estado" />

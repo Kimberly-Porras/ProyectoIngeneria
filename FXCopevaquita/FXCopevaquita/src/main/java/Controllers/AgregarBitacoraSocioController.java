@@ -23,9 +23,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.util.StringConverter;
 import DAO.BitacoraSocioDAO;
+import java.sql.Date;
+import javafx.scene.control.DatePicker;
 
 /**
  * FXML Controller class
+ *
  * @author alber
  * @author kim03
  */
@@ -39,22 +42,24 @@ public class AgregarBitacoraSocioController implements Initializable {
     private TextField txtDescripcionAgre;
     @FXML
     private CheckBox cbEstadoAgre;
+    @FXML
+    private DatePicker dpFechaRegistro;
 
     /**
      * Initializes the controller class.
      */
-    
     EmpleadoDAO daoEmpleado = new EmpleadoDAO();
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
     BitacoraSocioDAO daoBitacora = new BitacoraSocioDAO();
     BitacoraSocio bitacoraSocio = new BitacoraSocio();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         configurar();
-    }    
+    }
 
     public void configurar() {
-        
+
         ObservableEmpleado = FXCollections.observableArrayList(daoEmpleado.obtenerListaEmpleadosInternos());
         cbxFiltrarEmpleadoAgre.setItems(ObservableEmpleado);
 
@@ -62,7 +67,7 @@ public class AgregarBitacoraSocioController implements Initializable {
             @Override
             public String toString(Empleado t) {
                 if (t == null) {
-                    return ""; 
+                    return "";
                 }
                 return t.getNombreCompleto();
             }
@@ -74,11 +79,11 @@ public class AgregarBitacoraSocioController implements Initializable {
                 }
                 Predicate<String> find = (x) -> x != null && x.equals(t);
                 Optional<Empleado> firstMatch = ObservableEmpleado.filtered(x -> find.test(x.getNombreCompleto())).stream().findFirst();
-                return firstMatch.orElse(null); 
+                return firstMatch.orElse(null);
             }
         });
     }
-    
+
     private void guardar() {
         if (VerificarEspaciosAgregar()) {
             boolean exito = daoBitacora.insertarBitacoraSocio(
@@ -86,11 +91,12 @@ public class AgregarBitacoraSocioController implements Initializable {
                             cbxFiltrarEmpleadoAgre.getValue().getCedula(),
                             Double.parseDouble(txtHorasAgre.getText()),
                             cbEstadoAgre.isSelected(),
-                            txtDescripcionAgre.getText()));
+                            txtDescripcionAgre.getText(),
+                            Date.valueOf(dpFechaRegistro.getValue())));
 
             if (exito) {
                 MensajePersonalizado.Ver("EXITO AL INSERTAR", "Reporte de socio insertado correctamente", Alert.AlertType.CONFIRMATION);
-               
+
                 limpiarCamposAgregar();
 
             } else {
@@ -114,16 +120,17 @@ public class AgregarBitacoraSocioController implements Initializable {
             return false;
         }
     }
-    
+
     private void limpiarCamposAgregar() {
         txtHorasAgre.setText("");
         txtDescripcionAgre.setText("");
         cbxFiltrarEmpleadoAgre.setValue(ObservableEmpleado.get(0));
         cbEstadoAgre.setSelected(bitacoraSocio.isStatus());
     }
+
     @FXML
     private void btnGuardar(ActionEvent event) {
         guardar();
     }
-    
+
 }

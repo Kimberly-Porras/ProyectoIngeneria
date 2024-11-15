@@ -26,8 +26,8 @@ public class BitacoraSocioDAO {
     public boolean insertarBitacoraSocio(BitacoraSocio bitacoraSocio) {
         try {
             String sql = "INSERT INTO tbl_bitacora_socio"
-                    + "(cedula_empleado, horas, status, descripcion) "
-                    + "VALUES (?,?,?,?);";
+                    + "(cedula_empleado, horas, status, descripcion, fechaRegistro) "
+                    + "VALUES (?,?,?,?,?);";
 
             
             ps = acceso.prepareStatement(sql);
@@ -35,6 +35,8 @@ public class BitacoraSocioDAO {
             ps.setObject(2, bitacoraSocio.getHoras());
             ps.setObject(3, bitacoraSocio.isStatus());
             ps.setObject(4, bitacoraSocio.getDescripcion());
+            ps.setObject(5, bitacoraSocio.getFechaRegistro());
+            
 
             ps.executeUpdate();
             return true;
@@ -48,14 +50,17 @@ public class BitacoraSocioDAO {
     public boolean actualizarBitacoraSocio(BitacoraSocio bitacoraSocio) {
         try {
 
-            String sql = "UPDATE tbl_bitacora_socio SET cedula_empleado = ?, horas = ?, status = ?, descripcion = ? WHERE id = ?;";
+            String sql = "UPDATE tbl_bitacora_socio SET cedula_empleado = ?, horas = ?, "
+                    + "status = ?, descripcion = ?, fechaRegistro = ? WHERE id = ?;";
             
             ps = acceso.prepareStatement(sql);
             ps.setObject(1, bitacoraSocio.getCedula_empleado());
             ps.setObject(2, bitacoraSocio.getHoras());
             ps.setObject(3, bitacoraSocio.isStatus());
             ps.setObject(4, bitacoraSocio.getDescripcion());
-            ps.setObject(5, bitacoraSocio.getId());
+            ps.setObject(5, bitacoraSocio.getFechaRegistro());
+            ps.setObject(6, bitacoraSocio.getId());
+            
 
             ps.executeUpdate();
             return true;
@@ -70,7 +75,7 @@ public class BitacoraSocioDAO {
         List<BitacoraSocio> lista = new ArrayList<>();
 
         try {
-            String sql = "SELECT id, cedula_empleado, horas, status, descripcion "
+            String sql = "SELECT id, cedula_empleado, horas, status, descripcion, fechaRegistro "
                     + "FROM tbl_bitacora_socio;";
            
             ps = acceso.prepareStatement(sql);
@@ -83,6 +88,7 @@ public class BitacoraSocioDAO {
                 bitacoraSocio.setHoras(rs.getDouble(3));
                 bitacoraSocio.setStatus(rs.getBoolean(4));
                 bitacoraSocio.setDescripcion(rs.getString(5));
+                bitacoraSocio.setFechaRegistro(rs.getDate(6));
                 lista.add(bitacoraSocio);
             }
         } catch (Exception e) {
@@ -97,7 +103,7 @@ public class BitacoraSocioDAO {
         List<BitacoraSocio> lista = new ArrayList<>();
 
         try {
-            String sql = "SELECT id, cedula_empleado, horas, status, descripcion "
+            String sql = "SELECT id, cedula_empleado, horas, status, descripcion, fechaRegistro "
                     + "FROM tbl_bitacora_socio "
                     + "WHERE cedula_empleado = ?;";
             
@@ -112,6 +118,7 @@ public class BitacoraSocioDAO {
                 bitacoraSocio.setHoras(rs.getDouble(3));
                 bitacoraSocio.setStatus(rs.getBoolean(4));
                 bitacoraSocio.setDescripcion(rs.getString(5));
+                bitacoraSocio.setFechaRegistro(rs.getDate(6));
                 lista.add(bitacoraSocio);
             }
         } catch (Exception e) {

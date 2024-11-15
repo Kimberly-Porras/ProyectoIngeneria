@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Models;
-
+import java.sql.Date;
 /**
  *
  * @author alber
@@ -16,6 +16,7 @@ public class BitacoraSocio {
     private double horas;
     private boolean status;
     private String descripcion;
+    private Date fechaRegistro;
 
     public BitacoraSocio() {
         this.id = 0;
@@ -24,12 +25,13 @@ public class BitacoraSocio {
         this.status = false;
         this.descripcion = "";
     }
-    public BitacoraSocio(int id, String cedula_empleado, double horas, boolean status, String descripcion) {
+    public BitacoraSocio(int id, String cedula_empleado, double horas, boolean status, String descripcion, Date fechaRegistro) {
         this.id = id;
         this.cedulaEmpleado = cedula_empleado;
         this.horas = horas;
         this.status = status;
         this.descripcion = descripcion;
+        this.fechaRegistro = fechaRegistro;
     }
 
     public int getId() {
@@ -77,6 +79,14 @@ public class BitacoraSocio {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public Date getFechaRegistro() {
+        return fechaRegistro;
+    }
+
+    public void setFechaRegistro(Date fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
     }
     
 }

@@ -10,6 +10,7 @@ import DAO.EmpleadoDAO;
 import Models.BitacoraSocio;
 import Models.Empleado;
 import java.net.URL;
+import java.sql.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
@@ -22,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -60,6 +62,10 @@ public class ActualizarBitacoraSocioController implements Initializable {
     BitacoraSocio bitacoraSocio = new BitacoraSocio();
     BitacoraSocioDAO daoBitacora = new BitacoraSocioDAO();
     ObservableList<BitacoraSocio> ObservableBitacoraSocio = FXCollections.observableArrayList();
+    @FXML
+    private TableColumn<?, ?> colFechaRegistro;
+    @FXML
+    private DatePicker dpFechaRegistro;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -95,6 +101,7 @@ public class ActualizarBitacoraSocioController implements Initializable {
     public void configurar() {
         colCantidadHorasActualizar.setCellValueFactory(new PropertyValueFactory<>("horas"));
         colDescripcionActualizar.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
+        colFechaRegistro.setCellValueFactory(new PropertyValueFactory<>("fechaRegistro"));
         colEstadoActualizar.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isStatus() ? "Activo" : "Inactivo"));
     }
 
@@ -106,7 +113,8 @@ public class ActualizarBitacoraSocioController implements Initializable {
                             cbxFiltrarEmpleadoActualizar.getValue().getCedula(),
                             Double.parseDouble(txtCantidadHorasAct.getText()),
                             cbEstadoAct.isSelected(),
-                            txtDescripcionAct.getText()
+                            txtDescripcionAct.getText(),
+                            Date.valueOf(dpFechaRegistro.getValue())
                     ));
 
             if (exito) {

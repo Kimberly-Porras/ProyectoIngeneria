@@ -54,6 +54,8 @@ public class BitacoraSocioController implements Initializable {
     @FXML
     private TableColumn<BitacoraSocio, String> colEstado;
     @FXML
+    private TableColumn<BitacoraSocio, String> colFechaRegistro;
+    @FXML
     private ComboBox<String> cbx_status;
     @FXML
     private DatePicker dp_inicio;
@@ -64,6 +66,7 @@ public class BitacoraSocioController implements Initializable {
     ObservableList<BitacoraSocio> ObservableBitacoraSocio = FXCollections.observableArrayList();
     final private EmpleadoDAO empleadoService = new EmpleadoDAO();
     ObservableList<String> observableStatus = FXCollections.observableArrayList("Activo", "Inactivo");
+
 
     /**
      * Initializes the controller class.
@@ -86,6 +89,7 @@ public class BitacoraSocioController implements Initializable {
         });
         colHoras.setCellValueFactory(new PropertyValueFactory<>("horas"));
         colDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
+        colFechaRegistro.setCellValueFactory(new PropertyValueFactory<>("fechaRegistro"));
 
         colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isStatus() ? "Activo" : "Inactivo"));
         cbx_status.setItems(observableStatus);

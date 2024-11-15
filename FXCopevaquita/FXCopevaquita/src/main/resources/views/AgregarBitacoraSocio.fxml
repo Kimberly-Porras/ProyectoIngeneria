@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="386.0" prefWidth="771.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgregarBitacoraSocioController">
+<StackPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="386.0" prefWidth="872.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgregarBitacoraSocioController">
    <children>
       <VBox alignment="CENTER" prefHeight="361.0" prefWidth="986.0" spacing="35.0">
          <children>
@@ -34,6 +35,16 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="1203.0" spacing="10.0">
                <children>
+                  <VBox prefHeight="67.0" prefWidth="197.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="26.0" prefWidth="202.0" text="Fecha">
+                           <font>
+                              <Font name="Lucida Bright Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <DatePicker fx:id="dpFechaRegistro" prefHeight="42.0" prefWidth="207.0" style="-fx-border-color: #00897B;" />
+                     </children>
+                  </VBox>
                   <VBox>
                      <children>
                         <Label alignment="CENTER" prefWidth="201.0" text="Horas laboradas">
@@ -41,28 +52,28 @@
                               <Font name="Lucida Bright Italic" size="22.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtHorasAgre" prefHeight="40.0" prefWidth="201.0" style="-fx-border-color: #00897b;">
+                        <TextField fx:id="txtHorasAgre" prefHeight="40.0" prefWidth="144.0" style="-fx-border-color: #00897b;">
                            <font>
                               <Font size="17.0" />
                            </font>
                         </TextField>
                      </children>
                   </VBox>
-                  <VBox>
+                  <VBox prefHeight="67.0" prefWidth="268.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="28.0" prefWidth="315.0" text="Trabajo laborado ">
                            <font>
                               <Font name="Lucida Bright Italic" size="22.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtDescripcionAgre" prefHeight="38.0" prefWidth="315.0" style="-fx-border-color: #00897b;">
+                        <TextField fx:id="txtDescripcionAgre" prefHeight="39.0" prefWidth="285.0" style="-fx-border-color: #00897b;">
                            <font>
                               <Font size="17.0" />
                            </font>
                         </TextField>
                      </children>
                   </VBox>
-                  <CheckBox fx:id="cbEstadoAgre" mnemonicParsing="false" prefHeight="26.0" prefWidth="165.0" text="Estado">
+                  <CheckBox fx:id="cbEstadoAgre" mnemonicParsing="false" prefHeight="30.0" prefWidth="114.0" text="Estado">
                      <font>
                         <Font name="Lucida Bright Italic" size="22.0" />
                      </font>
