@@ -22,7 +22,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
+
 
 /**
  * FXML Controller class
@@ -35,8 +35,6 @@ public class TipoDeduccionesController implements Initializable {
     private TextField txtNombreTipoDeducciones;
     @FXML
     private CheckBox cbEstadoTipoDeducciones;
-    @FXML
-    private TextField txtFiltrarTipoDeducciones;
     @FXML
     private TableView<TipoDeduccion> tblTipoDeduccion;
     @FXML
@@ -163,9 +161,6 @@ public class TipoDeduccionesController implements Initializable {
         actualizar();
     }
 
-    @FXML
-    private void OnFiltrarTipoDeducciones(KeyEvent event) {
-    }
 
     @FXML
     private void btnCargarDatos(ActionEvent event) {

@@ -23,7 +23,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -38,8 +37,6 @@ public class AreasController implements Initializable {
     @FXML
     private CheckBox cbEstadoArea;
     @FXML
-    private TextField txtFiltrarArea;
-    @FXML
     private TableView<Area> tblAreas;
     @FXML
     private TableColumn<Area, String> colIdArea;
@@ -52,7 +49,6 @@ public class AreasController implements Initializable {
      * Initializes the controller class.
      */
     AreaDAO dao = new AreaDAO();
-    @FXML
     private Label etiqueta;
 
     @Override
@@ -172,9 +168,6 @@ public class AreasController implements Initializable {
         actualizar();
     }
 
-    @FXML
-    private void OnFiltrarArea(KeyEvent event) {
-    }
 
     @FXML
     private void btnCargarDatos(ActionEvent event) {

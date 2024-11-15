@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="885.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AreasController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="885.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AreasController">
    <children>
       <VBox alignment="CENTER" spacing="10.0" style="-fx-background-color: white;">
          <children>
@@ -45,7 +45,6 @@
                         <Font name="Lucida Bright" size="19.0" />
                      </font>
                   </CheckBox>
-                  <Label fx:id="etiqueta" />
                </children>
                <VBox.margin>
                   <Insets left="20.0" />
@@ -64,23 +63,6 @@
                      </font>
                   </Button>
                </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="1196.0" spacing="10.0">
-               <children>
-                  <Label>
-                     <font>
-                        <Font name="Lucida Bright" size="22.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtFiltrarArea" onKeyPressed="#OnFiltrarArea" prefHeight="40.0" prefWidth="287.0" promptText="Búsqueda de áreas" style="-fx-border-color: #00695C;">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </TextField>
-               </children>
-               <VBox.margin>
-                  <Insets left="20.0" top="5.0" />
-               </VBox.margin>
             </HBox>
             <HBox alignment="CENTER" prefHeight="317.0" prefWidth="1196.0">
                <children>

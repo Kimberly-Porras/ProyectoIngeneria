@@ -37,8 +37,6 @@ public class ActividadesController implements Initializable {
     @FXML
     private CheckBox cbEstadoActividad;
     @FXML
-    private TextField txtFiltrarActividades;
-    @FXML
     private TableView<Actividad> tblActividades;
     @FXML
     private TableColumn<Actividad, String> colIdActividad;
@@ -166,10 +164,6 @@ public class ActividadesController implements Initializable {
         actualizar();
     }
 
-    @FXML
-    private void OnFiltrarActividad(KeyEvent event) {
-//        filtrarActividades();
-    }
 
     @FXML
     private void btnCargarDatos(ActionEvent event) {
