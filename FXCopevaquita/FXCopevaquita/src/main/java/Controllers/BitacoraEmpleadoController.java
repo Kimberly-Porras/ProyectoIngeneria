@@ -114,7 +114,7 @@ public class BitacoraEmpleadoController implements Initializable {
         colCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
         colPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
         colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isStatus() ? "Pendiente" : "Cancelado"));
-    
+
         cbx_status.setItems(observableStatus);
         cbx_status.setOnAction(event -> {
             var value = cbx_status.getValue();
@@ -156,7 +156,7 @@ public class BitacoraEmpleadoController implements Initializable {
             cargarBitacoras(true, false);
         }
     }
-    
+
     @FXML
     private void OnAgregar(ActionEvent event) {
         OpenWindowsHandler.AbrirVentanaAgregarBitacoraEmpleado("/views/AgregarBitacoraEmpleado");
@@ -169,7 +169,7 @@ public class BitacoraEmpleadoController implements Initializable {
 
     @FXML
     private void OnRefrescar(ActionEvent event) {
-        cargarBitacoras(true,false);
+        cargarBitacoras(true, false);
     }
 
     @FXML
@@ -179,7 +179,7 @@ public class BitacoraEmpleadoController implements Initializable {
 
     @FXML
     private void OnReporteExportarGeneral(ActionEvent event) {
-        
+
         var report = new JReporteRegistroEmpleadoGeneralNuevo();
         var jreport = report.getTodosLosRegistroEmpleados();
 
@@ -196,22 +196,22 @@ public class BitacoraEmpleadoController implements Initializable {
             JAppReport.showReport();
             return;
         }
-        
+
     }
 
     @FXML
     private void OnReporteUnitario(ActionEvent event) {
-        
-         var report = new JReporteRegistroEmpleadoUnitarioNuevo();
-        var jreport = report.getRegistroDiarioUnitarioEmpleados();
 
-        if (dp_fin.getValue() != null && dp_inicio.getValue() != null) {
+        var report = new JReporteRegistroEmpleadoUnitarioNuevo();
+        var jreport = report.getRegistroDiarioUnitarioEmpleados();
+        var model = tblListarReporteEmpleado.getSelectionModel().getSelectedItem();
+        if (dp_fin.getValue() != null && dp_inicio.getValue() != null && model != null) {
 
             HashMap<String, Object> map = new HashMap();
 
-            System.out.println("Fechas " + dp_inicio.getValue().toString());
-             System.out.println("Fechas " + dp_fin.getValue().toString());
+            var empleadoCedula = model.getEmpleado();
 
+            map.put("cedula", empleadoCedula);
             map.put("Pinicio", dp_inicio.getValue().toString());
             map.put("PFin", dp_fin.getValue().toString());
 
@@ -219,7 +219,7 @@ public class BitacoraEmpleadoController implements Initializable {
             JAppReport.showReport();
             return;
         }
-        
+
     }
 
 }

@@ -2,10 +2,10 @@
 <!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteRegistroEmpleadoUnitarioNuevo" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7a5c9b49-9dc5-422a-ac69-e92cf61ef530">
 	<property name="com.jaspersoft.studio.data.sql.tables">
-		<![CDATA[dGJsX2FyZWEgLDE1LDE1LDkyODIzNWEwLTQ2YTctNDFkZi04ZmI4LTkwNGRiYzRkNDRiYTt0Ymxf
-Yml0YWNvcmFfZW1wbGVhZG8gLDEzOSwxNSw4YTI3OWRkOC0yNmE0LTRjN2ItOGJjMS1hMjlmZTgw
-NzVmMjA7dGJsX2VtcGxlYWRvICwzNjAsMTUsMzFjODcxYzQtMjc5My00OWUzLTkwZTAtOTcyMmQ0
-ODQwNmU1Ow==]]>
+		<![CDATA[dGJsX2JpdGFjb3JhX2VtcGxlYWRvICwxMzksMTUsZmQ1NzBmMWItN2I3OC00NjlkLWE3NTItODcw
+OWE4M2E1ZGZkO3RibF9lbXBsZWFkbyAsMzYwLDE1LGI1MzdkZmViLWNjYjAtNDU3NC05Zjk0LThk
+ZTlmOGY4MDljYTt0YmxfYXJlYSAsMTUsMTUsZjI0MDFiMjAtYjk1Yy00OTllLWIzN2ItMDJiMjNh
+NDc0ZmQ1Ow==]]>
 	</property>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="PlanillaTrabajoActual"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
@@ -19,7 +19,8 @@ ODQwNmU1Ow==]]>
 		</conditionalStyle>
 	</style>
 	<parameter name="cedula" class="java.lang.String"/>
-	<parameter name="fecha" class="java.lang.String"/>
+	<parameter name="Pinicio" class="java.lang.String"/>
+	<parameter name="PFin" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT 
     empl.cedula AS `Cédula`,
@@ -33,7 +34,7 @@ ODQwNmU1Ow==]]>
 FROM tbl_bitacora_empleado bita
 INNER JOIN tbl_empleado empl ON empl.cedula = bita.empleado 
 INNER JOIN tbl_area area ON bita.area = area.id
-WHERE empl.cedula = $P{cedula}  AND bita.fecha >=  $P{fecha}]]>
+WHERE empl.cedula =   $P{cedula}  AND bita.fecha >=  $P{Pinicio}  and bita.fecha <=  $P{PFin} ]]>
 	</queryString>
 	<field name="Cédula" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="cedula"/>
