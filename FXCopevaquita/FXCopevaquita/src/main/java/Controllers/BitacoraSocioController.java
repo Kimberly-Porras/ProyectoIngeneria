@@ -151,7 +151,10 @@ public class BitacoraSocioController implements Initializable {
 
             HashMap<String, Object> map = new HashMap();
 
-           
+            System.out.println("Fechas " + dp_inicio.getValue().toString());
+
+            map.put("PInicio", dp_inicio.getValue().toString());
+            map.put("PFin", dp_fin.getValue().toString());
 
             JAppReport.getReport(DatabaseConnection.getConnection(), map, jreport);
             JAppReport.showReport();

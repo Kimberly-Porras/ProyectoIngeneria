@@ -13,16 +13,21 @@
 			<style mode="Opaque" backcolor="#F0EFEF"/>
 		</conditionalStyle>
 	</style>
+	<parameter name="PInicio" class="java.lang.String"/>
+	<parameter name="PFin" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[select 
 	empl.cedula as `Cédula empleado`,
 	empl.nombre as `Nombre empleado`,
+    bitacora.fechaRegistro as `F. Registro`,
     bitacora.descripcion as `Descripción actividad`,
     bitacora.horas as `Horas actividad`,
     bitacora.status as `Estado`
 from tbl_bitacora_socio bitacora
 inner join tbl_empleado empl
-on empl.cedula = bitacora.cedula_empleado]]>
+on empl.cedula = bitacora.cedula_empleado
+WHERE  bitacora.fechaRegistro >= $P{PInicio} 
+  AND  bitacora.fechaRegistro <= $P{PFin} ]]>
 	</queryString>
 	<field name="Cédula empleado" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="cedula"/>
@@ -33,6 +38,11 @@ on empl.cedula = bitacora.cedula_empleado]]>
 		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
 		<property name="com.jaspersoft.studio.field.label" value="Nombre empleado"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_empleado"/>
+	</field>
+	<field name="F. Registro" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="fechaRegistro"/>
+		<property name="com.jaspersoft.studio.field.label" value="F. Registro"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_bitacora_socio"/>
 	</field>
 	<field name="Descripción actividad" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="descripcion"/>
