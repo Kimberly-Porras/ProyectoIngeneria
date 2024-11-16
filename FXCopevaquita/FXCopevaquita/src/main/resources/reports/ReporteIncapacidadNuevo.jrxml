@@ -13,23 +13,28 @@
 			<style mode="Opaque" backcolor="#F0EFEF"/>
 		</conditionalStyle>
 	</style>
+	<parameter name="PInicio" class="java.lang.String"/>
+	<parameter name="PFin" class="java.lang.String"/>
 	<queryString language="SQL">
-		<![CDATA[select incapacidad.empleado as `Cédula empleado`,
-(empleado.nombre + ' ' + empleado.apellidos) as `Nombre empleados`,
-incapacidad.fecha as `fecha incapacidad`,
-incapacidad.monto as `Monto incapacidad`,
-incapacidad.motivo as `Motivo incapacidad`,
-incapacidad.status as `Estado incapacidad`
-from tbl_incapacidad incapacidad
-inner join tbl_empleado empleado
-on empleado.cedula = incapacidad.empleado]]>
+		<![CDATA[SELECT 
+    incapacidad.empleado AS `Cédula empleado`,
+    CONCAT(empleado.nombre, ' ', empleado.apellidos) AS `Nombre empleados`,
+    incapacidad.fecha AS `fecha incapacidad`,
+    incapacidad.monto AS `Monto incapacidad`,
+    incapacidad.motivo AS `Motivo incapacidad`,
+    incapacidad.status AS `Estado incapacidad`
+FROM tbl_incapacidad incapacidad
+INNER JOIN tbl_empleado empleado
+    ON empleado.cedula = incapacidad.empleado
+WHERE incapacidad.fecha >= $P{PInicio} 
+  AND incapacidad.fecha <=  $P{PFin} ]]>
 	</queryString>
 	<field name="Cédula empleado" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="empleado"/>
 		<property name="com.jaspersoft.studio.field.label" value="Cédula empleado"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_incapacidad"/>
 	</field>
-	<field name="Nombre empleados" class="java.lang.Double">
+	<field name="Nombre empleados" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="Nombre empleados"/>
 		<property name="com.jaspersoft.studio.field.label" value="Nombre empleados"/>
 	</field>
@@ -203,7 +208,7 @@ on empleado.cedula = incapacidad.empleado]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="14" isBold="false"/>
 				</textElement>
-				<text><![CDATA[Estado incapacidad]]></text>
+				<text><![CDATA[Estado ]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
