@@ -17,7 +17,7 @@ public class JReportAguinaldos {
         public JasperReport getAguinaldos() {
 
         JasperReport report = null;
-        InputStream input = getClass().getResourceAsStream("/reports/aguinaldoExportar.jrxml");
+        InputStream input = getClass().getResourceAsStream("/reports/AguinaldoPRUEBA.jrxml");
 
         if (input == null) {
             System.out.println("No se pudo cargar el archivo aguinaldoExportar.jrxml");

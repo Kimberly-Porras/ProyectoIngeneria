@@ -28,6 +28,7 @@ import java.sql.Date;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
@@ -241,12 +242,20 @@ public class AguinaldosController implements Initializable {
             MensajePersonalizado.Ver("Info: ", "Por favor, seleccione una fecha", Alert.AlertType.INFORMATION);
             return;
         }
+        
+        if (dp_fin.getValue() != null && dp_inicio.getValue() != null) {
+            HashMap<String, Object> map = new HashMap();
 
-        var report = new JReportAguinaldos();
-        var jreport = report.getAguinaldos();
+            map.put("Pinicio", dp_inicio.getValue().toString());
+            map.put("PFin", dp_fin.getValue().toString());
 
-        JAppReport.getReport(DatabaseConnection.getConnection(), null, jreport);
-        JAppReport.showReport();
+            var report = new JReportAguinaldos();
+            var jreport = report.getAguinaldos();
+
+            JAppReport.getReport(DatabaseConnection.getConnection(), map, jreport);
+            JAppReport.showReport();
+        }
+        
     }
 
     @FXML
