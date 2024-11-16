@@ -13,6 +13,8 @@
 			<style mode="Opaque" backcolor="#F0EFEF"/>
 		</conditionalStyle>
 	</style>
+	<parameter name="Pinicio" class="java.lang.String"/>
+	<parameter name="PFin" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[select 
 	empleado.cedula as `Cédula empleado`,
@@ -29,7 +31,8 @@ on empleado.cedula = bitacora.empleado
 INNER join tbl_actividad actividad
 on actividad.id = bitacora.actividad
 inner join tbl_area area
-on area.id = bitacora.area]]>
+on area.id = bitacora.area   
+where bitacora.fecha >=  $P{Pinicio} and bitacora.fecha <= $P{PFin} ]]>
 	</queryString>
 	<field name="Cédula empleado" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="cedula"/>
@@ -269,7 +272,7 @@ on area.id = bitacora.area]]>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Times New Roman" size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[ new SimpleDateFormat("MM/dd/YYY").format($F{Fecha registro})]]></textFieldExpression>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("MM/dd/YYY").format($F{Fecha registro})]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
 					<reportElement style="Detail" positionType="Float" x="297" y="0" width="99" height="18" uuid="b8c866bc-5fa8-4baa-b46d-8920e9a2978e">
