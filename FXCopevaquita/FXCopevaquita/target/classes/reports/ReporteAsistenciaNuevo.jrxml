@@ -13,6 +13,8 @@
 			<style mode="Opaque" backcolor="#F0EFEF"/>
 		</conditionalStyle>
 	</style>
+	<parameter name="PInicio" class="java.lang.String"/>
+	<parameter name="PFin" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[select 
 	emp.cedula as `Cédula empleado`,
@@ -21,7 +23,9 @@
     if(asistencia.estaPresente,'Si','No') as `¿Asiste?`,
     if(asistencia.justifica, 'Si', 'No') as `¿Justifica?`
 from tbl_bitacora_asistencia asistencia
-inner join tbl_empleado emp on emp.cedula = asistencia.empleado]]>
+inner join tbl_empleado emp on emp.cedula = asistencia.empleado
+WHERE  asistencia.fecha >=  $P{PInicio} 
+  AND  asistencia.fecha <=  $P{PFin} ]]>
 	</queryString>
 	<field name="Cédula empleado" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="cedula"/>
@@ -220,7 +224,7 @@ inner join tbl_empleado emp on emp.cedula = asistencia.empleado]]>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Times New Roman" size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[ new SimpleDateFormat("MM/dd/YYY").format($F{fecha})]]></textFieldExpression>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("MM/dd/YYY").format($F{fecha})]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
 					<reportElement style="Detail" positionType="Float" x="477" y="0" width="159" height="18" uuid="7a0dd056-e26a-4dbb-9c00-f7e0effa2902">
