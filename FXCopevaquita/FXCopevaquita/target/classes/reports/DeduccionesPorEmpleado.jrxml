@@ -274,7 +274,7 @@ WHERE empleado = $P{cedula} and fecha_registro > $P{fecha}]]>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Times New Roman" size="12"/>
 					</textElement>
-					<textFieldExpression><![CDATA[ new SimpleDateFormat("MM/dd/YYY").format($F{Fecha})]]></textFieldExpression>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("MM/dd/YYY").format($F{Fecha})]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
 					<reportElement style="Detail" x="300" y="0" width="100" height="15" uuid="03485898-f1b9-410d-8187-0c2ddfbf112f">
@@ -335,7 +335,13 @@ WHERE empleado = $P{cedula} and fecha_registro > $P{fecha}]]>
 		</band>
 	</columnFooter>
 	<pageFooter>
-		<band height="25" splitType="Stretch"/>
+		<band height="44" splitType="Stretch">
+			<textField>
+				<reportElement x="697" y="14" width="100" height="30" uuid="801491bb-f22f-49c5-ae01-638d78e75e76"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageFooter>
 	<summary>
 		<band splitType="Stretch"/>

@@ -36,7 +36,7 @@ INNER JOIN tbl_pago_incapacidad ON tbl_pago_incapacidad.pagoId = p.id
 INNER JOIN tbl_pago_vacacion ON tbl_pago_vacacion.pagoId = p.id
 INNER JOIN tbl_pago_deduccion ON tbl_pago_deduccion.idPago = p.id
 where empleado.cedula = $P{cedula} 
- and p.fecha >= $P{fecha} and p.fecha_final <=  $P{fecha_fin} ]]>
+ and p.fecha >= $P{fecha} and p.fecha_final <=  $P{fecha_fin}]]>
 	</queryString>
 	<field name="Empleado" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="Empleado"/>
@@ -361,7 +361,13 @@ where empleado.cedula = $P{cedula}
 		</band>
 	</columnFooter>
 	<pageFooter>
-		<band height="25" splitType="Stretch"/>
+		<band height="44" splitType="Stretch">
+			<textField>
+				<reportElement x="697" y="14" width="100" height="30" uuid="dc4bac71-1120-4dfd-9847-39f428e48b37"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageFooter>
 	<summary>
 		<band splitType="Stretch"/>
