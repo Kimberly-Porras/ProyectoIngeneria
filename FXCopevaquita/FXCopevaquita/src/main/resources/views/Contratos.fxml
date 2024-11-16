@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ContratosController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ContratosController">
    <children>
       <VBox prefHeight="609.0" prefWidth="1247.0" spacing="15.0" style="-fx-background-color: white;">
          <children>
@@ -85,8 +85,7 @@
                   </Button>
                   <HBox alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="778.0" spacing="10.0">
                      <children>
-                        <DatePicker fx:id="dp_inicio" prefHeight="31.0" prefWidth="134.0" promptText="Fecha de inicio " />
-                        <DatePicker fx:id="dp_fin" prefHeight="31.0" prefWidth="134.0" promptText="Fecha de fin" />
+                        <DatePicker fx:id="dp_inicio" prefHeight="31.0" prefWidth="134.0" promptText="Fecha de registro" />
                         <Button mnemonicParsing="false" onAction="#OnReporte" prefHeight="45.0" prefWidth="122.0" style="-fx-background-color: #ed9696;" text="Exportar" textFill="WHITE">
                            <font>
                               <Font name="Lucida Bright" size="17.0" />

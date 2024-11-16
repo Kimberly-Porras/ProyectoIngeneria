@@ -13,27 +13,30 @@
 			<style mode="Opaque" backcolor="#F0EFEF"/>
 		</conditionalStyle>
 	</style>
+	<parameter name="PFechaRegistro" class="java.lang.String"/>
 	<queryString language="SQL">
-		<![CDATA[select contrato.cedula_empleado as `cédula empleado`,
-(empleado.nombre + ' ' + empleado.apellidos) as Nombre,
-actividad.nombre as `nombre actividad`, 
-contrato.fechaInicio as `fecha inicial`,
-contrato.fechaFinal as `fecha final`,
-contrato.fechaRegistro as `fecha registro`,
-contrato.monto,
-contrato.status
-from tbl_contrato contrato
-INNER join tbl_empleado empleado
-on empleado.cedula = contrato.cedula_empleado
-inner join tbl_actividad actividad
-on actividad.id = contrato.motivo]]>
+		<![CDATA[SELECT 
+    contrato.cedula_empleado AS `cédula empleado`,
+    CONCAT(empleado.nombre, ' ', empleado.apellidos) AS `Nombre`,
+    actividad.nombre AS `nombre actividad`,
+    contrato.fechaInicio AS `fecha inicial`,
+    contrato.fechaFinal AS `fecha final`,
+    contrato.fechaRegistro AS `fecha registro`,
+    contrato.monto,
+    contrato.status
+FROM tbl_contrato contrato
+INNER JOIN tbl_empleado empleado
+    ON empleado.cedula = contrato.cedula_empleado
+INNER JOIN tbl_actividad actividad
+    ON actividad.id = contrato.motivo
+ WHERE contrato.fechaRegistro <=$P{PFechaRegistro} ]]>
 	</queryString>
 	<field name="cédula empleado" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="cedula_empleado"/>
 		<property name="com.jaspersoft.studio.field.label" value="cédula empleado"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_contrato"/>
 	</field>
-	<field name="Nombre" class="java.lang.Double">
+	<field name="Nombre" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="Nombre"/>
 		<property name="com.jaspersoft.studio.field.label" value="Nombre"/>
 	</field>
@@ -289,7 +292,7 @@ on actividad.id = contrato.motivo]]>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[ new SimpleDateFormat("MM/dd/YYY").format($F{fecha final})]]></textFieldExpression>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("MM/dd/YYY").format($F{fecha final})]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
 					<reportElement style="Detail" positionType="Float" x="495" y="0" width="99" height="18" uuid="774a3402-af64-4116-adac-8243b1251230">
@@ -298,7 +301,7 @@ on actividad.id = contrato.motivo]]>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[ new SimpleDateFormat("MM/dd/YYY").format($F{fecha registro})]]></textFieldExpression>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{fecha registro})]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
 					<reportElement style="Detail" positionType="Float" x="594" y="0" width="99" height="18" uuid="7adb96b1-9471-4caf-931b-f4bbfea6c3a9">

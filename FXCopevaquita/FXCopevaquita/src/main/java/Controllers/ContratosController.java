@@ -64,7 +64,6 @@ public class ContratosController implements Initializable {
     private ComboBox<String> cbx_status;
     @FXML
     private DatePicker dp_inicio;
-    @FXML
     private DatePicker dp_fin;
 
     /**
@@ -169,14 +168,14 @@ public class ContratosController implements Initializable {
         var report = new JReporteContratoNuevo();
         var jreport = report.getTodosLosContratos();
 
-        if (dp_fin.getValue() != null && dp_inicio.getValue() != null) {
+        if (dp_inicio.getValue() != null) {
 
             HashMap<String, Object> map = new HashMap();
 
             System.out.println("Fechas " + dp_inicio.getValue().toString());
 
-            map.put("PInicio", dp_inicio.getValue().toString());
-            map.put("PFin", dp_fin.getValue().toString());
+            map.put("PFechaRegistro", dp_inicio.getValue().toString());
+            
 
             JAppReport.getReport(DatabaseConnection.getConnection(), map, jreport);
             JAppReport.showReport();
