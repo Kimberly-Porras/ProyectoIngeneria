@@ -33,6 +33,7 @@ import javafx.util.StringConverter;
 
 /**
  * FXML Controller class
+ *
  * @author alber
  * @author kim03
  */
@@ -62,25 +63,23 @@ public class ActualizarIncapacidadesController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    
     IncapacidadDAO daoIncapacidad = new IncapacidadDAO();
     EmpleadoDAO daoEmpleado = new EmpleadoDAO();
     Incapacidad incapacidad = new Incapacidad();
     ObservableList<Empleado> ObservableEmpleado = FXCollections.observableArrayList();
     ObservableList<Incapacidad> ObservableIncapacidad = FXCollections.observableArrayList();
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         configurar();
     }
 
-    
     public void configurar() {
         colFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
         colMotivo.setCellValueFactory(new PropertyValueFactory<>("motivo"));
         colMonto.setCellValueFactory(new PropertyValueFactory<>("monto"));
-        colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isStatus()? "Pendiente" : "Cancelado"));
-        
+        colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isStatus() ? "Pendiente" : "Cancelado"));
+
         ObservableEmpleado = FXCollections.observableArrayList(daoEmpleado.obtenerListaEmpleados());
         cbxFiltrarEmpleado.setItems(ObservableEmpleado);
 
@@ -88,7 +87,7 @@ public class ActualizarIncapacidadesController implements Initializable {
             @Override
             public String toString(Empleado t) {
                 if (t == null) {
-                    return ""; 
+                    return "";
                 }
                 return t.getNombreCompleto();
             }
@@ -104,7 +103,7 @@ public class ActualizarIncapacidadesController implements Initializable {
             }
         });
     }
-    
+
     private void actualizar() {
         if (VerificarEspaciosAtualizar()) {
             boolean exito = daoIncapacidad.actualizarIncapacidad(
@@ -147,22 +146,22 @@ public class ActualizarIncapacidadesController implements Initializable {
     private Empleado Get(String cedula) {
         return ObservableEmpleado.filtered(x -> x.getCedula().equals(cedula)).get(0);
     }
-    
+
     private void cargarCamposActualizar() {
         dpFecha.setValue(incapacidad.getFecha().toLocalDate());
         cbxFiltrarEmpleado.setValue(Get(incapacidad.getEmpleado()));
         txtMonto.setText(incapacidad.getMonto() + "");
-        txtMotivo.setText(incapacidad.getMotivo()+ "");
+        txtMotivo.setText(incapacidad.getMotivo() + "");
         cbEstado.setSelected(incapacidad.isStatus());
     }
-    
+
     private void limpiarCamposActualizar() {
-         dpFecha.setValue(LocalDate.now());
+        dpFecha.setValue(LocalDate.now());
         txtMonto.setText("");
         txtMotivo.setText("");
         cbEstado.setSelected(incapacidad.isStatus());
     }
-    
+
     private void FiltrarIncapacidadPorCedulaEmpleado() {
         try {
             var empleado = cbxFiltrarEmpleado.getValue();
@@ -174,7 +173,7 @@ public class ActualizarIncapacidadesController implements Initializable {
             MensajePersonalizado.Ver("Error", "Error al buscar las incapacidades del empleado, más información: " + ex.getMessage(), Alert.AlertType.ERROR);
         }
     }
-    
+
     private void cargarIncapacidadesPorEmpleado() {
         incapacidad = tblIncapacidadesActualizar.getSelectionModel().getSelectedItem();
         if (incapacidad != null && incapacidad.getId() != 0) {
@@ -183,7 +182,7 @@ public class ActualizarIncapacidadesController implements Initializable {
             MensajePersonalizado.Ver("NO SELECCIONADO", "Por favor seleccione una incapacidad", Alert.AlertType.WARNING);
         }
     }
-    
+
     @FXML
     private void FiltrarEmpleado(ActionEvent event) {
         FiltrarIncapacidadPorCedulaEmpleado();

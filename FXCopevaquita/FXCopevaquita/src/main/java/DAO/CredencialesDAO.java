@@ -100,4 +100,48 @@ public class CredencialesDAO {
             return false;
         }
     }
+
+    public boolean insertarCredencial(Credencial credencial) {
+        try {
+            String sql = "INSERT INTO tbl_credencial (empleado, usuario, correo, contrasenia, status) "
+                    + "VALUES (?, ?, ?, ?, ?);";
+
+            ps = acceso.prepareStatement(sql);
+            ps.setObject(1, credencial.getEmpleado());
+            ps.setObject(2, credencial.getUsuario());
+            ps.setObject(3, credencial.getCorreo());
+            ps.setObject(4, credencial.getContrasenia());
+            ps.setObject(5, credencial.isStatus());
+
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            System.out.println("" + e.toString());
+            return false;
+        }
+
+    }
+
+    public boolean actualizarCredencial(Credencial credencial) {
+    try {
+        String sql = "UPDATE tbl_credencial "
+                + "SET empleado = ?, usuario = ?, correo = ?, contrasenia = ?, status = ? "
+                + "WHERE id = ?;";
+
+        ps = acceso.prepareStatement(sql);
+        ps.setString(1, credencial.getEmpleado()); // varchar(20)
+        ps.setString(2, credencial.getUsuario());  // varchar(20)
+        ps.setString(3, credencial.getCorreo());   // varchar(100)
+        ps.setString(4, credencial.getContrasenia()); // varchar(20)
+        ps.setBoolean(5, credencial.isStatus());   // bit(1)
+        ps.setInt(6, credencial.getId());          // int(11)
+
+        int rowsAffected = ps.executeUpdate();
+        return rowsAffected > 0;
+    } catch (Exception e) {
+        e.printStackTrace(); // Imprime el error detallado
+        return false;
+    }
+}
+
 }

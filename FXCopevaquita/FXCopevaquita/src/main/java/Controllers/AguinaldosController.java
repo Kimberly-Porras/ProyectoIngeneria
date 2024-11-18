@@ -193,7 +193,7 @@ public class AguinaldosController implements Initializable {
         var meses = pagos.size(); // Cada dos quincenas son un mes...
 
         if (meses < 1) {
-            MensajePersonalizado.Ver("Error ", "Mae, ocupa al menos una quincena de contrato", Alert.AlertType.ERROR);
+            MensajePersonalizado.Ver("Error ", "Necesita al menos una quincena de salario", Alert.AlertType.ERROR);
             return;
         }
 
