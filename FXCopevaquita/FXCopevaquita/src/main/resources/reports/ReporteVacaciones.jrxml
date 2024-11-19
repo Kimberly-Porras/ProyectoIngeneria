@@ -251,7 +251,7 @@ WHERE vac.fecha BETWEEN $P{PInicio} and $P{PFin}]]>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Tw Cen MT" size="12"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[ new SimpleDateFormat("MM/dd/YYY").format($F{fecha} )]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
 					<reportElement style="Detail" positionType="Float" x="660" y="0" width="132" height="18" uuid="4243be23-284e-4970-87fe-547a0a863683">

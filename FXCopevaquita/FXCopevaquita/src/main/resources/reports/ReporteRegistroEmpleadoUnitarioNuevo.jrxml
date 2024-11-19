@@ -34,7 +34,7 @@ NDc0ZmQ1Ow==]]>
 FROM tbl_bitacora_empleado bita
 INNER JOIN tbl_empleado empl ON empl.cedula = bita.empleado 
 INNER JOIN tbl_area area ON bita.area = area.id
-WHERE empl.cedula =   $P{cedula}  AND bita.fecha >=  $P{Pinicio}  and bita.fecha <=  $P{PFin} ]]>
+WHERE empl.cedula =   $P{cedula}  AND bita.fecha >=  $P{Pinicio}  and bita.fecha <=  $P{PFin}]]>
 	</queryString>
 	<field name="Cédula" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="cedula"/>
@@ -219,7 +219,7 @@ WHERE empl.cedula =   $P{cedula}  AND bita.fecha >=  $P{Pinicio}  and bita.fecha
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="14" isBold="false"/>
 				</textElement>
-				<text><![CDATA[Area]]></text>
+				<text><![CDATA[Área]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" mode="Opaque" x="495" y="0" width="99" height="18" forecolor="#FFFFFF" backcolor="#00897B" uuid="2da370de-31ad-484e-83fc-eb66268df241">

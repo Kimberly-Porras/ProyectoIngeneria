@@ -256,7 +256,7 @@ FROM
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="10" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{p_endDate} ]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{p_endDate}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="70" y="103" width="80" height="15" uuid="f0fd1fc2-5c10-435b-bcc2-9ae164153e8f"/>

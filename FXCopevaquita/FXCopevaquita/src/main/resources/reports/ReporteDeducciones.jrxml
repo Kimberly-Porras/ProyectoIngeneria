@@ -274,7 +274,7 @@ INNER JOIN tbl_tipo_deduccion td ON td.id = ded.tipo WHERE ded.fecha_registro BE
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Tw Cen MT" size="12"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{fecha_registro}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[ new SimpleDateFormat("MM/dd/YYY").format($F{fecha_registro})]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
 					<reportElement style="Detail" positionType="Float" x="3" y="0" width="88" height="18" uuid="1f3e5f54-ad84-49f7-8e5c-7a67feaef685">

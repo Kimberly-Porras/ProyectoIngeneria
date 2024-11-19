@@ -282,7 +282,7 @@ where empleado.cedula = $P{cedula}
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{Fecha de Inicio}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("MM/dd/YYY").format($F{Fecha de Inicio} )]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
 					<reportElement style="Detail" positionType="Float" x="176" y="0" width="88" height="18" uuid="63a0b1be-4dc6-453b-b615-2740ae19d66c">
@@ -291,7 +291,7 @@ where empleado.cedula = $P{cedula}
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{Fecha Final}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("MM/dd/YYY").format($F{Fecha Final})]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
 					<reportElement style="Detail" positionType="Float" x="264" y="0" width="88" height="18" uuid="98d00e03-8cbb-42f9-b2d4-0e052cb02a24">
