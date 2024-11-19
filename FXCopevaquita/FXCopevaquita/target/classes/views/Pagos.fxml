@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PagosController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PagosController">
    <children>
       <VBox alignment="CENTER" spacing="15.0">
          <children>
@@ -42,7 +42,7 @@
                         <Insets />
                      </HBox.margin>
                      <children>
-                        <Label alignment="TOP_LEFT" text="Nombre Empleado:">
+                        <Label alignment="TOP_LEFT" text="Nombre empleado:">
                            <font>
                               <Font name="Lucida Bright" size="22.0" />
                            </font>
@@ -106,7 +106,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <HBox alignment="TOP_RIGHT" prefHeight="39.0" prefWidth="731.0">
+                  <HBox alignment="TOP_RIGHT" prefHeight="39.0" prefWidth="731.0" spacing="10.0">
                      <children>
                         <Button fx:id="btnGenerarReporte" mnemonicParsing="false" onAction="#OnGenerarReporte" prefHeight="37.0" prefWidth="138.0" style="-fx-background-color: #ed9696;" text="Exportar" textFill="WHITE">
                            <font>
@@ -119,6 +119,9 @@
                                  </image>
                               </ImageView>
                            </graphic>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
                         </Button>
                         <Button fx:id="btnGenerarReporte1" mnemonicParsing="false" onAction="#OnGenerarReporteIndividual" prefHeight="39.0" prefWidth="240.0" style="-fx-background-color: #ed9696;" text="Exportar Individual" textFill="WHITE">
                            <font>
@@ -133,6 +136,9 @@
                            </graphic>
                         </Button>
                      </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
                   </HBox>
                </children>
                <VBox.margin>
